@@ -17,7 +17,11 @@
 
             <section id="customDialog" class="dialog">
                 <div class="titulo">
-                    <h1>Iniciar Sessão</h1>
+                    <h1><span>Iniciar Sess</span>ão</h1>
+                </div>
+
+                <div class="icone">
+                    <img src="/IMG/left-arrow.png" alt="Back">
                 </div>
             
                 <div class="email">
@@ -28,6 +32,16 @@
                 <div class="senha">
                     <p>Senha</p>
                     <input type="password">
+                </div>
+
+                <div class="lembrar">
+                    <input type="checkbox" class="lembrarSenha">
+                    <label for="lembrarSenha">Lembrar senha</label>
+                </div>
+
+                <div class="botoes">
+                    <button onclick="cadastrar()">Cadastrar</button>
+                    <button onclick="entrar()">Entrar</button>
                 </div>
             </section>
         </header>
