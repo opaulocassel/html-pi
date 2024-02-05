@@ -1,65 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meu Site com Mapa</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <header>
+      <div id="login">
+        <button onclick="openDialog()">Iniciar Sessão</button>
+      </div>
+
+      <section id="customDialog" class="dialog">
+        <div class="titulo">
+          <h1><span>Iniciar Sess</span>ão</h1>
+        </div>
+
+        <div class="icone">
+          <img src="/IMG/left-arrow.png" alt="Back" />
+        </div>
+
+        <div class="email">
+          <p>E-mail</p>
+          <input type="email" />
+        </div>
+
+        <div class="senha">
+          <p>Senha</p>
+          <input type="password" />
+        </div>
+
+        <div class="lembrar">
+          <input type="checkbox" class="lembrarSenha" />
+          <label for="lembrarSenha">Lembrar senha</label>
+        </div>
+
+        <div class="botoes">
+          <button onclick="cadastrar()">Cadastrar</button>
+          <button onclick="entrar()">Entrar</button>
+        </div>
+      </section>
+    </header>
+
+    <main>
+
+
+        
+    </main>
+
+    <footer>
+
+
+
+    </footer>
+
     <script src="index.js"></script>
-</head>
-
-<body>
-        <header>
-            <div id="login">
-                <button onclick="openDialog()">Iniciar Sessão</button>
-            </div>
-
-            <section id="customDialog" class="dialog">
-                <div class="titulo">
-                    <h1><span>Iniciar Sess</span>ão</h1>
-                </div>
-
-                <div class="icone">
-                    <img src="/IMG/left-arrow.png" alt="Back">
-                </div>
-            
-                <div class="email">
-                    <p>E-mail</p>
-                    <input type="email">
-                </div>
-
-                <div class="senha">
-                    <p>Senha</p>
-                    <input type="password">
-                </div>
-
-                <div class="lembrar">
-                    <input type="checkbox" class="lembrarSenha">
-                    <label for="lembrarSenha">Lembrar senha</label>
-                </div>
-
-                <div class="botoes">
-                    <button onclick="cadastrar()">Cadastrar</button>
-                    <button onclick="entrar()">Entrar</button>
-                </div>
-            </section>
-        </header>
-
-
-         <main>
-
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22486.523004706274!2d-122.41941513208008!3d37.77492946834156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e4e39406575%3A0xa763f0370ac12a!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2suk!4v1612381011299!5m2!1sen!2suk">
-            </iframe>
-    
-         </main>
-
-
-        <footer>
-
-
-        </footer>
-
-    </body>
+  </body>
 </html>
