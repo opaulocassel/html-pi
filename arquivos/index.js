@@ -33,6 +33,15 @@ function openDialog() {
   // });
 }
 
+function cadastrar(){
+  let dialogRegister = document.getElementById("registerDialog")
+  dialogRegister.style.display = "block"
+
+  // let customDialog = document.getElementById("customDialog");
+  // customDialog.style.display = "none";
+}
+
 function closeDialog() {
   document.getElementById("customDialog").style.display = "none";
+  document.getElementById("registerDialog").style.display = "none";
 }

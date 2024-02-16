@@ -20,7 +20,7 @@
 
         <div class="icone">
           <img
-            src="../images/left-arrow.png"
+            src="../assets/left-arrow.png"
             onclick="closeDialog()"
             alt="Back"
           />
@@ -46,12 +46,63 @@
           <button onclick="entrar()">Entrar</button>
         </div>
       </section>
+
+      
+
+      <section id="registerDialog" class="dialog">
+        <div class="titulo">
+          <h1><span>Iniciar Sess</span>ão</h1>
+        </div>
+
+        <div class="icone">
+          <img
+            src="../assets/left-arrow.png"
+            onclick="closeDialog()"
+            alt="Back"
+          />
+        </div>
+
+        <div class="nome">
+          <p>Nome</p>
+          <input type="text" placeholder="Nome" />
+        </div>
+
+        <div class="email">
+          <p>E-mail</p>
+          <input type="email" placeholder="E-mail" />
+        </div>
+
+        <div class="telefone">
+          <p>Telefone</p>
+          <input type="text" placeholder="Telefone" />
+        </div>
+
+        <div class="senha">
+          <p>Senha</p>
+          <input type="password" placeholder="password" />
+        </div>
+
+        <div class="confirmarSenha">
+          <p>Confirmar Senha</p>
+          <input type="password" placeholder="password" />
+        </div>
+
+        <div class="lembrar">
+          <input type="checkbox" class="lembrarSenha" />
+          <label for="lembrarSenha">Lembrar senha</label>
+        </div>
+
+        <div class="botoes">
+          <button onclick="cadastrar()">Cadastrar</button>
+          <button onclick="entrar()">Entrar</button>
+        </div>
+      </section>
     </header>
 
     <main></main>
 
     <footer></footer>
 
-    <script src="index.js"></script>
+    <script src="/index.js"></script>
   </body>
 </html>
