@@ -1,9 +1,9 @@
 // Adiciona um event listener para o carregamento do DOM
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   var iframe = document.createElement("iframe");
   iframe.classList.add("iframe");
 
-// Define as coordenadas de Saõ Leopoldo e o nível de zoom do mapa
+  // Define as coordenadas de Saõ Leopoldo e o nível de zoom do mapa
   var coordenadas = "-29.754732,-51.151758";
   var zoomNivel = 14;
 
@@ -12,14 +12,27 @@ document.addEventListener("DOMContentLoaded", function() {
   // Seleciona o elemento main da página e adiciona o iframe a ele
   var main = document.querySelector("main");
   main.appendChild(iframe);
+
+  // document.addEventListener("click", function (event) {
+  //   var saoLeopoldoArea = document.querySelector(".iframe");
+  //     if (!saoLeopoldoArea.contains(event.target)) {
+  //       alert("Não pode passar dessa área!");
+  //     }
+  //   });
 });
 
-
-
 function openDialog() {
-    document.getElementById("customDialog").style.display = "block";
-  }
+  let customDialog = document.getElementById("customDialog");
+  customDialog.style.display = "block";
 
-  function closeDialog() {
-    document.getElementById("customDialog").style.display = "none";
-  }
+  // document.addEventListener("click", function (event) {
+  //   var dialog = document.querySelector(".dialog");
+  //   if (!dialog.contains(event.target)) {
+  //     alert("Não pode!");
+  //   }
+  // });
+}
+
+function closeDialog() {
+  document.getElementById("customDialog").style.display = "none";
+}
