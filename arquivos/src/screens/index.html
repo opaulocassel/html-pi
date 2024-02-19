@@ -1,108 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meu Site com Mapa</title>
-    <link rel="stylesheet" href="index.css" />
-  </head>
-
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webleb</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
     <header>
-      <div id="login">
-        <button onclick="openDialog()">Iniciar Sessão</button>
-      </div>
-
-      <section id="customDialog" class="dialog">
-        <div class="titulo">
-          <h1><span>Iniciar Sess</span>ão</h1>
-        </div>
-
-        <div class="icone">
-          <img
-            src="../assets/left-arrow.png"
-            onclick="closeDialog()"
-            alt="Back"
-          />
-        </div>
-
-        <div class="email">
-          <p>E-mail</p>
-          <input type="email" placeholder="E-mail" />
-        </div>
-
-        <div class="senha">
-          <p>Senha</p>
-          <input type="password" placeholder="password" />
-        </div>
-
-        <div class="lembrar">
-          <input type="checkbox" class="lembrarSenha" />
-          <label for="lembrarSenha">Lembrar senha</label>
-        </div>
-
-        <div class="botoes">
-          <button onclick="cadastrar()">Cadastrar</button>
-          <button onclick="entrar()">Entrar</button>
-        </div>
-      </section>
-
-      
-
-      <section id="registerDialog" class="dialog">
-        <div class="titulo">
-          <h1><span>Iniciar Sess</span>ão</h1>
-        </div>
-
-        <div class="icone">
-          <img
-            src="../assets/left-arrow.png"
-            onclick="closeDialog()"
-            alt="Back"
-          />
-        </div>
-
-        <div class="nome">
-          <p>Nome</p>
-          <input type="text" placeholder="Nome" />
-        </div>
-
-        <div class="email">
-          <p>E-mail</p>
-          <input type="email" placeholder="E-mail" />
-        </div>
-
-        <div class="telefone">
-          <p>Telefone</p>
-          <input type="text" placeholder="Telefone" />
-        </div>
-
-        <div class="senha">
-          <p>Senha</p>
-          <input type="password" placeholder="password" />
-        </div>
-
-        <div class="confirmarSenha">
-          <p>Confirmar Senha</p>
-          <input type="password" placeholder="password" />
-        </div>
-
-        <div class="lembrar">
-          <input type="checkbox" class="lembrarSenha" />
-          <label for="lembrarSenha">Lembrar senha</label>
-        </div>
-
-        <div class="botoes">
-          <button onclick="cadastrar()">Cadastrar</button>
-          <button onclick="entrar()">Entrar</button>
-        </div>
-      </section>
+        <button onclick="openDialog()" class="botaoHome" id="botaoHome">Login</button>
     </header>
 
-    <main></main>
+    <main>
+        <section class="paginaLogin">
+            <div class="form" id="form">
+                <form class="registerForm">
+                    <h2> <img class="icone" src="../assets/left-arrow.png" onclick="closeDialog()"alt="Back"/>Sign Up</h2>
 
-    <footer></footer>
+                    <input type="text" id="nomeUsuario" name="nomeUsuario" placeholder="Insira seu nome" required/>
+                    <input type="text" id="telefone" name="telefone" placeholder="Telefone" required/>
+                    <input type="email" id="email" name="email" placeholder="Insira seu email" required/>
+                    <input type="password" id="senha" name="senha" placeholder="Escolha uma senha" required/>
+                    <input type="password" id="confirmarSenha" name="ConfirmarSenha" placeholder="Repita a senha" required/>
 
-    <script src="/index.js"></script>
-  </body>
+                    <button type="submit" class="botao">Criar Usuário</button>
+
+                    <p class="message">Já é registrado? <a class="link" href="#">Sign In</a></p>
+                    <a href=""></a>
+                </form>
+
+                <form class="loginForm" id="loginForm">
+                    <div class="icone">
+                        <img src="../assets/left-arrow.png" onclick="closeDialog()"alt="Back"/> 
+                    </div>
+                    <h2>Login</h2>
+                    <input type="text" id="loginNome" name="login-username" placeholder="Informe seu nome" required />
+                    <input type="password" id="loginSenha" name="login-password" placeholder="Digite sua senha" required/>
+
+                    <button type="submit" class="botao">Sign in</button>
+
+                    <p class="message">Não é registrado? <a href="#">Crie uma conta</a></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <script src="/index.js"></script>
+    </footer>
+</body>
 </html>
