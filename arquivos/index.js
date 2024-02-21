@@ -35,9 +35,11 @@ function openDialog() {
   // });
 }
 
-function cadastrar(){
-  let dialogRegister = document.getElementById("registerDialog")
-  dialogRegister.style.display = "block"
+function cadastrar() {
+  let dialogRegister = document.getElementById("registerForm");
+  let form = document.getElementById("form");
+  form.style.display = "block";
+  dialogRegister.style.display = "block";
 
   // let customDialog = document.getElementById("customDialog");
   // customDialog.style.display = "none";
@@ -47,4 +49,8 @@ function closeDialog() {
   document.getElementById("form").style.display = "none";
   document.getElementById("loginForm").style.display = "none";
   document.getElementById("registerForm").style.display = "none";
+}
+
+function openRegister() {
+
 }

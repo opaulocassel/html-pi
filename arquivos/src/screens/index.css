@@ -12,7 +12,6 @@ body {
   align-items: center;
   justify-content: center;
   font-family: sans-serif;
-  overflow: hidden;
   flex-direction: column;
 }
 
@@ -42,24 +41,29 @@ header button:hover {
   cursor: pointer;
 }
 
-.paginaLogin {
-  padding: 8% 0 0;
-  margin: auto;
-}
-
 .form {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
   text-align: center;
   position: absolute;
-  top: 50%;
-  left: 50%;
   width: 400px;
   padding: 40px;
-  transform: translate(-50%, -50%);
   background: rgba(21, 52, 225, 0.9);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
   border-radius: 10px;
+}
+
+.registerForm .form.openRegister {
+  display: block;
+}
+
+.loginForm,
+.registerForm {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .form input {
@@ -151,4 +155,5 @@ input::placeholder {
 iframe {
   width: 100vw;
   height: 100vh;
+  box-sizing: border-box;
 }

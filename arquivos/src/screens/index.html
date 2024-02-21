@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webleb</title>
+    <title>Abastecendo Informações</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -14,6 +14,19 @@
     <main>
         <section class="paginaLogin">
             <div class="form" id="form">
+                <form class="loginForm" id="loginForm">
+                    <div class="icone">
+                        <img src="../assets/left-arrow.png" onclick="closeDialog()"alt="Back"/> 
+                    </div>
+                    <h2>Login</h2>
+                    <input type="text" id="loginNome" name="login-username" placeholder="Informe seu nome" required />
+                    <input type="password" id="loginSenha" name="login-password" placeholder="Digite sua senha" required/>
+
+                    <button type="submit" class="botao">Sign in</button>
+
+                    <p class="message">Não é registrado? <a id="linkLogin" onclick="cadastrar()" href="#">Crie uma conta</a></p>
+                </form>
+
                 <form class="registerForm">
                     <h2> <img class="icone" src="../assets/left-arrow.png" onclick="closeDialog()"alt="Back"/>Sign Up</h2>
 
@@ -26,20 +39,6 @@
                     <button type="submit" class="botao">Criar Usuário</button>
 
                     <p class="message">Já é registrado? <a class="link" href="#">Sign In</a></p>
-                    <a href=""></a>
-                </form>
-
-                <form class="loginForm" id="loginForm">
-                    <div class="icone">
-                        <img src="../assets/left-arrow.png" onclick="closeDialog()"alt="Back"/> 
-                    </div>
-                    <h2>Login</h2>
-                    <input type="text" id="loginNome" name="login-username" placeholder="Informe seu nome" required />
-                    <input type="password" id="loginSenha" name="login-password" placeholder="Digite sua senha" required/>
-
-                    <button type="submit" class="botao">Sign in</button>
-
-                    <p class="message">Não é registrado? <a href="#">Crie uma conta</a></p>
                 </form>
             </div>
         </section>
