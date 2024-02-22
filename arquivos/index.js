@@ -12,45 +12,116 @@ document.addEventListener("DOMContentLoaded", function () {
   // Seleciona o elemento main da página e adiciona o iframe a ele
   var body = document.querySelector("body");
   body.appendChild(iframe);
-
-  // document.addEventListener("click", function (event) {
-  //   var saoLeopoldoArea = document.querySelector(".iframe");
-  //     if (!saoLeopoldoArea.contains(event.target)) {
-  //       alert("Não pode passar dessa área!");
-  //     }
-  //   });
 });
 
 function openDialog() {
   let customDialog = document.getElementById("loginForm");
   let form = document.getElementById("form");
+  let loginRegister = document.getElementById("registerForm");
   form.style.display = "block";
   customDialog.style.display = "block";
+  loginRegister.style.display = "none";
+}
 
-  // document.addEventListener("click", function (event) {
-  //   var dialog = document.querySelector(".dialog");
-  //   if (!dialog.contains(event.target)) {
-  //     alert("Não pode!");
-  //   }
-  // });
+// Quando o evento "blur" é acionado (ou seja, quando o campo de entrada perde o foco),
+// a função de retorno de chamada do ouvinte de eventos é executada.
+// Essa função de retorno de chamada verifica se o valor do campo de entrada é vazio.
+// Se o valor do campo de entrada for vazio, o texto placeholder é adicionado de volta ao campo de
+// entrada.
+//=
+function placeHolderNomeLogin() {
+  let nome = document.getElementById("loginNome");
+
+  nome.placeholder = "";
+
+  nome.addEventListener("blur", function () {
+    if (nome.placeholder === "") {
+      nome.placeholder = "Informe seu nome";
+    }
+  });
+}
+
+function placeHolderSenhaLogin() {
+  let senha = document.getElementById("loginSenha");
+
+  senha.placeholder = "";
+
+  senha.addEventListener("blur", function () {
+    if (senha.placeholder === "") {
+      senha.placeholder = "Digite sua senha";
+    }
+  });
+}
+
+function placeHolderNome() {
+  let nome = document.getElementById("nomeUsuario");
+
+  nome.placeholder = "";
+
+  nome.addEventListener("blur", function () {
+    if (nome.placeholder === "") {
+      nome.placeholder = "Informe seu nome";
+    }
+  });
+}
+
+function placeHolderTelefone() {
+  let telefone = document.getElementById("telefone");
+
+  telefone.placeholder = "";
+
+  telefone.addEventListener("blur", function () {
+    if (telefone.placeholder === "") {
+      telefone.placeholder = "Telefone";
+    }
+  });
+}
+
+function placeHolderEmail() {
+  let email = document.getElementById("email");
+
+  email.placeholder = "";
+
+  email.addEventListener("blur", function () {
+    if (email.placeholder === "") {
+      email.placeholder = "Email";
+    }
+  });
+}
+
+function placeHolderSenha() {
+  let senha = document.getElementById("senha");
+
+  senha.placeholder = "";
+
+  senha.addEventListener("blur", function () {
+    if (senha.placeholder === "") {
+      senha.placeholder = "Senha";
+    }
+  });
+}
+
+function placeHolderConfirmarSenha() {
+  let confirmarSenha = document.getElementById("confirmarSenha");
+
+  confirmarSenha.placeholder = "";
+
+  confirmarSenha.addEventListener("blur", function () {
+    if (confirmarSenha.placeholder === "") {
+      confirmarSenha.placeholder = "Confirmar Senha";
+    }
+  });
 }
 
 function cadastrar() {
   let dialogRegister = document.getElementById("registerForm");
-  let form = document.getElementById("form");
-  form.style.display = "block";
   dialogRegister.style.display = "block";
-
-  // let customDialog = document.getElementById("customDialog");
-  // customDialog.style.display = "none";
+  let customDialog = document.getElementById("loginForm");
+  customDialog.style.display = "none";
 }
 
 function closeDialog() {
   document.getElementById("form").style.display = "none";
   document.getElementById("loginForm").style.display = "none";
   document.getElementById("registerForm").style.display = "none";
-}
-
-function openRegister() {
-
 }

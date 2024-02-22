@@ -50,10 +50,18 @@ header button:hover {
   position: absolute;
   width: 400px;
   padding: 40px;
-  background: rgba(21, 52, 225, 0.9);
+  background-color: transparent;
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
   border-radius: 10px;
+  animation-name: cor;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cor {
+  from {background-color: transparent;}
+  to {background-color: rgba(21, 52, 225, 0.9);}
 }
 
 .registerForm .form.openRegister {
@@ -83,6 +91,11 @@ input::placeholder {
 }
 
 .loginForm h2 {
+  color: white;
+  margin-bottom: 4vh;
+}
+
+.registerForm h2 {
   color: white;
   margin-bottom: 4vh;
 }
@@ -132,13 +145,17 @@ input::placeholder {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
-  color: #289bb8;
+  color: #ffffff;
   font-size: 16px;
   text-decoration: none;
   overflow: hidden;
   transition: 0.5s;
-  margin-top: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   letter-spacing: 2px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
 }
 
 .botao:hover {
