@@ -1,54 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Abastecendo Informações</title>
-    <link rel="stylesheet" href="index.css">
-</head>
-<body>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
     <header>
-        <button onclick="openDialog()" class="botaoHome" id="botaoHome">Login</button>
+      <button onclick="openDialog()" class="botaoHome" id="botaoHome">
+        Login
+      </button>
     </header>
 
     <main>
-        <section class="paginaLogin">
-            <div class="form" id="form">
-                <form class="loginForm" id="loginForm">
-                    <div class="icone">
-                        <img src="../assets/left-arrow.png" onclick="closeDialog()"alt="Back"/> 
-                    </div>
-                    <h2>Entrar</h2>
-                    <input onclick="placeHolderNomeLogin()" type="text" id="loginNome" name="login-username" placeholder="Informe seu nome" required />
-                    <input onclick="placeHolderSenhaLogin()" type="password" id="loginSenha" name="login-password" placeholder="Digite sua senha" required/>
-
-                    <button type="submit" class="botao">Login</button>
-
-                    <p class="message">Não é registrado? <a id="linkLogin" onclick="cadastrar()" href="#">Crie uma conta</a></p>
-                </form>
-
-                <form class="registerForm" id="registerForm">
-                    <div class="icone">
-                        <img src="../assets/left-arrow.png" onclick="closeDialog()"alt="Back"/> 
-                    </div>
-                    <h2>Registrar</h2>
-
-                    <input onclick="placeHolderNome()" type="text" id="nomeUsuario" name="nomeUsuario" placeholder="Insira seu nome" required/>
-                    <input onclick="placeHolderTelefone()" type="text" id="telefone" name="telefone" placeholder="Telefone" required/>
-                    <input onclick="placeHolderEmail()" type="email" id="email" name="email" placeholder="Insira seu email" required/>
-                    <input onclick="placeHolderSenha()" type="password" id="senha" name="senha" placeholder="Escolha uma senha" required/>
-                    <input onclick="placeHolderConfirmarSenha()" type="password" id="confirmarSenha" name="ConfirmarSenha" placeholder="Repita a senha" required/>
-
-                    <button type="submit" class="botao">Criar Usuário</button>
-
-                    <p class="message">Já é registrado? <a class="linkRegistrar" onclick="openDialog()" href="#"> Entrar</a></p>
-                </form>
+      <section class="paginaLogin">
+        <div class="form" id="form">
+          <form class="loginForm" id="loginForm">
+            <div class="icone">
+              <img
+                src="../assets/left-arrow.png"
+                onclick="closeDialog()"
+                alt="Back"
+              />
             </div>
-        </section>
+            <h2>Entrar</h2>
+            <input
+              onclick="placeHolderNomeLogin()"
+              type="text"
+              id="loginNome"
+              name="login-username"
+              placeholder="Informe seu nome"
+              required
+            />
+            <input
+              onclick="placeHolderSenhaLogin()"
+              type="password"
+              id="loginSenha"
+              name="login-password"
+              placeholder="Digite sua senha"
+              required
+            />
+
+            <button type="submit" class="botao">Login</button>
+
+            <p class="message">
+              Não é registrado?
+              <a id="linkLogin" onclick="cadastrar()" href="#"
+                >Crie uma conta</a
+              >
+            </p>
+          </form>
+
+          <form class="registerForm" id="registerForm">
+            <div class="icone">
+              <img
+                src="../assets/left-arrow.png"
+                onclick="closeDialog()"
+                alt="Back"
+              />
+            </div>
+            <h2>Registrar</h2>
+
+            <input
+              onclick="placeHolderNome()"
+              type="text"
+              id="nomeUsuario"
+              name="nomeUsuario"
+              placeholder="Insira seu nome"
+              required
+            />
+            <input
+              onclick="placeHolderTelefone()"
+              type="text"
+              id="telefone"
+              name="telefone"
+              placeholder="Telefone"
+              required
+            />
+            <input
+              onclick="placeHolderEmail()"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Insira seu email"
+              required
+            />
+            <input
+              onclick="placeHolderSenha()"
+              type="password"
+              id="senha"
+              name="senha"
+              placeholder="Escolha uma senha"
+              required
+            />
+            <input
+              onclick="placeHolderConfirmarSenha()"
+              type="password"
+              id="confirmarSenha"
+              name="ConfirmarSenha"
+              placeholder="Repita a senha"
+              required
+            />
+
+            <button type="submit" class="botao">Criar Usuário</button>
+
+            <p class="message">
+              Já é registrado?
+              <a class="linkRegistrar" onclick="openDialog()" href="#">
+                Entrar</a
+              >
+            </p>
+          </form>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <script src="/index.js"></script>
+      <script src="/index.js"></script>
     </footer>
-</body>
+  </body>
 </html>
