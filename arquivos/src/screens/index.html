@@ -94,16 +94,8 @@
               placeholder="Escolha uma senha"
               required
             />
-            <input
-              onclick="placeHolderConfirmarSenha()"
-              type="password"
-              id="confirmarSenha"
-              name="ConfirmarSenha"
-              placeholder="Repita a senha"
-              required
-            />
 
-            <button type="submit" class="botao">Criar Usuário</button>
+            <button type="button" class="botao" onclick="adicionarUsuario()">Criar Usuário</button>
 
             <p class="message">
               Já é registrado?
@@ -117,7 +109,7 @@
     </main>
 
     <footer>
-      <script src="/index.js"></script>
+      <script src="../usuarios/usuarios.js"></script>
     </footer>
   </body>
 </html>

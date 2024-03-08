@@ -1,9 +1,7 @@
 {
-    "Usuarios": [
+    "usuarios": [
         {
-            "id": 1,
-            "data": "2024-02-16",
-            "nome": "Administrador",
+            "nomeUsuario": "Administrador",
             "email": "admin@teste.com",
             "telefone": "51999728394",
             "senha": "admin"

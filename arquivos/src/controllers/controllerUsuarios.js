@@ -4,28 +4,38 @@ const dadosUsuario = require("../data/usuarios.json");
 const fs = require("fs");
 
 server.use(express.json());
+server.use(cors());
 
-server.post("/Usuarios", (req, res) => {
-    const novoUsuario = req.body;
+server.post("/usuarios", (req, res) => {
+  const novoUsuario = req.body;
 
-    if (
-        !novoUsuario.id ||
-        !novoUsuario.data ||
-        !novoUsuario.nome ||
-        !novoUsuario.email ||
-        !novoUsuario.telefone ||
-        !novoUsuario.senha
-    ) {
-        return res
-            .status(400)
-            .json({ mensagem: "Dados incompletos, tente novamente" });
-    } else {
-        dadosUsuario.Usuarios.push(novoUsuario);
-        salvarDados(dadosUsuario);
-        return res
-            .status(201)
-            .json({ mensagem: "Novo maninho cadastrado com sucesso!" });
-    }
+  // // Encontrar o maior ID existente
+  // const ultimoIdExistente = dadosUsuario.Usuarios.reduce((maxId, usuario) => {
+  //   return usuario.id > maxId ? usuario.id : maxId;
+  // }, 0);
+
+  // const novoId = ultimoIdExistente + 1;
+  // const data = new Date().toISOString();
+
+  // novoUsuario.id = novoId;
+  // novoUsuario.data = data;
+
+  if (
+    !novoUsuario.nomeUsuario ||
+    !novoUsuario.email ||
+    !novoUsuario.telefone ||
+    !novoUsuario.senha
+  ) {
+    return res
+      .status(400)
+      .json({ mensagem: "Dados incompletos, tente novamente" });
+  } else {
+    dadosUsuario.usuarios.push(novoUsuario);
+    salvarDados(dadosUsuario);
+    return res
+      .status(201)
+      .json({ mensagem: "Novo usuário cadastrado com sucesso!" });
+  }
 });
 
 // server.get("/usuarios", (req, res) => {
@@ -70,8 +80,11 @@ server.post("/Usuarios", (req, res) => {
 //     return res.status(200).json({ mensagem: "Time excluído com sucesso" })
 // })
 
-function salvarDados() {
-    fs.writeFileSync(__dirname + './data/usuarios.json', JSON.stringify(dadosUsuario, null, 2))
+const path = require("path");
+
+function salvarDados(dados) {
+  const caminhoArquivo = path.join(__dirname, "../data/usuarios.json");
+  fs.writeFileSync(caminhoArquivo, JSON.stringify(dados, null, 2));
 }
 
-module.exports = {server, salvarDados};
+module.exports = { server, salvarDados };

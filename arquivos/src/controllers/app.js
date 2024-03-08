@@ -14,5 +14,5 @@ server.use('/ARQUIVOS', usuariosRouter.server)
 
 // mensagem no terminal para indicar o funcionamento
 server.listen(3000, () =>{
-    console.log(`Se funcionou, não mexe! :D`);
+    console.log(`Se funcionou, não mexe! É sério!!! :D`);
 })
