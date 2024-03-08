@@ -2,27 +2,43 @@
   "usuarios": [
     {
       "id": 1,
-      "data": "2021-05-31",
-      "nomeUsuario": "Administrador",
+      "data": "08/03/2024",
+      "nomeUsuario": "Admin",
       "email": "admin@teste.com",
       "telefone": "51999728394",
       "senha": "admin"
     },
     {
-      "nomeUsuario": "Gabriel ",
+      "nomeUsuario": "Fernandinho",
       "email": "gabrielhepper403@gmail.com",
-      "telefone": "999193152",
-      "senha": "7227",
+      "telefone": "51999193152",
+      "senha": "werwerwrw",
       "id": 2,
-      "data": "2024-03-08T22:02:41.064Z"
+      "data": "08/03/2024"
     },
     {
-      "nomeUsuario": "asdasd",
-      "email": "thaishepper@gmail.com",
-      "telefone": "asdasdasd",
-      "senha": "asdasdada",
+      "nomeUsuario": "Fernandinho",
+      "email": "gabrielhepper403@gmail.com",
+      "telefone": "51999193152",
+      "senha": "werwerwrw",
       "id": 3,
-      "data": "2024-03-08T22:03:38.336Z"
+      "data": "08/03/2024"
+    },
+    {
+      "nomeUsuario": "wewer",
+      "email": "gabrielhepper403@gmail.com",
+      "telefone": "gerrte",
+      "senha": "rtryrty",
+      "id": 4,
+      "data": "08/03/2024, 28"
+    },
+    {
+      "nomeUsuario": "tyyy",
+      "email": "gabrielhepper403@gmail.com",
+      "telefone": "234234",
+      "senha": "fghf",
+      "id": 5,
+      "data": "08/03/2024, 20:30"
     }
   ]
 }
