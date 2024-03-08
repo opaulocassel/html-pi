@@ -10,7 +10,7 @@ const usuariosRouter = require('./controllerUsuarios')
 server.use(express.json())
 server.use(cors())
 
-server.use('/ARQUIVOS', usuariosRouter.server)
+server.use(usuariosRouter.server)
 
 // mensagem no terminal para indicar o funcionamento
 server.listen(3000, () =>{

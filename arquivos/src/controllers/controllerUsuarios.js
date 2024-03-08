@@ -4,21 +4,20 @@ const dadosUsuario = require("../data/usuarios.json");
 const fs = require("fs");
 
 server.use(express.json());
-server.use(cors());
 
 server.post("/usuarios", (req, res) => {
   const novoUsuario = req.body;
 
-  // // Encontrar o maior ID existente
-  // const ultimoIdExistente = dadosUsuario.Usuarios.reduce((maxId, usuario) => {
-  //   return usuario.id > maxId ? usuario.id : maxId;
-  // }, 0);
+  // Encontrar o maior ID existente
+  const ultimoIdExistente = dadosUsuario.usuarios.reduce((maxId, usuario) => {
+    return usuario.id > maxId ? usuario.id : maxId;
+  }, 0);
 
-  // const novoId = ultimoIdExistente + 1;
-  // const data = new Date().toISOString();
+  const novoId = ultimoIdExistente + 1;
+  const data = new Date().toISOString();
 
-  // novoUsuario.id = novoId;
-  // novoUsuario.data = data;
+  novoUsuario.id = novoId;
+  novoUsuario.data = data;
 
   if (
     !novoUsuario.nomeUsuario ||
@@ -38,9 +37,11 @@ server.post("/usuarios", (req, res) => {
   }
 });
 
-// server.get("/usuarios", (req, res) => {
-//     return res.json(dadosUsuario.usuarios);
-// });
+
+server.get("/usuarios", (req, res) => {
+    return res.json(dadosUsuario.usuarios);
+});
+
 
 // server.put("/usuarios/:id", (req, res) => {
 //     const usuariosId = parseInt(req.params.id);
@@ -70,6 +71,7 @@ server.post("/usuarios", (req, res) => {
 //     }
 // });
 
+
 // server.delete("/usuarios/:id", (req, res) => {
 //     const usuariosId = parseInt(req.params.id)
 
@@ -79,6 +81,7 @@ server.post("/usuarios", (req, res) => {
 
 //     return res.status(200).json({ mensagem: "Time excluído com sucesso" })
 // })
+
 
 const path = require("path");
 

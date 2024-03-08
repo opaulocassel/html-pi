@@ -132,6 +132,10 @@ function adicionarUsuario() {
   const telefone = document.getElementById("telefone").value;
   const senha = document.getElementById("senha").value;
 
+  if(nomeUsuario === "" || email === "" || telefone === "" || senha === ""){
+    alert ("Dados incompletos, por favor, preencha os dados." );
+  }
+
   fetch("http://localhost:3000/usuarios", {
     method: "POST",
     headers: {

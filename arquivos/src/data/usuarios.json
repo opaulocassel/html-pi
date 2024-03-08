@@ -1,10 +1,28 @@
 {
-    "usuarios": [
-        {
-            "nomeUsuario": "Administrador",
-            "email": "admin@teste.com",
-            "telefone": "51999728394",
-            "senha": "admin"
-        }
-    ]
+  "usuarios": [
+    {
+      "id": 1,
+      "data": "2021-05-31",
+      "nomeUsuario": "Administrador",
+      "email": "admin@teste.com",
+      "telefone": "51999728394",
+      "senha": "admin"
+    },
+    {
+      "nomeUsuario": "Gabriel ",
+      "email": "gabrielhepper403@gmail.com",
+      "telefone": "999193152",
+      "senha": "7227",
+      "id": 2,
+      "data": "2024-03-08T22:02:41.064Z"
+    },
+    {
+      "nomeUsuario": "asdasd",
+      "email": "thaishepper@gmail.com",
+      "telefone": "asdasdasd",
+      "senha": "asdasdada",
+      "id": 3,
+      "data": "2024-03-08T22:03:38.336Z"
+    }
+  ]
 }
