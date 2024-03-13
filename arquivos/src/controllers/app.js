@@ -6,11 +6,14 @@ const cors = require('cors')
 // controllers
 const usuariosRouter = require('./controllerUsuarios')
 
+const postosRouter = require('./controllerPostos')
+
 // função para utilizar o servidor
 server.use(express.json())
 server.use(cors())
 
 server.use(usuariosRouter.server)
+server.use(postosRouter.server)
 
 // mensagem no terminal para indicar o funcionamento
 server.listen(3000, () =>{
