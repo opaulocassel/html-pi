@@ -154,3 +154,27 @@ function adicionarUsuario() {
     })
     .catch((error) => console.error("Erro:", error));
 }
+
+const loginForm = document.getElementById("loginForm");
+
+loginForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+
+  const userName = document.getElementById("loginNome").value;
+  const passWord = document.getElementById("loginSenha").value;
+
+  fetch(`http://localhost:3000/usuarios?nomeUsuario=${userName}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    }
+  })
+  .then((response)=> response.json())
+  .then((data)=>{
+    if(data.nomeUsuario === userName && data.senha === passWord){
+      console.log("bem vindo")
+    }else{
+      console.error("Usuario não encontrado")
+    }
+  })
+})
