@@ -177,6 +177,7 @@ iframe {
 
 .sidebar {
   height: 100%;
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
@@ -188,8 +189,11 @@ iframe {
 }
 
 .sidebar.open {
-  width: 250px; /* Defina a mesma largura para a barra lateral quando estiver aberta */
+  display: block; /*define a sidebar com display block sempre que a class open e ativada*/
+  width: 250px;
 }
+
+
 
 .sidebar ul {
   list-style-type: none;

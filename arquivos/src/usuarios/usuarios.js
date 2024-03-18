@@ -183,7 +183,7 @@ loginForm.addEventListener('submit', (e)=>{
     if(data.nomeUsuario === userName && data.senha === passWord){
       console.log("bem vindo")
       
-      // Criar e adicionar a barra lateral ao DOM
+      
       const sidebar = document.createElement("div");
       sidebar.id = "sidebar";
       sidebar.classList.add("sidebar");
@@ -197,9 +197,9 @@ loginForm.addEventListener('submit', (e)=>{
       `;
       document.body.appendChild(sidebar);
 
-      // Abrir a barra lateral automaticamente após o login bem-sucedido
-      toggleSidebar();
       
+      toggleSidebar();
+      closeDialog();
     }else{
       console.error("Usuario não encontrado")
     }
