@@ -155,6 +155,15 @@ function adicionarUsuario() {
     .catch((error) => console.error("Erro:", error));
 }
 
+
+/////////////////login things
+
+function toggleSidebar() {
+  var sidebar = document.getElementById("sidebar");
+  sidebar.classList.toggle("open");
+}
+
+
 const loginForm = document.getElementById("loginForm");
 
 loginForm.addEventListener('submit', (e)=>{
@@ -163,7 +172,7 @@ loginForm.addEventListener('submit', (e)=>{
   const userName = document.getElementById("loginNome").value;
   const passWord = document.getElementById("loginSenha").value;
 
-  fetch(`http://localhost:3000/usuarios?nomeUsuario=${userName}`, {
+  fetch(`http://localhost:3000/usuarios/${userName}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -173,6 +182,24 @@ loginForm.addEventListener('submit', (e)=>{
   .then((data)=>{
     if(data.nomeUsuario === userName && data.senha === passWord){
       console.log("bem vindo")
+      
+      // Criar e adicionar a barra lateral ao DOM
+      const sidebar = document.createElement("div");
+      sidebar.id = "sidebar";
+      sidebar.classList.add("sidebar");
+      sidebar.innerHTML = `
+        <a href="#" class="close-btn" onclick="toggleSidebar()">Fechar</a>
+        <ul>
+          <li><a href="#">Item 1</a></li>
+          <li><a href="#">Item 2</a></li>
+          <li><a href="#">Item 3</a></li>
+        </ul>
+      `;
+      document.body.appendChild(sidebar);
+
+      // Abrir a barra lateral automaticamente após o login bem-sucedido
+      toggleSidebar();
+      
     }else{
       console.error("Usuario não encontrado")
     }

@@ -42,6 +42,16 @@ server.post("/usuarios", (req, res) => {
 
 server.get("/usuarios", (req, res) => {
     return res.json(dadosUsuario.usuarios);
+})
+
+server.get("/usuarios/:nomeUsuario", (req, res)=>{
+  const nomeUsuario = req.params.nomeUsuario;
+  const usuarioEncontrado = dadosUsuario.usuarios.find(usuario => usuario.nomeUsuario === nomeUsuario);
+  if (usuarioEncontrado) {
+      return res.json(usuarioEncontrado);
+  } else {
+      return res.status(404).json({ error: 'Usuário não encontrado' });
+  }
 });
 
 
