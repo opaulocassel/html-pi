@@ -215,3 +215,7 @@ iframe {
 .sidebar a:hover {
   color: #818181;
 }
+
+#listaUsuarios {
+  padding-top: 50px;
+}

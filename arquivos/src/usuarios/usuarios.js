@@ -192,7 +192,7 @@ loginForm.addEventListener('submit', (e)=>{
         <ul>
           <li><a href="#">Item 1</a></li>
           <li><a href="#">Item 2</a></li>
-          <li><a href="#">Item 3</a></li>
+          <li id="listaUsuarios"><a href="usuarios.html">Usuários</a></li>
         </ul>
       `;
       document.body.appendChild(sidebar);
@@ -205,3 +205,17 @@ loginForm.addEventListener('submit', (e)=>{
     }
   })
 })
+
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('./src/data/usuarios.json')
+      .then(response => response.json())
+      .then(data => {
+          const userList = document.getElementById('userList');
+          data.forEach(usuarios => {
+              const listaItem = document.createElement('li');
+              listaItem.textContent = `Nome: ${usuarios.nome}, Email: ${usuarios.email}`;
+              userList.appendChild(listaItem);
+          });
+      })
+      .catch(error => console.error('Ocorreu um erro ao carregar o arquivo JSON:', error));
+});
