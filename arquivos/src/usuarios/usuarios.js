@@ -207,7 +207,7 @@ loginForm.addEventListener('submit', (e)=>{
 })
 
 document.addEventListener("DOMContentLoaded", function() {
-  fetch('./src/data/usuarios.json')
+  fetch('http://localhost:3000/usuarios')
       .then(response => response.json())
       .then(data => {
           const userList = document.getElementById('userList');
