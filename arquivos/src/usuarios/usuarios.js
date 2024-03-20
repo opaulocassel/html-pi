@@ -126,35 +126,53 @@ function closeDialog() {
   document.getElementById("registerForm").style.display = "none";
 }
 
+function verificarEmail(email) {
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return regex.test(email);
+}
+
+function verificarTelefone(telefone) {
+  const regex = /^\d{11}$/;
+  return regex.test(telefone);
+}
+
 function adicionarUsuario() {
   const nomeUsuario = document.getElementById("nomeUsuario").value;
   const email = document.getElementById("email").value;
   const telefone = document.getElementById("telefone").value;
   const senha = document.getElementById("senha").value;
+  const confirmarSenha = document.getElementById("confirmarSenha").value;
 
-  if(nomeUsuario === "" || email === "" || telefone === "" || senha === ""){
-    alert ("Dados incompletos, por favor, preencha os dados." );
-  }
-
-  fetch("http://localhost:3000/usuarios", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      nomeUsuario: nomeUsuario,
-      email: email,
-      telefone: telefone,
-      senha: senha,
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
+  if (nomeUsuario === "" || email === "" || telefone === "" || senha === "") {
+    alert("Dados incompletos, por favor, preencha os dados.");
+  } else if (nomeUsuario === "admin" || nomeUsuario === "Admin") {
+    alert("Nome de usuário proibido.");
+  } else if (!verificarEmail(email)) {
+    alert("E-mail inválido");
+  } else if (!verificarTelefone(telefone)) {
+    alert("Telefone inválido");
+  } else if (senha !== confirmarSenha) {
+    alert("As senhas devem ser iguais.");
+  } else {
+    fetch("http://localhost:3000/usuarios", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nomeUsuario: nomeUsuario,
+        email: email,
+        telefone: telefone,
+        senha: senha,
+      }),
     })
-    .catch((error) => console.error("Erro:", error));
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => console.error("Erro:", error));
+  }
 }
-
 
 /////////////////login things
 
@@ -163,10 +181,9 @@ function toggleSidebar() {
   sidebar.classList.toggle("open");
 }
 
-
 const loginForm = document.getElementById("loginForm");
 
-loginForm.addEventListener('submit', (e)=>{
+loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const userName = document.getElementById("loginNome").value;
@@ -176,18 +193,17 @@ loginForm.addEventListener('submit', (e)=>{
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-    }
+    },
   })
-  .then((response)=> response.json())
-  .then((data)=>{
-    if(data.nomeUsuario === userName && data.senha === passWord){
-      console.log("bem vindo")
-      
-      
-      const sidebar = document.createElement("div");
-      sidebar.id = "sidebar";
-      sidebar.classList.add("sidebar");
-      sidebar.innerHTML = `
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.nomeUsuario === userName && data.senha === passWord) {
+        console.log("bem vindo");
+
+        const sidebar = document.createElement("div");
+        sidebar.id = "sidebar";
+        sidebar.classList.add("sidebar");
+        sidebar.innerHTML = `
         <a href="#" class="close-btn" onclick="toggleSidebar()">Fechar</a>
         <ul>
           <li><a href="#">Item 1</a></li>
@@ -195,13 +211,12 @@ loginForm.addEventListener('submit', (e)=>{
           <li id="listaUsuarios"><a href="usuarios.html">Usuários</a></li>
         </ul>
       `;
-      document.body.appendChild(sidebar);
+        document.body.appendChild(sidebar);
 
-      
-      toggleSidebar();
-      closeDialog();
-    }else{
-      console.error("Usuario não encontrado")
-    }
-  })
-})
+        toggleSidebar();
+        closeDialog();
+      } else {
+        console.error("Usuario não encontrado");
+      }
+    });
+});
