@@ -2,6 +2,7 @@
   "usuarios": [
     {
       "nomeUsuario": "Admin",
+<<<<<<< HEAD
       "email": "admin403@gmail.com",
       "telefone": "51999728456",
       "senha": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
@@ -15,6 +16,11 @@
       "senha": "715a6abcdb9f8a8eb1577fd53c27396470fbc3f5b78379823779b528c9b0b74e",
       "id": 2,
       "data": "20/03/2024, 20:22"
+=======
+      "email": "admin@gmail.com",
+      "telefone": "51999728394",
+      "senha": "admin"
+>>>>>>> d3b32ed170fb4c8d9e590dcc0724e71c58260f2d
     }
   ]
 }
