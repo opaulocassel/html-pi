@@ -7,46 +7,6 @@
       "email": "admin@gmail.com",
       "telefone": "51999728394",
       "senha": "admin"
-    },
-    {
-      "nomeUsuario": "Fernandinho",
-      "email": "gabrielhepper403@gmail.com",
-      "telefone": "51999193152",
-      "senha": "1234",
-      "id": 2,
-      "data": "08/03/2024"
-    },
-    {
-      "nomeUsuario": "Fernandinhe",
-      "email": "gabrielhepper403@gmail.com",
-      "telefone": "51999193152",
-      "senha": "1",
-      "id": 3,
-      "data": "08/03/2024"
-    },
-    {
-      "nomeUsuario": "wewer",
-      "email": "gabrielhepper403@gmail.com",
-      "telefone": "gerrte",
-      "senha": "rtryrty",
-      "id": 4,
-      "data": "08/03/2024, 28"
-    },
-    {
-      "nomeUsuario": "tyyy",
-      "email": "gabrielhepper403@gmail.com",
-      "telefone": "234234",
-      "senha": "fghf",
-      "id": 5,
-      "data": "08/03/2024, 20:30"
-    },
-    {
-      "nomeUsuario": "Grandão",
-      "email": "gabrielhepper403@gmail.com",
-      "telefone": "51999193152",
-      "senha": "scar",
-      "id": 6,
-      "data": "20/03/2024, 15:12"
     }
   ]
 }

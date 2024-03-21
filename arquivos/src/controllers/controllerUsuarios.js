@@ -55,44 +55,44 @@ server.get("/usuarios/:nomeUsuario", (req, res)=>{
 });
 
 
-// server.put("/usuarios/:id", (req, res) => {
-//     const usuariosId = parseInt(req.params.id);
+server.put("/usuarios/:id", (req, res) => {
+    const usuariosId = parseInt(req.params.id);
 
-//     const atualizarUsuarios = req.body;
+    const atualizarUsuarios = req.body;
 
-//     const idUsuarios = dadosUsuario.usuarios.findIndex((u) => u.id === usuariosId);
+    const idUsuarios = dadosUsuario.usuarios.findIndex((u) => u.id === usuariosId);
 
-//     if (usuariosId === -1) {
-//         return res.status(404).json({ mensagem: "Time não encontrado :/" });
-//     } else {
-//         dadosUsuario.usuarios[idUsuarios].nomeUsuario =
-//             atualizarUsuarios.nomeUsuario || dadosUsuario.usuarios[idUsuarios].nomeUsuario;
+    if (usuariosId === -1) {
+        return res.status(404).json({ mensagem: "Time não encontrado :/" });
+    } else {
+        dadosUsuario.usuarios[idUsuarios].nomeUsuario =
+            atualizarUsuarios.nomeUsuario || dadosUsuario.usuarios[idUsuarios].nomeUsuario;
 
-//         dadosUsuario.usuarios[idUsuarios].emailUsuario =
-//             atualizarUsuarios.emailUsuario || dadosUsuario.usuarios[idUsuarios].emailUsuario;
+        dadosUsuario.usuarios[idUsuarios].emailUsuario =
+            atualizarUsuarios.emailUsuario || dadosUsuario.usuarios[idUsuarios].emailUsuario;
 
-//         dadosUsuario.usuarios[idUsuarios].celularUsuario =
-//             atualizarUsuarios.celularUsuario || dadosUsuario.usuarios[idUsuarios].celularUsuario;
+        dadosUsuario.usuarios[idUsuarios].celularUsuario =
+            atualizarUsuarios.celularUsuario || dadosUsuario.usuarios[idUsuarios].celularUsuario;
 
-//         dadosUsuario.usuarios[idUsuarios].senhaUsuario =
-//             atualizarUsuarios.senhaUsuario || dadosUsuario.usuarios[idUsuarios].senhaUsuario;
+        dadosUsuario.usuarios[idUsuarios].senhaUsuario =
+            atualizarUsuarios.senhaUsuario || dadosUsuario.usuarios[idUsuarios].senhaUsuario;
 
-//         salvarDados(dadosUsuario);
+        salvarDados(dadosUsuario);
 
-//         return res.json({ mensagem: "Time atualizado com sucesso!" });
-//     }
-// });
+        return res.json({ mensagem: "Time atualizado com sucesso!" });
+    }
+});
 
 
-// server.delete("/usuarios/:id", (req, res) => {
-//     const usuariosId = parseInt(req.params.id)
+server.delete("/usuarios/:id", (req, res) => {
+    const usuariosId = parseInt(req.params.id)
 
-//     dadosUsuario.usuarios = dadosUsuario.usuarios.filter(u => u.id !== usuariosId)
+    dadosUsuario.usuarios = dadosUsuario.usuarios.filter(u => u.id !== usuariosId)
 
-//     salvarDados(dadosUsuario)
+    salvarDados(dadosUsuario)
 
-//     return res.status(200).json({ mensagem: "Time excluído com sucesso" })
-// })
+    return res.status(200).json({ mensagem: "Usuário excluído com sucesso" })
+})
 
 
 const path = require("path");
