@@ -7,6 +7,14 @@
       "email": "admin@gmail.com",
       "telefone": "51999728394",
       "senha": "admin"
+    },
+    {
+      "nomeUsuario": "joao",
+      "email": "joao@gmail.com",
+      "telefone": "11111111111",
+      "senha": "123",
+      "id": 2,
+      "data": "21/03/2024, 09:44"
     }
   ]
 }

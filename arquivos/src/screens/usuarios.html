@@ -1,14 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de usuários</title>
+    <style>
+        .dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid black;
+            z-index: 9999;
+        }
+    </style>
 </head>
+
 <body>
     <h1>Lista de Usuários</h1>
     <ul id="userList"></ul>
 
+    <form id="formAtualizarNome" class="dialog">
+        <div id="dialogNome">
+            <label for="nomeUsuario">Insira o nome de usuário atual:</label>
+            <input type="text" id="antigoNomeUsuario" maxlength="30" name="antigoNomeUsuario" />
+
+            <label for="nomeUsuario">Insira o novo nome de usuário:</label>
+            <input type="text" id="novoNomeUsuario" maxlength="30" name="novoNomeUsuario" />
+
+            <label for="senha">Insira sua senha:</label>
+            <input type="text" id="confirmeSenha" maxlength="30" name="senha" />
+
+            <button onclick="atualizarNomeUsuario()">Confirmar</button>
+        </div>
+    </form>
+
+    <form id="formAtualizarEmail" class="dialog">
+        <div id="dialogEmail">
+            <label for="emailUsuario">Insira o seu email atual:</label>
+            <input onclick="placeHolderNome()" type="text" id="emailUsuario" maxlength="30" name="emailUsuario"
+                placeholder="Insira seu nome" required />
+
+            <label for="emailUsuario">Insira o seu novo email:</label>
+            <input onclick="placeHolderNome()" type="text" id="emailUsuario" maxlength="30" name="emailUsuario"
+                placeholder="Insira seu nome" required />
+
+            <label for="senha">Insira sua senha:</label>
+            <input onclick="placeHolderNome()" type="text" id="confirmeSenha" maxlength="30" name="senhaUsuario"
+                placeholder="Insira seu nome" required />
+
+            <button onclick="confirmarAtualizacaoNome()">Confirmar</button>
+        </div>
+    </form>
+
+    <form id="formAtualizarTelefone" class="dialog">
+        <div id="dialogTelefone">
+            <label for="telefoneUsuario">Insira o número de celular atual:</label>
+            <input onclick="placeHolderNome()" type="text" id="telefoneUsuario" maxlength="30" name="telefoneUsuario"
+                placeholder="Insira seu nome" required />
+
+            <label for="telefoneUsuario">Insira o seu novo número:</label>
+            <input onclick="placeHolderNome()" type="text" id="telefoneUsuario" maxlength="30" name="telefoneUsuario"
+                placeholder="Insira seu nome" required />
+
+            <label for="senha">Insira sua senha:</label>
+            <input onclick="placeHolderNome()" type="text" id="confirmeSenha" maxlength="30" name="senhaUsuario"
+                placeholder="Insira seu nome" required />
+
+            <button onclick="fecharDialogTelefone()">Confirmar</button>
+        </div>
+    </form>
+
+    <form id="formAtualizarSenha" class="dialog"> 
+        <div id="dialogSenha">
+            <label for="senhaUsuario">Insira a sua senha atual:</label>
+            <input onclick="placeHolderNome()" type="text" id="senhaUsuario" maxlength="30" name="senhaUsuario"
+                placeholder="Insira seu nome" required />
+
+            <label for="senhaUsuario">Insira sua nova senha:</label>
+            <input onclick="placeHolderNome()" type="text" id="senhaUsuario" maxlength="30" name="senhaUsuario"
+                placeholder="Insira seu nome" required />
+
+            <label for="senha">Confirme sua nova senha:</label>
+            <input onclick="placeHolderNome()" type="text" id="confirmeSenha" maxlength="30" name="senhaUsuario"
+                placeholder="Insira seu nome" required />
+
+            <button onclick="fecharDialogSenha()">Confirmar</button>
+        </div>
+    </form>
+
     <script src="../usuarios/listaUsuarios.js"></script>
 </body>
+
 </html>
