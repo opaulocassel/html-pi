@@ -2,6 +2,7 @@ const express = require("express");
 const server = express();
 const dadosUsuario = require("../data/usuarios.json");
 const fs = require("fs");
+const crypto = require('crypto');
 
 server.use(express.json());
 
@@ -20,12 +21,13 @@ server.post("/usuarios", (req, res) => {
   novoUsuario.id = novoId;
   novoUsuario.data = formatarData;
 
+  const hashSenha = crypto.createHash('sha256').update(novoUsuario.senha).digest('hex');
+  novoUsuario.senha = hashSenha;
 
   if (
     !novoUsuario.nomeUsuario ||
     !novoUsuario.email ||
-    !novoUsuario.telefone ||
-    !novoUsuario.senha
+    !novoUsuario.telefone 
   ) {
     return res
       .status(400)

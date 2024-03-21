@@ -13,6 +13,3 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Ocorreu um erro ao carregar o arquivo JSON:", error)
     );
 });
-
-
-
