@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     atualizarCelularUsuario();
   });
+
+  document.getElementById('formAtualizarSenha').addEventListener('submit', function (event) {
+    event.preventDefault();
+    atualizarSenhaUsuario();
+  });
 });
 
 function carregarListaUsuarios() {
@@ -35,33 +40,34 @@ function carregarListaUsuarios() {
         listaItem.id = `times${listaItem.id}`
 
         listaItem.innerHTML = `
-        <div class="pokemon">
-            <div class="informacao">
-              <div class="nome">
-                <h4>Nome: </h4><p>${usuarios.nomeUsuario}</p>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Email</th>
+              <th scope="col">N°Celular</th>
+              <th scope="col">Senha</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+           <tr>
+              <th scope="row">${usuarios.id}</th>
+              <td>${usuarios.nomeUsuario}</td>
+              <td>${usuarios.email}</td>
+              <td>${usuarios.telefone}</td>
+              <td>${usuarios.senha}</td>
+              <td>
                 <button class="dialogButton" onClick="abrirDialogNome()" data-id="${usuarios.id}">Atualizar nome</button>
-              </div>
-              
-              <div class="email">
-                <h4>Email: </h4><p>${usuarios.email}</p>
                 <button class="dialogButton" onClick="abrirDialogEmail()" data-id="${usuarios.id}">Atualizar email</button>
-              </div>
-
-              <div class="celular">
-                <h4>N° celular: </h4><p>${usuarios.telefone}</p>
                 <button class="dialogButton" onClick="abrirDialogTelefone()" data-id="${usuarios.id}">Número de celular</button>
-              </div>
-
-              <div class="senha">
-                <h4>Senha: </h4><p>${usuarios.senha}</p>
-                <button class="dialogButton" onClick="abrirDialogSenha() data-id="${usuarios.id}">Atualizar senha</button>
-              </div>
-
-              <div class="buttonDiv">
+                <button class="dialogButton" onClick="abrirDialogSenha()" data-id="${usuarios.id}">Atualizar senha</button>
                 <button class="deleteButton" onClick="excluirUsuario(${usuarios.id})">Excluir</button>
-              </div>
-            </div>
-          </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
          `;
         userList.appendChild(listaItem);
       });
@@ -128,6 +134,11 @@ function abrirDialogEmail() {
   document.getElementById('userId').value = userId;
 }
 
+function fecharDialogEmail() {
+  var dialog = document.getElementById('formAtualizarEmail');
+  dialog.style.display = 'none';
+}
+
 function atualizarEmailUsuario() {
   const novoEmailUsuario = document.getElementById("novoEmailUsuario").value;
   const idUsuario = document.getElementById("userId").value;
@@ -186,10 +197,13 @@ function atualizarCelularUsuario() {
 
 
 
-
+// Atualizar senha
 function abrirDialogSenha() {
   var dialog = document.getElementById('formAtualizarSenha');
   dialog.style.display = 'block';
+
+  var userId = event.target.dataset.id;
+  document.getElementById('userId').value = userId;
 }
 
 function fecharDialogSenha() {
@@ -197,3 +211,23 @@ function fecharDialogSenha() {
   dialog.style.display = 'none';
 }
 
+function atualizarSenhaUsuario() {
+  const novaSenhaUsuario = document.getElementById("novaSenhaUsuario").value;
+  const idUsuario = document.getElementById("userId").value;
+
+  fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      senha: novaSenhaUsuario
+    }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Usuário atualizado com sucesso:", data);
+      carregarListaUsuarios()
+    })
+    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+}
