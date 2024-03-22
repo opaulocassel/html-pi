@@ -68,18 +68,18 @@ server.put("/usuarios/:id", (req, res) => {
         dadosUsuario.usuarios[idUsuarios].nomeUsuario =
             atualizarUsuarios.nomeUsuario || dadosUsuario.usuarios[idUsuarios].nomeUsuario;
 
-        dadosUsuario.usuarios[idUsuarios].emailUsuario =
-            atualizarUsuarios.emailUsuario || dadosUsuario.usuarios[idUsuarios].emailUsuario;
+        dadosUsuario.usuarios[idUsuarios].email =
+            atualizarUsuarios.email || dadosUsuario.usuarios[idUsuarios].email;
 
-        dadosUsuario.usuarios[idUsuarios].celularUsuario =
-            atualizarUsuarios.celularUsuario || dadosUsuario.usuarios[idUsuarios].celularUsuario;
+        dadosUsuario.usuarios[idUsuarios].telefone =
+            atualizarUsuarios.telefone || dadosUsuario.usuarios[idUsuarios].telefone;
 
-        dadosUsuario.usuarios[idUsuarios].senhaUsuario =
-            atualizarUsuarios.senhaUsuario || dadosUsuario.usuarios[idUsuarios].senhaUsuario;
+        dadosUsuario.usuarios[idUsuarios].senha =
+            atualizarUsuarios.senha || dadosUsuario.usuarios[idUsuarios].senha;
 
         salvarDados(dadosUsuario);
 
-        return res.json({ mensagem: "Time atualizado com sucesso!" });
+        return res.json({ mensagem: "Usuário atualizado com sucesso!" });
     }
 });
 

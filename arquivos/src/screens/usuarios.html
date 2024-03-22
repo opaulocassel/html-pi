@@ -26,6 +26,8 @@
 
     <form id="formAtualizarNome" class="dialog">
         <div id="dialogNome">
+            <input type="hidden" id="userId" name="userId" />
+
             <label for="nomeUsuario">Insira o nome de usuário atual:</label>
             <input type="text" id="antigoNomeUsuario" maxlength="30" name="antigoNomeUsuario" />
 
@@ -41,37 +43,35 @@
 
     <form id="formAtualizarEmail" class="dialog">
         <div id="dialogEmail">
+            <input type="hidden" id="userId" name="userId" />
+
             <label for="emailUsuario">Insira o seu email atual:</label>
-            <input onclick="placeHolderNome()" type="text" id="emailUsuario" maxlength="30" name="emailUsuario"
-                placeholder="Insira seu nome" required />
+            <input type="text" id="emailUsuario" maxlength="30" name="emailUsuario" />
 
             <label for="emailUsuario">Insira o seu novo email:</label>
-            <input onclick="placeHolderNome()" type="text" id="emailUsuario" maxlength="30" name="emailUsuario"
-                placeholder="Insira seu nome" required />
+            <input type="text" id="novoEmailUsuario" maxlength="30" name="novoEmailUsuario" />
 
             <label for="senha">Insira sua senha:</label>
-            <input onclick="placeHolderNome()" type="text" id="confirmeSenha" maxlength="30" name="senhaUsuario"
-                placeholder="Insira seu nome" required />
+            <input type="text" id="confirmeSenha" maxlength="30" name="senhaUsuario" />
 
-            <button onclick="confirmarAtualizacaoNome()">Confirmar</button>
+            <button onclick="atualizarEmailUsuario()">Confirmar</button>
         </div>
     </form>
 
     <form id="formAtualizarTelefone" class="dialog">
         <div id="dialogTelefone">
+            <input type="hidden" id="userId" name="userId" />
+
             <label for="telefoneUsuario">Insira o número de celular atual:</label>
-            <input onclick="placeHolderNome()" type="text" id="telefoneUsuario" maxlength="30" name="telefoneUsuario"
-                placeholder="Insira seu nome" required />
+            <input type="text" id="telefoneUsuario" maxlength="30" name="telefoneUsuario" />
 
             <label for="telefoneUsuario">Insira o seu novo número:</label>
-            <input onclick="placeHolderNome()" type="text" id="telefoneUsuario" maxlength="30" name="telefoneUsuario"
-                placeholder="Insira seu nome" required />
+            <input type="text" id="novoTelefoneUsuario" maxlength="30" name="novoTelefoneUsuario" />
 
             <label for="senha">Insira sua senha:</label>
-            <input onclick="placeHolderNome()" type="text" id="confirmeSenha" maxlength="30" name="senhaUsuario"
-                placeholder="Insira seu nome" required />
+            <input type="text" id="confirmeSenha" maxlength="30" name="senhaUsuario" />
 
-            <button onclick="fecharDialogTelefone()">Confirmar</button>
+            <button onclick="atualizarCelularUsuario()">Confirmar</button>
         </div>
     </form>
 
