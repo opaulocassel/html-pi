@@ -94,7 +94,7 @@ server.delete("/usuarios/:id", (req, res) => {
     salvarDados(dadosUsuario)
 
     return res.status(200).json({ mensagem: "Usuário excluído com sucesso" })
-})
+});
 
 
 const path = require("path");

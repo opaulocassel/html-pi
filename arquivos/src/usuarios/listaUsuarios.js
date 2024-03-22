@@ -43,10 +43,7 @@ function carregarListaUsuarios() {
     .catch((error) =>
       console.error("Ocorreu um erro ao carregar o arquivo JSON:", error)
     );
-<<<<<<< HEAD
-});
-=======
-};
+  }
 
 function excluirUsuario(id) {
   fetch(`http://localhost:3000/usuarios/${id}`, {
@@ -59,4 +56,3 @@ function excluirUsuario(id) {
     })
     .catch(error => console.error("Erro ao excluir usuário:", error));
 }
->>>>>>> d3b32ed170fb4c8d9e590dcc0724e71c58260f2d

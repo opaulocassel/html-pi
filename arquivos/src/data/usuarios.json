@@ -2,7 +2,6 @@
   "usuarios": [
     {
       "nomeUsuario": "Admin",
-<<<<<<< HEAD
       "email": "admin403@gmail.com",
       "telefone": "51999728456",
       "senha": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
@@ -10,17 +9,20 @@
       "data": "20/03/2024, 19:31"
     },
     {
-      "nomeUsuario": "Gabriel Hepper",
-      "email": "gabrielhepper403@gmail.com",
-      "telefone": "51999193152",
-      "senha": "715a6abcdb9f8a8eb1577fd53c27396470fbc3f5b78379823779b528c9b0b74e",
+      "nomeUsuario": "Gébre",
+      "email": "thaishepper@gmail.com",
+      "telefone": "32423423424",
+      "senha": "da70dfa4d9f95ac979f921e8e623358236313f334afcd06cddf8a5621cf6a1e9",
       "id": 2,
-      "data": "20/03/2024, 20:22"
-=======
-      "email": "admin@gmail.com",
-      "telefone": "51999728394",
-      "senha": "admin"
->>>>>>> d3b32ed170fb4c8d9e590dcc0724e71c58260f2d
+      "data": "20/03/2024, 21:41"
+    },
+    {
+      "nomeUsuario": "Jo",
+      "email": "gabrielhepper403@gmail.comee",
+      "telefone": "51999193152",
+      "senha": "535fa30d7e25dd8a49f1536779734ec8286108d115da5045d77f3b4185d8f790",
+      "id": 3,
+      "data": "21/03/2024, 19:07"
     }
   ]
 }
