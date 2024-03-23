@@ -1,25 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
-  carregarListaUsuarios()
+  carregarListaUsuarios();
 
-  document.getElementById('formAtualizarNome').addEventListener('submit', function (event) {
-    event.preventDefault();
-    atualizarNomeUsuario();
-  });
+  document
+    .getElementById("formAtualizarNome")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      atualizarNomeUsuario();
+    });
 
-  document.getElementById('formAtualizarEmail').addEventListener('submit', function (event) {
-    event.preventDefault();
-    atualizarEmailUsuario();
-  });
+  document
+    .getElementById("formAtualizarEmail")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      atualizarEmailUsuario();
+    });
 
-  document.getElementById('formAtualizarTelefone').addEventListener('submit', function (event) {
-    event.preventDefault();
-    atualizarCelularUsuario();
-  });
+  document
+    .getElementById("formAtualizarTelefone")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      atualizarCelularUsuario();
+    });
 
-  document.getElementById('formAtualizarSenha').addEventListener('submit', function (event) {
-    event.preventDefault();
-    atualizarSenhaUsuario();
-  });
+  document
+    .getElementById("formAtualizarSenha")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      atualizarSenhaUsuario();
+    });
 });
 
 function carregarListaUsuarios() {
@@ -36,8 +44,8 @@ function carregarListaUsuarios() {
       data.forEach(function (usuarios) {
         const listaItem = document.createElement("div");
 
-        listaItem.classList.add("usuario")
-        listaItem.id = `times${listaItem.id}`
+        listaItem.classList.add("usuario");
+        listaItem.id = `times${listaItem.id}`;
 
         listaItem.innerHTML = `
         <table class="table table-striped">
@@ -75,32 +83,32 @@ function carregarListaUsuarios() {
     .catch((error) =>
       console.error("Ocorreu um erro ao carregar o arquivo JSON:", error)
     );
-  }
+}
 
 function excluirUsuario(id) {
   fetch(`http://localhost:3000/usuarios/${id}`, {
     method: "DELETE",
   })
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       console.log("Usuário excluído com sucesso:", data);
       carregarListaUsuarios();
     })
-    .catch(error => console.error("Erro ao excluir usuário:", error));
+    .catch((error) => console.error("Erro ao excluir usuário:", error));
 }
 
 // Atualizar nome
 function abrirDialogNome() {
-  var dialog = document.getElementById('formAtualizarNome');
-  dialog.style.display = 'block';
+  var dialog = document.getElementById("formAtualizarNome");
+  dialog.style.display = "block";
 
   var userId = event.target.dataset.id;
-  document.getElementById('userId').value = userId;
+  document.getElementById("userId").value = userId;
 }
 
 function fecharDialogNome() {
-  var dialog = document.getElementById('formAtualizarNome');
-  dialog.style.display = 'none';
+  var dialog = document.getElementById("formAtualizarNome");
+  dialog.style.display = "none";
 }
 
 function verificarNome(nome) {
@@ -122,8 +130,8 @@ function atualizarNomeUsuario() {
   const novoNomeUsuario = document.getElementById("novoNomeUsuario").value;
   const idUsuario = document.getElementById("userId").value;
 
-  if(novoNomeUsuario === ""){
-    alert("Preencha o campo.")
+  if (novoNomeUsuario === "") {
+    alert("Preencha o campo.");
   } else if (
     novoNomeUsuario === "Admin" ||
     novoNomeUsuario === "admin" ||
@@ -131,123 +139,120 @@ function atualizarNomeUsuario() {
   ) {
     alert("Este nome é proíbido.");
   } else {
-
-  fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      nomeUsuario: novoNomeUsuario
-    }),
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log("Usuário atualizado com sucesso:", data);
-      carregarListaUsuarios()
+    fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nomeUsuario: novoNomeUsuario,
+      }),
     })
-    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Usuário atualizado com sucesso:", data);
+        carregarListaUsuarios();
+      })
+      .catch((error) => console.error("Erro ao atualizar o usuário:", error));
   }
 }
 
-
 // Atualizar email
 function abrirDialogEmail() {
-  var dialog = document.getElementById('formAtualizarEmail');
-  dialog.style.display = 'block';
+  var dialog = document.getElementById("formAtualizarEmail");
+  dialog.style.display = "block";
 
   var userId = event.target.dataset.id;
-  document.getElementById('userId').value = userId;
+  document.getElementById("userId").value = userId;
 }
 
 function fecharDialogEmail() {
-  var dialog = document.getElementById('formAtualizarEmail');
-  dialog.style.display = 'none';
+  var dialog = document.getElementById("formAtualizarEmail");
+  dialog.style.display = "none";
 }
 
 function atualizarEmailUsuario() {
   const novoEmailUsuario = document.getElementById("novoEmailUsuario").value;
   const idUsuario = document.getElementById("userId").value;
 
-  if(novoEmailUsuario === ""){
+  if (novoEmailUsuario === "") {
     alert("Por favor, preencha o campo.");
-  }else if(!verificarEmail(novoEmailUsuario)){
+  } else if (!verificarEmail(novoEmailUsuario)) {
     alert("E-mail inválido!");
   } else {
-
-  fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: novoEmailUsuario
-    }),
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log("Usuário atualizado com sucesso:", data);
-      carregarListaUsuarios()
+    fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: novoEmailUsuario,
+      }),
     })
-    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Usuário atualizado com sucesso:", data);
+        carregarListaUsuarios();
+      })
+      .catch((error) => console.error("Erro ao atualizar o usuário:", error));
   }
 }
 
 // Atualizar celular
 function abrirDialogTelefone() {
-  var dialog = document.getElementById('formAtualizarTelefone');
-  dialog.style.display = 'block';
+  var dialog = document.getElementById("formAtualizarTelefone");
+  dialog.style.display = "block";
 
   var userId = event.target.dataset.id;
-  document.getElementById('userId').value = userId;
+  document.getElementById("userId").value = userId;
 }
 
 function fecharDialogTelefone() {
-  var dialog = document.getElementById('formAtualizarTelefone');
-  dialog.style.display = 'none';
+  var dialog = document.getElementById("formAtualizarTelefone");
+  dialog.style.display = "none";
 }
 
 function atualizarCelularUsuario() {
-  const novoTelefoneUsuario = document.getElementById("novoTelefoneUsuario").value;
+  const novoTelefoneUsuario = document.getElementById(
+    "novoTelefoneUsuario"
+  ).value;
   const idUsuario = document.getElementById("userId").value;
 
-  if(novoTelefoneUsuario === ""){
+  if (novoTelefoneUsuario === "") {
     alert("Por favor, preencha o campo.");
-  }else if(!verificarTelefone(novoTelefoneUsuario)){
+  } else if (!verificarTelefone(novoTelefoneUsuario)) {
     alert("Telefone inválido!");
   } else {
-
-  fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      telefone: novoTelefoneUsuario
-    }),
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log("Usuário atualizado com sucesso:", data);
-      carregarListaUsuarios()
+    fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        telefone: novoTelefoneUsuario,
+      }),
     })
-    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Usuário atualizado com sucesso:", data);
+        carregarListaUsuarios();
+      })
+      .catch((error) => console.error("Erro ao atualizar o usuário:", error));
   }
 }
 
-
 // Atualizar senha
 function abrirDialogSenha() {
-  var dialog = document.getElementById('formAtualizarSenha');
-  dialog.style.display = 'block';
+  var dialog = document.getElementById("formAtualizarSenha");
+  dialog.style.display = "block";
 
   var userId = event.target.dataset.id;
-  document.getElementById('userId').value = userId;
+  document.getElementById("userId").value = userId;
 }
 
 function fecharDialogSenha() {
-  var dialog = document.getElementById('formAtualizarSenha');
-  dialog.style.display = 'none';
+  var dialog = document.getElementById("formAtualizarSenha");
+  dialog.style.display = "none";
 }
 
 function atualizarSenhaUsuario() {
@@ -260,13 +265,13 @@ function atualizarSenhaUsuario() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      senha: novaSenhaUsuario
+      senha: novaSenhaUsuario,
     }),
   })
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       console.log("Usuário atualizado com sucesso:", data);
-      carregarListaUsuarios()
+      carregarListaUsuarios();
     })
-    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+    .catch((error) => console.error("Erro ao atualizar o usuário:", error));
 }

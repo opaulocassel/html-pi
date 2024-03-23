@@ -217,16 +217,11 @@ loginForm.addEventListener("submit", async (e) => {
   })
     .then((response) => response.json())
     .then((data) => {
-<<<<<<< HEAD
       if (data.nomeUsuario === userName && data.senha === hashSenha) {
-=======
-
-      if (data.nomeUsuario === userName && data.senha === passWord) {
 
         let guardarNome = data.nomeUsuario
         sessionStorage.setItem('guardarNome', JSON.stringify(guardarNome))
 
->>>>>>> 9d5929d3e3ef4ecb41a6bc7a6d4c2bcc19a72dac
         console.log("bem vindo");
 
         const sidebar = document.createElement("div");
@@ -247,6 +242,6 @@ loginForm.addEventListener("submit", async (e) => {
         closeDialog();
       } else {
         console.error("Usuario não encontrado");
-      }
+    }
     });
 });
