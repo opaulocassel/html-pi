@@ -14,7 +14,19 @@
       "telefone": "23423422342344234",
       "senha": "2782526eaa0c5c254b36d0c90e1f8c06af41d167a8b539bd3c81cd6d155e7e5f",
       "id": 2,
+<<<<<<< HEAD
       "data": "20/03/2024, 21:41"
+=======
+      "data": "21/03/2024, 09:44"
+    },
+    {
+      "nomeUsuario": "paulos",
+      "email": "asds@hotmail.com",
+      "telefone": "44444444444",
+      "senha": "1234",
+      "id": 3,
+      "data": "22/03/2024, 20:20"
+>>>>>>> 9d5929d3e3ef4ecb41a6bc7a6d4c2bcc19a72dac
     }
   ]
 }
