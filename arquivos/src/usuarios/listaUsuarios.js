@@ -1,5 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
   carregarListaUsuarios()
+
+  document.getElementById('formAtualizarNome').addEventListener('submit', function (event) {
+    event.preventDefault();
+    atualizarNomeUsuario();
+  });
+
+  document.getElementById('formAtualizarEmail').addEventListener('submit', function (event) {
+    event.preventDefault();
+    atualizarEmailUsuario();
+  });
+
+  document.getElementById('formAtualizarTelefone').addEventListener('submit', function (event) {
+    event.preventDefault();
+    atualizarCelularUsuario();
+  });
+
+  document.getElementById('formAtualizarSenha').addEventListener('submit', function (event) {
+    event.preventDefault();
+    atualizarSenhaUsuario();
+  });
 });
 
 function carregarListaUsuarios() {
@@ -18,24 +38,36 @@ function carregarListaUsuarios() {
 
         listaItem.classList.add("usuario")
         listaItem.id = `times${listaItem.id}`
-        
-        listaItem.innerHTML = `
-        <div class="pokemon">
-            <div class="informacao">
-              <div class="nome">
-                <h4>Nome: </h4><p>${usuarios.nomeUsuario}</p>
-              </div>
-              
-              <div class="email">
-                <h4>Email: </h4><p>${usuarios.email}</p>
-              </div>
 
-              <div class="buttonDiv">
-                <button class="updateButton" id="updateButton" onClick="excluir()">Atualizar</button>
+        listaItem.innerHTML = `
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Email</th>
+              <th scope="col">N°Celular</th>
+              <th scope="col">Senha</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+           <tr>
+              <th scope="row">${usuarios.id}</th>
+              <td>${usuarios.nomeUsuario}</td>
+              <td>${usuarios.email}</td>
+              <td>${usuarios.telefone}</td>
+              <td>${usuarios.senha}</td>
+              <td>
+                <button class="dialogButton" onClick="abrirDialogNome()" data-id="${usuarios.id}">Atualizar nome</button>
+                <button class="dialogButton" onClick="abrirDialogEmail()" data-id="${usuarios.id}">Atualizar email</button>
+                <button class="dialogButton" onClick="abrirDialogTelefone()" data-id="${usuarios.id}">Número de celular</button>
+                <button class="dialogButton" onClick="abrirDialogSenha()" data-id="${usuarios.id}">Atualizar senha</button>
                 <button class="deleteButton" onClick="excluirUsuario(${usuarios.id})">Excluir</button>
-              </div>
-            </div>
-          </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
          `;
         userList.appendChild(listaItem);
       });
@@ -55,4 +87,186 @@ function excluirUsuario(id) {
       carregarListaUsuarios();
     })
     .catch(error => console.error("Erro ao excluir usuário:", error));
+}
+
+// Atualizar nome
+function abrirDialogNome() {
+  var dialog = document.getElementById('formAtualizarNome');
+  dialog.style.display = 'block';
+
+  var userId = event.target.dataset.id;
+  document.getElementById('userId').value = userId;
+}
+
+function fecharDialogNome() {
+  var dialog = document.getElementById('formAtualizarNome');
+  dialog.style.display = 'none';
+}
+
+function verificarNome(nome) {
+  const regex = /^[\p{L}\s]+$/u;
+  return regex.test(nome);
+}
+
+function verificarEmail(email) {
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return regex.test(email);
+}
+
+function verificarTelefone(telefone) {
+  const regex = /^\d{11}$/;
+  return regex.test(telefone);
+}
+
+function atualizarNomeUsuario() {
+  const novoNomeUsuario = document.getElementById("novoNomeUsuario").value;
+  const idUsuario = document.getElementById("userId").value;
+
+  if(novoNomeUsuario === ""){
+    alert("Preencha o campo.")
+  } else if (
+    novoNomeUsuario === "Admin" ||
+    novoNomeUsuario === "admin" ||
+    !verificarNome(novoNomeUsuario)
+  ) {
+    alert("Este nome é proíbido.");
+  } else {
+
+  fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      nomeUsuario: novoNomeUsuario
+    }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Usuário atualizado com sucesso:", data);
+      carregarListaUsuarios()
+    })
+    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+  }
+}
+
+
+// Atualizar email
+function abrirDialogEmail() {
+  var dialog = document.getElementById('formAtualizarEmail');
+  dialog.style.display = 'block';
+
+  var userId = event.target.dataset.id;
+  document.getElementById('userId').value = userId;
+}
+
+function fecharDialogEmail() {
+  var dialog = document.getElementById('formAtualizarEmail');
+  dialog.style.display = 'none';
+}
+
+function atualizarEmailUsuario() {
+  const novoEmailUsuario = document.getElementById("novoEmailUsuario").value;
+  const idUsuario = document.getElementById("userId").value;
+
+  if(novoEmailUsuario === ""){
+    alert("Por favor, preencha o campo.");
+  }else if(!verificarEmail(novoEmailUsuario)){
+    alert("E-mail inválido!");
+  } else {
+
+  fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: novoEmailUsuario
+    }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Usuário atualizado com sucesso:", data);
+      carregarListaUsuarios()
+    })
+    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+  }
+}
+
+// Atualizar celular
+function abrirDialogTelefone() {
+  var dialog = document.getElementById('formAtualizarTelefone');
+  dialog.style.display = 'block';
+
+  var userId = event.target.dataset.id;
+  document.getElementById('userId').value = userId;
+}
+
+function fecharDialogTelefone() {
+  var dialog = document.getElementById('formAtualizarTelefone');
+  dialog.style.display = 'none';
+}
+
+function atualizarCelularUsuario() {
+  const novoTelefoneUsuario = document.getElementById("novoTelefoneUsuario").value;
+  const idUsuario = document.getElementById("userId").value;
+
+  if(novoTelefoneUsuario === ""){
+    alert("Por favor, preencha o campo.");
+  }else if(!verificarTelefone(novoTelefoneUsuario)){
+    alert("Telefone inválido!");
+  } else {
+
+  fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      telefone: novoTelefoneUsuario
+    }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Usuário atualizado com sucesso:", data);
+      carregarListaUsuarios()
+    })
+    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+  }
+}
+
+
+// Atualizar senha
+function abrirDialogSenha() {
+  var dialog = document.getElementById('formAtualizarSenha');
+  dialog.style.display = 'block';
+
+  var userId = event.target.dataset.id;
+  document.getElementById('userId').value = userId;
+}
+
+function fecharDialogSenha() {
+  var dialog = document.getElementById('formAtualizarSenha');
+  dialog.style.display = 'none';
+}
+
+function atualizarSenhaUsuario() {
+  const novaSenhaUsuario = document.getElementById("novaSenhaUsuario").value;
+  const idUsuario = document.getElementById("userId").value;
+
+  fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      senha: novaSenhaUsuario
+    }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Usuário atualizado com sucesso:", data);
+      carregarListaUsuarios()
+    })
+    .catch(error => console.error("Erro ao atualizar o usuário:", error));
 }

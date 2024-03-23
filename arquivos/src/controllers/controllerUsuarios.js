@@ -58,32 +58,29 @@ server.get("/usuarios/:nomeUsuario", (req, res)=>{
 
 
 server.put("/usuarios/:id", (req, res) => {
-    const usuariosId = parseInt(req.params.id);
+  const usuariosId = parseInt(req.params.id);
+  const atualizarUsuarios = req.body;
+  const idUsuarios = dadosUsuario.usuarios.findIndex((u) => u.id === usuariosId);
 
-    const atualizarUsuarios = req.body;
+  if (idUsuarios === -1) {
+      return res.status(404).json({ mensagem: "Usuário não encontrado :/" });
+  } else {
+      if (atualizarUsuarios.senha) {
+          const hashSenha = crypto.createHash('sha256').update(atualizarUsuarios.senha).digest('hex');
+          atualizarUsuarios.senha = hashSenha;
+      }
 
-    const idUsuarios = dadosUsuario.usuarios.findIndex((u) => u.id === usuariosId);
+      dadosUsuario.usuarios[idUsuarios].nomeUsuario = atualizarUsuarios.nomeUsuario || dadosUsuario.usuarios[idUsuarios].nomeUsuario;
+      dadosUsuario.usuarios[idUsuarios].email = atualizarUsuarios.email || dadosUsuario.usuarios[idUsuarios].email;
+      dadosUsuario.usuarios[idUsuarios].telefone = atualizarUsuarios.telefone || dadosUsuario.usuarios[idUsuarios].telefone;
+      dadosUsuario.usuarios[idUsuarios].senha = atualizarUsuarios.senha || dadosUsuario.usuarios[idUsuarios].senha;
 
-    if (usuariosId === -1) {
-        return res.status(404).json({ mensagem: "Time não encontrado :/" });
-    } else {
-        dadosUsuario.usuarios[idUsuarios].nomeUsuario =
-            atualizarUsuarios.nomeUsuario || dadosUsuario.usuarios[idUsuarios].nomeUsuario;
+      salvarDados(dadosUsuario);
 
-        dadosUsuario.usuarios[idUsuarios].emailUsuario =
-            atualizarUsuarios.emailUsuario || dadosUsuario.usuarios[idUsuarios].emailUsuario;
-
-        dadosUsuario.usuarios[idUsuarios].celularUsuario =
-            atualizarUsuarios.celularUsuario || dadosUsuario.usuarios[idUsuarios].celularUsuario;
-
-        dadosUsuario.usuarios[idUsuarios].senhaUsuario =
-            atualizarUsuarios.senhaUsuario || dadosUsuario.usuarios[idUsuarios].senhaUsuario;
-
-        salvarDados(dadosUsuario);
-
-        return res.json({ mensagem: "Time atualizado com sucesso!" });
-    }
+      return res.json({ mensagem: "Usuário atualizado com sucesso!" });
+  }
 });
+
 
 
 server.delete("/usuarios/:id", (req, res) => {
