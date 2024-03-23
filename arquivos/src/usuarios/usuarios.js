@@ -197,7 +197,12 @@ loginForm.addEventListener("submit", (e) => {
   })
     .then((response) => response.json())
     .then((data) => {
+
       if (data.nomeUsuario === userName && data.senha === passWord) {
+
+        let guardarNome = data.nomeUsuario
+        sessionStorage.setItem('guardarNome', JSON.stringify(guardarNome))
+
         console.log("bem vindo");
 
         const sidebar = document.createElement("div");
@@ -206,6 +211,7 @@ loginForm.addEventListener("submit", (e) => {
         sidebar.innerHTML = `
         <a href="#" class="close-btn" onclick="toggleSidebar()">Fechar</a>
         <ul>
+          <li><a href="perfil.html"</a>Perfil</li>
           <li><a href="#">Item 1</a></li>
           <li><a href="#">Item 2</a></li>
           <li id="listaUsuarios"><a href="usuarios.html">Usuários</a></li>
