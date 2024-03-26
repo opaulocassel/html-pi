@@ -24,7 +24,7 @@ header {
 header button {
   position: absolute;
   margin: 2vh 2vw 0 0;
-  height: 40px; 
+  height: 40px;
   font-size: 16px;
   text-decoration: unset;
   overflow: hidden;
@@ -200,8 +200,6 @@ iframe {
   /*define a sidebar com display block sempre que a class open e ativada*/
   width: 250px;
 }
-
-
 
 .sidebar ul {
   list-style-type: none;

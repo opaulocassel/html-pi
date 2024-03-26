@@ -21,6 +21,7 @@ function openDialog() {
   form.style.display = "block";
   customDialog.style.display = "block";
   loginRegister.style.display = "none";
+
 }
 
 // Quando o evento "blur" é acionado (ou seja, quando o campo de entrada perde o foco),
@@ -29,89 +30,19 @@ function openDialog() {
 // Se o valor do campo de entrada for vazio, o texto placeholder é adicionado de volta ao campo de
 // entrada.
 //=
-function placeHolderNomeLogin() {
-  let nome = document.getElementById("loginNome");
 
-  nome.placeholder = "";
+function adicionarPlaceholder(inputId, placeholderText) {
+  let inputElement = document.getElementById(inputId);
 
-  nome.addEventListener("blur", function () {
-    if (nome.placeholder === "") {
-      nome.placeholder = "Informe seu nome";
+  inputElement.placeholder = "";
+
+  inputElement.addEventListener("blur", function () {
+    if (inputElement.placeholder === "") {
+      inputElement.placeholder = placeholderText;
     }
-  });
+  })
 }
 
-function placeHolderSenhaLogin() {
-  let senha = document.getElementById("loginSenha");
-
-  senha.placeholder = "";
-
-  senha.addEventListener("blur", function () {
-    if (senha.placeholder === "") {
-      senha.placeholder = "Digite sua senha";
-    }
-  });
-}
-
-function placeHolderNome() {
-  let nome = document.getElementById("nomeUsuario");
-
-  nome.placeholder = "";
-
-  nome.addEventListener("blur", function () {
-    if (nome.placeholder === "") {
-      nome.placeholder = "Informe seu nome";
-    }
-  });
-}
-
-function placeHolderTelefone() {
-  let telefone = document.getElementById("telefone");
-
-  telefone.placeholder = "";
-
-  telefone.addEventListener("blur", function () {
-    if (telefone.placeholder === "") {
-      telefone.placeholder = "Telefone";
-    }
-  });
-}
-
-function placeHolderEmail() {
-  let email = document.getElementById("email");
-
-  email.placeholder = "";
-
-  email.addEventListener("blur", function () {
-    if (email.placeholder === "") {
-      email.placeholder = "Email";
-    }
-  });
-}
-
-function placeHolderSenha() {
-  let senha = document.getElementById("senha");
-
-  senha.placeholder = "";
-
-  senha.addEventListener("blur", function () {
-    if (senha.placeholder === "") {
-      senha.placeholder = "Senha";
-    }
-  });
-}
-
-function placeHolderConfirmarSenha() {
-  let confirmarSenha = document.getElementById("confirmarSenha");
-
-  confirmarSenha.placeholder = "";
-
-  confirmarSenha.addEventListener("blur", function () {
-    if (confirmarSenha.placeholder === "") {
-      confirmarSenha.placeholder = "Confirmar Senha";
-    }
-  });
-}
 
 function cadastrar() {
   let dialogRegister = document.getElementById("registerForm");

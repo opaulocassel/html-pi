@@ -85,14 +85,35 @@ document.addEventListener("DOMContentLoaded", function () {
     var dialog = document.getElementById('formAtualizarNome');
     dialog.style.display = 'none';
   }
+
+  function verificarNome(nome) {
+    const regex = /^[\p{L}\s]+$/u;
+    return regex.test(nome);
+  }
+  
+  function verificarEmail(email) {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+  }
+  
+  function verificarTelefone(telefone) {
+    const regex = /^\d{11}$/;
+    return regex.test(telefone);
+  }
   
   function atualizarNomeUsuario() {
     const novoNomeUsuario = document.getElementById("novoNomeUsuario").value;
     const idUsuario = document.getElementById("userId").value;
 
-    let guardarNome = novoNomeUsuario
-    sessionStorage.setItem('guardarNome', JSON.stringify(guardarNome))
-  
+    if (novoNomeUsuario === "") {
+      alert("Preencha o campo.");
+    } else if (
+      novoNomeUsuario === "Admin" ||
+      novoNomeUsuario === "admin" ||
+      !verificarNome(novoNomeUsuario)
+    ) {
+      alert("Este nome é proíbido.");
+    } else {
     fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
       method: "PUT",
       headers: {
@@ -108,6 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
         carregarListaUsuarios()
       })
       .catch(error => console.error("Erro ao atualizar o usuário:", error));
+    }
   }
   
   
@@ -128,7 +150,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function atualizarEmailUsuario() {
     const novoEmailUsuario = document.getElementById("novoEmailUsuario").value;
     const idUsuario = document.getElementById("userId").value;
-  
+
+    if (novoEmailUsuario === "") {
+      alert("Por favor, preencha o campo.");
+    } else if (!verificarEmail(novoEmailUsuario)) {
+      alert("E-mail inválido!");
+    } else {
     fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
       method: "PUT",
       headers: {
@@ -144,6 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
         carregarListaUsuarios()
       })
       .catch(error => console.error("Erro ao atualizar o usuário:", error));
+    }
   }
   
   // Atualizar celular
@@ -163,7 +191,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function atualizarCelularUsuario() {
     const novoTelefoneUsuario = document.getElementById("novoTelefoneUsuario").value;
     const idUsuario = document.getElementById("userId").value;
-  
+
+    if (novoTelefoneUsuario === "") {
+      alert("Por favor, preencha o campo.");
+    } else if (!verificarTelefone(novoTelefoneUsuario)) {
+      alert("Telefone inválido!");
+    } else {
     fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
       method: "PUT",
       headers: {
@@ -179,6 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
         carregarListaUsuarios()
       })
       .catch(error => console.error("Erro ao atualizar o usuário:", error));
+    }
   }
   
   

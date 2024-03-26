@@ -196,9 +196,7 @@ function fecharDialogTelefone() {
 }
 
 function atualizarCelularUsuario() {
-  const novoTelefoneUsuario = document.getElementById(
-    "novoTelefoneUsuario"
-  ).value;
+  const novoTelefoneUsuario = document.getElementById("novoTelefoneUsuario").value;
   const idUsuario = document.getElementById("userId").value;
 
   if (novoTelefoneUsuario === "") {
