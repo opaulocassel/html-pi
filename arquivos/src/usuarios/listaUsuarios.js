@@ -41,42 +41,24 @@ function carregarListaUsuarios() {
       }
       userList.innerHTML = "";
 
-      data.forEach(function (usuarios) {
+      data.forEach(function (usuario) {
         const listaItem = document.createElement("div");
-
         listaItem.classList.add("usuario");
-        listaItem.id = `times${listaItem.id}`;
 
         listaItem.innerHTML = `
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Nome</th>
-              <th scope="col">Email</th>
-              <th scope="col">N°Celular</th>
-              <th scope="col">Senha</th>
-              <th scope="col">Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-           <tr>
-              <th scope="row">${usuarios.id}</th>
-              <td>${usuarios.nomeUsuario}</td>
-              <td>${usuarios.email}</td>
-              <td>${usuarios.telefone}</td>
-              <td>${usuarios.senha}</td>
-              <td>
-                <button class="dialogButton" onClick="abrirDialogNome()" data-id="${usuarios.id}">Atualizar nome</button>
-                <button class="dialogButton" onClick="abrirDialogEmail()" data-id="${usuarios.id}">Atualizar email</button>
-                <button class="dialogButton" onClick="abrirDialogTelefone()" data-id="${usuarios.id}">Número de celular</button>
-                <button class="dialogButton" onClick="abrirDialogSenha()" data-id="${usuarios.id}">Atualizar senha</button>
-                <button class="deleteButton" onClick="excluirUsuario(${usuarios.id})">Excluir</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-         `;
+          <div>ID: ${usuario.id}</div>
+          <div>Nome: ${usuario.nomeUsuario}</div>
+          <div>Email: ${usuario.email}</div>
+          <div>Número de Celular: ${usuario.telefone}</div>
+          <div>Senha: ********</div>
+          <div class="botoes">
+            <button class="dialogButton" onClick="abrirDialogNome()" data-id="${usuario.id}">Atualizar nome</button>
+            <button class="dialogButton" onClick="abrirDialogEmail()" data-id="${usuario.id}">Atualizar email</button>
+            <button class="dialogButton" onClick="abrirDialogTelefone()" data-id="${usuario.id}">Número de celular</button>
+            <button class="dialogButton" onClick="abrirDialogSenha()" data-id="${usuario.id}">Atualizar senha</button>
+            <button class="deleteButton" onClick="excluirUsuario(${usuario.id})">Excluir</button>
+          </div>
+        `;
         userList.appendChild(listaItem);
       });
     })
@@ -84,6 +66,7 @@ function carregarListaUsuarios() {
       console.error("Ocorreu um erro ao carregar o arquivo JSON:", error)
     );
 }
+
 
 function excluirUsuario(id) {
   fetch(`http://localhost:3000/usuarios/${id}`, {

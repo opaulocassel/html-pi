@@ -1,0 +1,42 @@
+#userList {
+  margin-top: 20px;
+}
+
+.usuario {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.usuario p {
+  font-weight: bold;
+}
+
+.titulo{
+    display: flex;
+}
+.dialogButton,
+.deleteButton {
+  padding: 8px 12px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dialogButton:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.deleteButton:hover {
+  background-color: red;
+  color: #ffffff;
+}
+
+.botoes {
+  margin-top: 10px;
+}

@@ -23,17 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   
   function carregarListaUsuarios() {
-    const NomeDoUsuario = sessionStorage.getItem('guardarNome')
-
-    console.log(NomeDoUsuario)
-
-    const NomeSemAspas = NomeDoUsuario.replace(/^"(.*)"$/, '$1');
-
-    console.log(NomeSemAspas);
-    
-    fetch(`http://localhost:3000/usuarios/${NomeSemAspas}`)
+    fetch("http://localhost:3000/usuarios")
       .then((response) => response.json())
-      .then(function (usuario) {
+      .then(function (data) {
         let userList = document.getElementById("userList");
         if (!userList) {
           console.error("Elemento userList não encontrado.");
@@ -41,46 +33,31 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         userList.innerHTML = "";
   
+        data.forEach(function (usuario) {
           const listaItem = document.createElement("div");
-          listaItem.classList.add("usuario")
-          listaItem.id = `times${listaItem.id}`
+          listaItem.classList.add("usuario");
   
           listaItem.innerHTML = `
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
-                <th scope="col">N°Celular</th>
-                <th scope="col">Senha</th>
-                <th scope="col">Ações</th>
-              </tr>
-            </thead>
-            <tbody>
-             <tr>
-                <th scope="row">${usuario.id}</th>
-                <td>${usuario.nomeUsuario}</td>
-                <td>${usuario.email}</td>
-                <td>${usuario.telefone}</td>
-                <td>${usuario.senha}</td>
-                <td>
-                  <button class="dialogButton" onClick="abrirDialogNome()" data-id="${usuario.id}">Atualizar nome</button>
-                  <button class="dialogButton" onClick="abrirDialogEmail()" data-id="${usuario.id}">Atualizar email</button>
-                  <button class="dialogButton" onClick="abrirDialogTelefone()" data-id="${usuario.id}">Número de celular</button>
-                  <button class="dialogButton" onClick="abrirDialogSenha()" data-id="${usuario.id}">Atualizar senha</button>
-                  <button class="deleteButton" onClick="excluirUsuario(${usuario.id})">Excluir</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-           `;
+            <div>ID: ${usuario.id}</div>
+            <div>Nome: ${usuario.nomeUsuario}</div>
+            <div>Email: ${usuario.email}</div>
+            <div>Número de Celular: ${usuario.telefone}</div>
+            <div>Senha: ********</div>
+            <div class="botoes">
+              <button class="dialogButton" onClick="abrirDialogNome()" data-id="${usuario.id}">Atualizar nome</button>
+              <button class="dialogButton" onClick="abrirDialogEmail()" data-id="${usuario.id}">Atualizar email</button>
+              <button class="dialogButton" onClick="abrirDialogTelefone()" data-id="${usuario.id}">Número de celular</button>
+              <button class="dialogButton" onClick="abrirDialogSenha()" data-id="${usuario.id}">Atualizar senha</button>
+              <button class="deleteButton" onClick="excluirUsuario(${usuario.id})">Excluir</button>
+            </div>
+          `;
           userList.appendChild(listaItem);
+        });
       })
       .catch((error) =>
         console.error("Ocorreu um erro ao carregar o arquivo JSON:", error)
       );
-  };
+  }
 
   function excluirUsuario(id) {
     fetch(`http://localhost:3000/usuarios/${id}`, {
