@@ -24,16 +24,18 @@ header {
 header button {
   position: absolute;
   margin: 2vh 2vw 0 0;
+  height: 40px; 
   font-size: 16px;
-  text-decoration: none;
+  text-decoration: unset;
   overflow: hidden;
   transition: 0.5s;
-  margin-top: 15px;
-  letter-spacing: 2px;
-  padding: 10px 20px;
-  border-radius: 10px;
-  background-color: #289bb8;
-  color: white;
+  letter-spacing: 0.3px;
+  padding: 0 20px;
+  border-radius: 100px;
+  box-shadow: var(--wz-button-box-shadow, none);
+  background-color: var(--wz-button-background-color, var(--primary, #0099ff));
+  border: var(--wz-button-border, 1px solid transparent);
+  color: #ffffff;
 }
 
 header button:hover {
@@ -60,8 +62,13 @@ header button:hover {
 }
 
 @keyframes cor {
-  from {background-color: transparent;}
-  to {background-color: rgba(21, 52, 225, 0.9);}
+  from {
+    background-color: transparent;
+  }
+
+  to {
+    background-color: rgba(21, 52, 225, 0.9);
+  }
 }
 
 .registerForm .form.openRegister {
@@ -189,7 +196,8 @@ iframe {
 }
 
 .sidebar.open {
-  display: block; /*define a sidebar com display block sempre que a class open e ativada*/
+  display: block;
+  /*define a sidebar com display block sempre que a class open e ativada*/
   width: 250px;
 }
 
