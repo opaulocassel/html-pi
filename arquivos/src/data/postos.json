@@ -32,6 +32,17 @@
       "alcoolPosto": "123",
       "id": 3,
       "data": "13/03/2024, 20:16"
+    },
+    {
+      "nomePosto": "testefinal",
+      "enderecoPosto": "unisinos",
+      "cnpjPosto": "123213213",
+      "comumPosto": "5,22",
+      "aditivadaPosto": "6,33",
+      "dieselPosto": "2,33",
+      "alcoolPosto": "1,22",
+      "id": 4,
+      "data": "26/03/2024, 21:38"
     }
   ]
 }
