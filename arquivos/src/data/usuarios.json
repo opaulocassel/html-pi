@@ -31,6 +31,14 @@
       "senha": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
       "id": 5,
       "data": "27/03/2024, 16:39"
+    },
+    {
+      "nomeUsuario": "Paulo",
+      "email": "paulo@gmail.com",
+      "telefone": "12313123123",
+      "senha": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+      "id": 6,
+      "data": "27/03/2024, 17:19"
     }
   ]
 }
