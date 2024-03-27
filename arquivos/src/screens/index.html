@@ -1,132 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Abastecendo Informações</title>
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
-    <header>
-      <button onclick="openDialog()" class="botaoHome" id="botaoHome">
-        Iniciar sessão
-      </button>
-    </header>
 
-    <main>
-      <section class="paginaLogin">
-        <div class="form" id="form">
-          <form class="loginForm" id="loginForm">
-            <div class="icone">
-              <img
-                src="../assets/left-arrow.png"
-                onclick="closeDialog()"
-                alt="Back"
-              />
-            </div>
-            <h2>Entrar</h2>
-            <input
-              onclick="adicionarPlaceholder('loginNome', 'Informe seu nome')"
-              type="text"
-              id="loginNome"
-              maxlength="30"
-              name="login-username"
-              placeholder="Informe seu nome"
-              required
-            />
-            <input
-              onclick="adicionarPlaceholder('loginSenha', 'Digite sua senha')"
-              type="password"
-              id="loginSenha"
-              maxlength="15"
-              name="login-password"
-              placeholder="Digite sua senha"
-              required
-            />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abastecendo Informações</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="index.css" />
+</head>
 
-            <button type="submit" class="botao">Login</button>
+<body>
+  <header>
+    <button onclick="openDialog()" class="botaoHome" id="botaoHome">
+      Iniciar sessão
+    </button>
+  </header>
 
-            <p class="message">
-              Não é registrado?
-              <a id="linkLogin" onclick="cadastrar()" href="#"
-                >Crie uma conta</a
-              >
-            </p>
-          </form>
+  <main>
+    <section class="paginaLogin">
+      <div class="form" id="form">
+        <form class="loginForm" id="loginForm">
+          <div class="icone">
+            <i class="bi bi-arrow-left-square-fill" onclick="closeDialog()" alt="Back"></i>
+          </div>
+          <h2>Entrar</h2>
+          <input onclick="adicionarPlaceholder('loginNome', 'Informe seu nome')" type="text" id="loginNome"
+            maxlength="30" name="login-username" placeholder="Informe seu nome" required />
+          <input onclick="adicionarPlaceholder('loginSenha', 'Digite sua senha')" type="password" id="loginSenha"
+            maxlength="15" name="login-password" placeholder="Digite sua senha" required />
 
-          <form class="registerForm" id="registerForm">
-            <div class="icone">
-              <img
-                src="../assets/left-arrow.png"
-                onclick="closeDialog()"
-                alt="Back"
-              />
-            </div>
-            <h2>Registrar</h2>
+          <button type="submit" class="botao">Login</button>
 
-            <input
-            onclick="adicionarPlaceholder('nomeUsuario', 'Insira seu nome')"
-            type="text"
-            id="nomeUsuario"
-            maxlength="30"
-            name="nomeUsuario"
-            placeholder="Insira seu nome"
-            required
-          />
-            <input
-              onclick="adicionarPlaceholder('telefone', 'Telefone')"
-              type="text"
-              id="telefone"
-              maxlength="11"
-              name="telefone"
-              placeholder="Telefone"
-              required
-            />
-            <input
-              onclick="adicionarPlaceholder('email', 'Insira seu email')"
-              type="email"
-              id="email"
-              maxlength="50"
-              name="email"
-              placeholder="Insira seu email"
-              required
-            />
-            <input
-              onclick="adicionarPlaceholder('senha', 'Escolha uma senha')"
-              type="password"
-              id="senha"
-              maxlength="15"
-              name="senha"
-              placeholder="Escolha uma senha"
-              required
-            />
+          <p class="message">
+            Não é registrado?
+            <a id="linkLogin" onclick="cadastrar()" href="#">Crie uma conta</a>
+          </p>
+        </form>
 
-            <input
-              onclick="adicionarPlaceholder('confirmarSenha', 'Confirme a senha')"
-              type="password"
-              id="confirmarSenha"
-              maxlength="15"
-              name="confirmarSenha"
-              placeholder="Confirme a senha"
-              required
-            />
+        <form class="registerForm" id="registerForm">
+          <div class="icone">
+            <i class="bi bi-arrow-left-square-fill" onclick="closeDialog()" alt="Back"></i>
+          </div>
+          <h2>Registrar</h2>
 
-            <button type="button" class="botao" onclick="adicionarUsuario()">Criar Usuário</button>
+          <input onclick="adicionarPlaceholder('nomeUsuario', 'Insira seu nome')" type="text" id="nomeUsuario"
+            maxlength="30" name="nomeUsuario" placeholder="Insira seu nome" required />
+          <input onclick="adicionarPlaceholder('telefone', 'Telefone')" type="text" id="telefone" maxlength="11"
+            name="telefone" placeholder="Telefone" required />
+          <input onclick="adicionarPlaceholder('email', 'Insira seu email')" type="email" id="email" maxlength="50"
+            name="email" placeholder="Insira seu email" required />
+          <input onclick="adicionarPlaceholder('senha', 'Escolha uma senha')" type="password" id="senha" maxlength="15"
+            name="senha" placeholder="Escolha uma senha" required />
 
-            <p class="message">
-              Já é registrado?
-              <a class="linkRegistrar" onclick="openDialog()" href="#">
-                Entrar</a
-              >
-            </p>
-          </form>
-        </div>
-      </section>
+          <input onclick="adicionarPlaceholder('confirmarSenha', 'Confirme a senha')" type="password"
+            id="confirmarSenha" maxlength="15" name="confirmarSenha" placeholder="Confirme a senha" required />
 
-    </main>
+          <button type="button" class="botao" onclick="adicionarUsuario()">Criar Usuário</button>
 
-    <footer>
-      <script src="../usuarios/usuarios.js"></script>
-    </footer>
-  </body>
+          <p class="message">
+            Já é registrado?
+            <a class="linkRegistrar" onclick="openDialog()" href="#">
+              Entrar</a>
+          </p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <script src="../usuarios/usuarios.js"></script>
+  </footer>
+</body>
+
 </html>

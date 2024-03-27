@@ -162,10 +162,10 @@ loginForm.addEventListener("submit", async (e) => {
         <a href="#" class="close-btn" onclick="toggleSidebar()">Fechar</a>
         <ul>
           <li><a href="perfil.html"</a>Perfil</li>
-          <li><a href="#">Item 1</a></li>
-          <li><a href="#">Item 2</a></li>
           <li><a href="postoteste.html">Postos</a></li>
-          <li id="listaUsuarios"><a href="usuarios.html">Usuários</a></li>
+          <li id="listaUsuarios"><a href="perfil.html">Usuários</a></li>
+          <li><a href="#">Item 4</a></li>
+          <li><a href="#">Item 5</a></li>
         </ul>
       `;
         document.body.appendChild(sidebar);
