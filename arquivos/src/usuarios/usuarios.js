@@ -164,6 +164,7 @@ loginForm.addEventListener("submit", async (e) => {
           <li><a href="perfil.html"</a>Perfil</li>
           <li><a href="#">Item 1</a></li>
           <li><a href="#">Item 2</a></li>
+          <li><a href="postoteste.html">Postos</a></li>
           <li id="listaUsuarios"><a href="usuarios.html">Usuários</a></li>
         </ul>
       `;
