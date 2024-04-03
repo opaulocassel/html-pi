@@ -20,6 +20,7 @@ header {
   display: flex;
   justify-content: end;
   width: 100vw;
+  position: absolute;
 }
 
 header button {
@@ -69,7 +70,10 @@ header button:hover {
   }
 
   to {
-    background-color: var(--wz-button-background-color, var(--primary, #0099ff));
+    background-color: var(
+      --wz-button-background-color,
+      var(--primary, #0099ff)
+    );
   }
 }
 
