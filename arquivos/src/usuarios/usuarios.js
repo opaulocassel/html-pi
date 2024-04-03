@@ -16,6 +16,16 @@ function openDialog() {
   customDialog.style.display = "block";
   loginRegister.style.display = "none";
 
+  let overlay = document.getElementById("overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.id = "overlay";
+    document.body.appendChild(overlay);
+  }
+
+  customDialog.style.zIndex = "1000";
+  form.style.zIndex = "1000";
+  loginRegister.style.zIndex = "1000";
 }
 
 // Quando o evento "blur" é acionado (ou seja, quando o campo de entrada perde o foco),
@@ -49,6 +59,11 @@ function closeDialog() {
   document.getElementById("form").style.display = "none";
   document.getElementById("loginForm").style.display = "none";
   document.getElementById("registerForm").style.display = "none";
+
+  let overlay = document.getElementById("overlay");
+  if (overlay) {
+    overlay.parentNode.removeChild(overlay);
+  }
 }
 
 function verificarEmail(email) {
