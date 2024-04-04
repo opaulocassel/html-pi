@@ -1,4 +1,4 @@
-let map;
+
 
 async function initMap() {    
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
@@ -6,6 +6,7 @@ async function initMap() {
       center: { lat: -29.754732, lng: -51.151758 },
       zoom: 16,
       mapTypeId: 'roadmap',
+      mapId: "4504f8b37365c3d0",
       styles: [
         { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
         { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
@@ -87,7 +88,13 @@ async function initMap() {
         },
       ],
     };
-    map = new google.maps.Map(document.getElementById('map'), opcoesMapa);
+    
+   let map = new google.maps.Map(document.getElementById('map'), opcoesMapa);
+
+   const marker = new AdvancedMarkerElement({
+    map,
+    position: { lat: -29.754732, lng: -51.151758 },
+  });
 };
 
 
