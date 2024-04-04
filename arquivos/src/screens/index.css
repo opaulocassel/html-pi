@@ -21,6 +21,9 @@ header {
   justify-content: end;
   width: 100vw;
   position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 header button {
@@ -83,7 +86,6 @@ header button:hover {
 
 .loginForm,
 .registerForm {
-  
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -246,5 +248,9 @@ iframe {
 }
 
 button.gm-control-active.gm-fullscreen-control {
+  display: none;
+}
+
+div.gmnoprint.gm-style-mtc-bbw{
   display: none;
 }

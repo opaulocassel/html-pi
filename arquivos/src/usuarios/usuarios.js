@@ -87,10 +87,6 @@ async function initMap() {
         },
       ],
     };
-    const marker = new AdvancedMarkerElement({
-      map,
-      position: { lat: -29.754732, lng: -51.151758 },
-    });
     map = new google.maps.Map(document.getElementById('map'), opcoesMapa);
 };
 
