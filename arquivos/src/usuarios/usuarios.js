@@ -28,6 +28,23 @@ function openDialog() {
   loginRegister.style.zIndex = "1000";
 }
 
+function dialogPerfil() {
+  let customDialog = document.getElementById("perfilForm");
+  let form = document.getElementById("formPerfil");
+  form.style.display = "block";
+  customDialog.style.display = "block";
+
+  let overlay = document.getElementById("overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.id = "overlay";
+    document.body.appendChild(overlay);
+  }
+
+  customDialog.style.zIndex = "1000";
+  form.style.zIndex = "1000";
+}
+
 // Quando o evento "blur" é acionado (ou seja, quando o campo de entrada perde o foco),
 // a função de retorno de chamada do ouvinte de eventos é executada.
 // Essa função de retorno de chamada verifica se o valor do campo de entrada é vazio.
@@ -170,7 +187,7 @@ loginForm.addEventListener("submit", async (e) => {
         sidebar.innerHTML = `
         <a href="#" class="close-btn" onclick="toggleSidebar()">Fechar</a>
         <ul>
-          <li><a href="perfil.html"</a>Perfil</li>
+          <li><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil""</a>Perfil</li>
           <li><a href="postoteste.html">Postos</a></li>
           <li id="listaUsuarios"><a href="perfil.html">Usuários</a></li>
           <li><a href="#">Item 4</a></li>
