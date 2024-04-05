@@ -56,6 +56,15 @@ server.get("/usuarios/:nomeUsuario", (req, res)=>{
   }
 });
 
+server.get("/usuarios/id/:id", (req, res) => {
+  const usuariosId = parseInt(req.params.id);
+  const usuarioEncontrado = dadosUsuario.usuarios.find(usuario => usuario.id === usuariosId);
+  if (usuarioEncontrado) {
+      return res.json(usuarioEncontrado);
+  } else {
+      return res.status(404).json({ error: 'Usuário não encontrado' });
+  }
+});
 
 server.put("/usuarios/:id", (req, res) => {
   const usuariosId = parseInt(req.params.id);
