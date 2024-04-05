@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 async function initMap() {
   let opcoesMapa = {
     center: { lat: -29.754732, lng: -51.151758 },
@@ -95,6 +96,29 @@ async function initMap() {
 
   let mapElement = document.getElementById("map");
   let map = new google.maps.Map(mapElement, opcoesMapa);
+=======
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById('formAtualizarNome').addEventListener('submit', function (event) {
+    event.preventDefault();
+    atualizarNomeUsuario();
+  });
+
+  document.getElementById('formAtualizarEmail').addEventListener('submit', function (event) {
+    event.preventDefault();
+    atualizarEmailUsuario();
+  });
+
+  document.getElementById('formAtualizarTelefone').addEventListener('submit', function (event) {
+    event.preventDefault();
+    atualizarCelularUsuario();
+  });
+
+  document.getElementById('formAtualizarSenha').addEventListener('submit', function (event) {
+    event.preventDefault();
+    atualizarSenhaUsuario();
+  });
+});
+>>>>>>> 7bae85dc9b4a6be9f97531ee9aa2a139920f169f
 
   const markerShell = new google.maps.Marker({
     map: map,
@@ -173,6 +197,7 @@ function closeDialog() {
   document.getElementById("form").style.display = "none";
   document.getElementById("loginForm").style.display = "none";
   document.getElementById("registerForm").style.display = "none";
+  document.getElementById("formPerfil").style.display = "none"
 
   let overlay = document.getElementById("overlay");
   if (overlay) {
@@ -269,10 +294,15 @@ loginForm.addEventListener("submit", async (e) => {
     .then((response) => response.json())
     .then((data) => {
       if (data.nomeUsuario === userName && data.senha === hashSenha) {
+<<<<<<< HEAD
         let guardarNome = data.nomeUsuario;
         sessionStorage.setItem("guardarNome", JSON.stringify(guardarNome));
+=======
+>>>>>>> 7bae85dc9b4a6be9f97531ee9aa2a139920f169f
 
         console.log("bem vindo");
+
+        sessionStorage.setItem('userId', data.id);
 
         const sidebar = document.createElement("div");
         sidebar.id = "sidebar";
@@ -295,4 +325,205 @@ loginForm.addEventListener("submit", async (e) => {
         console.error("Usuario não encontrado");
       }
     });
+    carregarListaUsuarios();
 });
+
+function carregarListaUsuarios() {
+
+  const idUsuarioD = parseInt(sessionStorage.getItem('userId'));
+
+  fetch(`http://localhost:3000/usuarios/id/${idUsuarioD}`)
+  .then((response) => response.json())
+  .then(function (usuario) {
+    let userList = document.getElementById("formPerfil");
+    if (!userList) {
+      console.error("Elemento userList não encontrado.");
+      return;
+    }
+
+      const listaItem = document.createElement("div");
+      listaItem.classList.add("usuario")
+      listaItem.id = `times${listaItem.id}`
+
+      listaItem.innerHTML = `
+      <div>ID: ${usuario.id}</div>
+      <div>Nome: ${usuario.nomeUsuario}</div>
+      <div>Email: ${usuario.email}</div>
+      <div>Número de Celular: ${usuario.telefone}</div>
+      <div>Senha: ********</div>
+      <div class="botoes">
+        <button class="dialogButton" onClick="abrirDialogNome()" data-id="${usuario.id}">Atualizar nome</button>
+        <button class="dialogButton" onClick="abrirDialogEmail()" data-id="${usuario.id}">Atualizar email</button>
+        <button class="dialogButton" onClick="abrirDialogTelefone()" data-id="${usuario.id}">Número de celular</button>
+        <button class="dialogButton" onClick="abrirDialogSenha()" data-id="${usuario.id}">Atualizar senha</button>
+        <button class="deleteButton" onClick="excluirUsuario(${usuario.id})">Excluir</button>
+      </div>
+    `;
+      userList.appendChild(listaItem);
+  })
+  .catch((error) =>
+    console.error("Ocorreu um erro ao carregar o arquivo JSON:", error)
+  );
+};
+
+
+
+function excluirUsuario(id) {
+  fetch(`http://localhost:3000/usuarios/${id}`, {
+    method: "DELETE",
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Usuário excluído com sucesso:", data);
+      carregarListaUsuarios();
+
+    })
+    .catch(error => console.error("Erro ao excluir usuário:", error));
+}
+
+// Atualizar nome
+function abrirDialogNome() {
+  var dialog = document.getElementById('formAtualizarNome');
+  dialog.style.display = 'block';
+
+  var userId = event.target.dataset.id;
+  document.getElementById('userId').value = userId;
+}
+
+function fecharDialogNome() {
+  var dialog = document.getElementById('formAtualizarNome');
+  dialog.style.display = 'none';
+}
+
+function atualizarNomeUsuario() {
+  const novoNomeUsuario = document.getElementById("novoNomeUsuario").value;
+  const idUsuario = document.getElementById("userId").value;
+
+  let guardarNome = novoNomeUsuario
+  sessionStorage.setItem('guardarNome', JSON.stringify(guardarNome))
+
+  fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      nomeUsuario: novoNomeUsuario
+    }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Usuário atualizado com sucesso:", data);
+      carregarListaUsuarios()
+    })
+    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+}
+
+
+// Atualizar email
+function abrirDialogEmail() {
+  var dialog = document.getElementById('formAtualizarEmail');
+  dialog.style.display = 'block';
+
+  var userId = event.target.dataset.id;
+  document.getElementById('userId').value = userId;
+}
+
+function fecharDialogEmail() {
+  var dialog = document.getElementById('formAtualizarEmail');
+  dialog.style.display = 'none';
+}
+
+function atualizarEmailUsuario() {
+  const novoEmailUsuario = document.getElementById("novoEmailUsuario").value;
+  const idUsuario = document.getElementById("userId").value;
+
+  fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: novoEmailUsuario
+    }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Usuário atualizado com sucesso:", data);
+      carregarListaUsuarios()
+    })
+    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+}
+
+// Atualizar celular
+function abrirDialogTelefone() {
+  var dialog = document.getElementById('formAtualizarTelefone');
+  dialog.style.display = 'block';
+
+  var userId = event.target.dataset.id;
+  document.getElementById('userId').value = userId;
+}
+
+function fecharDialogTelefone() {
+  var dialog = document.getElementById('formAtualizarTelefone');
+  dialog.style.display = 'none';
+}
+
+function atualizarCelularUsuario() {
+  const novoTelefoneUsuario = document.getElementById("novoTelefoneUsuario").value;
+  const idUsuario = document.getElementById("userId").value;
+
+  fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      telefone: novoTelefoneUsuario
+    }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Usuário atualizado com sucesso:", data);
+      carregarListaUsuarios()
+    })
+    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+}
+
+
+
+// Atualizar senha
+function abrirDialogSenha() {
+  var dialog = document.getElementById('formAtualizarSenha');
+  dialog.style.display = 'block';
+
+  var userId = event.target.dataset.id;
+  document.getElementById('userId').value = userId;
+}
+
+function fecharDialogSenha() {
+  var dialog = document.getElementById('formAtualizarSenha');
+  dialog.style.display = 'none';
+}
+
+function atualizarSenhaUsuario() {
+
+  const novaSenhaUsuario = document.getElementById("novaSenhaUsuario").value;
+  const idUsuario = document.getElementById("userId").value;
+
+  fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      senha: novaSenhaUsuario
+    }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Usuário atualizado com sucesso:", data);
+      carregarListaUsuarios()
+    })
+    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+}
