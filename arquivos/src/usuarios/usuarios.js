@@ -1,102 +1,110 @@
+async function initMap() {
+  let opcoesMapa = {
+    center: { lat: -29.754732, lng: -51.151758 },
+    zoom: 16,
+    mapTypeId: "roadmap",
+    styles: [
+      { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
+      { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
+      { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
+      {
+        featureType: "administrative.locality",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#d59563" }],
+      },
+      {
+        featureType: "poi",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#d59563" }],
+      },
+      {
+        featureType: "poi.park",
+        elementType: "geometry",
+        stylers: [{ color: "#263c3f" }],
+      },
+      {
+        featureType: "poi.park",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#6b9a76" }],
+      },
+      {
+        featureType: "road",
+        elementType: "geometry",
+        stylers: [{ color: "#38414e" }],
+      },
+      {
+        featureType: "road",
+        elementType: "geometry.stroke",
+        stylers: [{ color: "#212a37" }],
+      },
+      {
+        featureType: "road",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#9ca5b3" }],
+      },
+      {
+        featureType: "road.highway",
+        elementType: "geometry",
+        stylers: [{ color: "#746855" }],
+      },
+      {
+        featureType: "road.highway",
+        elementType: "geometry.stroke",
+        stylers: [{ color: "#1f2835" }],
+      },
+      {
+        featureType: "road.highway",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#f3d19c" }],
+      },
+      {
+        featureType: "transit",
+        elementType: "geometry",
+        stylers: [{ color: "#2f3948" }],
+      },
+      {
+        featureType: "transit.station",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#d59563" }],
+      },
+      {
+        featureType: "water",
+        elementType: "geometry",
+        stylers: [{ color: "#17263c" }],
+      },
+      {
+        featureType: "water",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#515c6d" }],
+      },
+      {
+        featureType: "water",
+        elementType: "labels.text.stroke",
+        stylers: [{ color: "#17263c" }],
+      },
+      {
+        featureType: "poi.business",
+        stylers: [{ visibility: "off" }],
+      },
+      {
+        elementType: "labels.icon",
+        stylers: [{ visibility: "off" }],
+      },
+    ],
+  };
 
+  let mapElement = document.getElementById("map");
+  let map = new google.maps.Map(mapElement, opcoesMapa);
 
-async function initMap() {    
-  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-    let opcoesMapa = {
-      center: { lat: -29.754732, lng: -51.151758 },
-      zoom: 16,
-      mapTypeId: 'roadmap',
-      mapId: "4504f8b37365c3d0",
-      styles: [
-        { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
-        { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
-        { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
-        {
-          featureType: "administrative.locality",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#d59563" }],
-        },
-        {
-          featureType: "poi",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#d59563" }],
-        },
-        {
-          featureType: "poi.park",
-          elementType: "geometry",
-          stylers: [{ color: "#263c3f" }],
-        },
-        {
-          featureType: "poi.park",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#6b9a76" }],
-        },
-        {
-          featureType: "road",
-          elementType: "geometry",
-          stylers: [{ color: "#38414e" }],
-        },
-        {
-          featureType: "road",
-          elementType: "geometry.stroke",
-          stylers: [{ color: "#212a37" }],
-        },
-        {
-          featureType: "road",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#9ca5b3" }],
-        },
-        {
-          featureType: "road.highway",
-          elementType: "geometry",
-          stylers: [{ color: "#746855" }],
-        },
-        {
-          featureType: "road.highway",
-          elementType: "geometry.stroke",
-          stylers: [{ color: "#1f2835" }],
-        },
-        {
-          featureType: "road.highway",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#f3d19c" }],
-        },
-        {
-          featureType: "transit",
-          elementType: "geometry",
-          stylers: [{ color: "#2f3948" }],
-        },
-        {
-          featureType: "transit.station",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#d59563" }],
-        },
-        {
-          featureType: "water",
-          elementType: "geometry",
-          stylers: [{ color: "#17263c" }],
-        },
-        {
-          featureType: "water",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#515c6d" }],
-        },
-        {
-          featureType: "water",
-          elementType: "labels.text.stroke",
-          stylers: [{ color: "#17263c" }],
-        },
-      ],
-    };
-    
-   let map = new google.maps.Map(document.getElementById('map'), opcoesMapa);
-
-   const marker = new AdvancedMarkerElement({
-    map,
+  const markerShell = new google.maps.Marker({
+    map: map,
     position: { lat: -29.754732, lng: -51.151758 },
+    id: "shell",
   });
-};
+  
+}
 
+function modoCor() {}
 
 function openDialog() {
   let customDialog = document.getElementById("loginForm");
@@ -151,9 +159,8 @@ function adicionarPlaceholder(inputId, placeholderText) {
     if (inputElement.placeholder === "") {
       inputElement.placeholder = placeholderText;
     }
-  })
+  });
 }
-
 
 function cadastrar() {
   let dialogRegister = document.getElementById("registerForm");
@@ -239,9 +246,6 @@ function toggleSidebar() {
 
 const loginForm = document.getElementById("loginForm");
 
-
-
-
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -265,9 +269,8 @@ loginForm.addEventListener("submit", async (e) => {
     .then((response) => response.json())
     .then((data) => {
       if (data.nomeUsuario === userName && data.senha === hashSenha) {
-
-        let guardarNome = data.nomeUsuario
-        sessionStorage.setItem('guardarNome', JSON.stringify(guardarNome))
+        let guardarNome = data.nomeUsuario;
+        sessionStorage.setItem("guardarNome", JSON.stringify(guardarNome));
 
         console.log("bem vindo");
 
@@ -290,6 +293,6 @@ loginForm.addEventListener("submit", async (e) => {
         closeDialog();
       } else {
         console.error("Usuario não encontrado");
-    }
+      }
     });
 });
