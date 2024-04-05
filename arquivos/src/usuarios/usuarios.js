@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 async function initMap() {
   let opcoesMapa = {
     center: { lat: -29.754732, lng: -51.151758 },
@@ -96,7 +95,6 @@ async function initMap() {
 
   let mapElement = document.getElementById("map");
   let map = new google.maps.Map(mapElement, opcoesMapa);
-=======
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById('formAtualizarNome').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -118,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
     atualizarSenhaUsuario();
   });
 });
->>>>>>> 7bae85dc9b4a6be9f97531ee9aa2a139920f169f
 
   const markerShell = new google.maps.Marker({
     map: map,
@@ -294,11 +291,8 @@ loginForm.addEventListener("submit", async (e) => {
     .then((response) => response.json())
     .then((data) => {
       if (data.nomeUsuario === userName && data.senha === hashSenha) {
-<<<<<<< HEAD
         let guardarNome = data.nomeUsuario;
         sessionStorage.setItem("guardarNome", JSON.stringify(guardarNome));
-=======
->>>>>>> 7bae85dc9b4a6be9f97531ee9aa2a139920f169f
 
         console.log("bem vindo");
 
