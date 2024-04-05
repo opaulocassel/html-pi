@@ -266,11 +266,13 @@ function toggleSidebar() {
   sidebar.classList.toggle("open");
 }
 
+let idUsuarioD;
+
 const loginForm = document.getElementById("loginForm");
 
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-
+  
   const userName = document.getElementById("loginNome").value;
   const passWord = document.getElementById("loginSenha").value;
 
@@ -296,7 +298,7 @@ loginForm.addEventListener("submit", async (e) => {
 
         console.log("bem vindo");
 
-        sessionStorage.setItem('userId', data.id);
+         idUsuarioD = data.id;
 
         const sidebar = document.createElement("div");
         sidebar.id = "sidebar";
@@ -315,16 +317,17 @@ loginForm.addEventListener("submit", async (e) => {
 
         toggleSidebar();
         closeDialog();
+
+        carregarListaUsuarios();
       } else {
         console.error("Usuario não encontrado");
       }
     });
-    carregarListaUsuarios();
 });
 
 function carregarListaUsuarios() {
 
-  const idUsuarioD = parseInt(sessionStorage.getItem('userId'));
+  console.log(idUsuarioD)
 
   fetch(`http://localhost:3000/usuarios/id/${idUsuarioD}`)
   .then((response) => response.json())
