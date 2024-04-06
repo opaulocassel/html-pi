@@ -3,9 +3,39 @@ async function initMap() {
     center: { lat: -29.754732, lng: -51.151758 },
     zoom: 16,
     mapTypeId: "roadmap",
-    styles: [
+  };
+
+  let mapElement = document.getElementById("map");
+  let map = new google.maps.Map(mapElement, opcoesMapa);
+
+  const markerShell = new google.maps.Marker({
+    map: map,
+    position: { lat: -29.754732, lng: -51.151758 },
+    id: "shell",
+  });
+
+  const selectElement = document.getElementById("selecao");
+  let selectedValue = selectElement.value;
+
+  if (selectedValue === "default") {
+    opcoesMapa.styles = [
+      {
+        featureType: "poi.business",
+        stylers: [{ visibility: "off" }],
+      },
+      {
+        elementType: "labels.icon",
+        stylers: [{ visibility: "off" }],
+      },
+    ];
+    map.setOptions(opcoesMapa);
+  } else if (selectedValue === "night") {
+    opcoesMapa.styles = [
       { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
-      { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
+      {
+        elementType: "labels.text.stroke",
+        stylers: [{ color: "#242f3e" }],
+      },
       { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
       {
         featureType: "administrative.locality",
@@ -90,39 +120,39 @@ async function initMap() {
         elementType: "labels.icon",
         stylers: [{ visibility: "off" }],
       },
-    ],
-  };
+    ];
+    map.setOptions(opcoesMapa);
+  }
 
-  let mapElement = document.getElementById("map");
-  let map = new google.maps.Map(mapElement, opcoesMapa);
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById('formAtualizarNome').addEventListener('submit', function (event) {
-    event.preventDefault();
-    atualizarNomeUsuario();
-  });
+  document.addEventListener("DOMContentLoaded", function () {
+    document
+      .getElementById("formAtualizarNome")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+        atualizarNomeUsuario();
+      });
 
-  document.getElementById('formAtualizarEmail').addEventListener('submit', function (event) {
-    event.preventDefault();
-    atualizarEmailUsuario();
-  });
+    document
+      .getElementById("formAtualizarEmail")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+        atualizarEmailUsuario();
+      });
 
-  document.getElementById('formAtualizarTelefone').addEventListener('submit', function (event) {
-    event.preventDefault();
-    atualizarCelularUsuario();
-  });
+    document
+      .getElementById("formAtualizarTelefone")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+        atualizarCelularUsuario();
+      });
 
-  document.getElementById('formAtualizarSenha').addEventListener('submit', function (event) {
-    event.preventDefault();
-    atualizarSenhaUsuario();
+    document
+      .getElementById("formAtualizarSenha")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+        atualizarSenhaUsuario();
+      });
   });
-});
-
-  const markerShell = new google.maps.Marker({
-    map: map,
-    position: { lat: -29.754732, lng: -51.151758 },
-    id: "shell",
-  });
-  
 }
 
 function modoCor() {}
@@ -194,7 +224,7 @@ function closeDialog() {
   document.getElementById("form").style.display = "none";
   document.getElementById("loginForm").style.display = "none";
   document.getElementById("registerForm").style.display = "none";
-  document.getElementById("formPerfil").style.display = "none"
+  document.getElementById("formPerfil").style.display = "none";
 
   let overlay = document.getElementById("overlay");
   if (overlay) {
@@ -272,7 +302,7 @@ const loginForm = document.getElementById("loginForm");
 
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  
+
   const userName = document.getElementById("loginNome").value;
   const passWord = document.getElementById("loginSenha").value;
 
@@ -298,7 +328,7 @@ loginForm.addEventListener("submit", async (e) => {
 
         console.log("bem vindo");
 
-         idUsuarioD = data.id;
+        idUsuarioD = data.id;
 
         const sidebar = document.createElement("div");
         sidebar.id = "sidebar";
@@ -326,21 +356,20 @@ loginForm.addEventListener("submit", async (e) => {
 });
 
 function carregarListaUsuarios() {
-
-  console.log(idUsuarioD)
+  console.log(idUsuarioD);
 
   fetch(`http://localhost:3000/usuarios/id/${idUsuarioD}`)
-  .then((response) => response.json())
-  .then(function (usuario) {
-    let userList = document.getElementById("formPerfil");
-    if (!userList) {
-      console.error("Elemento userList não encontrado.");
-      return;
-    }
+    .then((response) => response.json())
+    .then(function (usuario) {
+      let userList = document.getElementById("formPerfil");
+      if (!userList) {
+        console.error("Elemento userList não encontrado.");
+        return;
+      }
 
       const listaItem = document.createElement("div");
-      listaItem.classList.add("usuario")
-      listaItem.id = `times${listaItem.id}`
+      listaItem.classList.add("usuario");
+      listaItem.id = `times${listaItem.id}`;
 
       listaItem.innerHTML = `
       <div>ID: ${usuario.id}</div>
@@ -357,47 +386,44 @@ function carregarListaUsuarios() {
       </div>
     `;
       userList.appendChild(listaItem);
-  })
-  .catch((error) =>
-    console.error("Ocorreu um erro ao carregar o arquivo JSON:", error)
-  );
-};
-
-
+    })
+    .catch((error) =>
+      console.error("Ocorreu um erro ao carregar o arquivo JSON:", error)
+    );
+}
 
 function excluirUsuario(id) {
   fetch(`http://localhost:3000/usuarios/${id}`, {
     method: "DELETE",
   })
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       console.log("Usuário excluído com sucesso:", data);
       carregarListaUsuarios();
-
     })
-    .catch(error => console.error("Erro ao excluir usuário:", error));
+    .catch((error) => console.error("Erro ao excluir usuário:", error));
 }
 
 // Atualizar nome
 function abrirDialogNome() {
-  var dialog = document.getElementById('formAtualizarNome');
-  dialog.style.display = 'block';
+  var dialog = document.getElementById("formAtualizarNome");
+  dialog.style.display = "block";
 
   var userId = event.target.dataset.id;
-  document.getElementById('userId').value = userId;
+  document.getElementById("userId").value = userId;
 }
 
 function fecharDialogNome() {
-  var dialog = document.getElementById('formAtualizarNome');
-  dialog.style.display = 'none';
+  var dialog = document.getElementById("formAtualizarNome");
+  dialog.style.display = "none";
 }
 
 function atualizarNomeUsuario() {
   const novoNomeUsuario = document.getElementById("novoNomeUsuario").value;
   const idUsuario = document.getElementById("userId").value;
 
-  let guardarNome = novoNomeUsuario
-  sessionStorage.setItem('guardarNome', JSON.stringify(guardarNome))
+  let guardarNome = novoNomeUsuario;
+  sessionStorage.setItem("guardarNome", JSON.stringify(guardarNome));
 
   fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
     method: "PUT",
@@ -405,30 +431,29 @@ function atualizarNomeUsuario() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      nomeUsuario: novoNomeUsuario
+      nomeUsuario: novoNomeUsuario,
     }),
   })
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       console.log("Usuário atualizado com sucesso:", data);
-      carregarListaUsuarios()
+      carregarListaUsuarios();
     })
-    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+    .catch((error) => console.error("Erro ao atualizar o usuário:", error));
 }
-
 
 // Atualizar email
 function abrirDialogEmail() {
-  var dialog = document.getElementById('formAtualizarEmail');
-  dialog.style.display = 'block';
+  var dialog = document.getElementById("formAtualizarEmail");
+  dialog.style.display = "block";
 
   var userId = event.target.dataset.id;
-  document.getElementById('userId').value = userId;
+  document.getElementById("userId").value = userId;
 }
 
 function fecharDialogEmail() {
-  var dialog = document.getElementById('formAtualizarEmail');
-  dialog.style.display = 'none';
+  var dialog = document.getElementById("formAtualizarEmail");
+  dialog.style.display = "none";
 }
 
 function atualizarEmailUsuario() {
@@ -441,33 +466,35 @@ function atualizarEmailUsuario() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      email: novoEmailUsuario
+      email: novoEmailUsuario,
     }),
   })
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       console.log("Usuário atualizado com sucesso:", data);
-      carregarListaUsuarios()
+      carregarListaUsuarios();
     })
-    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+    .catch((error) => console.error("Erro ao atualizar o usuário:", error));
 }
 
 // Atualizar celular
 function abrirDialogTelefone() {
-  var dialog = document.getElementById('formAtualizarTelefone');
-  dialog.style.display = 'block';
+  var dialog = document.getElementById("formAtualizarTelefone");
+  dialog.style.display = "block";
 
   var userId = event.target.dataset.id;
-  document.getElementById('userId').value = userId;
+  document.getElementById("userId").value = userId;
 }
 
 function fecharDialogTelefone() {
-  var dialog = document.getElementById('formAtualizarTelefone');
-  dialog.style.display = 'none';
+  var dialog = document.getElementById("formAtualizarTelefone");
+  dialog.style.display = "none";
 }
 
 function atualizarCelularUsuario() {
-  const novoTelefoneUsuario = document.getElementById("novoTelefoneUsuario").value;
+  const novoTelefoneUsuario = document.getElementById(
+    "novoTelefoneUsuario"
+  ).value;
   const idUsuario = document.getElementById("userId").value;
 
   fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
@@ -476,35 +503,32 @@ function atualizarCelularUsuario() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      telefone: novoTelefoneUsuario
+      telefone: novoTelefoneUsuario,
     }),
   })
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       console.log("Usuário atualizado com sucesso:", data);
-      carregarListaUsuarios()
+      carregarListaUsuarios();
     })
-    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+    .catch((error) => console.error("Erro ao atualizar o usuário:", error));
 }
-
-
 
 // Atualizar senha
 function abrirDialogSenha() {
-  var dialog = document.getElementById('formAtualizarSenha');
-  dialog.style.display = 'block';
+  var dialog = document.getElementById("formAtualizarSenha");
+  dialog.style.display = "block";
 
   var userId = event.target.dataset.id;
-  document.getElementById('userId').value = userId;
+  document.getElementById("userId").value = userId;
 }
 
 function fecharDialogSenha() {
-  var dialog = document.getElementById('formAtualizarSenha');
-  dialog.style.display = 'none';
+  var dialog = document.getElementById("formAtualizarSenha");
+  dialog.style.display = "none";
 }
 
 function atualizarSenhaUsuario() {
-
   const novaSenhaUsuario = document.getElementById("novaSenhaUsuario").value;
   const idUsuario = document.getElementById("userId").value;
 
@@ -514,13 +538,13 @@ function atualizarSenhaUsuario() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      senha: novaSenhaUsuario
+      senha: novaSenhaUsuario,
     }),
   })
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       console.log("Usuário atualizado com sucesso:", data);
-      carregarListaUsuarios()
+      carregarListaUsuarios();
     })
-    .catch(error => console.error("Erro ao atualizar o usuário:", error));
+    .catch((error) => console.error("Erro ao atualizar o usuário:", error));
 }
