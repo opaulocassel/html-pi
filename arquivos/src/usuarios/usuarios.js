@@ -155,7 +155,7 @@ async function initMap() {
   });
 }
 
-function modoCor() {}
+function modoCor() { }
 
 function openDialog() {
   let customDialog = document.getElementById("loginForm");
@@ -190,8 +190,8 @@ function dialogPerfil() {
     document.body.appendChild(overlay);
   }
 
-  customDialog.style.zIndex = "1000";
-  form.style.zIndex = "1000";
+  customDialog.style.zIndex = "2000";
+  form.style.zIndex = "2000";
 }
 
 // Quando o evento "blur" é acionado (ou seja, quando o campo de entrada perde o foco),
@@ -372,11 +372,66 @@ function carregarListaUsuarios() {
       listaItem.id = `times${listaItem.id}`;
 
       listaItem.innerHTML = `
-      <div>ID: ${usuario.id}</div>
-      <div>Nome: ${usuario.nomeUsuario}</div>
-      <div>Email: ${usuario.email}</div>
-      <div>Número de Celular: ${usuario.telefone}</div>
-      <div>Senha: ********</div>
+      <div class="container">
+        <div class="main-body">
+            <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <div class="mt-3">
+                                    <h4>${usuario.nomeUsuario}</h4>
+                                    <p class="text-secondary mb-1">fffffffff</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Nome completo</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    ${usuario.nomeUsuario}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    ${usuario.email}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Celular</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    ${usuario.telefone}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Senha</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    ${usuario.senha}
+                                </div>
+                            </div>
+                            <hr>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+         </div>
+      </div>
       <div class="botoes">
         <button class="dialogButton" onClick="abrirDialogNome()" data-id="${usuario.id}">Atualizar nome</button>
         <button class="dialogButton" onClick="abrirDialogEmail()" data-id="${usuario.id}">Atualizar email</button>
