@@ -25,7 +25,6 @@ async function initMap() {
   console.log("Eu funciono, mas não apareço.");
 }
 
-<<<<<<< HEAD
 const styles = {
   default: [
     {
@@ -161,9 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function modoCor() {}
-=======
 function modoCor() { }
->>>>>>> 569815cb74f88a64b4f9eb5d795f1bea966daac1
 
 function openDialog() {
   let customDialog = document.getElementById("loginForm");
