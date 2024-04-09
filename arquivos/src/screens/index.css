@@ -93,16 +93,29 @@ header button:hover {
   z-index: 1;
   text-align: center;
   position: absolute;
-  width: 525px;
+  width: 850px;
   height: 525px;
   padding: 40px;
   background-color: transparent;
   box-sizing: border-box;
   box-shadow: 0 5px 10px rgba(110, 110, 110, 0.548);
   border-radius: 10px;
-  animation-name: cor;
+  animation-name: cor-fundo;
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
+}
+
+@keyframes cor-fundo {
+  from {
+    background-color: transparent;
+  }
+
+  to {
+    background-color: var(
+      --wz-button-background-color,
+      var(--primary, #ffffff)
+    );
+  }
 }
 
 .formPerfil {
@@ -288,3 +301,69 @@ button.gm-control-active.gm-fullscreen-control {
 div.gmnoprint.gm-style-mtc-bbw{
   display: none;
 }
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+.main-body {
+  padding: 2px;
+}
+
+.card {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid rgba(0, 0, 0, .125);
+  border-radius: .25rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1rem;
+}
+
+.gutters-sm {
+  margin-right: -12px;
+  margin-left: -12px;
+}
+
+.gutters-sm>.col,
+.gutters-sm>[class*=col-] {
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.mb-3,
+.my-3 {
+  margin-bottom: 1rem !important;
+}
+
+.bg-gray-300 {
+  background-color: #e2e8f0;
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+.shadow-none {
+  box-shadow: none !important;
+}
+
+h6 {
+  font-weight: bolder;
+}
+>>>>>>> 569815cb74f88a64b4f9eb5d795f1bea966daac1

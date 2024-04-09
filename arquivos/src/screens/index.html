@@ -1,250 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Abastecendo Informações</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
-    />
-    <link rel="stylesheet" href="index.css" />
 
-    <style>
-      .dialog {
-          display: none;
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background-color: white;
-          padding: 20px;
-          border: 1px solid black;
-          z-index: 9999;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abastecendo Informações</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="index.css" />
+
+  <style>
+    .dialog {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border: 1px solid black;
+      z-index: 9999;
+    }
   </style>
-  </head>
+</head>
 
-  <body>
-    <div id="map" style="height: 100vh; width: 100vw"></div>
+<body>
+  <div id="map" style="height: 100vh; width: 100vw"></div>
 
-      <header>
-        <div id="controleSelecao" class="controleSelecao">
-          <select id="selecao" class="selecao">
-            <option value="default">Default</option>
-            <option value="night">Night mode</option>
-          </select>
-        </div>
-        
-        <button onclick="openDialog()" class="botaoHome" id="botaoHome">
-          Iniciar sessão
-        </button>
-      </header>
+  <header>
+    <div id="controleSelecao" class="controleSelecao">
+      <select id="selecao" class="selecao">
+        <option value="default">Default</option>
+        <option value="night">Night mode</option>
+      </select>
+    </div>
 
-      <main>
-        <section class="paginaLogin">
-          <div class="form" id="form">
-            <form class="loginForm" id="loginForm">
-              <div class="icone">
-                <i
-                  class="bi bi-arrow-left-square-fill"
-                  onclick="closeDialog()"
-                  alt="Back"
-                ></i>
-              </div>
-              <h2>Entrar</h2>
-              <input
-                onclick="adicionarPlaceholder('loginNome', 'Informe seu nome')"
-                type="text"
-                id="loginNome"
-                maxlength="30"
-                name="login-username"
-                placeholder="Informe seu nome"
-                required
-              />
-              <input
-                onclick="adicionarPlaceholder('loginSenha', 'Digite sua senha')"
-                type="password"
-                id="loginSenha"
-                maxlength="15"
-                name="login-password"
-                placeholder="Digite sua senha"
-                required
-              />
+    <button onclick="openDialog()" class="botaoHome" id="botaoHome">
+      Iniciar sessão
+    </button>
+  </header>
 
-              <button type="submit" class="botao">Login</button>
-
-              <p class="message">
-                Não é registrado?
-                <a id="linkLogin" onclick="cadastrar()" href="#"
-                  >Crie uma conta</a
-                >
-              </p>
-            </form>
-
-            <form class="registerForm" id="registerForm">
-              <div class="icone">
-                <i
-                  class="bi bi-arrow-left-square-fill"
-                  onclick="closeDialog()"
-                  alt="Back"
-                ></i>
-              </div>
-              <h2>Registrar</h2>
-
-              <input
-                onclick="adicionarPlaceholder('nomeUsuario', 'Insira seu nome')"
-                type="text"
-                id="nomeUsuario"
-                maxlength="30"
-                name="nomeUsuario"
-                placeholder="Insira seu nome"
-                required
-              />
-              <input
-                onclick="adicionarPlaceholder('telefone', 'Telefone')"
-                type="text"
-                id="telefone"
-                maxlength="11"
-                name="telefone"
-                placeholder="Telefone"
-                required
-              />
-              <input
-                onclick="adicionarPlaceholder('email', 'Insira seu email')"
-                type="email"
-                id="email"
-                maxlength="50"
-                name="email"
-                placeholder="Insira seu email"
-                required
-              />
-              <input
-                onclick="adicionarPlaceholder('senha', 'Escolha uma senha')"
-                type="password"
-                id="senha"
-                maxlength="15"
-                name="senha"
-                placeholder="Escolha uma senha"
-                required
-              />
-
-              <input
-                onclick="adicionarPlaceholder('confirmarSenha', 'Confirme a senha')"
-                type="password"
-                id="confirmarSenha"
-                maxlength="15"
-                name="confirmarSenha"
-                placeholder="Confirme a senha"
-                required
-              />
-
-              <button type="button" class="botao" onclick="adicionarUsuario()">
-                Criar Usuário
-              </button>
-
-              <p class="message">
-                Já é registrado?
-                <a class="linkRegistrar" onclick="openDialog()" href="#">
-                  Entrar</a
-                >
-              </p>
-            </form>
-          </div>
-        </section>
-
-        <section class="formPerfil" id="formPerfil">
+  <main>
+    <section class="paginaLogin">
+      <div class="form" id="form">
+        <form class="loginForm" id="loginForm">
           <div class="icone">
-            <i
-              class="bi bi-arrow-left-square-fill"
-              onclick="closeDialog()"
-              alt="Back"
-            ></i>
-        </section>
+            <i class="bi bi-arrow-left-square-fill" onclick="closeDialog()" alt="Back"></i>
+          </div>
+          <h2>Entrar</h2>
+          <input onclick="adicionarPlaceholder('loginNome', 'Informe seu nome')" type="text" id="loginNome"
+            maxlength="30" name="login-username" placeholder="Informe seu nome" required />
+          <input onclick="adicionarPlaceholder('loginSenha', 'Digite sua senha')" type="password" id="loginSenha"
+            maxlength="15" name="login-password" placeholder="Digite sua senha" required />
+
+          <button type="submit" class="botao">Login</button>
+
+          <p class="message">
+            Não é registrado?
+            <a id="linkLogin" onclick="cadastrar()" href="#">Crie uma conta</a>
+          </p>
+        </form>
+
+        <form class="registerForm" id="registerForm">
+          <div class="icone">
+            <i class="bi bi-arrow-left-square-fill" onclick="closeDialog()" alt="Back"></i>
+          </div>
+          <h2>Registrar</h2>
+
+          <input onclick="adicionarPlaceholder('nomeUsuario', 'Insira seu nome')" type="text" id="nomeUsuario"
+            maxlength="30" name="nomeUsuario" placeholder="Insira seu nome" required />
+          <input onclick="adicionarPlaceholder('telefone', 'Telefone')" type="text" id="telefone" maxlength="11"
+            name="telefone" placeholder="Telefone" required />
+          <input onclick="adicionarPlaceholder('email', 'Insira seu email')" type="email" id="email" maxlength="50"
+            name="email" placeholder="Insira seu email" required />
+          <input onclick="adicionarPlaceholder('senha', 'Escolha uma senha')" type="password" id="senha" maxlength="15"
+            name="senha" placeholder="Escolha uma senha" required />
+
+          <input onclick="adicionarPlaceholder('confirmarSenha', 'Confirme a senha')" type="password"
+            id="confirmarSenha" maxlength="15" name="confirmarSenha" placeholder="Confirme a senha" required />
+
+          <button type="button" class="botao" onclick="adicionarUsuario()">
+            Criar Usuário
+          </button>
+
+          <p class="message">
+            Já é registrado?
+            <a class="linkRegistrar" onclick="openDialog()" href="#">
+              Entrar</a>
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <section class="formPerfil" id="formPerfil">
+      <div class="icone">
+        <i class="bi bi-arrow-left-square-fill" onclick="closeDialog()" alt="Back"></i>
+    </section>
 
 
-        <!------------------------------------------------------>
+    <!------------------------------------------------------>
 
-        <form id="formAtualizarNome" class="dialog">
-          <input type="hidden" id="userId" name="userId" />
+    <form id="formAtualizarNome" class="dialog">
+      <input type="hidden" id="userId" name="userId" />
 
-          <div class="mb-3" id="dialogNome">
-              <label for="nomeUsuario" class="form-label">Insira o nome de usuário atual:</label>
-              <input type="text" class="form-control" id="antigoNomeUsuario" maxlength="30" name="antigoNomeUsuario">
-          </div>
-          <div class="mb-3" id="dialogNome">
-              <label for="nomeUsuario" class="form-label">Insira o novo nome de usuário:</label>
-              <input type="text" class="form-control" id="novoNomeUsuario" maxlength="30" name="novoNomeUsuario">
-          </div>
-          <div class="mb-3" id="dialogNome">
-              <label for="senha" class="form-label">Insira sua senha:</label>
-              <input type="password" class="form-control" id="confirmeSenha" maxlength="30" name="senha">
-          </div>
-          <button type="submit" class="btn btn-primary" onclick="fecharDialogNome()">Confirmar</button>
-      </form>
-  
-      <form id="formAtualizarEmail" class="dialog">
-          <input type="hidden" id="userId" name="userId" />
-  
-          <div class="mb-3" id="dialogNome">
-              <label for="emailUsuario" class="form-label">Insira o seu email atual:</label>
-              <input type="email" class="form-control" id="emailUsuario" maxlength="30" name="emailUsuario" >
-          </div>
-          <div class="mb-3" id="dialogNome">
-              <label for="emailUsuario" class="form-label">Insira o seu novo email:</label>
-              <input type="email" class="form-control" id="novoEmailUsuario" maxlength="30" name="novoEmailUsuario" >
-          </div>
-          <div class="mb-3" id="dialogNome">
-              <label for="senha" class="form-label">Insira sua senha:</label>
-              <input type="password" class="form-control" id="confirmeSenha" maxlength="30" name="senha">
-          </div>
-          <button type="submit" class="btn btn-primary" onclick="fecharDialogEmail()">Confirmar</button>
-      </form>
-  
-      <form id="formAtualizarTelefone" class="dialog">
-          <input type="hidden" id="userId" name="userId" />
-  
-          <div class="mb-3" id="dialogNome">
-              <label for="telefoneUsuario" class="form-label">Insira o número de celular atual:</label>
-              <input type="text" class="form-control" id="telefoneUsuario" maxlength="30" name="telefoneUsuario" >
-          </div>
-          <div class="mb-3" id="dialogNome">
-              <label for="emailUsuario" class="form-label">Insira o seu novo número:</label>
-              <input type="text" class="form-control" id="novoTelefoneUsuario" maxlength="30" name="novoTelefoneUsuario" >
-          </div>
-          <div class="mb-3" id="dialogNome">
-              <label for="senha" class="form-label">Insira sua senha:</label>
-              <input type="password" class="form-control" id="confirmeSenha" maxlength="30" name="senha">
-          </div>
-          <button type="submit" class="btn btn-primary" onclick="fecharDialogTelefone()">Confirmar</button>
-      </form>
-  
-      <form id="formAtualizarSenha" class="dialog">
-          <input type="hidden" id="userId" name="userId" />
-  
-          <div class="mb-3" id="dialogNome">
-              <label for="telefoneUsuario" class="form-label">Insira a sua senha atual:</label>
-              <input type="text" class="form-control" id="senhaUsuario" maxlength="30" name="senhaUsuario" >
-          </div>
-          <div class="mb-3" id="dialogNome">
-              <label for="emailUsuario" class="form-label">Insira o seu novo número:</label>
-              <input type="text" class="form-control" id="novaSenhaUsuario" maxlength="30" name="novaSenhaUsuario" >
-          </div>
-          <div class="mb-3" id="dialogNome">
-              <label for="senha" class="form-label">Insira sua senha:</label>
-              <input type="password" class="form-control" id="confirmeSenha" maxlength="30" name="senhaUsuario" >
-          </div>
-          <button type="submit" class="btn btn-primary" onclick="fecharDialogSenha()">Confirmar</button>
-      </form>
-      </main>
+      <div class="mb-3" id="dialogNome">
+        <label for="nomeUsuario" class="form-label">Insira o nome de usuário atual:</label>
+        <input type="text" class="form-control" id="antigoNomeUsuario" maxlength="30" name="antigoNomeUsuario">
+      </div>
+      <div class="mb-3" id="dialogNome">
+        <label for="nomeUsuario" class="form-label">Insira o novo nome de usuário:</label>
+        <input type="text" class="form-control" id="novoNomeUsuario" maxlength="30" name="novoNomeUsuario">
+      </div>
+      <div class="mb-3" id="dialogNome">
+        <label for="senha" class="form-label">Insira sua senha:</label>
+        <input type="password" class="form-control" id="confirmeSenha" maxlength="30" name="senha">
+      </div>
+      <button type="submit" class="btn btn-primary" onclick="fecharDialogNome()">Confirmar</button>
+    </form>
 
-      <footer>
-        <script src="../usuarios/usuarios.js"></script>
-        <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgM5XD8EVOemyCBN-UWFvQ90XoUf5k-aY&callback=initMap"
-          async
-          defer
-        ></script>
-      </footer>
-  </body>
+    <form id="formAtualizarEmail" class="dialog">
+      <input type="hidden" id="userId" name="userId" />
+
+      <div class="mb-3" id="dialogNome">
+        <label for="emailUsuario" class="form-label">Insira o seu email atual:</label>
+        <input type="email" class="form-control" id="emailUsuario" maxlength="30" name="emailUsuario">
+      </div>
+      <div class="mb-3" id="dialogNome">
+        <label for="emailUsuario" class="form-label">Insira o seu novo email:</label>
+        <input type="email" class="form-control" id="novoEmailUsuario" maxlength="30" name="novoEmailUsuario">
+      </div>
+      <div class="mb-3" id="dialogNome">
+        <label for="senha" class="form-label">Insira sua senha:</label>
+        <input type="password" class="form-control" id="confirmeSenha" maxlength="30" name="senha">
+      </div>
+      <button type="submit" class="btn btn-primary" onclick="fecharDialogEmail()">Confirmar</button>
+    </form>
+
+    <form id="formAtualizarTelefone" class="dialog">
+      <input type="hidden" id="userId" name="userId" />
+
+      <div class="mb-3" id="dialogNome">
+        <label for="telefoneUsuario" class="form-label">Insira o número de celular atual:</label>
+        <input type="text" class="form-control" id="telefoneUsuario" maxlength="30" name="telefoneUsuario">
+      </div>
+      <div class="mb-3" id="dialogNome">
+        <label for="emailUsuario" class="form-label">Insira o seu novo número:</label>
+        <input type="text" class="form-control" id="novoTelefoneUsuario" maxlength="30" name="novoTelefoneUsuario">
+      </div>
+      <div class="mb-3" id="dialogNome">
+        <label for="senha" class="form-label">Insira sua senha:</label>
+        <input type="password" class="form-control" id="confirmeSenha" maxlength="30" name="senha">
+      </div>
+      <button type="submit" class="btn btn-primary" onclick="fecharDialogTelefone()">Confirmar</button>
+    </form>
+
+    <form id="formAtualizarSenha" class="dialog">
+      <input type="hidden" id="userId" name="userId" />
+
+      <div class="mb-3" id="dialogNome">
+        <label for="telefoneUsuario" class="form-label">Insira a sua senha atual:</label>
+        <input type="text" class="form-control" id="senhaUsuario" maxlength="30" name="senhaUsuario">
+      </div>
+      <div class="mb-3" id="dialogNome">
+        <label for="emailUsuario" class="form-label">Insira o seu novo número:</label>
+        <input type="text" class="form-control" id="novaSenhaUsuario" maxlength="30" name="novaSenhaUsuario">
+      </div>
+      <div class="mb-3" id="dialogNome">
+        <label for="senha" class="form-label">Insira sua senha:</label>
+        <input type="password" class="form-control" id="confirmeSenha" maxlength="30" name="senhaUsuario">
+      </div>
+      <button type="submit" class="btn btn-primary" onclick="fecharDialogSenha()">Confirmar</button>
+    </form>
+  </main>
+
+  <footer>
+    <script src="../usuarios/usuarios.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgM5XD8EVOemyCBN-UWFvQ90XoUf5k-aY&callback=initMap"
+      async defer></script>
+  </footer>
+</body>
+
 </html>
