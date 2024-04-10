@@ -28,7 +28,8 @@ function adicionarPosto() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        alert("alert")
       })
       .catch((error) => console.error("Erro:", error));
+      
   }
