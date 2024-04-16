@@ -343,7 +343,7 @@ loginForm.addEventListener("submit", async (e) => {
         <ul>
           <li><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil""</a>Perfil</li>
           <li><a href="postoteste.html">Postos</a></li>
-          <li id="listaUsuarios"><a href="perfil.html">Usuários</a></li>
+          <li id="listaUsuarios"><a href="usuarios.html">Usuários</a></li>
           <li><a href="#">Item 4</a></li>
           <li><a href="#">Item 5</a></li>
         </ul>
@@ -404,6 +404,9 @@ function carregarListaUsuarios() {
                                 <div class="col-sm-9 text-secondary">
                                     ${usuario.nomeUsuario}
                                 </div>
+                                <div class="col-sm-15 text-secondary">
+                                  <button class="dialogButton" onClick="abrirDialogNome()" data-id="${usuario.id}">Atualizar nome</button>
+                                </div>
                             </div>
                             <hr>
                             <div class="row">
@@ -412,6 +415,9 @@ function carregarListaUsuarios() {
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     ${usuario.email}
+                                </div>
+                                <div class="col-sm-15 text-secondary">
+                                  <button class="dialogButton" onClick="abrirDialogEmail()" data-id="${usuario.id}">Atualizar email</button>
                                 </div>
                             </div>
                             <hr>
@@ -422,6 +428,9 @@ function carregarListaUsuarios() {
                                 <div class="col-sm-9 text-secondary">
                                     ${usuario.telefone}
                                 </div>
+                                <div class="col-sm-15 text-secondary">
+                                  <button class="dialogButton" onClick="abrirDialogTelefone()" data-id="${usuario.id}">Número de celular</button>
+                                </div>
                             </div>
                             <hr>
                             <div class="row">
@@ -431,6 +440,9 @@ function carregarListaUsuarios() {
                                 <div class="col-sm-9 text-secondary">
                                     ${usuario.senha}
                                 </div>
+                                <div class="col-sm-18 text-secondary">
+                                  <button class="dialogButton" onClick="abrirDialogSenha()" data-id="${usuario.id}">Atualizar senha</button>
+                                </div>
                             </div>
                             <hr>
                           </div>
@@ -438,13 +450,6 @@ function carregarListaUsuarios() {
                   </div>
               </div>
          </div>
-      </div>
-      <div class="botoes">
-        <button class="dialogButton" onClick="abrirDialogNome()" data-id="${usuario.id}">Atualizar nome</button>
-        <button class="dialogButton" onClick="abrirDialogEmail()" data-id="${usuario.id}">Atualizar email</button>
-        <button class="dialogButton" onClick="abrirDialogTelefone()" data-id="${usuario.id}">Número de celular</button>
-        <button class="dialogButton" onClick="abrirDialogSenha()" data-id="${usuario.id}">Atualizar senha</button>
-        <button class="deleteButton" onClick="excluirUsuario(${usuario.id})">Excluir</button>
       </div>
     `;
       userList.appendChild(listaItem);

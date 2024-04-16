@@ -364,3 +364,23 @@ div.gmnoprint.gm-style-mtc-bbw{
 h6 {
   font-weight: bolder;
 }
+
+.dialogButton,
+.deleteButton {
+  padding: 8px 12px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dialogButton:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.deleteButton:hover {
+  background-color: red;
+  color: #ffffff;
+}
