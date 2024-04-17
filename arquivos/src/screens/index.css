@@ -383,13 +383,12 @@ h6 {
   color: #ffffff;
 }
 
-<<<<<<< HEAD
 .window{
   width: 40vw;
   height: 40vh;
-=======
+}
+
 .col-sm-9 {
   flex: 0 0 auto;
   width: 50%;
->>>>>>> 726c610701921aac84fa89ff86a07f0c02360415
 }
