@@ -404,8 +404,8 @@ function carregarListaUsuarios() {
                                 <div class="col-sm-9 text-secondary">
                                     ${usuario.nomeUsuario}
                                 </div>
-                                <div class="col-sm-15 text-secondary">
-                                  <button class="dialogButton" onClick="abrirDialogNome()" data-id="${usuario.id}">Atualizar nome</button>
+                                <div class="col-sm-3 text-secondary">
+                                  <button class="dialogButton" onClick="abrirDialogNome()" data-id="${usuario.id}">Atualizar</button>
                                 </div>
                             </div>
                             <hr>
@@ -416,8 +416,8 @@ function carregarListaUsuarios() {
                                 <div class="col-sm-9 text-secondary">
                                     ${usuario.email}
                                 </div>
-                                <div class="col-sm-15 text-secondary">
-                                  <button class="dialogButton" onClick="abrirDialogEmail()" data-id="${usuario.id}">Atualizar email</button>
+                                <div class="col-sm-3 text-secondary">
+                                  <button class="dialogButton" onClick="abrirDialogEmail()" data-id="${usuario.id}">Atualizar</button>
                                 </div>
                             </div>
                             <hr>
@@ -428,8 +428,8 @@ function carregarListaUsuarios() {
                                 <div class="col-sm-9 text-secondary">
                                     ${usuario.telefone}
                                 </div>
-                                <div class="col-sm-15 text-secondary">
-                                  <button class="dialogButton" onClick="abrirDialogTelefone()" data-id="${usuario.id}">Número de celular</button>
+                                <div class="col-sm-3 text-secondary">
+                                  <button class="dialogButton" onClick="abrirDialogTelefone()" data-id="${usuario.id}">Atualizar</button>
                                 </div>
                             </div>
                             <hr>
@@ -440,8 +440,8 @@ function carregarListaUsuarios() {
                                 <div class="col-sm-9 text-secondary">
                                     ${usuario.senha}
                                 </div>
-                                <div class="col-sm-18 text-secondary">
-                                  <button class="dialogButton" onClick="abrirDialogSenha()" data-id="${usuario.id}">Atualizar senha</button>
+                                <div class="col-sm-3 text-secondary">
+                                  <button class="dialogButton" onClick="abrirDialogSenha()" data-id="${usuario.id}">Atualizar</button>
                                 </div>
                             </div>
                             <hr>

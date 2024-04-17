@@ -382,3 +382,8 @@ h6 {
   background-color: red;
   color: #ffffff;
 }
+
+.col-sm-9 {
+  flex: 0 0 auto;
+  width: 50%;
+}
