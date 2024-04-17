@@ -2,135 +2,25 @@
   "postos": [
     {
       "nomePosto": "Shell",
-      "enderecoPosto": "unisinos",
-      "cnpjPosto": "123123213",
-      "comumPosto": "123",
-      "aditivadaPosto": "124",
-      "dieselPosto": "125",
-      "alcoolPosto": "126",
+      "enderecoPosto": "Esteio",
+      "cnpjPosto": "12.345.678/0001-00",
+      "comumPosto": "5,58",
+      "aditivadaPosto": "5,77",
+      "dieselPosto": "5,85",
+      "alcoolPosto": "3,42",
       "id": 1,
       "data": "13/03/2024, 20:07"
     },
     {
-      "nomePosto": "asdsad",
-      "enderecoPosto": "sadsad",
+      "nomePosto": "asd",
+      "enderecoPosto": "asd",
       "cnpjPosto": "123",
       "comumPosto": "123",
       "aditivadaPosto": "123",
       "dieselPosto": "123",
       "alcoolPosto": "123",
       "id": 2,
-      "data": "13/03/2024, 20:11"
-    },
-    {
-      "nomePosto": "asd",
-      "enderecoPosto": "asd",
-      "cnpjPosto": "123",
-      "comumPosto": "123",
-      "aditivadaPosto": "123",
-      "dieselPosto": "123",
-      "alcoolPosto": "123",
-      "id": 3,
-      "data": "13/03/2024, 20:16"
-    },
-    {
-      "nomePosto": "testefinal",
-      "enderecoPosto": "unisinos",
-      "cnpjPosto": "123213213",
-      "comumPosto": "5,22",
-      "aditivadaPosto": "6,33",
-      "dieselPosto": "2,33",
-      "alcoolPosto": "1,22",
-      "id": 4,
-      "data": "26/03/2024, 21:38"
-    },
-    {
-      "nomePosto": "ffff",
-      "enderecoPosto": "dddd",
-      "cnpjPosto": "ddd",
-      "comumPosto": "ddd",
-      "aditivadaPosto": "dddd",
-      "dieselPosto": "dd",
-      "alcoolPosto": "ddd",
-      "id": 5,
-      "data": "09/04/2024, 21:39"
-    },
-    {
-      "nomePosto": "ffff",
-      "enderecoPosto": "dddd",
-      "cnpjPosto": "ddd",
-      "comumPosto": "ddd",
-      "aditivadaPosto": "dddd",
-      "dieselPosto": "dd",
-      "alcoolPosto": "ddd",
-      "id": 6,
-      "data": "09/04/2024, 21:40"
-    },
-    {
-      "nomePosto": "ffff",
-      "enderecoPosto": "dddd",
-      "cnpjPosto": "ddd",
-      "comumPosto": "ddd",
-      "aditivadaPosto": "dddd",
-      "dieselPosto": "dd",
-      "alcoolPosto": "ddd",
-      "id": 7,
-      "data": "09/04/2024, 21:40"
-    },
-    {
-      "nomePosto": "asd",
-      "enderecoPosto": "asd",
-      "cnpjPosto": "asd",
-      "comumPosto": "asda",
-      "aditivadaPosto": "asd",
-      "dieselPosto": "asd",
-      "alcoolPosto": "asd",
-      "id": 8,
-      "data": "09/04/2024, 21:41"
-    },
-    {
-      "nomePosto": "asd",
-      "enderecoPosto": "asd",
-      "cnpjPosto": "asd",
-      "comumPosto": "asd",
-      "aditivadaPosto": "asd",
-      "dieselPosto": "sad",
-      "alcoolPosto": "asd",
-      "id": 9,
-      "data": "09/04/2024, 21:41"
-    },
-    {
-      "nomePosto": "edde",
-      "enderecoPosto": "ed",
-      "cnpjPosto": "ed",
-      "comumPosto": "ed",
-      "aditivadaPosto": "ed",
-      "dieselPosto": "ed",
-      "alcoolPosto": "ed",
-      "id": 10,
-      "data": "09/04/2024, 21:42"
-    },
-    {
-      "nomePosto": "asd",
-      "enderecoPosto": "asd",
-      "cnpjPosto": "asd",
-      "comumPosto": "asd",
-      "aditivadaPosto": "asd",
-      "dieselPosto": "asd",
-      "alcoolPosto": "asd",
-      "id": 11,
-      "data": "09/04/2024, 21:43"
-    },
-    {
-      "nomePosto": "ed",
-      "enderecoPosto": "ed",
-      "cnpjPosto": "ed",
-      "comumPosto": "ed",
-      "aditivadaPosto": "ed",
-      "dieselPosto": "ed",
-      "alcoolPosto": "ed",
-      "id": 12,
-      "data": "09/04/2024, 21:43"
+      "data": "17/04/2024, 17:13"
     }
   ]
 }

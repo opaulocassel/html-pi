@@ -40,12 +40,45 @@ server.post("/postos", (req, res) => {
         .json({ mensagem: "Novo Posto cadastrado com sucesso!" });
     }
   });
+
+  server.put("/postos/:id", (req, res) => {
+    const postoId = parseInt(req.params.id)
+    const atualizarPosto = req.body;
+    const idPostos = dadosPosto.postos.findIndex((p) => p.id === postoId);
+  
+    if (idPostos === -1) {
+        return res.status(404).json({ mensagem: "Posto não encontrado :/" });
+    } else {
+  
+        dadosPosto.postos[idPostos].nomePosto = atualizarPosto.nomePosto || dadosPosto.postos[idPostos].nomePosto;
+        dadosPosto.postos[idPostos].enderecoPosto = atualizarPosto.enderecoPosto || dadosPosto.postos[idPostos].enderecoPosto;
+        dadosPosto.postos[idPostos].cnpjPosto = atualizarPosto.cnpjPosto || dadosPosto.postos[idPostos].cnpjPosto;
+        dadosPosto.postos[idPostos].comumPosto = atualizarPosto.comumPosto || dadosPosto.postos[idPostos].comumPosto;
+        dadosPosto.postos[idPostos].aditivadaPosto = atualizarPosto.aditivadaPosto || dadosPosto.postos[idPostos].aditivadaPosto;
+        dadosPosto.postos[idPostos].dieselPosto = atualizarPosto.dieselPosto || dadosPosto.postos[idPostos].dieselPosto;
+        dadosPosto.postos[idPostos].alcoolPosto = atualizarPosto.alcoolPosto || dadosPosto.postos[idPostos].alcoolPosto;
+  
+        salvarDados(dadosPosto);
+  
+        return res.json({ mensagem: "Posto atualizado com sucesso!" });
+    }
+  });
   
   
   server.get("/postos", (req, res) => {
       return res.json(dadosPosto.postos);
   });
   
+  server.delete("/postos/:id", (req, res) => {
+    const postoId = parseInt(req.params.id)
+
+    dadosPosto.postos = dadosPosto.postos.filter(p => p.id !== postoId)
+
+    salvarDados(dadosPosto)
+
+    return res.status(200).json({ mensagem: "Posto excluído com sucesso" })
+});
+
 const path = require("path");
 
 function salvarDados(dados) {

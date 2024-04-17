@@ -1,47 +1,117 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f2f2f2;
+#userList {
+  margin-top: 20px;
 }
 
-.container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+header h1 {
+  margin-left: 10px;
 }
 
-input {
-    width: 90%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+header button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 20px;
 }
 
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+header button:hover {
+  background-color: #45a049;
 }
 
-button:hover {
-    background-color: #45a049;
+#adiciona {
+  width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: auto;
 }
 
-.botao {
-    display: block;
-    margin: 20px auto;
+#adiciona label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#adiciona input[type="text"] {
+  width: calc(100% - 10px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#adiciona button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#adiciona button:hover {
+  background-color: #45a049;
+}
+
+#adiciona button.close {
+  background-color: #f44336;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#adiciona button.close:hover {
+  background-color: #cf2e23;
+}
+
+.posto {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.posto p {
+  font-weight: bold;
+}
+
+.titulo {
+  display: flex;
+}
+
+.dialogButton,
+.deleteButton {
+  padding: 8px 12px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dialogButton:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.deleteButton:hover {
+  background-color: red;
+  color: #ffffff;
+}
+
+.botoes {
+  margin-top: 10px;
 }
