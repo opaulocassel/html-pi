@@ -3,7 +3,7 @@ async function initMap() {
 
   console.log("Inicio da função.");
 
-  map = new Map(document.getElementById("map"), {
+    map = new Map(document.getElementById("map"), {
     center: { lat: -29.754732, lng: -51.151758 },
     zoom: 16,
     mapTypeId: "roadmap",
@@ -23,6 +23,40 @@ async function initMap() {
   });
 
   console.log("Eu funciono, mas não apareço.");
+
+  let myArray = [
+    { position: { lat: -29.754732, lng: -51.151758 }, title: `Shell`, label: 'SH', icon: '../assets/shell.png' },
+    { position: { lat: -29.755732, lng: -51.151758 }, title: `Petrobras`, label: 'PB' },
+];
+
+  // Adicionar.
+  const infowindow = new google.maps.InfoWindow();
+
+  for(let item of myArray){
+      let marker = new google.maps.Marker({
+          position: item.position,
+          label: item.label,
+          title: item.title,
+          icon: {
+            url: item.icon,
+            scaledSize: new google.maps.Size(40, 40),
+          },
+          map: map,
+          animation: google.maps.Animation.DROP
+      });
+  
+      marker.addListener(`click`, () => {
+          infowindow.setContent('<div class="window"><h2>'+item.title+'</h2></div>');
+          infowindow.open(map, marker);
+      });
+  }
+
+  //Remover
+  //marker.setMap(null);
+
+
+
+
 }
 
 const styles = {

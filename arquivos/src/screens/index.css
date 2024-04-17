@@ -384,3 +384,8 @@ h6 {
   background-color: red;
   color: #ffffff;
 }
+
+.window{
+  width: 40vw;
+  height: 40vh;
+}
