@@ -72,18 +72,17 @@ let locations = [
   {
     position: { lat: -29.754732, lng: -51.151758 },
     title: `Shell`,
-    label: "SH",
     icon: "../assets/shell.png",
   },
   {
     position: { lat: -29.755732, lng: -51.151758 },
     title: `Petrobras`,
-    label: "PB",
+    icon: "../assets/petrobras.png"
   },
   {
     position: { lat: -29.753685, lng: -51.158149 },
     title: `Posto 1`,
-    label: "P1",
+    icon: "../assets/ipiranga.svg"
   },
   {
     position: { lat: -29.766428, lng: -51.147854 },
