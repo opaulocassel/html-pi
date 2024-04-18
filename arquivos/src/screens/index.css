@@ -245,7 +245,8 @@ iframe {
   position: fixed;
   top: 0;
   right: 0;
-  background-color: #2945fd;
+  background-color: #0077ff;
+  color: #fff;
   overflow-x: hidden;
   transition: width 0.5s ease;
   padding: 60px 0;
@@ -266,11 +267,20 @@ iframe {
 .sidebar ul li { 
   transition: color 0.3s ease;
   padding: 20px 0; 
-  text-align: center; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, box-shadow 0.3;
 }
 
 .sidebar ul li:hover {
-  background-color: #6479ff;
+  background-color: #4e9cf4;
+  transform: translate(-3px, -4px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+.sidebar ul li:active{
+  transform: translate(0, 0);
+  box-shadow:0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar a {
@@ -278,6 +288,11 @@ iframe {
   font-size: 18px;
   color: #fff;
   display: block;
+}
+
+.intern-div-list{
+  width: 100px;
+  text-align: left;
 }
 
 

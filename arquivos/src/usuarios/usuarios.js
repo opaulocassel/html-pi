@@ -487,11 +487,11 @@ loginForm.addEventListener("submit", async (e) => {
         sidebar.innerHTML = `
         <a href="#" class="close-btn" onclick="toggleSidebar()">Fechar</a>
         <ul>
-          <li><div><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">V</div></li>
-          <li><div><a href="postoteste.html">Postos</a></div></li>
-          <li id="listaUsuarios"><div><a href="usuarios.html">Usuários</a></div></li>
-          <li><div><a href="#">Item 4</a></div></li>
-          <li><div><a href="#">Item 5</a></div></li>
+          <li><div class="intern-div-list"><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">Perfil</div></li>
+          <li><div class="intern-div-list"><a href="postoteste.html">Postos</a></div></li>
+          <li id="listaUsuarios"><div class="intern-div-list"><a href="usuarios.html">Usuários</a></div></li>
+          <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
+          <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
         </ul>
       `;
         document.body.appendChild(sidebar);
