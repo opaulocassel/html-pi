@@ -68,6 +68,17 @@ server.post("/postos", (req, res) => {
   server.get("/postos", (req, res) => {
       return res.json(dadosPosto.postos);
   });
+
+
+  server.get("/postos/:nomePosto", (req, res) => {
+    const nomePosto = req.params.nomePosto;
+    const postoEncontrado = dadosPosto.postos.find(posto => posto.nomePosto === nomePosto);
+    if (postoEncontrado) {
+      return res.json(postoEncontrado);
+  } else {
+      return res.status(404).json({ error: 'Posto não encontrado' });
+  };
+  });
   
   server.delete("/postos/:id", (req, res) => {
     const postoId = parseInt(req.params.id)

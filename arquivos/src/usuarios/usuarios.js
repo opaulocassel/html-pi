@@ -81,93 +81,93 @@ let locations = [
   },
   {
     position: { lat: -29.753685, lng: -51.158149 },
-    title: `Posto 1`,
+    title: `Ipiranga`,
     icon: "../assets/ipiranga.svg"
   },
   {
     position: { lat: -29.766428, lng: -51.147854 },
-    title: `Posto 2`,
-    label: "P2",
+    title: `Shell`,
+    icon: "../assets/shell.png",
   },
   {
     position: { lat: -29.759836, lng: -51.16273 },
-    title: `Posto 3`,
-    label: "P3",
+    title: `Shell`,
+    icon: "../assets/shell.png",
   },
   {
     position: { lat: -29.760916, lng: -51.148297 },
-    title: `Posto 4`,
-    label: "P4",
+    title: `Shell`,
+    icon: "../assets/shell.png",
   },
   {
     position: { lat: -29.752073, lng: -51.154189 },
-    title: `Posto 5`,
-    label: "P5",
+    title: `Shell`,
+    icon: "../assets/shell.png",
   },
   {
     position: { lat: -29.757141, lng: -51.159584 },
-    title: `Posto 6`,
-    label: "P6",
+    title: `Petrobras`,
+    icon: "../assets/petrobras.png"
   },
   {
     position: { lat: -29.763635, lng: -51.150783 },
-    title: `Posto 7`,
-    label: "P7",
+    title: `Petrobras`,
+    icon: "../assets/petrobras.png"
   },
   {
     position: { lat: -29.756921, lng: -51.162999 },
-    title: `Posto 8`,
-    label: "P8",
+    title: `Petrobras`,
+    icon: "../assets/petrobras.png"
   },
   {
     position: { lat: -29.768202, lng: -51.153444 },
-    title: `Posto 9`,
-    label: "P9",
+    title: `Ipiranga`,
+    icon: "../assets/ipiranga.svg"
   },
   {
     position: { lat: -29.755404, lng: -51.160889 },
-    title: `Posto 10`,
-    label: "P10",
+    title: `Ipiranga`,
+    icon: "../assets/ipiranga.svg"
   },
   {
     position: { lat: -29.758839, lng: -51.15581 },
-    title: `Posto 11`,
-    label: "P11",
+    title: `Ipiranga`,
+    icon: "../assets/ipiranga.svg"
   },
   {
     position: { lat: -29.761726, lng: -51.157442 },
-    title: `Posto 12`,
-    label: "P12",
+    title: `Ipiranga`,
+    icon: "../assets/ipiranga.svg"
   },
   {
     position: { lat: -29.758324, lng: -51.158045 },
-    title: `Posto 13`,
-    label: "P13",
+    title: `Ipiranga`,
+    icon: "../assets/ipiranga.svg"
   },
   {
     position: { lat: -29.754737, lng: -51.15524 },
-    title: `Posto 14`,
-    label: "P14",
+    title: `Petrobras`,
+    icon: "../assets/petrobras.png"
   },
   {
     position: { lat: -29.757909, lng: -51.153172 },
-    title: `Posto 15`,
-    label: "P15",
+    title: `Petrobras`,
+    icon: "../assets/petrobras.png"
   },
   {
     position: { lat: -29.761582, lng: -51.152891 },
-    title: `Posto 16`,
-    label: "P16",
+    title: `Petrobras`,
+    icon: "../assets/petrobras.png"
   },
   {
     position: { lat: -29.762942, lng: -51.150462 },
-    title: `Posto 17`,
-    label: "P17",
+    title: `Shell`,
+    icon: "../assets/shell.png",
   },
   {
     position: { lat: -29.764342, lng: -51.148842 },
-    title: `Posto 18`,
-    label: "P18",
+    title: `Ipiranga`,
+    icon: "../assets/ipiranga.svg"
   },
 ];
 
