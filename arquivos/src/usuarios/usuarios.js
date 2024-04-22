@@ -535,6 +535,7 @@ function carregarListaUsuarios() {
                                 <div class="mt-3">
                                     <h4>${usuario.nomeUsuario}</h4>
                                     <p class="text-secondary mb-1">fffffffff</p>
+                                    <p class="text-secondary mb-1">Sâo Leopoldo</p>
                                 </div>
                             </div>
                         </div>
@@ -584,15 +585,15 @@ function carregarListaUsuarios() {
                                     <h6 class="mb-0">Senha</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    ${usuario.senha}
+                                    *************
                                 </div>
                                 <div class="col-sm-3 text-secondary">
                                   <button class="dialogButton" onClick="abrirDialogSenha()" data-id="${usuario.id}">Atualizar</button>
                                 </div>
                             </div>
-                            <hr>
                           </div>
                       </div>
+                      <button class="deleteButton" onClick="excluirUsuario(${usuario.id})">Excluir</button>
                   </div>
               </div>
          </div>
