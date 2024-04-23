@@ -26,7 +26,7 @@ header {
   transform: translate(-50%, -50%);
 }
 
-header .selecao{
+header .selecao {
   position: absolute;
   margin: 2.3vh 0 0 2vw;
 
@@ -79,10 +79,8 @@ header button:hover {
   }
 
   to {
-    background-color: var(
-      --wz-button-background-color,
-      var(--primary, #0099ff)
-    );
+    background-color: var(--wz-button-background-color,
+        var(--primary, #0099ff));
   }
 }
 
@@ -111,10 +109,8 @@ header button:hover {
   }
 
   to {
-    background-color: var(
-      --wz-button-background-color,
-      var(--primary, #ffffff)
-    );
+    background-color: var(--wz-button-background-color,
+        var(--primary, #ffffff));
   }
 }
 
@@ -245,7 +241,7 @@ iframe {
   position: fixed;
   top: 0;
   right: 0;
-  background-color: #0077ff;
+  background-color: #fff;
   color: #fff;
   overflow-x: hidden;
   transition: width 0.5s ease;
@@ -255,7 +251,7 @@ iframe {
 
 .sidebar.open {
   display: block;
-  width: 250px;
+  width: 300px;
 }
 
 .sidebar ul {
@@ -264,33 +260,57 @@ iframe {
   margin: 0;
 }
 
-.sidebar ul li { 
+.sidebar ul li {
   transition: color 0.3s ease;
-  padding: 20px 0; 
+  padding: 20px 0;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s, box-shadow 0.3;
 }
 
-.sidebar ul li:hover {
-  background-color: #4e9cf4;
-  transform: translate(-3px, -4px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-.sidebar ul li:active{
-  transform: translate(0, 0);
-  box-shadow:0 2px 5px rgba(0, 0, 0, 0.2);
+.sidebar ul li i {
+  color: black;
+  display: inline-block;
 }
 
 .sidebar a {
+  position: absolute;
   text-decoration: none;
-  font-size: 18px;
-  color: #fff;
-  display: block;
+  font-size: 16px;
+  color: #717171;
+  display: inline-block;
 }
 
-.intern-div-list{
+
+.sidebar a::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: #21a6ff;
+  transition: .2s;
+}
+
+.sidebar a:hover::before {
+  width: 100%;
+}
+
+.sidebar .header-close {
+  position: absolute;
+  right: 15px;
+  top: 16px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.intern-div-list {
   width: 100px;
   text-align: left;
 }
@@ -311,7 +331,7 @@ button.gm-control-active.gm-fullscreen-control {
   display: none;
 }
 
-div.gmnoprint.gm-style-mtc-bbw{
+div.gmnoprint.gm-style-mtc-bbw {
   display: none;
 }
 
@@ -343,7 +363,7 @@ div.gmnoprint.gm-style-mtc-bbw{
 .card-body {
   flex: 1 1 auto;
   min-height: 1px;
-  padding: 1rem;
+  padding: 4.3rem;
 }
 
 .gutters-sm {
@@ -398,7 +418,7 @@ h6 {
   color: #ffffff;
 }
 
-.window{
+.window {
   width: 40vw;
   height: 40vh;
 }
