@@ -41,21 +41,48 @@ async function initMap() {
       },
       map: map,
       animation: google.maps.Animation.DROP,
+      postoData: null
     });
 
-    marker.addListener(`click`, () => {
-      if (pulaPula) {
-        pulaPula.setAnimation(null); 
-      }
-      
-      infowindow.setContent('<div class="window"><h2>' + item.title + "</h2></div>");
-      infowindow.open(map, marker);
+    marker.addListener("click", () => {
+      if (!marker.postoData) {
+        fetch("http://localhost:3000/postos")
+          .then((response) => response.json())
+          .then(function (data) {
 
-      marker.setAnimation(google.maps.Animation.BOUNCE);
-      pulaPula = marker; 
+            const posto = data.find(posto => posto.nomePosto === item.title && posto.id === item.id);
+            
+            if (posto) {
+              marker.postoData = posto;
+              const infoContent = `
+                <div class="window">
+                  <h2>${posto.nomePosto}</h2>
+                  <p>Endereço: ${posto.enderecoPosto}</p>
+                  <p>CNPJ: ${posto.cnpjPosto}</p>
+                  <p>Comum: ${posto.comumPosto}</p>
+                  <p>Aditivado: ${posto.aditivadaPosto}</p>
+                  <p>Diesel: ${posto.dieselPosto}</p>
+                  <p>Álcool: ${posto.alcoolPosto}</p>
+                  <p>Última atualização: ${posto.data}</p>
+                </div>
+              `;
+              infowindow.setContent(infoContent);
+              infowindow.open(map, marker);
+  
+              if (pulaPula) {
+                pulaPula.setAnimation(null);
+              }
+              marker.setAnimation(google.maps.Animation.BOUNCE);
+              pulaPula = marker;
+            }
+          })
+          .catch(error => {
+            console.error('Erro ao carregar os dados do JSON:', error);
+          });
+      } 
     });
-
-    google.maps.event.addListener(infowindow, 'closeclick', function() {
+  
+    google.maps.event.addListener(infowindow, 'closeclick', function () {
       marker.setAnimation(null);
     });
   }
@@ -64,110 +91,145 @@ async function initMap() {
   //marker.setMap(null);
 }
 
-
-
-
-
 let locations = [
   {
     position: { lat: -29.754732, lng: -51.151758 },
     title: `Shell`,
     icon: "../assets/shell.png",
+    id: 1
   },
   {
     position: { lat: -29.755732, lng: -51.151758 },
     title: `Petrobras`,
-    icon: "../assets/petrobras.png"
+    icon: "../assets/petrobras.png",
+    id: 1
+
   },
   {
     position: { lat: -29.753685, lng: -51.158149 },
     title: `Ipiranga`,
-    icon: "../assets/ipiranga.svg"
+    icon: "../assets/ipiranga.svg",
+    id: 1
+
   },
   {
     position: { lat: -29.766428, lng: -51.147854 },
     title: `Shell`,
     icon: "../assets/shell.png",
+    id: 2
+
   },
   {
     position: { lat: -29.759836, lng: -51.16273 },
     title: `Shell`,
     icon: "../assets/shell.png",
+    id: 3
+
   },
   {
     position: { lat: -29.760916, lng: -51.148297 },
     title: `Shell`,
     icon: "../assets/shell.png",
+    id: 4
+
   },
   {
     position: { lat: -29.752073, lng: -51.154189 },
     title: `Shell`,
     icon: "../assets/shell.png",
+    id: 5
+
   },
   {
     position: { lat: -29.757141, lng: -51.159584 },
     title: `Petrobras`,
-    icon: "../assets/petrobras.png"
+    icon: "../assets/petrobras.png",
+    id: 2
+
   },
   {
     position: { lat: -29.763635, lng: -51.150783 },
     title: `Petrobras`,
-    icon: "../assets/petrobras.png"
+    icon: "../assets/petrobras.png",
+    id: 3
+
   },
   {
     position: { lat: -29.756921, lng: -51.162999 },
     title: `Petrobras`,
-    icon: "../assets/petrobras.png"
+    icon: "../assets/petrobras.png",
+    id: 4
+
   },
   {
     position: { lat: -29.768202, lng: -51.153444 },
     title: `Ipiranga`,
-    icon: "../assets/ipiranga.svg"
+    icon: "../assets/ipiranga.svg",
+    id: 2
+
   },
   {
     position: { lat: -29.755404, lng: -51.160889 },
     title: `Ipiranga`,
-    icon: "../assets/ipiranga.svg"
+    icon: "../assets/ipiranga.svg",
+    id: 3
+
   },
   {
     position: { lat: -29.758839, lng: -51.15581 },
     title: `Ipiranga`,
-    icon: "../assets/ipiranga.svg"
+    icon: "../assets/ipiranga.svg",
+    id: 4
+
   },
   {
     position: { lat: -29.761726, lng: -51.157442 },
     title: `Ipiranga`,
-    icon: "../assets/ipiranga.svg"
+    icon: "../assets/ipiranga.svg",
+    id: 5
+
   },
   {
     position: { lat: -29.758324, lng: -51.158045 },
     title: `Ipiranga`,
-    icon: "../assets/ipiranga.svg"
+    icon: "../assets/ipiranga.svg",
+    id: 6
+
   },
   {
     position: { lat: -29.754737, lng: -51.15524 },
     title: `Petrobras`,
-    icon: "../assets/petrobras.png"
+    icon: "../assets/petrobras.png",
+    id: 5
+
   },
   {
     position: { lat: -29.757909, lng: -51.153172 },
     title: `Petrobras`,
-    icon: "../assets/petrobras.png"
+    icon: "../assets/petrobras.png",
+    id: 6
+
   },
   {
     position: { lat: -29.761582, lng: -51.152891 },
     title: `Petrobras`,
-    icon: "../assets/petrobras.png"
+    icon: "../assets/petrobras.png",
+    id: 7
+
   },
   {
     position: { lat: -29.762942, lng: -51.150462 },
     title: `Shell`,
     icon: "../assets/shell.png",
+    id: 6
+
   },
   {
     position: { lat: -29.764342, lng: -51.148842 },
     title: `Ipiranga`,
-    icon: "../assets/ipiranga.svg"
+    icon: "../assets/ipiranga.svg",
+    id: 7
+
   },
 ];
 
