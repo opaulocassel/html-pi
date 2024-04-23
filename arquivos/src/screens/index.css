@@ -269,12 +269,17 @@ iframe {
   transition: transform 0.3s, box-shadow 0.3;
 }
 
+.sidebar ul li i {
+  color: black;
+  display: inline-block;
+}
+
 .sidebar a {
   position: absolute;
   text-decoration: none;
   font-size: 16px;
   color: #717171;
-  display: block;
+  display: inline-block;
 }
 
 
@@ -291,6 +296,18 @@ iframe {
 
 .sidebar a:hover::before {
   width: 100%;
+}
+
+.sidebar .header-close {
+  position: absolute;
+  right: 15px;
+  top: 16px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  padding: 0;
+  margin: 0;
 }
 
 .intern-div-list {
