@@ -552,7 +552,7 @@ loginForm.addEventListener("submit", async (e) => {
         </div>
         <ul>
           <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
-          <li><div class="intern-div-list"><i class="bi bi-fuel-pump"><a href="postoteste.html">Postos</a></div></i></li>
+          <li><div class="intern-div-list"><i class="bi bi-fuel-pump-fill"><a href="postoteste.html">Postos</a></div></i></li>
           <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
           <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
           <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
