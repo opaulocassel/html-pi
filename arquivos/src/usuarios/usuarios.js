@@ -50,7 +50,7 @@ async function initMap() {
           .then((response) => response.json())
           .then(function (data) {
 
-            const posto = data.find(posto => posto.nomePosto === item.title && posto.id === item.id);
+            const posto = data.find(posto => posto.nomePosto === item.title && posto.cnpjPosto === item.cnpj);
             
             if (posto) {
               marker.postoData = posto;
@@ -96,139 +96,138 @@ let locations = [
     position: { lat: -29.754732, lng: -51.151758 },
     title: `Shell`,
     icon: "../assets/shell.png",
-    id: 1
+    cnpj: "98.765.432/0001-00"
   },
   {
     position: { lat: -29.755732, lng: -51.151758 },
     title: `Petrobras`,
     icon: "../assets/petrobras.png",
-    id: 1
-
+    cnpj: "98.765.432/0002-00"
   },
   {
     position: { lat: -29.753685, lng: -51.158149 },
     title: `Ipiranga`,
     icon: "../assets/ipiranga.svg",
-    id: 1
+    cnpj: "98.765.432/0003-00"
 
   },
   {
     position: { lat: -29.766428, lng: -51.147854 },
     title: `Shell`,
     icon: "../assets/shell.png",
-    id: 2
+    cnpj: "98.765.432/0004-00"
 
   },
   {
     position: { lat: -29.759836, lng: -51.16273 },
     title: `Shell`,
     icon: "../assets/shell.png",
-    id: 3
+    cnpj: "98.765.432/0010-00"
 
   },
   {
     position: { lat: -29.760916, lng: -51.148297 },
     title: `Shell`,
     icon: "../assets/shell.png",
-    id: 4
+    cnpj: "98.765.432/0006-00"
 
   },
   {
     position: { lat: -29.752073, lng: -51.154189 },
     title: `Shell`,
     icon: "../assets/shell.png",
-    id: 5
+    cnpj: "98.765.432/0007-00"
 
   },
   {
     position: { lat: -29.757141, lng: -51.159584 },
     title: `Petrobras`,
     icon: "../assets/petrobras.png",
-    id: 2
+    cnpj: "98.765.432/0005-00"
 
   },
   {
     position: { lat: -29.763635, lng: -51.150783 },
     title: `Petrobras`,
     icon: "../assets/petrobras.png",
-    id: 3
+    cnpj: "98.765.432/0008-00"
 
   },
   {
     position: { lat: -29.756921, lng: -51.162999 },
     title: `Petrobras`,
     icon: "../assets/petrobras.png",
-    id: 4
+    cnpj: "98.765.432/0011-00"
 
   },
   {
     position: { lat: -29.768202, lng: -51.153444 },
     title: `Ipiranga`,
     icon: "../assets/ipiranga.svg",
-    id: 2
+    cnpj: "98.765.432/0006-00"
 
   },
   {
     position: { lat: -29.755404, lng: -51.160889 },
     title: `Ipiranga`,
     icon: "../assets/ipiranga.svg",
-    id: 3
+    cnpj: "98.765.432/0009-00"
 
   },
   {
     position: { lat: -29.758839, lng: -51.15581 },
     title: `Ipiranga`,
     icon: "../assets/ipiranga.svg",
-    id: 4
+    cnpj: "98.765.432/0012-00"
 
   },
   {
     position: { lat: -29.761726, lng: -51.157442 },
     title: `Ipiranga`,
     icon: "../assets/ipiranga.svg",
-    id: 5
+    cnpj: "98.765.432/0015-00"
 
   },
   {
     position: { lat: -29.758324, lng: -51.158045 },
     title: `Ipiranga`,
     icon: "../assets/ipiranga.svg",
-    id: 6
+    cnpj: "98.765.432/0018-00"
 
   },
   {
     position: { lat: -29.754737, lng: -51.15524 },
     title: `Petrobras`,
     icon: "../assets/petrobras.png",
-    id: 5
+    cnpj: "98.765.432/0014-00"
 
   },
   {
     position: { lat: -29.757909, lng: -51.153172 },
     title: `Petrobras`,
     icon: "../assets/petrobras.png",
-    id: 6
+    cnpj: "98.765.432/0017-00"
 
   },
   {
     position: { lat: -29.761582, lng: -51.152891 },
     title: `Petrobras`,
     icon: "../assets/petrobras.png",
-    id: 7
+    cnpj: "98.765.432/0020-00"
 
   },
   {
     position: { lat: -29.762942, lng: -51.150462 },
     title: `Shell`,
     icon: "../assets/shell.png",
-    id: 6
+    cnpj: "98.765.432/0008-00"
 
   },
   {
     position: { lat: -29.764342, lng: -51.148842 },
     title: `Ipiranga`,
     icon: "../assets/ipiranga.svg",
-    id: 7
+    cnpj: "98.765.432/0019-00"
 
   },
 ];
