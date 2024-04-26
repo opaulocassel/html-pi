@@ -1,51 +1,49 @@
 var teste = false
 window.addEventListener('DOMContentLoaded', () => {
-  const nomeUsuario = sessionStorage.getItem('guardarNomes');
-  if (nomeUsuario) {
+    const nomeUsuario = sessionStorage.getItem('guardarNomes');
+    if (nomeUsuario) {
       console.log(`Usuário ${nomeUsuario} já está logado.`);
       teste = true;
       console.log("tem coisa guardada")
-  }
-  if(teste === true) {
-    console.log("tqa entrando")
-    fetch(`http://localhost:3000/usuarios/${nomeUsuario}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
+    }
+    if (teste === true) {
+      console.log("tqa entrando")
+      fetch(`http://localhost:3000/usuarios/${nomeUsuario}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
           let guardarNome = data.nomeUsuario;
           sessionStorage.setItem("guardarNome", JSON.stringify(guardarNome));
-  
+
           console.log("bem vindo");
-  
+
           idUsuarioD = data.id;
-  
+
           const sidebar = document.createElement("div");
           sidebar.id = "sidebar";
           sidebar.classList.add("sidebar");
           sidebar.innerHTML = `
-          <div class="header-close">
-            <button href="#" class="close-btn" onclick="toggleSideLar()">Sair</button>
-          </div>
           <ul>
-            <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
-            <li><div class="intern-div-list"><i class="bi bi-fuel-pump"><a href="postoteste.html">Postos</a></div></i></li>
+          <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
+          <li><div class="intern-div-list"><i class="bi bi-fuel-pump"><a href="postoteste.html">Postos</a></div></i></li>
             <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
             <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
             <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
           </ul>
         `;
           document.body.appendChild(sidebar);
-  
+
           toggleSidebar();
           closeDialog();
-  
+
           carregarListaUsuarios();
-      });
-}});
+        });
+    }
+});
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
@@ -75,9 +73,9 @@ async function initMap() {
   });
 
   map.setOptions({ styles: styles[styleSelector.value] });
-    styleSelector.addEventListener("change", () => {
+  styleSelector.addEventListener("change", () => {
     map.setOptions({ styles: styles[styleSelector.value] });
-    });
+  });
 
   console.log("Eu funciono, mas não apareço.");
 
@@ -407,8 +405,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function modoCor() {}
-function modoCor() {}
+function modoCor() { }
+function modoCor() { }
 
 function openDialog() {
   let customDialog = document.getElementById("loginForm");
@@ -430,14 +428,20 @@ function openDialog() {
   loginRegister.style.zIndex = "1000";
 }
 
-function dialogPerfil() {
+function toggleSideExit() {
   var sidebar = document.querySelector(".sidebar")
+
+  document.body.removeChild(sidebar);
+}
+
+function dialogPerfil() {
+  toggleSideExit();
+
   let customDialog = document.getElementById("perfilForm");
   let form = document.getElementById("formPerfil");
   form.style.display = "block";
   customDialog.style.display = "block";
 
-  document.body.removeChild(sidebar);
   let overlay = document.getElementById("overlay");
   if (!overlay) {
     overlay = document.createElement("div");
@@ -563,18 +567,17 @@ function toggleSideLar() {
   }
 
   sessionStorage.removeItem('guardarNomes');
-  sessionStorage.removeItem('guardarNome'); 
-
-  var sidebar = document.querySelector(".sidebar")
-
-  document.body.removeChild(sidebar);
+  sessionStorage.removeItem('guardarNome');
 
   var listaItem = document.querySelector(".usuario");
   let userList = document.getElementById("formPerfil");
 
   userList.removeChild(listaItem);
-}
 
+  var sidebar = document.querySelector(".sidebar")
+
+  document.body.removeChild(sidebar);
+}
 let idUsuarioD;
 
 const loginForm = document.getElementById("loginForm");
@@ -617,7 +620,7 @@ loginForm.addEventListener("submit", async (e) => {
         sidebar.innerHTML = `
         <div>
           <ul>
-            <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
+            <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil();" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
             <li><div class="intern-div-list"><i class="bi bi-fuel-pump-fill"><a href="postoteste.html">Postos</a></div></i></li>
             <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
             <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
@@ -725,7 +728,7 @@ function carregarListaUsuarios() {
                           </div>
                       </div>
                       <button class="deleteButton" onClick="excluirUsuario(${usuario.id})">Excluir</button>
-                      <button href="#" class="logout-btn" onclick="toggleSideLar()" >Logout</button>
+                      <button href="#" class="logout-btn" onclick="toggleSideLar()">Logout</button>
                   </div>
               </div>
          </div>
@@ -894,4 +897,55 @@ function atualizarSenhaUsuario() {
       carregarListaUsuarios();
     })
     .catch((error) => console.error("Erro ao atualizar o usuário:", error));
+}
+
+function closePerfilDialog() {
+  var listaItem = document.querySelector(".usuario");
+  let userList = document.getElementById("formPerfil");
+
+  userList.removeChild(listaItem);
+
+  const nomeUsuario = sessionStorage.getItem('guardarNomes');
+    if (nomeUsuario) {
+      console.log(`Usuário ${nomeUsuario} já está logado.`);
+      teste = true;
+      console.log("tem coisa guardada")
+    }
+    if (teste === true) {
+      console.log("tqa entrando")
+      fetch(`http://localhost:3000/usuarios/${nomeUsuario}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          let guardarNome = data.nomeUsuario;
+          sessionStorage.setItem("guardarNome", JSON.stringify(guardarNome));
+
+          console.log("bem vindo");
+
+          idUsuarioD = data.id;
+
+          const sidebar = document.createElement("div");
+          sidebar.id = "sidebar";
+          sidebar.classList.add("sidebar");
+          sidebar.innerHTML = `
+          <ul>
+          <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
+          <li><div class="intern-div-list"><i class="bi bi-fuel-pump"><a href="postoteste.html">Postos</a></div></i></li>
+            <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
+            <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
+            <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
+          </ul>
+        `;
+          document.body.appendChild(sidebar);
+
+          toggleSidebar();
+          closeDialog();
+
+          carregarListaUsuarios();
+        });
+    }
 }
