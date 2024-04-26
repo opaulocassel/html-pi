@@ -431,11 +431,13 @@ function openDialog() {
 }
 
 function dialogPerfil() {
+  var sidebar = document.querySelector(".sidebar")
   let customDialog = document.getElementById("perfilForm");
   let form = document.getElementById("formPerfil");
   form.style.display = "block";
   customDialog.style.display = "block";
 
+  document.body.removeChild(sidebar);
   let overlay = document.getElementById("overlay");
   if (!overlay) {
     overlay = document.createElement("div");
@@ -550,6 +552,16 @@ function toggleSidebar() {
 }
 
 function toggleSideLar() {
+  document.getElementById("form").style.display = "none";
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("registerForm").style.display = "none";
+  document.getElementById("formPerfil").style.display = "none";
+
+  let overlay = document.getElementById("overlay");
+  if (overlay) {
+    overlay.parentNode.removeChild(overlay);
+  }
+
   sessionStorage.removeItem('guardarNomes');
   sessionStorage.removeItem('guardarNome'); 
 
@@ -603,16 +615,15 @@ loginForm.addEventListener("submit", async (e) => {
         sidebar.id = "sidebar";
         sidebar.classList.add("sidebar");
         sidebar.innerHTML = `
-        <div class="header-close">
-        <button href="#" class="close-btn" onclick="toggleSideLar()">Sair</button>
+        <div>
+          <ul>
+            <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
+            <li><div class="intern-div-list"><i class="bi bi-fuel-pump-fill"><a href="postoteste.html">Postos</a></div></i></li>
+            <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
+            <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
+            <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
+          </ul>
         </div>
-        <ul>
-          <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
-          <li><div class="intern-div-list"><i class="bi bi-fuel-pump-fill"><a href="postoteste.html">Postos</a></div></i></li>
-          <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
-          <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
-          <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
-        </ul>
       `;
         document.body.appendChild(sidebar);
 
@@ -714,6 +725,7 @@ function carregarListaUsuarios() {
                           </div>
                       </div>
                       <button class="deleteButton" onClick="excluirUsuario(${usuario.id})">Excluir</button>
+                      <button href="#" class="logout-btn" onclick="toggleSideLar()" >Logout</button>
                   </div>
               </div>
          </div>
@@ -734,6 +746,7 @@ function excluirUsuario(id) {
     .then((data) => {
       console.log("Usuário excluído com sucesso:", data);
       carregarListaUsuarios();
+      toggleSideLar();
     })
     .catch((error) => console.error("Erro ao excluir usuário:", error));
 }
