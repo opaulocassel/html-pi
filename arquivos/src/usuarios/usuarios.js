@@ -578,6 +578,7 @@ function toggleSideLar() {
 
   document.body.removeChild(sidebar);
 }
+
 let idUsuarioD;
 
 const loginForm = document.getElementById("loginForm");
@@ -639,6 +640,7 @@ loginForm.addEventListener("submit", async (e) => {
       }
     });
 });
+
 
 function carregarListaUsuarios() {
   console.log(idUsuarioD);
