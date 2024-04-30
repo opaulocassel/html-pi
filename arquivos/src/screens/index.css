@@ -400,7 +400,8 @@ h6 {
 }
 
 .dialogButton,
-.deleteButton, .logout-btn {
+.deleteButton,
+.logout-btn {
   padding: 8px 12px;
   margin-right: 8px;
   border: none;
@@ -439,11 +440,18 @@ h6 {
 
 
 /* Default */
+
 .theme {
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
   align-items: center;
+  justify-content: left;
   -webkit-tap-highlight-color: transparent;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .theme__fill,
