@@ -23,19 +23,23 @@ window.addEventListener('DOMContentLoaded', () => {
 
           idUsuarioD = data.id;
 
-          const sidebar = document.createElement("div");
-          sidebar.id = "sidebar";
-          sidebar.classList.add("sidebar");
-          sidebar.innerHTML = `
-          <ul>
-          <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
-          <li><div class="intern-div-list"><i class="bi bi-fuel-pump"><a href="postoteste.html">Postos</a></div></i></li>
-            <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
-            <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
-            <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
-          </ul>
-        `;
-          document.body.appendChild(sidebar);
+        //   const sidebar = document.createElement("div");
+        //   sidebar.id = "sidebar";
+        //   sidebar.classList.add("sidebar");
+        //   sidebar.innerHTML = `
+        //   <div class="logo">
+        //     <i class="bx bx-menu menu-icon"></i>
+        //     <span class="logo-name">CodingLab</span>
+        //   </div>
+        //   <ul>
+        //   <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
+        //   <li><div class="intern-div-list"><i class="bi bi-fuel-pump"><a href="postoteste.html">Postos</a></div></i></li>
+        //     <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
+        //     <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
+        //     <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
+        //   </ul>
+        // `;
+        //   document.body.appendChild(sidebar);
 
           toggleSidebar();
           closeDialog();
@@ -428,14 +432,14 @@ function openDialog() {
   loginRegister.style.zIndex = "1000";
 }
 
-function toggleSideExit() {
-  var sidebar = document.querySelector(".sidebar")
+// function toggleSideExit() {
+//   var sidebar = document.querySelector(".sidebar")
 
-  document.body.removeChild(sidebar);
-}
+//   document.body.removeChild(sidebar);
+// }
 
 function dialogPerfil() {
-  toggleSideExit();
+  // toggleSideExit();
 
   let customDialog = document.getElementById("perfilForm");
   let form = document.getElementById("formPerfil");
@@ -551,8 +555,17 @@ function adicionarUsuario() {
 /////////////////login things
 
 function toggleSidebar() {
-  var sidebar = document.getElementById("sidebar");
-  sidebar.classList.toggle("open");
+  const navBar = document.querySelector("nav"),
+        menuBtns = document.querySelectorAll(".menu-icon"),
+        overlay = document.querySelector(".overlaySidebar");
+      menuBtns.forEach((menuBtn) => {
+        menuBtn.addEventListener("click", () => {
+          navBar.classList.toggle("open");
+        });
+      });
+      overlay.addEventListener("click", () => {
+        navBar.classList.remove("open");
+      });
 }
 
 function toggleSideLar() {
@@ -574,7 +587,7 @@ function toggleSideLar() {
 
   userList.removeChild(listaItem);
 
-  var sidebar = document.querySelector(".sidebar")
+  var sidebar = document.querySelector("nav")
 
   document.body.removeChild(sidebar);
 }
@@ -615,21 +628,21 @@ loginForm.addEventListener("submit", async (e) => {
 
         idUsuarioD = data.id;
 
-        const sidebar = document.createElement("div");
-        sidebar.id = "sidebar";
-        sidebar.classList.add("sidebar");
-        sidebar.innerHTML = `
-        <div>
-          <ul>
-            <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil();" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
-            <li><div class="intern-div-list"><i class="bi bi-fuel-pump-fill"><a href="postoteste.html">Postos</a></div></i></li>
-            <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
-            <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
-            <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
-          </ul>
-        </div>
-      `;
-        document.body.appendChild(sidebar);
+      //   const sidebar = document.createElement("nav");
+      //   sidebar.id = "sidebar";
+      //   sidebar.classList.add("sidebar");
+      //   sidebar.innerHTML = `
+      //   <div>
+      //     <ul>
+      //       <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil();" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
+      //       <li><div class="intern-div-list"><i class="bi bi-fuel-pump-fill"><a href="postoteste.html">Postos</a></div></i></li>
+      //       <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
+      //       <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
+      //       <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
+      //     </ul>
+      //   </div>
+      // `;
+        // document.body.appendChild(sidebar);
 
         toggleSidebar();
         closeDialog();
@@ -901,53 +914,53 @@ function atualizarSenhaUsuario() {
     .catch((error) => console.error("Erro ao atualizar o usuário:", error));
 }
 
-function closePerfilDialog() {
-  var listaItem = document.querySelector(".usuario");
-  let userList = document.getElementById("formPerfil");
+// function closePerfilDialog() {
+//   var listaItem = document.querySelector(".usuario");
+//   let userList = document.getElementById("formPerfil");
 
-  userList.removeChild(listaItem);
+//   userList.removeChild(listaItem);
 
-  const nomeUsuario = sessionStorage.getItem('guardarNomes');
-    if (nomeUsuario) {
-      console.log(`Usuário ${nomeUsuario} já está logado.`);
-      teste = true;
-      console.log("tem coisa guardada")
-    }
-    if (teste === true) {
-      console.log("tqa entrando")
-      fetch(`http://localhost:3000/usuarios/${nomeUsuario}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          let guardarNome = data.nomeUsuario;
-          sessionStorage.setItem("guardarNome", JSON.stringify(guardarNome));
+//   const nomeUsuario = sessionStorage.getItem('guardarNomes');
+//     if (nomeUsuario) {
+//       console.log(`Usuário ${nomeUsuario} já está logado.`);
+//       teste = true;
+//       console.log("tem coisa guardada")
+//     }
+//     if (teste === true) {
+//       console.log("tqa entrando")
+//       fetch(`http://localhost:3000/usuarios/${nomeUsuario}`, {
+//         method: "GET",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//       })
+//         .then((response) => response.json())
+//         .then((data) => {
+//           let guardarNome = data.nomeUsuario;
+//           sessionStorage.setItem("guardarNome", JSON.stringify(guardarNome));
 
-          console.log("bem vindo");
+//           console.log("bem vindo");
 
-          idUsuarioD = data.id;
+//           idUsuarioD = data.id;
 
-          const sidebar = document.createElement("div");
-          sidebar.id = "sidebar";
-          sidebar.classList.add("sidebar");
-          sidebar.innerHTML = `
-          <ul>
-          <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
-          <li><div class="intern-div-list"><i class="bi bi-fuel-pump"><a href="postoteste.html">Postos</a></div></i></li>
-            <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
-            <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
-            <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
-          </ul>
-        `;
-          document.body.appendChild(sidebar);
+//           const sidebar = document.createElement("div");
+//           sidebar.id = "sidebar";
+//           sidebar.classList.add("sidebar");
+//           sidebar.innerHTML = `
+//           <ul>
+//           <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
+//           <li><div class="intern-div-list"><i class="bi bi-fuel-pump"><a href="postoteste.html">Postos</a></div></i></li>
+//             <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
+//             <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
+//             <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
+//           </ul>
+//         `;
+//           document.body.appendChild(sidebar);
 
-          toggleSidebar();
-          closeDialog();
+//           toggleSidebar();
+//           closeDialog();
 
-          carregarListaUsuarios();
-        });
-    }
-}
+//           carregarListaUsuarios();
+//         });
+//     }
+// }
