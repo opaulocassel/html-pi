@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
           console.log("bem vindo");
 
-          idUsuarioD = data.id;
+          let idUsuarioD = data.id;
 
         //   const sidebar = document.createElement("div");
         //   sidebar.id = "sidebar";
@@ -627,6 +627,7 @@ loginForm.addEventListener("submit", async (e) => {
         console.log("bem vindo");
 
         idUsuarioD = data.id;
+        sessionStorage.setItem("idUsuarioDs", idUsuarioD);
 
       //   const sidebar = document.createElement("nav");
       //   sidebar.id = "sidebar";
@@ -656,7 +657,8 @@ loginForm.addEventListener("submit", async (e) => {
 
 
 function carregarListaUsuarios() {
-  console.log(idUsuarioD);
+  const idUsuarioD = sessionStorage.getItem('idUsuarioDs');
+  console.log(idUsuarioD)
 
   fetch(`http://localhost:3000/usuarios/id/${idUsuarioD}`)
     .then((response) => response.json())
