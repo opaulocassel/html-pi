@@ -789,31 +789,31 @@ nav.open~.overlay {
   pointer-events: auto;
 }
 
-.window p {
-  margin: 5px 0;
-  font-size: 20px;
-}
 
-.window .nomePosto {
-  font-size: 25px;
-  color: blue; 
+.card {
   margin-bottom: 10px;
+  border: 1px solid #e3e3e3;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
-.window .endereco, .ruaPosto {
-  font-style: italic;
+.cardBody{
+  width: 17vw;
+  padding: 7px 0 0 7px;
 }
 
-.window .ruaPosto{
+.cardTitulo {
+  font-size: 25px;
+  color: blue;
+}
+
+.cardSubtitulo {
+  font-size: 20px;
+  color: blueviolet;
+}
+
+.cardTexto {
+  font-size: 15px;
+  color: black;
   margin-bottom: 15px;
-}
-
-.window {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  width: 25vw;
 }

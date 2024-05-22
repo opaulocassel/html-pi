@@ -116,16 +116,24 @@ async function initMap() {
             if (posto) {
               marker.postoData = posto;
               const infoContent = `
-                <div class="window">
-                  <h2 class="nomePosto">${posto.nomePosto}</h2>
-                  <p class="endereco">Endereço: ${posto.enderecoPosto}</p>
-                  <p class="ruaPosto">Rua: ${posto.ruaPosto}</p>
-                  <p>Comum: ${posto.comumPosto}</p>
-                  <p>Aditivado: ${posto.aditivadaPosto}</p>
-                  <p>Diesel: ${posto.dieselPosto}</p>
-                  <p>Álcool: ${posto.alcoolPosto}</p>
-                  <p>Última atualização: ${posto.data}</p>
-                </div>
+              <div class="card">
+              <div class="cardBody">
+                <h5 class="cardTitulo">${posto.nomePosto}</h5>
+                <h6 class="cardSubtitulo mb-2 text-muted">Endereço</h6>
+                <p class="cardTexto">Cidade: ${posto.enderecoPosto}</p>
+                <p class="cardTexto">Cidade: ${posto.ruaPosto}</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="cardBody">
+                <h6 class="cardSubtitulo mb-2 text-muted">Preços</h6>
+                <p class="cardTexto">Comum: ${posto.comumPosto}</p>
+                <p class="cardTexto">Aditivado: ${posto.aditivadaPosto}</p>
+                <p class="cardTexto">Diesel: ${posto.dieselPosto}</p>
+                <p class="cardTexto">Álcool: ${posto.alcoolPosto}</p>
+                <p class="cardTexto">Última atualização: ${posto.data}</p>
+              </div>
+            </div>
               `;
               infowindow.setContent(infoContent);
               infowindow.open(map, marker);
