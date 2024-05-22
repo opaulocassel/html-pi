@@ -3,6 +3,7 @@
     {
       "nomePosto": "Shell",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0001-00",
       "comumPosto": "5,58",
       "aditivadaPosto": "5,77",
@@ -14,6 +15,7 @@
     {
       "nomePosto": "Petrobras",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0002-00",
       "comumPosto": "5,45",
       "aditivadaPosto": "5,80",
@@ -25,6 +27,7 @@
     {
       "nomePosto": "Ipiranga",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0003-00",
       "comumPosto": "5,55",
       "aditivadaPosto": "5,70",
@@ -36,6 +39,7 @@
     {
       "nomePosto": "Shell",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0004-00",
       "comumPosto": "5,60",
       "aditivadaPosto": "5,75",
@@ -47,6 +51,7 @@
     {
       "nomePosto": "Petrobras",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0005-00",
       "comumPosto": "5,48",
       "aditivadaPosto": "5,82",
@@ -58,6 +63,7 @@
     {
       "nomePosto": "Ipiranga",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0006-00",
       "comumPosto": "5,57",
       "aditivadaPosto": "5,72",
@@ -69,6 +75,7 @@
     {
       "nomePosto": "Shell",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0007-00",
       "comumPosto": "5,65",
       "aditivadaPosto": "5,78",
@@ -80,6 +87,7 @@
     {
       "nomePosto": "Petrobras",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0008-00",
       "comumPosto": "5,50",
       "aditivadaPosto": "5,85",
@@ -91,6 +99,7 @@
     {
       "nomePosto": "Ipiranga",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0009-00",
       "comumPosto": "5,60",
       "aditivadaPosto": "5,75",
@@ -102,6 +111,7 @@
     {
       "nomePosto": "Shell",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0010-00",
       "comumPosto": "5,70",
       "aditivadaPosto": "5,80",
@@ -113,6 +123,7 @@
     {
       "nomePosto": "Petrobras",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0011-00",
       "comumPosto": "5,55",
       "aditivadaPosto": "5,90",
@@ -124,6 +135,7 @@
     {
       "nomePosto": "Ipiranga",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0012-00",
       "comumPosto": "5,65",
       "aditivadaPosto": "5,85",
@@ -135,6 +147,7 @@
     {
       "nomePosto": "Shell",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0006-00",
       "comumPosto": "5,75",
       "aditivadaPosto": "5,85",
@@ -146,6 +159,7 @@
     {
       "nomePosto": "Petrobras",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0014-00",
       "comumPosto": "5,60",
       "aditivadaPosto": "5,95",
@@ -157,6 +171,7 @@
     {
       "nomePosto": "Ipiranga",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0015-00",
       "comumPosto": "5,70",
       "aditivadaPosto": "5,90",
@@ -168,6 +183,7 @@
     {
       "nomePosto": "Shell",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0008-00",
       "comumPosto": "5,80",
       "aditivadaPosto": "5,90",
@@ -179,6 +195,7 @@
     {
       "nomePosto": "Petrobras",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0017-00",
       "comumPosto": "5,65",
       "aditivadaPosto": "6,00",
@@ -190,6 +207,7 @@
     {
       "nomePosto": "Ipiranga",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0018-00",
       "comumPosto": "5,75",
       "aditivadaPosto": "6,00",
@@ -201,6 +219,7 @@
     {
       "nomePosto": "Ipiranga",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0019-00",
       "comumPosto": "5,90",
       "aditivadaPosto": "6,00",
@@ -212,13 +231,26 @@
     {
       "nomePosto": "Petrobras",
       "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Cristo Rei",
       "cnpjPosto": "98.765.432/0020-00",
-      "comumPosto": "5,70",
+      "comumPosto": "6,70",
       "aditivadaPosto": "6,05",
       "dieselPosto": "6,20",
       "alcoolPosto": "4,30",
       "id": 20,
       "data": "19/04/2024, 23:00"
+    },
+    {
+      "nomePosto": "Petrobras",
+      "enderecoPosto": "São Leopoldo",
+      "ruaPosto": "Tulimina",
+      "cnpjPosto": "98.765.432/0021-00",
+      "comumPosto": "7,34",
+      "aditivadaPosto": "R$ 6,50",
+      "dieselPosto": "R$ 7,00",
+      "alcoolPosto": "R$ 5,70",
+      "id": 21,
+      "data": "21/05/2024, 20:32"
     }
   ]
 }

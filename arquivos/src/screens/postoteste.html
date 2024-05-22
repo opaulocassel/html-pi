@@ -34,6 +34,8 @@
             <input type="text" id="nomePosto" name="nomePosto" required>
             <label for="endereçoPosto">Endereço:</label>
             <input type="text" id="endereçoPosto" name="endereçoPosto" required>
+            <label for="ruaPosto">Rua:</label>
+            <input type="text" id="ruaPosto" name="ruaPosto" required>
             <label for="cnpjPosto">CNPJ:</label>
             <input type="text" id="cnpjPosto" name="cnpjPosto" required>
             <label for="comumPosto">Gasolina Comum:</label>
@@ -77,6 +79,20 @@
                 <input type="text" class="form-control" id="novoEnderecoPosto" maxlength="30" name="novoEnderecoPosto">
             </div>
             <button type="submit" class="btn btn-primary" onclick="fecharDialogEndereco()">Confirmar</button>
+        </form>
+
+        <form id="formAtualizarRuaPosto" class="dialog">
+            <input type="hidden" id="userId" name="userId" />
+    
+            <div class="mb-3" id="dialogNome">
+                <label for="ruaPosto" class="form-label">Insira a rua do posto atual:</label>
+                <input type="text" class="form-control" id="antigaRuaPosto" maxlength="30" name="antigaRuaPosto">
+            </div>
+            <div class="mb-3" id="dialogNome">
+                <label for="ruaPosto" class="form-label">Insira a nova rua do Posto:</label>
+                <input type="text" class="form-control" id="novaRuaPosto" maxlength="30" name="novaRuaPosto">
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="atualizarRuaPosto()">Confirmar</button>
         </form>
 
         <!-- Atualizar CNPJ -->

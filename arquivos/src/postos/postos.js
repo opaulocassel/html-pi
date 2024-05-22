@@ -72,6 +72,7 @@ function carregarListaPostos() {
           <div>ID: ${posto.id}</div>
           <div>Nome: ${posto.nomePosto}</div>
           <div>Endereco: ${posto.enderecoPosto}</div>
+          <div>Rua: ${posto.ruaPosto}</div>
           <div>CNPJ: ${posto.cnpjPosto}</div>
           <div>Gasolina Comum: ${posto.comumPosto}</div>
           <div>Gasolina Aditivada: ${posto.aditivadaPosto}</div>
@@ -80,6 +81,7 @@ function carregarListaPostos() {
           <div class="botoes">
             <button class="dialogButton" onClick="abrirDialogNome()" data-id="${posto.id}">Atualizar Nome</button>
             <button class="dialogButton" onClick="abrirDialogEndereco()" data-id="${posto.id}">Atualizar Endereço</button>
+            <button class="dialogButton" onClick="abrirDialogRuaPosto()" data-id="${posto.id}">Atualizar Rua</button>
             <button class="dialogButton" onClick="abrirDialogCNPJ()" data-id="${posto.id}">Atualizar CNPJ</button>
             <button class="dialogButton" onClick="abrirDialogComum()" data-id="${posto.id}">Atualizar Gasolina Comum</button>
             <button class="dialogButton" onClick="abrirDialogAditivada()" data-id="${posto.id}">Atualizar Gasolina Aditivada</button>
@@ -112,13 +114,14 @@ function fecharDialogAdicionar() {
 function adicionarPosto() {
     const nomePosto = document.getElementById("nomePosto").value;
     const enderecoPosto = document.getElementById("endereçoPosto").value;
+    const ruaPosto = document.getElementById("ruaPosto").value;
     const cnpjPosto = document.getElementById("cnpjPosto").value;
     const comumPosto = document.getElementById("comumPosto").value;
     const aditivadaPosto = document.getElementById("aditivadaPosto").value;
     const dieselPosto = document.getElementById("dieselPosto").value;
     const alcoolPosto = document.getElementById("alcoolPosto").value;
   
-    if(nomePosto === "" || enderecoPosto === "" || cnpjPosto === "" || comumPosto === "" || aditivadaPosto === "" || dieselPosto === "" || alcoolPosto === ""){
+    if(nomePosto === "" || enderecoPosto === "" || ruaPosto === "" || cnpjPosto === "" || comumPosto === "" || aditivadaPosto === "" || dieselPosto === "" || alcoolPosto === ""){
       alert ("Dados incompletos, por favor, preencha os dados." );
     }
   
@@ -130,6 +133,7 @@ function adicionarPosto() {
       body: JSON.stringify({
         nomePosto: nomePosto,
         enderecoPosto: enderecoPosto,
+        ruaPosto: ruaPosto,
         cnpjPosto: cnpjPosto,
         comumPosto: comumPosto,
         aditivadaPosto: aditivadaPosto,
@@ -238,6 +242,43 @@ function atualizarEnderecoPosto() {
   }
 }
 
+
+function abrirDialogRuaPosto() {
+  var dialog = document.getElementById("formAtualizarRuaPosto");
+  dialog.style.display = "block";
+
+  var userId = event.target.dataset.id;
+  document.getElementById("userId").value = userId;
+}
+
+function fecharDialogRuaPosto() {
+  var dialog = document.getElementById("formAtualizarRuaPosto");
+  dialog.style.display = "none";
+}
+
+function atualizarRuaPosto() {
+  const novaRuaPosto = document.getElementById("novaRuaPosto").value;
+  const idPosto = document.getElementById("userId").value;
+
+  if (novaRuaPosto === "") {
+    alert("Preencha o campo.");
+  } else {
+    fetch(`http://localhost:3000/postos/${idPosto}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ruaPosto: novaRuaPosto,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Posto atualizado com sucesso:", data);
+      })
+      .catch((error) => console.error("Erro ao atualizar o Posto:", error));
+  }
+}
 // ATUALIZAR CNPJ (calma cnpjoto)
 
 function abrirDialogCNPJ() {

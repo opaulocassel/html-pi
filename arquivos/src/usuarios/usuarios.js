@@ -117,9 +117,9 @@ async function initMap() {
               marker.postoData = posto;
               const infoContent = `
                 <div class="window">
-                  <h2>${posto.nomePosto}</h2>
-                  <p>Endereço: ${posto.enderecoPosto}</p>
-                  <p>CNPJ: ${posto.cnpjPosto}</p>
+                  <h2 class="nomePosto">${posto.nomePosto}</h2>
+                  <p class="endereco">Endereço: ${posto.enderecoPosto}</p>
+                  <p class="ruaPosto">Rua: ${posto.ruaPosto}</p>
                   <p>Comum: ${posto.comumPosto}</p>
                   <p>Aditivado: ${posto.aditivadaPosto}</p>
                   <p>Diesel: ${posto.dieselPosto}</p>
@@ -272,6 +272,12 @@ let locations = [
     title: `Ipiranga`,
     icon: "../assets/ipiranga.svg",
     cnpj: "98.765.432/0019-00",
+  },
+  {
+    position: { lat: -29.767342, lng: -51.148942 },
+    title: `Petrobras`,
+    icon: "../assets/petrobras.png",
+    cnpj: "98.765.432/0021-00",
   },
 ];
 

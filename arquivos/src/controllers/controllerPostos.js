@@ -23,6 +23,7 @@ server.post("/postos", (req, res) => {
     if (
       !novoPosto.nomePosto ||
       !novoPosto.enderecoPosto ||
+      !novoPosto.ruaPosto ||
       !novoPosto.cnpjPosto ||
       !novoPosto.comumPosto ||
       !novoPosto.aditivadaPosto ||
@@ -52,6 +53,7 @@ server.post("/postos", (req, res) => {
   
         dadosPosto.postos[idPostos].nomePosto = atualizarPosto.nomePosto || dadosPosto.postos[idPostos].nomePosto;
         dadosPosto.postos[idPostos].enderecoPosto = atualizarPosto.enderecoPosto || dadosPosto.postos[idPostos].enderecoPosto;
+        dadosPosto.postos[idPostos].ruaPosto = atualizarPosto.ruaPosto || dadosPosto.postos[idPostos].ruaPosto;
         dadosPosto.postos[idPostos].cnpjPosto = atualizarPosto.cnpjPosto || dadosPosto.postos[idPostos].cnpjPosto;
         dadosPosto.postos[idPostos].comumPosto = atualizarPosto.comumPosto || dadosPosto.postos[idPostos].comumPosto;
         dadosPosto.postos[idPostos].aditivadaPosto = atualizarPosto.aditivadaPosto || dadosPosto.postos[idPostos].aditivadaPosto;
