@@ -109,35 +109,70 @@ function verificarTelefone(telefone) {
   return regex.test(telefone);
 }
 
-function atualizarNomeUsuario() {
+async function atualizarNomeUsuario() {
+  const antigoNomeUsuario = document.getElementById("antigoNomeUsuario").value;
   const novoNomeUsuario = document.getElementById("novoNomeUsuario").value;
+  const confirmeSenhaNome = document.getElementById("confirmeSenhaNome").value;
   const idUsuario = document.getElementById("userId").value;
 
-  if (novoNomeUsuario === "") {
-    alert("Preencha o campo.");
-  } else if (
-    novoNomeUsuario === "Admin" ||
-    novoNomeUsuario === "admin" ||
-    !verificarNome(novoNomeUsuario)
-  ) {
-    alert("Este nome é proíbido.");
-  } else {
-    fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nomeUsuario: novoNomeUsuario,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Usuário atualizado com sucesso:", data);
-        carregarListaUsuarios();
-      })
-      .catch((error) => console.error("Erro ao atualizar o usuário:", error));
-  }
+  const encoder = new TextEncoder();
+  const data = encoder.encode(confirmeSenhaNome);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashSenha = hashArray
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+
+  fetch(`http://localhost:3000/usuarios/nomeUsuario/${antigoNomeUsuario}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (
+        antigoNomeUsuario === "" ||
+        novoNomeUsuario === "" ||
+        confirmeSenhaNome === ""
+      ) {
+        alert("Preencha todos os campos");
+      } else if (novoNomeUsuario === "admin" || novoNomeUsuario === "Admin") {
+        alert("Nome de usuário não pode ser admin");
+      } else if (
+        !verificarNome(antigoNomeUsuario) ||
+        !verificarNome(novoNomeUsuario)
+      ) {
+        alert("Nome de usuário inválido");
+      } else if (data.nomeUsuario !== antigoNomeUsuario) {
+        console.log(data.nomeUsuario);
+
+        alert("Nome de usuário não encontrado");
+      } else if (data.senha !== hashSenha) {
+        alert("Senha não confere");
+      } else {
+        let guardarNome = novoNomeUsuario;
+        sessionStorage.setItem("guardarNome", JSON.stringify(guardarNome));
+
+        fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nomeUsuario: novoNomeUsuario,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Usuário atualizado com sucesso:", data);
+            carregarListaUsuarios();
+          })
+          .catch((error) =>
+            console.error("Erro ao atualizar o usuário:", error)
+          );
+      }
+    });
 }
 
 // Atualizar email
@@ -154,31 +189,72 @@ function fecharDialogEmail() {
   dialog.style.display = "none";
 }
 
-function atualizarEmailUsuario() {
+async function atualizarEmailUsuario() {
+  const antigoEmailUsuario = document.getElementById("emailUsuario").value;
   const novoEmailUsuario = document.getElementById("novoEmailUsuario").value;
+  const confirmeSenhaEmail =
+    document.getElementById("confirmeSenhaEmail").value;
   const idUsuario = document.getElementById("userId").value;
 
-  if (novoEmailUsuario === "") {
-    alert("Por favor, preencha o campo.");
-  } else if (!verificarEmail(novoEmailUsuario)) {
-    alert("E-mail inválido!");
-  } else {
-    fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: novoEmailUsuario,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Usuário atualizado com sucesso:", data);
-        carregarListaUsuarios();
-      })
-      .catch((error) => console.error("Erro ao atualizar o usuário:", error));
-  }
+  const encoder = new TextEncoder();
+  const data = encoder.encode(confirmeSenhaEmail);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashSenha = hashArray
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+
+  fetch(`http://localhost:3000/usuarios/email/${antigoEmailUsuario}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (
+        antigoEmailUsuario === "" ||
+        novoEmailUsuario === "" ||
+        confirmeSenhaEmail === ""
+      ) {
+        console.log(antigoEmailUsuario);
+        console.log(novoEmailUsuario);
+        console.log(confirmeSenhaEmail);
+        console.log(idUsuario);
+
+        alert("Preencha todos os campos corretamente");
+      } else if (
+        !verificarEmail(novoEmailUsuario) ||
+        !verificarEmail(antigoEmailUsuario)
+      ) {
+        alert("Email inválido");
+      } else if (data.email !== antigoEmailUsuario) {
+        alert("Email não existe");
+      } else if (data.senha !== hashSenha) {
+        alert("Senha incorreta");
+      } else {
+        let guardarEmail = novoEmailUsuario;
+        sessionStorage.setItem("guardarEmail", JSON.stringify(guardarEmail));
+
+        fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: novoEmailUsuario,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Usuário atualizado com sucesso:", data);
+            carregarListaUsuarios();
+          })
+          .catch((error) =>
+            console.error("Erro ao atualizar o usuário:", error)
+          );
+      }
+    });
 }
 
 // Atualizar celular
@@ -195,31 +271,69 @@ function fecharDialogTelefone() {
   dialog.style.display = "none";
 }
 
-function atualizarCelularUsuario() {
+async function atualizarCelularUsuario() {
+  const antigoTelefoneUsuario =document.getElementById("telefoneUsuario").value;
   const novoTelefoneUsuario = document.getElementById("novoTelefoneUsuario").value;
+  const confirmeSenhaTelefone = document.getElementById("confirmeSenhaTelefone").value;
   const idUsuario = document.getElementById("userId").value;
 
-  if (novoTelefoneUsuario === "") {
-    alert("Por favor, preencha o campo.");
-  } else if (!verificarTelefone(novoTelefoneUsuario)) {
-    alert("Telefone inválido!");
-  } else {
-    fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        telefone: novoTelefoneUsuario,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Usuário atualizado com sucesso:", data);
-        carregarListaUsuarios();
-      })
-      .catch((error) => console.error("Erro ao atualizar o usuário:", error));
-  }
+  const encoder = new TextEncoder();
+  const data = encoder.encode(confirmeSenhaTelefone);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashSenha = hashArray
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+
+  fetch(`http://localhost:3000/usuarios/telefone/${antigoTelefoneUsuario}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (
+        antigoTelefoneUsuario === "" ||
+        novoTelefoneUsuario === "" ||
+        confirmeSenhaTelefone === ""
+      ) {
+        alert("Preencha todos os campos corretamente");
+      } else if (
+        !verificarTelefone(antigoTelefoneUsuario) ||
+        !verificarTelefone(novoTelefoneUsuario)
+      ) {
+        alert("Telefone inválido");
+      } else if (data.telefone !== antigoTelefoneUsuario) {
+        alert("Telefone atual não corresponde ao telefone do usuário");
+      } else if (data.senha !== hashSenha) {
+        alert("Senha incorreta");
+      } else {
+        let guardarTelefone = novoTelefoneUsuario;
+        sessionStorage.setItem(
+          "guardarTelefone",
+          JSON.stringify(guardarTelefone)
+        );
+
+        fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            telefone: novoTelefoneUsuario,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Usuário atualizado com sucesso:", data);
+            carregarListaUsuarios();
+          })
+          .catch((error) =>
+            console.error("Erro ao atualizar o usuário:", error)
+          );
+      }
+    });
 }
 
 // Atualizar senha
@@ -236,23 +350,56 @@ function fecharDialogSenha() {
   dialog.style.display = "none";
 }
 
-function atualizarSenhaUsuario() {
+async function atualizarSenhaUsuario() {
+  const antigaSenhaUsuario = document.getElementById("senhaUsuario").value;
   const novaSenhaUsuario = document.getElementById("novaSenhaUsuario").value;
+  const confirmeSenha = document.getElementById("confirmeSenha").value;
   const idUsuario = document.getElementById("userId").value;
 
-  fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
-    method: "PUT",
+  const encoder = new TextEncoder();
+  const data = encoder.encode(antigaSenhaUsuario);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashSenha = hashArray
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+
+  fetch(`http://localhost:3000/usuarios/senha/${hashSenha}`, {
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      senha: novaSenhaUsuario,
-    }),
   })
     .then((response) => response.json())
-    .then((data) => {
-      console.log("Usuário atualizado com sucesso:", data);
-      carregarListaUsuarios();
+    .then(async (data) => {
+      if(antigaSenhaUsuario === "" || novaSenhaUsuario === "" || confirmeSenha === ""){
+        alert("Preencha todos os campos");
+      } else if (data.senha !== hashSenha){
+        alert("Senha antiga incorreta!");
+      } else if (novaSenhaUsuario !== confirmeSenha){
+        alert("As senhas não conferem!");
+      } else {
+
+        let guardarsenha = confirmeSenha;
+        sessionStorage.setItem("guardarsenha",JSON.stringify(guardarsenha));
+
+          fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              senha: confirmeSenha,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Usuário atualizado com sucesso:", data);
+              carregarListaUsuarios();
+            })
+            .catch((error) => console.error("Erro ao atualizar o usuário:", error));
+      }
+    
     })
-    .catch((error) => console.error("Erro ao atualizar o usuário:", error));
+
 }

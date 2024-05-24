@@ -46,13 +46,43 @@ server.get("/usuarios", (req, res) => {
     return res.json(dadosUsuario.usuarios);
 })
 
-server.get("/usuarios/:nomeUsuario", (req, res)=>{
+server.get("/usuarios/nomeUsuario/:nomeUsuario", (req, res)=>{
   const nomeUsuario = req.params.nomeUsuario;
   const usuarioEncontrado = dadosUsuario.usuarios.find(usuario => usuario.nomeUsuario === nomeUsuario);
   if (usuarioEncontrado) {
       return res.json(usuarioEncontrado);
   } else {
       return res.status(404).json({ error: 'Usuário não encontrado' });
+  }
+});
+
+server.get("/usuarios/email/:email", (req, res) => {
+  const email = req.params.email;
+  const emailEncontrado = dadosUsuario.usuarios.find(usuario => usuario.email === email);
+  if (emailEncontrado) {
+    return res.json(emailEncontrado);
+  } else {
+    return res.status(404).json({ error: 'Email não encontrado' });
+  }
+});
+
+server.get("/usuarios/telefone/:telefone", (req, res) => {
+  const telefone = req.params.telefone;
+  const telefoneEncontrado = dadosUsuario.usuarios.find(usuario => usuario.telefone === telefone);
+  if (telefoneEncontrado) {
+    return res.json(telefoneEncontrado);
+  } else {
+    return res.status(404).json({ error: 'Telefone não encontrado' });
+  }
+});
+
+server.get("/usuarios/senha/:senha", (req, res) => {
+  const senha = req.params.senha;
+  const senhaEncontrada = dadosUsuario.usuarios.find(usuario => usuario.senha === senha);
+  if (senhaEncontrada) {
+    return res.json(senhaEncontrada);
+  } else {
+    return res.status(404).json({ error: 'Senha não encontrada' });
   }
 });
 
