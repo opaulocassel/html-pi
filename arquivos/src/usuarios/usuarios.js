@@ -116,35 +116,43 @@ async function initMap() {
               marker.postoData = posto;
               const infoContent = `
               <div class="containerCard">
-                <div class="postCard">
-                  <div class="header_postCard">
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipPDFKOVHu7EAl20edZ_mhsrGPBKdLnJt6PAn938=s680-w680-h510"
-                      alt="">
-                  </div>
+        <div class="postCard">
+            <div class="header_postCard">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipPDFKOVHu7EAl20edZ_mhsrGPBKdLnJt6PAn938=s680-w680-h510"
+                    alt="">
+            </div>
 
             <div class="body_postCard">
                 <div class="postCard_content">
 
-                    <h1>Lorem Ipsum</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi assumenda cumque
-                        deserunt
-                        dolorum ex exercitationem.</p>
+                    <article class="property">
+                        <section class="property__main-info">
+                            <h3 class="property__title">${posto.nomePosto}</h3>
+                            <span class="property__price">${posto.comumPosto}</span>
+                            <span class="property__location">
+                                <i class="icon icon-location bi bi-geo-alt-fill">
+                                </i>
+                                ${posto.enderecoPosto}, ${posto.ruaPosto}
+                            </span>
+                        </section>
+                    </article>
 
                     <div class="containerCard_infos">
                         <div class="flex items-center pt-2">
                             <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3"
-                                <img src="https://seeklogo.com/images/P/Petrobras-logo-03DABEE0AC-seeklogo.com.png"
-                                alt="">
+                                style="background-image: url(https://seeklogo.com/images/P/Petrobras-logo-03DABEE0AC-seeklogo.com.png)">
                             </div>
                             <div>
-                                <p class="font-bold text-gray-900">${posto.enderecoPosto}</p>
-                                <p class="text-sm text-gray-700">${posto.ruaPosto}</p>
+                                <p class="preco font-bold text-gray-900">Aditivado: ${posto.aditivadaPosto}</p>
+                                <p class="preco font-bold text-gray-900">Diesel: ${posto.dieselPosto}</p>
+                                <p class="preco font-bold text-gray-900">Álcool: ${posto.alcoolPosto}</p>
                             </div>
-                            </div>
-                            </div>
-                      </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
               `;
               infowindow.setContent(infoContent);
               infowindow.open(map, marker);
