@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-var teste = false;
-window.addEventListener("DOMContentLoaded", () => {
-  const nomeUsuario = sessionStorage.getItem("guardarNomes");
-  if (nomeUsuario) {
-    console.log(`Usuário ${nomeUsuario} já está logado.`);
-    teste = true;
-    console.log("tem coisa guardada");
-  }
-  if (teste === true) {
-    console.log("tqa entrando");
-    fetch(`http://localhost:3000/usuarios/nomeUsuario/${nomeUsuario}`, {
-=======
 var teste = false
 window.addEventListener('DOMContentLoaded', () => {
   const nomeUsuario = sessionStorage.getItem('guardarNomes');
@@ -21,8 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   if (teste === true) {
     console.log("tqa entrando")
-    fetch(`http://localhost:3000/usuarios/${nomeUsuario}`, {
->>>>>>> 491a5a00570bbcf5fc6eb9157613d7d59a8af780
+    fetch(`http://localhost:3000/usuarios/nomeUsuario/${nomeUsuario}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -129,25 +115,6 @@ async function initMap() {
             if (posto) {
               marker.postoData = posto;
               const infoContent = `
-<<<<<<< HEAD
-              <div class="card">
-              <div class="cardBody">
-                <h5 class="cardTitulo">${posto.nomePosto}</h5>
-                <h6 class="cardSubtitulo mb-2 text-muted">Endereço</h6>
-                <p class="cardTexto">Cidade: ${posto.enderecoPosto}</p>
-                <p class="cardTexto">Rua: ${posto.ruaPosto}</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="cardBody">
-                <h6 class="cardSubtitulo mb-2 text-muted">Preços</h6>
-                <p class="cardTexto">Comum: ${posto.comumPosto}</p>
-                <p class="cardTexto">Aditivado: ${posto.aditivadaPosto}</p>
-                <p class="cardTexto">Diesel: ${posto.dieselPosto}</p>
-                <p class="cardTexto">Álcool: ${posto.alcoolPosto}</p>
-                <p class="cardTexto">Última atualização: ${posto.data}</p>
-              </div>
-=======
               <div class="containerCard">
                 <div class="postCard">
                   <div class="header_postCard">
@@ -177,7 +144,6 @@ async function initMap() {
                             </div>
                       </div>
                 </div>
->>>>>>> 491a5a00570bbcf5fc6eb9157613d7d59a8af780
             </div>
               `;
               infowindow.setContent(infoContent);
@@ -823,7 +789,7 @@ function carregarListaUsuarios() {
 }
 
 function excluirUsuario(id) {
-  fetch(`http://localhost:3000/usuarios/${id}`, {
+  fetch(`http://localhost:3000/usuarios/id/${id}`, {
     method: "DELETE",
   })
     .then((response) => response.json())
@@ -1194,8 +1160,6 @@ async function atualizarSenhaUsuario() {
 //         });
 //     }
 // }
-<<<<<<< HEAD
-=======
 
 
 
@@ -1217,4 +1181,3 @@ async function atualizarSenhaUsuario() {
             //     <p class="cardTexto">Última atualização: ${posto.data}</p>
             //   </div>
             // </div>
->>>>>>> 491a5a00570bbcf5fc6eb9157613d7d59a8af780
