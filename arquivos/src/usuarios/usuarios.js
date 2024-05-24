@@ -1,27 +1,27 @@
 var teste = false
 window.addEventListener('DOMContentLoaded', () => {
-    const nomeUsuario = sessionStorage.getItem('guardarNomes');
-    if (nomeUsuario) {
-      console.log(`Usuário ${nomeUsuario} já está logado.`);
-      teste = true;
-      console.log("tem coisa guardada")
-    }
-    if (teste === true) {
-      console.log("tqa entrando")
-      fetch(`http://localhost:3000/usuarios/${nomeUsuario}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          let guardarNome = data.nomeUsuario;
-          sessionStorage.setItem("guardarNome", JSON.stringify(guardarNome));
+  const nomeUsuario = sessionStorage.getItem('guardarNomes');
+  if (nomeUsuario) {
+    console.log(`Usuário ${nomeUsuario} já está logado.`);
+    teste = true;
+    console.log("tem coisa guardada")
+  }
+  if (teste === true) {
+    console.log("tqa entrando")
+    fetch(`http://localhost:3000/usuarios/${nomeUsuario}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        let guardarNome = data.nomeUsuario;
+        sessionStorage.setItem("guardarNome", JSON.stringify(guardarNome));
 
-          console.log("bem vindo");
+        console.log("bem vindo");
 
-          let idUsuarioD = data.id;
+        let idUsuarioD = data.id;
 
         //   const sidebar = document.createElement("div");
         //   sidebar.id = "sidebar";
@@ -41,12 +41,12 @@ window.addEventListener('DOMContentLoaded', () => {
         // `;
         //   document.body.appendChild(sidebar);
 
-          toggleSidebar();
-          closeDialog();
+        toggleSidebar();
+        closeDialog();
 
-          carregarListaUsuarios();
-        });
-    }
+        carregarListaUsuarios();
+      });
+  }
 });
 
 async function initMap() {
@@ -116,23 +116,35 @@ async function initMap() {
             if (posto) {
               marker.postoData = posto;
               const infoContent = `
-              <div class="card">
-              <div class="cardBody">
-                <h5 class="cardTitulo">${posto.nomePosto}</h5>
-                <h6 class="cardSubtitulo mb-2 text-muted">Endereço</h6>
-                <p class="cardTexto">Cidade: ${posto.enderecoPosto}</p>
-                <p class="cardTexto">Cidade: ${posto.ruaPosto}</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="cardBody">
-                <h6 class="cardSubtitulo mb-2 text-muted">Preços</h6>
-                <p class="cardTexto">Comum: ${posto.comumPosto}</p>
-                <p class="cardTexto">Aditivado: ${posto.aditivadaPosto}</p>
-                <p class="cardTexto">Diesel: ${posto.dieselPosto}</p>
-                <p class="cardTexto">Álcool: ${posto.alcoolPosto}</p>
-                <p class="cardTexto">Última atualização: ${posto.data}</p>
-              </div>
+              <div class="containerCard">
+                <div class="postCard">
+                  <div class="header_postCard">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipPDFKOVHu7EAl20edZ_mhsrGPBKdLnJt6PAn938=s680-w680-h510"
+                      alt="">
+                  </div>
+
+            <div class="body_postCard">
+                <div class="postCard_content">
+
+                    <h1>Lorem Ipsum</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi assumenda cumque
+                        deserunt
+                        dolorum ex exercitationem.</p>
+
+                    <div class="containerCard_infos">
+                        <div class="flex items-center pt-2">
+                            <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3"
+                                <img src="https://seeklogo.com/images/P/Petrobras-logo-03DABEE0AC-seeklogo.com.png"
+                                alt="">
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">${posto.enderecoPosto}</p>
+                                <p class="text-sm text-gray-700">${posto.ruaPosto}</p>
+                            </div>
+                            </div>
+                            </div>
+                      </div>
+                </div>
             </div>
               `;
               infowindow.setContent(infoContent);
@@ -570,16 +582,16 @@ function adicionarUsuario() {
 
 function toggleSidebar() {
   const navBar = document.querySelector("nav"),
-        menuBtns = document.querySelectorAll(".menu-icon"),
-        overlay = document.querySelector(".overlaySidebar");
-      menuBtns.forEach((menuBtn) => {
-        menuBtn.addEventListener("click", () => {
-          navBar.classList.toggle("open");
-        });
-      });
-      overlay.addEventListener("click", () => {
-        navBar.classList.remove("open");
-      });
+    menuBtns = document.querySelectorAll(".menu-icon"),
+    overlay = document.querySelector(".overlaySidebar");
+  menuBtns.forEach((menuBtn) => {
+    menuBtn.addEventListener("click", () => {
+      navBar.classList.toggle("open");
+    });
+  });
+  overlay.addEventListener("click", () => {
+    navBar.classList.remove("open");
+  });
 }
 
 function toggleSideLar() {
@@ -615,6 +627,7 @@ loginForm.addEventListener("submit", async (e) => {
 
   const userName = document.getElementById("loginNome").value;
   const passWord = document.getElementById("loginSenha").value;
+  let isLoggedIn = sessionStorage.getItem('guardarNome') !== null;
 
   const encoder = new TextEncoder();
   const data = encoder.encode(passWord);
@@ -643,20 +656,20 @@ loginForm.addEventListener("submit", async (e) => {
         idUsuarioD = data.id;
         sessionStorage.setItem("idUsuarioDs", idUsuarioD);
 
-      //   const sidebar = document.createElement("nav");
-      //   sidebar.id = "sidebar";
-      //   sidebar.classList.add("sidebar");
-      //   sidebar.innerHTML = `
-      //   <div>
-      //     <ul>
-      //       <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil();" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
-      //       <li><div class="intern-div-list"><i class="bi bi-fuel-pump-fill"><a href="postoteste.html">Postos</a></div></i></li>
-      //       <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
-      //       <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
-      //       <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
-      //     </ul>
-      //   </div>
-      // `;
+        //   const sidebar = document.createElement("nav");
+        //   sidebar.id = "sidebar";
+        //   sidebar.classList.add("sidebar");
+        //   sidebar.innerHTML = `
+        //   <div>
+        //     <ul>
+        //       <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil();" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
+        //       <li><div class="intern-div-list"><i class="bi bi-fuel-pump-fill"><a href="postoteste.html">Postos</a></div></i></li>
+        //       <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
+        //       <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
+        //       <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
+        //     </ul>
+        //   </div>
+        // `;
         // document.body.appendChild(sidebar);
 
         toggleSidebar();
@@ -759,7 +772,6 @@ function carregarListaUsuarios() {
                           </div>
                       </div>
                       <button class="deleteButton" onClick="excluirUsuario(${usuario.id})">Excluir</button>
-                      <button href="#" class="logout-btn" onclick="toggleSideLar()">Logout</button>
                   </div>
               </div>
          </div>
@@ -980,3 +992,24 @@ function atualizarSenhaUsuario() {
 //         });
 //     }
 // }
+
+
+
+            //   <div class="card">
+            //   <div class="cardBody">
+            //     <h5 class="cardTitulo">${posto.nomePosto}</h5>
+            //     <h6 class="cardSubtitulo mb-2 text-muted">Endereço</h6>
+            //     <p class="cardTexto">Cidade: ${posto.enderecoPosto}</p>
+            //     <p class="cardTexto">Cidade: ${posto.ruaPosto}</p>
+            //   </div>
+            // </div>
+            // <div class="card">
+            //   <div class="cardBody">
+            //     <h6 class="cardSubtitulo mb-2 text-muted">Preços</h6>
+            //     <p class="cardTexto">Comum: ${posto.comumPosto}</p>
+            //     <p class="cardTexto">Aditivado: ${posto.aditivadaPosto}</p>
+            //     <p class="cardTexto">Diesel: ${posto.dieselPosto}</p>
+            //     <p class="cardTexto">Álcool: ${posto.alcoolPosto}</p>
+            //     <p class="cardTexto">Última atualização: ${posto.data}</p>
+            //   </div>
+            // </div>

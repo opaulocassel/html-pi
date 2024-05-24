@@ -53,10 +53,6 @@
       </label>
     </div> -->
 
-    <button onclick="openDialog()" class="botaoHome" id="botaoHome">
-      Iniciar sessão
-    </button>
-
   </header>
 
   <main>
@@ -191,11 +187,78 @@
       <button type="submit" class="btn btn-primary" onclick="fecharDialogSenha()">Confirmar</button>
     </form>
 
+    <!-- <nav class="before">
+      <div class="logo">
+          <i class="bx bx-menu menu-icon-before"></i>
+          <span class="logo-name">CodingLab</span>
+      </div>
+      <div class="sidebar">
+          <div class="logo">
+              <i class="bx bx-menu menu-icon-before"></i>
+              <span class="logo-name">CodingLab</span>
+          </div>
+
+          <div class="sidebar-content">
+              <ul class="lists">
+                  <li class="list">
+                      <a href="#" class="nav-link">
+                          <i class="bx bx-home-alt icon"></i>
+                          <span class="link">Configurações</span>
+                      </a>
+                  </li>
+                  <li class="list">
+                      <a href="#" class="nav-link">
+                          <i class="bx bx-bar-chart-alt-2 icon"></i>
+                          <span class="link">Contato</span>
+                      </a>
+                  </li>
+                  <li class="list">
+                      <a href="#" class="nav-link">
+                          <i class="bx bx-bell icon"></i>
+                          <span class="link">Sobre</span>
+                      </a>
+                  </li>
+              </ul>
+
+              <div class="bottom-cotent">
+                <li class="lista">
+                  <a href="#" class="nav-link">
+                    <label for="theme" class="theme" id="themeLabel">
+                      <span class="theme__toggle-wrap" id="theme__toggle-wrap">
+                        <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="default">
+                        <span class="theme__fill"></span>
+                        <span class="theme__icon">
+                          <span class="theme__icon-part"></span>
+                          <span class="theme__icon-part"></span>
+                          <span class="theme__icon-part"></span>
+                          <span class="theme__icon-part"></span>
+                          <span class="theme__icon-part"></span>
+                          <span class="theme__icon-part"></span>
+                          <span class="theme__icon-part"></span>
+                          <span class="theme__icon-part"></span>
+                          <span class="theme__icon-part"></span>
+                        </span>
+                      </span>
+                    </label>
+                  </a>
+                </li>
+              </div>
+          </div>
+      </div>
+  </nav>
+
+  <section class="overlaySidebarBefore"></section> -->
+
     <nav>
       <div class="logo">
         <i class="bx bx-menu menu-icon"></i>
         <span class="logo-nome">Sidebar</span>
       </div>
+      <i onclick="" class="bx bx-cog icon botaoConfig" id="botaoConfig">
+      </i>
+      <button onclick="openDialog()" class="botaoHome" id="botaoHome">
+        Iniciar sessão
+      </button>
       <div class="sidebar">
         <div class="logo">
           <i class="bx bx-menu menu-icon"></i>
@@ -228,7 +291,7 @@
             <li class="lista">
               <a href="#" class="nav-link">
                 <i class="bx bx-cog icon"></i>
-                <span class="link">Settings</span>
+                <span class="link" onclick="toggleSideLar()">Logout</span>
               </a>
             </li>
             <li class="lista">
