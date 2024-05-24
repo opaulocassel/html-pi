@@ -7,6 +7,8 @@ window.addEventListener('DOMContentLoaded', () => {
     console.log("tem coisa guardada")
   }
   if (teste === true) {
+    const tristeza = document.getElementById("botaoHome")
+    tristeza.style.display = "none"
     console.log("tqa entrando")
     fetch(`http://localhost:3000/usuarios/nomeUsuario/${nomeUsuario}`, {
       method: "GET",
@@ -22,6 +24,13 @@ window.addEventListener('DOMContentLoaded', () => {
         console.log("bem vindo");
 
         let idUsuarioD = data.id;
+
+        const adminApenas = document.getElementById("adminApenas")
+        const adminApenas2 = document.getElementById("adminApenas2")
+        if(guardarNome === "Admin") {
+          adminApenas.style.display = "none";
+          adminApenas2.style.display = "none";
+        }
 
         //   const sidebar = document.createElement("div");
         //   sidebar.id = "sidebar";
@@ -602,15 +611,13 @@ function toggleSidebar() {
 }
 
 function toggleSideLar() {
+  const tristeza = document.getElementById("botaoHome")
+  tristeza.style.display = "block"
+
   document.getElementById("form").style.display = "none";
   document.getElementById("loginForm").style.display = "none";
   document.getElementById("registerForm").style.display = "none";
   document.getElementById("formPerfil").style.display = "none";
-
-  let overlay = document.getElementById("overlay");
-  if (overlay) {
-    overlay.parentNode.removeChild(overlay);
-  }
 
   sessionStorage.removeItem("guardarNomes");
   sessionStorage.removeItem("guardarNome");
@@ -620,9 +627,15 @@ function toggleSideLar() {
 
   userList.removeChild(listaItem);
 
-  var sidebar = document.querySelector("nav");
+  const deslogar = document.getElementById("logoutBar")
 
-  document.body.removeChild(sidebar);
+  const navBar = document.querySelector("nav")
+
+    deslogar.addEventListener("click", () => {
+      navBar.classList.remove("open");
+    });
+
+    location.reload();
 }
 
 let idUsuarioD;
@@ -669,6 +682,13 @@ loginForm.addEventListener("submit", async (e) => {
         idUsuarioD = data.id;
         sessionStorage.setItem("idUsuarioDs", idUsuarioD);
 
+        const adminApenas = document.getElementById("adminApenas")
+        const adminApenas2 = document.getElementById("adminApenas2")
+        if(userName === "Admin") {
+          adminApenas.style.display = "none";
+          adminApenas2.style.display = "none";
+        }
+
         //   const sidebar = document.createElement("nav");
         //   sidebar.id = "sidebar";
         //   sidebar.classList.add("sidebar");
@@ -689,6 +709,9 @@ loginForm.addEventListener("submit", async (e) => {
         closeDialog();
 
         carregarListaUsuarios();
+        
+        const tristeza = document.getElementById("botaoHome")
+        tristeza.style.display = "none"
       } else {
         console.error("Usuario não encontrado");
       }
