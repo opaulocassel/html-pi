@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var teste = false;
 window.addEventListener("DOMContentLoaded", () => {
   const nomeUsuario = sessionStorage.getItem("guardarNomes");
@@ -9,6 +10,19 @@ window.addEventListener("DOMContentLoaded", () => {
   if (teste === true) {
     console.log("tqa entrando");
     fetch(`http://localhost:3000/usuarios/nomeUsuario/${nomeUsuario}`, {
+=======
+var teste = false
+window.addEventListener('DOMContentLoaded', () => {
+  const nomeUsuario = sessionStorage.getItem('guardarNomes');
+  if (nomeUsuario) {
+    console.log(`Usuário ${nomeUsuario} já está logado.`);
+    teste = true;
+    console.log("tem coisa guardada")
+  }
+  if (teste === true) {
+    console.log("tqa entrando")
+    fetch(`http://localhost:3000/usuarios/${nomeUsuario}`, {
+>>>>>>> 491a5a00570bbcf5fc6eb9157613d7d59a8af780
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -115,6 +129,7 @@ async function initMap() {
             if (posto) {
               marker.postoData = posto;
               const infoContent = `
+<<<<<<< HEAD
               <div class="card">
               <div class="cardBody">
                 <h5 class="cardTitulo">${posto.nomePosto}</h5>
@@ -132,6 +147,37 @@ async function initMap() {
                 <p class="cardTexto">Álcool: ${posto.alcoolPosto}</p>
                 <p class="cardTexto">Última atualização: ${posto.data}</p>
               </div>
+=======
+              <div class="containerCard">
+                <div class="postCard">
+                  <div class="header_postCard">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipPDFKOVHu7EAl20edZ_mhsrGPBKdLnJt6PAn938=s680-w680-h510"
+                      alt="">
+                  </div>
+
+            <div class="body_postCard">
+                <div class="postCard_content">
+
+                    <h1>Lorem Ipsum</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi assumenda cumque
+                        deserunt
+                        dolorum ex exercitationem.</p>
+
+                    <div class="containerCard_infos">
+                        <div class="flex items-center pt-2">
+                            <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3"
+                                <img src="https://seeklogo.com/images/P/Petrobras-logo-03DABEE0AC-seeklogo.com.png"
+                                alt="">
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">${posto.enderecoPosto}</p>
+                                <p class="text-sm text-gray-700">${posto.ruaPosto}</p>
+                            </div>
+                            </div>
+                            </div>
+                      </div>
+                </div>
+>>>>>>> 491a5a00570bbcf5fc6eb9157613d7d59a8af780
             </div>
               `;
               infowindow.setContent(infoContent);
@@ -614,6 +660,7 @@ loginForm.addEventListener("submit", async (e) => {
 
   const userName = document.getElementById("loginNome").value;
   const passWord = document.getElementById("loginSenha").value;
+  let isLoggedIn = sessionStorage.getItem('guardarNome') !== null;
 
   const encoder = new TextEncoder();
   const data = encoder.encode(passWord);
@@ -763,7 +810,6 @@ function carregarListaUsuarios() {
                           </div>
                       </div>
                       <button class="deleteButton" onClick="excluirUsuario(${usuario.id})">Excluir</button>
-                      <button href="#" class="logout-btn" onclick="toggleSideLar()">Logout</button>
                   </div>
               </div>
          </div>
@@ -1148,3 +1194,27 @@ async function atualizarSenhaUsuario() {
 //         });
 //     }
 // }
+<<<<<<< HEAD
+=======
+
+
+
+            //   <div class="card">
+            //   <div class="cardBody">
+            //     <h5 class="cardTitulo">${posto.nomePosto}</h5>
+            //     <h6 class="cardSubtitulo mb-2 text-muted">Endereço</h6>
+            //     <p class="cardTexto">Cidade: ${posto.enderecoPosto}</p>
+            //     <p class="cardTexto">Cidade: ${posto.ruaPosto}</p>
+            //   </div>
+            // </div>
+            // <div class="card">
+            //   <div class="cardBody">
+            //     <h6 class="cardSubtitulo mb-2 text-muted">Preços</h6>
+            //     <p class="cardTexto">Comum: ${posto.comumPosto}</p>
+            //     <p class="cardTexto">Aditivado: ${posto.aditivadaPosto}</p>
+            //     <p class="cardTexto">Diesel: ${posto.dieselPosto}</p>
+            //     <p class="cardTexto">Álcool: ${posto.alcoolPosto}</p>
+            //     <p class="cardTexto">Última atualização: ${posto.data}</p>
+            //   </div>
+            // </div>
+>>>>>>> 491a5a00570bbcf5fc6eb9157613d7d59a8af780

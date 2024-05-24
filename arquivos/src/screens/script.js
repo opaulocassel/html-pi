@@ -1,6 +1,6 @@
-const navBar = document.querySelector("nav"),
-    menuBtns = document.querySelectorAll(".menu-icon"),
-    overlay = document.querySelector(".overlaySidebar");
+const navBar = document.querySelector("before"),
+    menuBtns = document.querySelectorAll(".menu-icon-before"),
+    overlay = document.querySelector(".overlaySidebarBefore");
 menuBtns.forEach((menuBtn) => {
     menuBtn.addEventListener("click", () => {
         navBar.classList.toggle("open");
