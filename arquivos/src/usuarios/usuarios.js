@@ -27,7 +27,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
         const adminApenas = document.getElementById("adminApenas")
         const adminApenas2 = document.getElementById("adminApenas2")
-        if(guardarNome === "Admin") {
+        if(guardarNome !== "Admin") {
+          console.log(guardarNome)
           adminApenas.style.display = "none";
           adminApenas2.style.display = "none";
         }
@@ -474,19 +475,11 @@ function openDialog() {
   loginRegister.style.zIndex = "1000";
 }
 
-// function toggleSideExit() {
-//   var sidebar = document.querySelector(".sidebar")
-
-//   document.body.removeChild(sidebar);
-// }
-
 function dialogPerfil() {
-  // toggleSideExit();
-
-  let customDialog = document.getElementById("perfilForm");
   let form = document.getElementById("formPerfil");
+
   form.style.display = "block";
-  customDialog.style.display = "block";
+  form.style.zIndex = "2000";
 
   let overlay = document.getElementById("overlay");
   if (!overlay) {
@@ -495,8 +488,6 @@ function dialogPerfil() {
     document.body.appendChild(overlay);
   }
 
-  customDialog.style.zIndex = "2000";
-  form.style.zIndex = "2000";
 }
 
 // Quando o evento "blur" é acionado (ou seja, quando o campo de entrada perde o foco),
@@ -684,7 +675,7 @@ loginForm.addEventListener("submit", async (e) => {
 
         const adminApenas = document.getElementById("adminApenas")
         const adminApenas2 = document.getElementById("adminApenas2")
-        if(userName === "Admin") {
+        if(userName !== "Admin") {
           adminApenas.style.display = "none";
           adminApenas2.style.display = "none";
         }
@@ -806,9 +797,10 @@ function carregarListaUsuarios() {
                             </div>
                           </div>
                       </div>
-                      <button class="deleteButton" onClick="excluirUsuario(${usuario.id})">Excluir</button>
+                      
                   </div>
               </div>
+              <button class="deleteButton" onClick="excluirUsuario(${usuario.id})">Excluir Conta</button>
          </div>
       </div>
     `;
@@ -820,7 +812,7 @@ function carregarListaUsuarios() {
 }
 
 function excluirUsuario(id) {
-  fetch(`http://localhost:3000/usuarios/id/${id}`, {
+  fetch(`http://localhost:3000/usuarios/${id}`, {
     method: "DELETE",
   })
     .then((response) => response.json())
@@ -1141,56 +1133,15 @@ async function atualizarSenhaUsuario() {
 
 }
 
-// function closePerfilDialog() {
-//   var listaItem = document.querySelector(".usuario");
-//   let userList = document.getElementById("formPerfil");
+ function closePerfilDialog() {
+  let form = document.getElementById("formPerfil");
+  form.style.display = "none";
 
-//   userList.removeChild(listaItem);
-
-//   const nomeUsuario = sessionStorage.getItem('guardarNomes');
-//     if (nomeUsuario) {
-//       console.log(`Usuário ${nomeUsuario} já está logado.`);
-//       teste = true;
-//       console.log("tem coisa guardada")
-//     }
-//     if (teste === true) {
-//       console.log("tqa entrando")
-//       fetch(`http://localhost:3000/usuarios/${nomeUsuario}`, {
-//         method: "GET",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       })
-//         .then((response) => response.json())
-//         .then((data) => {
-//           let guardarNome = data.nomeUsuario;
-//           sessionStorage.setItem("guardarNome", JSON.stringify(guardarNome));
-
-//           console.log("bem vindo");
-
-//           idUsuarioD = data.id;
-
-//           const sidebar = document.createElement("div");
-//           sidebar.id = "sidebar";
-//           sidebar.classList.add("sidebar");
-//           sidebar.innerHTML = `
-//           <ul>
-//           <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
-//           <li><div class="intern-div-list"><i class="bi bi-fuel-pump"><a href="postoteste.html">Postos</a></div></i></li>
-//             <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
-//             <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
-//             <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
-//           </ul>
-//         `;
-//           document.body.appendChild(sidebar);
-
-//           toggleSidebar();
-//           closeDialog();
-
-//           carregarListaUsuarios();
-//         });
-//     }
-// }
+  let overlay = document.getElementById("overlay");
+  if (overlay) {
+    overlay.parentNode.removeChild(overlay);
+  }
+ }
 
 
 
