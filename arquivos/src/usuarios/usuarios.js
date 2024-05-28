@@ -95,7 +95,7 @@ async function initMap() {
   let myArray = [].concat(locations);
 
   // Adicionar.
-  const infowindow = new google.maps.InfoWindow();
+  infowindows = [new google.maps.InfoWindow(), new google.maps.InfoWindow()];
   let pulaPula;
 
   for (let item of myArray) {
@@ -112,6 +112,8 @@ async function initMap() {
       postoData: null,
     });
 
+    markers.push(marker);
+
     marker.addListener("click", () => {
       if (!marker.postoData) {
         fetch("http://localhost:3000/postos")
@@ -121,52 +123,13 @@ async function initMap() {
               (posto) =>
                 posto.nomePosto === item.title && posto.cnpjPosto === item.cnpj
             );
-
+  
             if (posto) {
               marker.postoData = posto;
-              const infoContent = `
-              <div class="containerCard">
-        <div class="postCard">
-            <div class="header_postCard">
-                <img src="https://lh3.googleusercontent.com/p/AF1QipPDFKOVHu7EAl20edZ_mhsrGPBKdLnJt6PAn938=s680-w680-h510"
-                    alt="">
-            </div>
-
-            <div class="body_postCard">
-                <div class="postCard_content">
-
-                    <article class="property">
-                        <section class="property__main-info">
-                            <h3 class="property__title">${posto.nomePosto}</h3>
-                            <span class="property__price">${posto.comumPosto}</span>
-                            <span class="property__location">
-                                <i class="icon icon-location bi bi-geo-alt-fill">
-                                </i>
-                                ${posto.enderecoPosto}, ${posto.ruaPosto}
-                            </span>
-                        </section>
-                    </article>
-
-                    <div class="containerCard_infos">
-                        <div class="flex items-center pt-2">
-                            <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3"
-                                style="background-image: url(https://seeklogo.com/images/P/Petrobras-logo-03DABEE0AC-seeklogo.com.png)">
-                            </div>
-                            <div>
-                                <p class="preco font-bold text-gray-900">Aditivado: ${posto.aditivadaPosto}</p>
-                                <p class="preco font-bold text-gray-900">Diesel: ${posto.dieselPosto}</p>
-                                <p class="preco font-bold text-gray-900">Álcool: ${posto.alcoolPosto}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-              `;
-              infowindow.setContent(infoContent);
-              infowindow.open(map, marker);
-
+              const infoContent = generateInfoContent(posto);
+              infowindows[0].setContent(infoContent);
+              infowindows[0].open(map, marker);
+  
               if (pulaPula) {
                 pulaPula.setAnimation(null);
               }
@@ -177,17 +140,162 @@ async function initMap() {
           .catch((error) => {
             console.error("Erro ao carregar os dados do JSON:", error);
           });
+      } else {
+        const infoContent = generateInfoContent(marker.postoData);
+        infowindows[0].setContent(infoContent);
+  
+        if (pulaPula) {
+          pulaPula.setAnimation(null);
+        }
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+        pulaPula = marker;
       }
     });
 
-    google.maps.event.addListener(infowindow, "closeclick", function () {
-      marker.setAnimation(null);
-    });
   }
 
-  //Remover
-  //marker.setMap(null);
+  // Remover
+  // marker.setMap(null);
 }
+
+function generateInfoContent(posto) {
+  const cardId = `card-${posto.id}`;
+  return `
+    <div class="containerCard" id="${cardId}">
+      <div class="postCard">
+        <div class="header_postCard">
+          <img src="https://lh3.googleusercontent.com/p/AF1QipPDFKOVHu7EAl20edZ_mhsrGPBKdLnJt6PAn938=s680-w680-h510" alt="">
+        </div>
+        <div class="body_postCard">
+          <div class="postCard_content">
+            <article class="property">
+              <section class="property__main-info">
+                <h3 class="property__title">${posto.nomePosto}</h3>
+                <div>
+                  <span class="property__price">R$${posto.comumPosto}</span>
+                  <button class="buttonComparar" onclick="adicionarParaComparar(${posto.id})">Comparar preço</button>
+                </div>
+                <span class="property__location">
+                  <i class="icon icon-location bi bi-geo-alt-fill"></i>
+                  ${posto.enderecoPosto}, ${posto.ruaPosto}
+                </span>
+              </section>
+            </article>
+            <div class="containerCard_infos">
+              <div class="flex items-center pt-2">
+                <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3" style="background-image: url(https://seeklogo.com/images/P/Petrobras-logo-03DABEE0AC-seeklogo.com.png)"></div>
+                <div class="advants">
+                  <div><span class="font-bold text-gray-900">Aditivada</span><div><i class="bi bi-fuel-pump-fill"></i><span class="aditivada_price">R$${posto.aditivadaPosto}</span></div></div>
+                  <div><span class="font-bold text-gray-900">Diesel</span><div><i class="bi bi-fuel-pump-diesel-fill"></i><span class="diesel_price">R$${posto.dieselPosto}</span></div></div>
+                  <div><span class="font-bold text-gray-900">Álcool</span><div><i class="bi bi-fuel-pump-fill"></i><span class="alcool_price">R$${posto.alcoolPosto}</span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+const postosSelecionados = [];
+let markers = [];
+let infowindows = [];
+const cards = {};
+let cardsSelecionados = [];
+
+function adicionarParaComparar(id) {
+  console.log('Adicionando posto para comparação:', id);
+  fetch(`http://localhost:3000/postos/${id}`)
+    .then(response => response.json())
+    .then(posto => {
+      console.log('Posto encontrado:', posto);
+      const index = postosSelecionados.findIndex(p => p.id === posto.id);
+      if (index === -1) {
+        postosSelecionados.push(posto);
+        console.log('Posto adicionado para comparação:', posto);
+        if (cardsSelecionados.length < 2) {
+          const cardId = `card-${posto.id}`;
+          const card = document.getElementById(cardId);
+          if (card) {
+            cardsSelecionados.push(card);
+          }
+        }
+      }
+      atualizarComparacao();
+    })
+    .catch(error => console.error('Erro ao buscar detalhes do posto:', error));
+}
+
+function atualizarComparacao() {
+  console.log('Atualizando comparação...');
+  if (postosSelecionados.length === 2) {
+    const [posto1, posto2] = postosSelecionados;
+    console.log('Comparando postos:', posto1, posto2);
+    
+    const compararPreco = (preco1, preco2) => {
+      if (preco1 > preco2) return 'price-higher class="bi bi-arrow-up-short';
+      if (preco1 < preco2) return 'price-lower class="bi bi-arrow-down-short';
+      return 'price-equal';
+    };
+
+    function updateCard(card, posto, comparacaoPosto) {
+      console.log('Atualizando card para posto:', posto);
+      if (card) {
+        console.log('Card encontrado:', card);
+        const priceElement = card.querySelector('.property__price');
+        if (priceElement) {
+          priceElement.textContent = `R$${posto.comumPosto}`;
+          priceElement.classList = `property__price ${compararPreco(posto.comumPosto, comparacaoPosto.comumPosto)}`;
+        } else {
+          console.error('Elemento .property__price não encontrado no card:', card);
+        }
+    
+        const aditivadaPriceElement = card.querySelector('.aditivada_price');
+        if (aditivadaPriceElement) {
+          aditivadaPriceElement.textContent = `R$${posto.aditivadaPosto}`;
+          aditivadaPriceElement.classList = `aditivada_price ${compararPreco(posto.aditivadaPosto, comparacaoPosto.aditivadaPosto)}`;
+        } else {
+          console.error('Elemento .aditivada_price não encontrado no card:', card);
+        }
+    
+        const dieselPriceElement = card.querySelector('.diesel_price');
+        if (dieselPriceElement) {
+          dieselPriceElement.textContent = `R$${posto.dieselPosto}`;
+          dieselPriceElement.classList =  `diesel_price ${compararPreco(posto.dieselPosto, comparacaoPosto.dieselPosto)}`;
+        } else {
+          console.error('Elemento .diesel_price não encontrado no card:', card);
+        }
+    
+        const alcoolPriceElement = card.querySelector('.alcool_price');
+        if (alcoolPriceElement) {
+          alcoolPriceElement.textContent = `R$${posto.alcoolPosto}`;
+          alcoolPriceElement.classList =  `alcool_price ${compararPreco(posto.alcoolPosto, comparacaoPosto.alcoolPosto)}`;
+        } else {
+          console.error('Elemento .alcool_price não encontrado no card:', card);
+        }
+      } else {
+        console.error('Card não encontrado:', card);
+      }
+    }
+
+    cardsSelecionados.forEach(card => {
+      updateCard(card, posto1, posto2);
+      updateCard(card, posto2, posto1);
+    });
+  }
+}
+
+// // Adicionar HTML para a interface de comparação no documento
+// document.addEventListener('DOMContentLoaded', () => {
+//   const comparacaoDiv = document.createElement('div');
+//   comparacaoDiv.id = 'comparacao';
+//   comparacaoDiv.innerHTML = `
+//     <h2>Comparação de Preços</h2>
+//     <div id="postos-comparacao"></div>
+//   `;
+//   document.body.appendChild(comparacaoDiv);
+// });
 
 let locations = [
   {

@@ -863,6 +863,10 @@ nav.open~.overlay {
   cursor: pointer;
 }
 
+.buttonComparar {
+  background-color: white;
+}
+
 
 .postCard_content {
   width: 80%;
@@ -886,7 +890,6 @@ nav.open~.overlay {
   display: flex;
   justify-content: space-between;
   position: absolute;
-  bottom: 0;
   border-top: 1px solid rgba(0, 0, 0, .2);
 }
 
@@ -945,7 +948,7 @@ span {
   font-size: calc(23/16 * 1rem);
   line-height: 1.1;
   font-feature-settings: 'zero' 1, 'tnum' 1;
-  color: #FBC31D;
+  color: #baa100;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -956,4 +959,61 @@ span {
 
 .preco {
   display: inline-block;
+}
+
+.advants {
+  display: flex;
+  padding: 0px 1rem;
+}
+
+.advants>div {
+  margin-right: 15px;
+}
+
+.advants>div>span {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.advants>div>div {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.advants>div>div i {
+  color: #777;
+  font-size: 22px;
+}
+
+.advants>div>div>span {
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.advants>div>div>span>span {
+  color: #777;
+  font-weight: normal;
+  margin-left: 5px;
+}
+
+.price-higher {
+  color: red;
+}
+
+.price-lower {
+  color: blue;
+}
+
+.price-equal {
+  color: green;
+}
+
+.selected-card {
+  border: 2px solid #000;
+}
+
+.card-open {
+  display: block !important;
 }
