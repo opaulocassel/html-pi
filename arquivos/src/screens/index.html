@@ -34,6 +34,79 @@
 
   <header>
 
+    <nav id=testando>
+      <div class="logo">
+        <i class="bx bx-menu menu-icon"></i>
+        <span class="logo-nome">Sidebar</span>
+      </div>
+      <input type="text" id="searchbar" placeholder="Pesquisar postos" onkeyup="procurarPostos()">
+      <div id="postList"></div>
+      <!-- <i onclick="" class="bx bx-cog icon botaoConfig" id="botaoConfig">
+      </i> -->
+      <button onclick="openDialog()" class="botaoHome" id="botaoHome">
+        Iniciar sessão
+      </button>
+      <div class="sidebar">
+        <div class="logo">
+          <i class="bx bx-menu menu-icon"></i>
+          <span class="logo-nome">Sidebar</span>
+        </div>
+
+        <div class="sidebar-conteudo">
+          <ul class="listas">
+            <li class="lista">
+              <a onclick="dialogPerfil();" class="nav-link">
+                <i class="bi bi-person icon"></i>
+                <span class="link">Perfil</span>
+              </a>
+            </li>
+            <li class="lista" id="adminApenas">
+              <a href="usuarios.html" id="adminApenas" class="nav-link">
+                <i class="bi bi-people icon"></i>
+                <span class="link">Usuário</span>
+              </a>
+            </li>
+            <li class="lista" id="adminApenas2">
+              <a href="postoteste.html" class="nav-link">
+                <i class="bi bi-fuel-pump icon"></i>
+                <span class="link">Postos</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="bottom-cotent">
+            <li class="lista">
+              <a href="#" class="nav-link">
+                <i class="bx bx-cog icon"></i>
+                <span class="link" id="logoutBar" onclick="toggleSideLar()">Logout</span>
+              </a>
+            </li>
+            <li class="lista">
+              <a href="#" class="nav-link">
+                <label for="theme" class="theme" id="themeLabel">
+                  <span class="theme__toggle-wrap" id="theme__toggle-wrap">
+                    <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="default">
+                    <span class="theme__icon">
+                      <span class="theme__icon-part"></span>
+                      <span class="theme__icon-part"></span>
+                      <span class="theme__icon-part"></span>
+                      <span class="theme__icon-part"></span>
+                      <span class="theme__icon-part"></span>
+                      <span class="theme__icon-part"></span>
+                      <span class="theme__icon-part"></span>
+                      <span class="theme__icon-part"></span>
+                      <span class="theme__icon-part"></span>
+                    </span>
+                  </span>
+                </label>
+              </a>
+            </li>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="overlaySidebar"></section>
     <!-- <div id="controleSelecao" class="controleSelecao">
       <label for="theme" class="theme" id="themeLabel">
         <span class="theme__toggle-wrap" id="theme__toggle-wrap">
@@ -250,77 +323,7 @@
 
   <section class="overlaySidebarBefore"></section> -->
 
-    <nav id=testando>
-      <div class="logo">
-        <i class="bx bx-menu menu-icon"></i>
-        <span class="logo-nome">Sidebar</span>
-      </div>
-      <i onclick="" class="bx bx-cog icon botaoConfig" id="botaoConfig">
-      </i>
-      <button onclick="openDialog()" class="botaoHome" id="botaoHome">
-        Iniciar sessão
-      </button>
-      <div class="sidebar">
-        <div class="logo">
-          <i class="bx bx-menu menu-icon"></i>
-          <span class="logo-nome">Sidebar</span>
-        </div>
-
-        <div class="sidebar-conteudo">
-          <ul class="listas">
-            <li class="lista">
-              <a onclick="dialogPerfil();" class="nav-link">
-                <i class="bi bi-person icon"></i>
-                <span class="link">Perfil</span>
-              </a>
-            </li>
-            <li class="lista" id="adminApenas">
-              <a href="usuarios.html" id="adminApenas" class="nav-link">
-                <i class="bi bi-people icon"></i>
-                <span class="link">Usuário</span>
-              </a>
-            </li>
-            <li class="lista" id="adminApenas2">
-              <a href="postoteste.html" class="nav-link">
-                <i class="bi bi-fuel-pump icon"></i>
-                <span class="link">Postos</span>
-              </a>
-            </li>
-          </ul>
-
-          <div class="bottom-cotent">
-            <li class="lista">
-              <a href="#" class="nav-link">
-                <i class="bx bx-cog icon"></i>
-                <span class="link" id="logoutBar" onclick="toggleSideLar()">Logout</span>
-              </a>
-            </li>
-            <li class="lista">
-              <a href="#" class="nav-link">
-                <label for="theme" class="theme" id="themeLabel">
-                  <span class="theme__toggle-wrap" id="theme__toggle-wrap">
-                    <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="default">
-                    <span class="theme__icon">
-                      <span class="theme__icon-part"></span>
-                      <span class="theme__icon-part"></span>
-                      <span class="theme__icon-part"></span>
-                      <span class="theme__icon-part"></span>
-                      <span class="theme__icon-part"></span>
-                      <span class="theme__icon-part"></span>
-                      <span class="theme__icon-part"></span>
-                      <span class="theme__icon-part"></span>
-                      <span class="theme__icon-part"></span>
-                    </span>
-                  </span>
-                </label>
-              </a>
-            </li>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <section class="overlaySidebar"></section>
+    
   </main>
 
   <footer>

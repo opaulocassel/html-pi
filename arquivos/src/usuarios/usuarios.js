@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         const adminApenas = document.getElementById("adminApenas")
         const adminApenas2 = document.getElementById("adminApenas2")
-        if(guardarNome !== "Admin") {
+        if (guardarNome !== "Admin") {
           console.log(guardarNome)
           adminApenas.style.display = "none";
           adminApenas2.style.display = "none";
@@ -123,13 +123,13 @@ async function initMap() {
               (posto) =>
                 posto.nomePosto === item.title && posto.cnpjPosto === item.cnpj
             );
-  
+
             if (posto) {
               marker.postoData = posto;
               const infoContent = generateInfoContent(posto);
               infowindows[0].setContent(infoContent);
               infowindows[0].open(map, marker);
-  
+
               if (pulaPula) {
                 pulaPula.setAnimation(null);
               }
@@ -143,7 +143,8 @@ async function initMap() {
       } else {
         const infoContent = generateInfoContent(marker.postoData);
         infowindows[0].setContent(infoContent);
-  
+        infowindows[0].open(map, marker);
+
         if (pulaPula) {
           pulaPula.setAnimation(null);
         }
@@ -151,11 +152,21 @@ async function initMap() {
         pulaPula = marker;
       }
     });
-
+    google.maps.event.addListener(infowindows[0], "closeclick", function () {
+      marker.setAnimation(null);
+    });
   }
+  // Adicionar eventos de fechamento para os infowindows
+  infowindows.forEach(infowindow => {
+    google.maps.event.addListener(infowindow, 'closeclick', fecharComparacao);
+  });
+}
 
-  // Remover
-  // marker.setMap(null);
+function fecharComparacao() {
+  postosSelecionados = [];
+  cardsSelecionados = [];
+  document.querySelectorAll('.selected').forEach(card => card.classList.remove('selected'));
+  infowindows.forEach(infowindow => infowindow.close());
 }
 
 function generateInfoContent(posto) {
@@ -198,10 +209,10 @@ function generateInfoContent(posto) {
   `;
 }
 
-const postosSelecionados = [];
+let postosSelecionados = [];
 let markers = [];
 let infowindows = [];
-const cards = {};
+let cards = {};
 let cardsSelecionados = [];
 
 function adicionarParaComparar(id) {
@@ -232,7 +243,7 @@ function atualizarComparacao() {
   if (postosSelecionados.length === 2) {
     const [posto1, posto2] = postosSelecionados;
     console.log('Comparando postos:', posto1, posto2);
-    
+
     const compararPreco = (preco1, preco2) => {
       if (preco1 > preco2) return 'price-higher class="bi bi-arrow-up-short';
       if (preco1 < preco2) return 'price-lower class="bi bi-arrow-down-short';
@@ -250,7 +261,7 @@ function atualizarComparacao() {
         } else {
           console.error('Elemento .property__price não encontrado no card:', card);
         }
-    
+
         const aditivadaPriceElement = card.querySelector('.aditivada_price');
         if (aditivadaPriceElement) {
           aditivadaPriceElement.textContent = `R$${posto.aditivadaPosto}`;
@@ -258,19 +269,19 @@ function atualizarComparacao() {
         } else {
           console.error('Elemento .aditivada_price não encontrado no card:', card);
         }
-    
+
         const dieselPriceElement = card.querySelector('.diesel_price');
         if (dieselPriceElement) {
           dieselPriceElement.textContent = `R$${posto.dieselPosto}`;
-          dieselPriceElement.classList =  `diesel_price ${compararPreco(posto.dieselPosto, comparacaoPosto.dieselPosto)}`;
+          dieselPriceElement.classList = `diesel_price ${compararPreco(posto.dieselPosto, comparacaoPosto.dieselPosto)}`;
         } else {
           console.error('Elemento .diesel_price não encontrado no card:', card);
         }
-    
+
         const alcoolPriceElement = card.querySelector('.alcool_price');
         if (alcoolPriceElement) {
           alcoolPriceElement.textContent = `R$${posto.alcoolPosto}`;
-          alcoolPriceElement.classList =  `alcool_price ${compararPreco(posto.alcoolPosto, comparacaoPosto.alcoolPosto)}`;
+          alcoolPriceElement.classList = `alcool_price ${compararPreco(posto.alcoolPosto, comparacaoPosto.alcoolPosto)}`;
         } else {
           console.error('Elemento .alcool_price não encontrado no card:', card);
         }
@@ -285,6 +296,7 @@ function atualizarComparacao() {
     });
   }
 }
+
 
 // // Adicionar HTML para a interface de comparação no documento
 // document.addEventListener('DOMContentLoaded', () => {
@@ -560,8 +572,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function modoCor() {}
-function modoCor() {}
+function modoCor() { }
+function modoCor() { }
 
 function openDialog() {
   let customDialog = document.getElementById("loginForm");
@@ -730,11 +742,11 @@ function toggleSideLar() {
 
   const navBar = document.querySelector("nav")
 
-    deslogar.addEventListener("click", () => {
-      navBar.classList.remove("open");
-    });
+  deslogar.addEventListener("click", () => {
+    navBar.classList.remove("open");
+  });
 
-    location.reload();
+  location.reload();
 }
 
 let idUsuarioD;
@@ -783,7 +795,7 @@ loginForm.addEventListener("submit", async (e) => {
 
         const adminApenas = document.getElementById("adminApenas")
         const adminApenas2 = document.getElementById("adminApenas2")
-        if(userName !== "Admin") {
+        if (userName !== "Admin") {
           adminApenas.style.display = "none";
           adminApenas2.style.display = "none";
         }
@@ -808,7 +820,7 @@ loginForm.addEventListener("submit", async (e) => {
         closeDialog();
 
         carregarListaUsuarios();
-        
+
         const tristeza = document.getElementById("botaoHome")
         tristeza.style.display = "none"
       } else {
@@ -1109,7 +1121,7 @@ function fecharDialogTelefone() {
 }
 
 async function atualizarCelularUsuario() {
-  const antigoTelefoneUsuario =document.getElementById("telefoneUsuario").value;
+  const antigoTelefoneUsuario = document.getElementById("telefoneUsuario").value;
   const novoTelefoneUsuario = document.getElementById("novoTelefoneUsuario").value;
   const confirmeSenhaTelefone = document.getElementById("confirmeSenhaTelefone").value;
   const idUsuario = document.getElementById("userId").value;
@@ -1209,39 +1221,39 @@ async function atualizarSenhaUsuario() {
   })
     .then((response) => response.json())
     .then(async (data) => {
-      if(antigaSenhaUsuario === "" || novaSenhaUsuario === "" || confirmeSenha === ""){
+      if (antigaSenhaUsuario === "" || novaSenhaUsuario === "" || confirmeSenha === "") {
         alert("Preencha todos os campos");
-      } else if (data.senha !== hashSenha){
+      } else if (data.senha !== hashSenha) {
         alert("Senha antiga incorreta!");
-      } else if (novaSenhaUsuario !== confirmeSenha){
+      } else if (novaSenhaUsuario !== confirmeSenha) {
         alert("As senhas não conferem!");
       } else {
 
         let guardarsenha = confirmeSenha;
-        sessionStorage.setItem("guardarsenha",JSON.stringify(guardarsenha));
+        sessionStorage.setItem("guardarsenha", JSON.stringify(guardarsenha));
 
-          fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              senha: confirmeSenha,
-            }),
+        fetch(`http://localhost:3000/usuarios/${idUsuario}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            senha: confirmeSenha,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Usuário atualizado com sucesso:", data);
+            carregarListaUsuarios();
           })
-            .then((response) => response.json())
-            .then((data) => {
-              console.log("Usuário atualizado com sucesso:", data);
-              carregarListaUsuarios();
-            })
-            .catch((error) => console.error("Erro ao atualizar o usuário:", error));
+          .catch((error) => console.error("Erro ao atualizar o usuário:", error));
       }
-    
+
     })
 
 }
 
- function closePerfilDialog() {
+function closePerfilDialog() {
   let form = document.getElementById("formPerfil");
   form.style.display = "none";
 
@@ -1249,25 +1261,62 @@ async function atualizarSenhaUsuario() {
   if (overlay) {
     overlay.parentNode.removeChild(overlay);
   }
- }
+}
 
 
 
-            //   <div class="card">
-            //   <div class="cardBody">
-            //     <h5 class="cardTitulo">${posto.nomePosto}</h5>
-            //     <h6 class="cardSubtitulo mb-2 text-muted">Endereço</h6>
-            //     <p class="cardTexto">Cidade: ${posto.enderecoPosto}</p>
-            //     <p class="cardTexto">Cidade: ${posto.ruaPosto}</p>
-            //   </div>
-            // </div>
-            // <div class="card">
-            //   <div class="cardBody">
-            //     <h6 class="cardSubtitulo mb-2 text-muted">Preços</h6>
-            //     <p class="cardTexto">Comum: ${posto.comumPosto}</p>
-            //     <p class="cardTexto">Aditivado: ${posto.aditivadaPosto}</p>
-            //     <p class="cardTexto">Diesel: ${posto.dieselPosto}</p>
-            //     <p class="cardTexto">Álcool: ${posto.alcoolPosto}</p>
-            //     <p class="cardTexto">Última atualização: ${posto.data}</p>
-            //   </div>
-            // </div>
+//   <div class="card">
+//   <div class="cardBody">
+//     <h5 class="cardTitulo">${posto.nomePosto}</h5>
+//     <h6 class="cardSubtitulo mb-2 text-muted">Endereço</h6>
+//     <p class="cardTexto">Cidade: ${posto.enderecoPosto}</p>
+//     <p class="cardTexto">Cidade: ${posto.ruaPosto}</p>
+//   </div>
+// </div>
+// <div class="card">
+//   <div class="cardBody">
+//     <h6 class="cardSubtitulo mb-2 text-muted">Preços</h6>
+//     <p class="cardTexto">Comum: ${posto.comumPosto}</p>
+//     <p class="cardTexto">Aditivado: ${posto.aditivadaPosto}</p>
+//     <p class="cardTexto">Diesel: ${posto.dieselPosto}</p>
+//     <p class="cardTexto">Álcool: ${posto.alcoolPosto}</p>
+//     <p class="cardTexto">Última atualização: ${posto.data}</p>
+//   </div>
+// </div>
+
+
+
+let dados = JSON.parse(postos)
+
+async function procurarPostos() {
+  let input = document.getElementById('searchbar').value
+  input = input.toLowerCase()
+  let resultados = document.querySelector('#postList')
+  resultados.innerHTML = ""
+
+  fetch(`http://localhost:3000/postos`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((dados) => {
+      for (i = 0; i < dados.length; i++) {
+        let objeto = dados[i]
+
+        if (objeto.nomePosto.toLowerCase().includes(input)) {
+          const elemento = document.createElement("div")
+          elemento.innerHTML = `
+          <div class="searchContainer">
+            <div class="resultado">
+              <div class="nomeResultado">${objeto.nomePosto}</div>
+              <div class="endereçoResultado">${objeto.enderecoPosto}, ${objeto.ruaPosto}</div>
+            </div>
+          </div>
+          `
+          resultados.appendChild(elemento)
+        }
+      }
+    });
+}
