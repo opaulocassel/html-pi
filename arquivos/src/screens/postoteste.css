@@ -1,3 +1,10 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+
+
 #userList {
   margin-top: 20px;
 }
@@ -27,12 +34,37 @@ header button:hover {
 }
 
 #adiciona {
-  width: 300px;
+  width: auto;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: auto;
+  height: 76vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+#adiciona {
+  position: fixed;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid black;
+
+}
+
+.primeiro{
+  margin: 40px 0 0 3px;
+}
+
+.segundo{
+  margin: 14.1vh 0 0 0;
+}
+
+.botao{
+  position: absolute;
+  height: 6.5vh;
+  margin: 64.4vh 0 0 15.3vw;
 }
 
 #adiciona label {
@@ -40,8 +72,13 @@ header button:hover {
   margin-bottom: 5px;
 }
 
+.close{
+  height: 5vh;
+  position: absolute;
+}
+
 #adiciona input[type="text"] {
-  width: calc(100% - 10px);
+  width: 15vw;
   padding: 8px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -114,4 +151,12 @@ header button:hover {
 
 .botoes {
   margin-top: 10px;
+}
+
+.dialog{
+  display: none;
+  background-color: white;
+  border: solid black 1px;
+  border-radius: 10px;
+  width: 20vw;
 }

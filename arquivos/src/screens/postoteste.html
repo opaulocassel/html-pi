@@ -28,26 +28,41 @@
     </header>
         <div id="userList"></div>
 
-        <div id="adiciona" class="dialog">
+        <section id="adiciona" >
             <button class="close" onclick="fecharDialogAdicionar()">X</button>
+        <div class="primeiro">
+            <label for="foto">Foto:</label>
+            <input type="file" id="foto" name="foto" accept="image/*">
+       
             <label for="nomePosto">Nome:</label>
-            <input type="text" id="nomePosto" name="nomePosto" required>
+            <input type="text" id="nomePosto" maxlength="20" name="nomePosto" required>
+       
             <label for="endereçoPosto">Endereço:</label>
-            <input type="text" id="endereçoPosto" name="endereçoPosto" required>
+            <input type="text" id="endereçoPosto" maxlength="30" name="endereçoPosto" required>
+        
             <label for="ruaPosto">Rua:</label>
-            <input type="text" id="ruaPosto" name="ruaPosto" required>
+            <input type="text" id="ruaPosto" maxlength="50" name="ruaPosto" required>
+        
             <label for="cnpjPosto">CNPJ:</label>
-            <input type="text" id="cnpjPosto" name="cnpjPosto" required>
-            <label for="comumPosto">Gasolina Comum:</label>
-            <input type="text" id="comumPosto" name="comumPosto" required>
-            <label for="aditivadaPosto">Gasolina Aditivada:</label>
-            <input type="text" id="aditivadaPosto" name="aditivadaPosto" required>
-            <label for="dieselPosto">Diesel:</label>
-            <input type="text" id="dieselPosto" name="dieselPosto" required>
-            <label for="alcoolPosto">Álcool:</label>
-            <input type="text" id="alcoolPosto" name="alcoolPosto" required>
-            <button type="button" onclick="adicionarPosto()" class="botao">Adicionar</button>
+            <input type="text" id="cnpjPosto" maxlength="18" name="cnpjPosto" required>
+    
         </div>
+        <div class="segundo">
+            <label for="comumPosto">Gasolina Comum:</label>
+            <input type="text" id="comumPosto" maxlength="8" name="comumPosto" required>
+            
+            <label for="aditivadaPosto">Gasolina Aditivada:</label>
+            <input type="text" id="aditivadaPosto" maxlength="8" name="aditivadaPosto" required>
+        
+            <label for="dieselPosto">Diesel:</label>
+            <input type="text" id="dieselPosto" maxlength="8" name="dieselPosto" required>
+        
+            <label for="alcoolPosto">Álcool:</label>
+            <input type="text" id="alcoolPosto" maxlength="8" name="alcoolPosto" required>
+        </div>
+            <button type="button" onclick="adicionarPosto()" class="botao">Adicionar</button>
+        </section>
+
     
         <!-- Atualizar Nome -->
 
@@ -62,7 +77,7 @@
                 <label for="nomePosto" class="form-label">Insira o novo nome do Posto:</label>
                 <input type="text" class="form-control" id="novoNomePosto" maxlength="30" name="novoNomePosto">
             </div>
-            <button type="submit" class="btn btn-primary" onclick="fecharDialogNome()">Confirmar</button>
+            <button type="submit" class="btn btn-primary" onclick="atualizarNomePosto()">Confirmar</button>
         </form>
 
         <!-- Atualizar Endereço -->
@@ -78,8 +93,10 @@
                 <label for="enderecoPosto" class="form-label">Insira o novo Endereço do Posto:</label>
                 <input type="text" class="form-control" id="novoEnderecoPosto" maxlength="30" name="novoEnderecoPosto">
             </div>
-            <button type="submit" class="btn btn-primary" onclick="fecharDialogEndereco()">Confirmar</button>
+            <button type="submit" class="btn btn-primary" onclick="atualizarEnderecoPosto()">Confirmar</button>
         </form>
+
+        <!-- Atualizar Rua -->
 
         <form id="formAtualizarRuaPosto" class="dialog">
             <input type="hidden" id="userId" name="userId" />
@@ -108,7 +125,7 @@
                 <label for="cnpjPosto" class="form-label">Insira o novo CNPJ do Posto:</label>
                 <input type="text" class="form-control" id="novoCNPJPosto" maxlength="30" name="novoCNPJPosto">
             </div>
-            <button type="submit" class="btn btn-primary" onclick="fecharDialogCNPJ()">Confirmar</button>
+            <button type="submit" class="btn btn-primary" onclick="atualizarCNPJPosto()">Confirmar</button>
         </form>
 
         <!-- Atualizar Preço da Gasolina Comum -->
@@ -124,7 +141,7 @@
                 <label for="comumPosto" class="form-label">Insira o novo preço da Gasolina Comum do Posto:</label>
                 <input type="text" class="form-control" id="novoComumPosto" maxlength="30" name="novoComumPosto">
             </div>
-            <button type="submit" class="btn btn-primary" onclick="fecharDialogComum()">Confirmar</button>
+            <button type="submit" class="btn btn-primary" onclick="atualizarComumPosto()">Confirmar</button>
         </form>
 
         <!-- Atualizar Preço da Gasolina Aditivada -->
@@ -140,7 +157,7 @@
                 <label for="aditivadaPosto" class="form-label">Insira o novo preço da Gasolina Aditivada do Posto:</label>
                 <input type="text" class="form-control" id="novoAditivadaPosto" maxlength="30" name="novoAditivadaPosto">
             </div>
-            <button type="submit" class="btn btn-primary" onclick="fecharDialogAditivada()">Confirmar</button>
+            <button type="submit" class="btn btn-primary" onclick="atualizarAditivadaPosto()">Confirmar</button>
         </form>
 
         <!-- Atualizar Diesel -->
@@ -156,7 +173,7 @@
                 <label for="dieselPosto" class="form-label">Insira o novo preço do Diesel do Posto:</label>
                 <input type="text" class="form-control" id="novoDieselPosto" maxlength="30" name="novoDieselPosto">
             </div>
-            <button type="submit" class="btn btn-primary" onclick="fecharDialogDiesel()">Confirmar</button>
+            <button type="submit" class="btn btn-primary" onclick="atualizarDieselPosto()">Confirmar</button>
         </form>
 
         <!-- Atualizar Álcool -->

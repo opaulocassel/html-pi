@@ -16,6 +16,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document
+    .getElementById("formAtualizarRuaPosto")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      atualizarRuaPosto();
+    });
+
+    document
     .getElementById("formAtualizarCNPJ")
     .addEventListener("submit", function (event) {
       event.preventDefault();
@@ -103,6 +110,10 @@ function carregarListaPostos() {
 function abrirDialogAdicionar() {
   var dialog = document.getElementById("adiciona");
   dialog.style.display = "block";
+  dialog.style.top = "50%";
+  dialog.style.left = "50%";
+  dialog.style.transform = "translate(-50%, -50%)";
+  dialog.style.display = "flex";
 }
 
 function fecharDialogAdicionar() {
@@ -111,26 +122,55 @@ function fecharDialogAdicionar() {
 }
 
 
+function verificarCNPJ(CNPJ) {
+  const regex = /^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/;
+  return regex.test(CNPJ);
+}
+
+function verificarPrecoCombustivel(preco) {
+  const regex = /^R\$ \d+(\,\d{2})?$/;
+  return regex.test(preco);
+}
+
 function adicionarPosto() {
-    const nomePosto = document.getElementById("nomePosto").value;
-    const enderecoPosto = document.getElementById("endereçoPosto").value;
-    const ruaPosto = document.getElementById("ruaPosto").value;
-    const cnpjPosto = document.getElementById("cnpjPosto").value;
-    const comumPosto = document.getElementById("comumPosto").value;
-    const aditivadaPosto = document.getElementById("aditivadaPosto").value;
-    const dieselPosto = document.getElementById("dieselPosto").value;
-    const alcoolPosto = document.getElementById("alcoolPosto").value;
-  
-    if(nomePosto === "" || enderecoPosto === "" || ruaPosto === "" || cnpjPosto === "" || comumPosto === "" || aditivadaPosto === "" || dieselPosto === "" || alcoolPosto === ""){
-      alert ("Dados incompletos, por favor, preencha os dados." );
-    }
-  
+  // const foto = document.getElementById("foto").value;
+  const nomePosto = document.getElementById("nomePosto").value;
+  const enderecoPosto = document.getElementById("endereçoPosto").value;
+  const ruaPosto = document.getElementById("ruaPosto").value;
+  const cnpjPosto = document.getElementById("cnpjPosto").value;
+  const comumPosto = document.getElementById("comumPosto").value;
+  const aditivadaPosto = document.getElementById("aditivadaPosto").value;
+  const dieselPosto = document.getElementById("dieselPosto").value;
+  const alcoolPosto = document.getElementById("alcoolPosto").value;
+
+  if (
+    nomePosto === "" ||
+    enderecoPosto === "" ||
+    ruaPosto === "" ||
+    cnpjPosto === "" ||
+    comumPosto === "" ||
+    aditivadaPosto === "" ||
+    dieselPosto === "" ||
+    alcoolPosto === ""
+  ) {
+    alert("Dados incompletos, por favor, preencha os dados.");
+  }  else if (!verificarCNPJ(cnpjPosto)) {
+    alert("O CNPJ deve estar no formato 00.000.000/0000-00");
+  } else if (
+    !verificarPrecoCombustivel(comumPosto) ||
+    !verificarPrecoCombustivel(aditivadaPosto) ||
+    !verificarPrecoCombustivel(dieselPosto) ||
+    !verificarPrecoCombustivel(alcoolPosto)
+  ) {
+    alert("O preço deve estar no formato R$ 0,00");
+  } else {
     fetch("http://localhost:3000/postos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        // fotoPosto: foto,
         nomePosto: nomePosto,
         enderecoPosto: enderecoPosto,
         ruaPosto: ruaPosto,
@@ -138,7 +178,7 @@ function adicionarPosto() {
         comumPosto: comumPosto,
         aditivadaPosto: aditivadaPosto,
         dieselPosto: dieselPosto,
-        alcoolPosto: alcoolPosto
+        alcoolPosto: alcoolPosto,
       }),
     })
       .then((response) => response.json())
@@ -146,8 +186,9 @@ function adicionarPosto() {
         console.log("Posto criado com sucesso:", data);
       })
       .catch((error) => console.error("Erro:", error));
-      
   }
+}
+
 
 //DELETAR DELETAR DELETAR DELETAR DELETAR DELETAR DELETAAAAAAAAAAAAAAR
 
@@ -170,6 +211,7 @@ function abrirDialogNome() {
   var dialog = document.getElementById("formAtualizarNome");
   dialog.style.display = "block";
 
+
   var userId = event.target.dataset.id;
   document.getElementById("userId").value = userId;
 }
@@ -180,27 +222,40 @@ function fecharDialogNome() {
 }
 
 function atualizarNomePosto() {
+  const antigoNomePosto = document.getElementById("antigoNomePosto").value;
   const novoNomePosto = document.getElementById("novoNomePosto").value;
   const idPosto = document.getElementById("userId").value;
 
-  if (novoNomePosto === "") {
-    alert("Preencha o campo.");
-  } else {
-    fetch(`http://localhost:3000/postos/${idPosto}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nomePosto: novoNomePosto,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Posto atualizado com sucesso:", data);
-      })
-      .catch((error) => console.error("Erro ao atualizar o Posto:", error));
-  }
+  fetch(`http://localhost:3000/postos/nomePosto/${antigoNomePosto}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+
+      if (antigoNomePosto === "" || novoNomePosto === "") {
+        alert("Preencha os campos.");
+      } else if (data.nomePosto !== antigoNomePosto){
+        alert("Nome de posto não encontrado.")
+      }else {
+        fetch(`http://localhost:3000/postos/${idPosto}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nomePosto: novoNomePosto,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Posto atualizado com sucesso:", data);
+          })
+          .catch((error) => console.error("Erro ao atualizar o Posto:", error));
+      }
+    });
 }
 
 // ATUALIZAR ENDEREÇO 
@@ -219,27 +274,40 @@ function fecharDialogEndereco() {
 }
 
 function atualizarEnderecoPosto() {
+  const antigoEnderecoPosto = document.getElementById("antigoEnderecoPosto").value;
   const novoEnderecoPosto = document.getElementById("novoEnderecoPosto").value;
   const idPosto = document.getElementById("userId").value;
 
-  if (novoEnderecoPosto === "") {
-    alert("Preencha o campo.");
-  } else {
-    fetch(`http://localhost:3000/postos/${idPosto}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        enderecoPosto: novoEnderecoPosto,
-      }),
+
+  fetch(`http://localhost:3000/postos/enderecoPosto/${antigoEnderecoPosto}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (antigoEnderecoPosto === "" || novoEnderecoPosto === "") {
+        alert("Preencha os campos.");
+      } else if (data.enderecoPosto !== antigoEnderecoPosto){
+        alert("Endereço não encontrado.");
+      } else {
+        fetch(`http://localhost:3000/postos/${idPosto}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            enderecoPosto: novoEnderecoPosto,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Posto atualizado com sucesso:", data);
+          })
+          .catch((error) => console.error("Erro ao atualizar o Posto:", error));
+      }
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Posto atualizado com sucesso:", data);
-      })
-      .catch((error) => console.error("Erro ao atualizar o Posto:", error));
-  }
 }
 
 
@@ -257,27 +325,39 @@ function fecharDialogRuaPosto() {
 }
 
 function atualizarRuaPosto() {
+  const antigaRuaPosto = document.getElementById("antigaRuaPosto").value;
   const novaRuaPosto = document.getElementById("novaRuaPosto").value;
   const idPosto = document.getElementById("userId").value;
 
-  if (novaRuaPosto === "") {
-    alert("Preencha o campo.");
-  } else {
-    fetch(`http://localhost:3000/postos/${idPosto}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ruaPosto: novaRuaPosto,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Posto atualizado com sucesso:", data);
-      })
-      .catch((error) => console.error("Erro ao atualizar o Posto:", error));
-  }
+  fetch(`http://localhost:3000/postos/ruaPosto/${antigaRuaPosto}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (antigaRuaPosto === "" || novaRuaPosto === "") {
+        alert("Preencha o campo.");
+      } else if (data.ruaPosto !== antigaRuaPosto){
+        alert("Rua atual não existe.")
+      }else {
+        fetch(`http://localhost:3000/postos/${idPosto}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ruaPosto: novaRuaPosto,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Posto atualizado com sucesso:", data);
+          })
+          .catch((error) => console.error("Erro ao atualizar o Posto:", error));
+      }
+    });
 }
 // ATUALIZAR CNPJ (calma cnpjoto)
 
@@ -295,28 +375,47 @@ function fecharDialogCNPJ() {
 }
 
 function atualizarCNPJPosto() {
-  const novoCNPJPosto = document.getElementById("novoCNPJPosto").value;
-  const idPosto = document.getElementById("userId").value;
+  const antigoCNPJPosto = document.getElementById("antigoCNPJPosto").value.trim();
+  const novoCNPJPosto = document.getElementById("novoCNPJPosto").value.trim();
+  const idPosto = document.getElementById("userId").value.trim();
 
-  if (novoCNPJPosto === "") {
-    alert("Preencha o campo.");
-  } else {
-    fetch(`http://localhost:3000/postos/${idPosto}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        cnpjPosto: novoCNPJPosto,
-      }),
+  fetch(`http://localhost:3000/postos/cnpjPosto/${encodeURIComponent(antigoCNPJPosto)}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  .then((response) => response.json())
+    .then((data) => {
+      if (antigoCNPJPosto === "" || novoCNPJPosto === "") {
+        alert("Preencha os campos.");
+      } else if (data.cnpjPosto !== antigoCNPJPosto) {
+        alert("CNPJ não encontrado.");
+      } else if (!verificarCNPJ(novoCNPJPosto)) {
+        alert("O CNPJ deve estar no formato 00.000.000/0000-00");
+      } else {
+        fetch(`http://localhost:3000/postos/${idPosto}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            cnpjPosto: novoCNPJPosto,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Posto atualizado com sucesso:", data);
+          })
+          .catch((error) => console.error("Erro ao atualizar o Posto:", error));
+      }
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Posto atualizado com sucesso:", data);
-      })
-      .catch((error) => console.error("Erro ao atualizar o Posto:", error));
-  }
+    .catch((error) => {
+      alert(error.message);
+      console.error("Erro ao buscar o Posto:", error);
+    });
 }
+
 
 // ATUALIZAR GASOLINA COMUM (alfa)
 
@@ -334,27 +433,41 @@ function fecharDialogComum() {
 }
 
 function atualizarComumPosto() {
+  const antigoComumPosto = document.getElementById("antigoComumPosto").value;
   const novoComumPosto = document.getElementById("novoComumPosto").value;
   const idPosto = document.getElementById("userId").value;
 
-  if (novoComumPosto === "") {
-    alert("Preencha o campo.");
-  } else {
-    fetch(`http://localhost:3000/postos/${idPosto}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        comumPosto: novoComumPosto,
-      }),
+  fetch(`http://localhost:3000/postos/comumPosto/${antigoComumPosto}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  .then((response) => response.json())
+    .then((data) => {
+      if (antigoComumPosto === "" || novoComumPosto === "") {
+        alert("Preencha os campos.");
+      } else if (data.comumPosto !== antigoComumPosto){
+          alert("Comum não encontrada.") 
+      } else if(!verificarPrecoCombustivel(novoComumPosto)){
+        alert("O preço deve estar no formato R$ 0,00")
+      } else {
+        fetch(`http://localhost:3000/postos/${idPosto}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            comumPosto: novoComumPosto,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Posto atualizado com sucesso:", data);
+          })
+          .catch((error) => console.error("Erro ao atualizar o Posto:", error));
+      }
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Posto atualizado com sucesso:", data);
-      })
-      .catch((error) => console.error("Erro ao atualizar o Posto:", error));
-  }
 }
 
 // ATUALIZAR GASOLINA ADITIVADA (beta)
@@ -373,27 +486,41 @@ function fecharDialogAditivada() {
 }
 
 function atualizarAditivadaPosto() {
+  const antigoAditivadaPosto = document.getElementById("antigoAditivadaPosto").value;
   const novoAditivadaPosto = document.getElementById("novoAditivadaPosto").value;
   const idPosto = document.getElementById("userId").value;
 
-  if (novoAditivadaPosto === "") {
-    alert("Preencha o campo.");
-  } else {
-    fetch(`http://localhost:3000/postos/${idPosto}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        aditivadaPosto: novoAditivadaPosto,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Posto atualizado com sucesso:", data);
-      })
-      .catch((error) => console.error("Erro ao atualizar o Posto:", error));
-  }
+  fetch(`http://localhost:3000/postos/aditivadaPosto/${antigoAditivadaPosto}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  .then((response) => response.json())
+    .then((data) => {
+      if (antigoAditivadaPosto === "" ||novoAditivadaPosto === "") {
+        alert("Preencha os campos.");
+      } else if (data.aditivadaPosto !== antigoAditivadaPosto){
+        alert("Aditivada não encontrada.")
+      } else if (!verificarPrecoCombustivel(novoAditivadaPosto)){
+        alert("O preço deve estar no formato R$ 0,00")
+      } else {
+        fetch(`http://localhost:3000/postos/${idPosto}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            aditivadaPosto: novoAditivadaPosto,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Posto atualizado com sucesso:", data);
+          })
+          .catch((error) => console.error("Erro ao atualizar o Posto:", error));
+      }
+    });
 }
 
 // DIESEL ninguém liga
@@ -412,27 +539,41 @@ function fecharDialogDiesel() {
 }
 
 function atualizarDieselPosto() {
+  const antigoDieselPosto = document.getElementById("antigoDieselPosto").value;
   const novoDieselPosto = document.getElementById("novoDieselPosto").value;
   const idPosto = document.getElementById("userId").value;
 
-  if (novoDieselPosto === "") {
-    alert("Preencha o campo.");
-  } else {
-    fetch(`http://localhost:3000/postos/${idPosto}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        dieselPosto: novoDieselPosto,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Posto atualizado com sucesso:", data);
-      })
-      .catch((error) => console.error("Erro ao atualizar o Posto:", error));
-  }
+  fetch(`http://localhost:3000/postos/dieselPosto/${antigoDieselPosto}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  .then((response) => response.json())
+    .then((data) => {
+      if (antigoDieselPosto === "" || novoDieselPosto === "") {
+        alert("Preencha os campos.");
+      } else if (data.dieselPosto !== antigoDieselPosto){
+        alert("Diesel não encontrado.")
+      } else if (!verificarPrecoCombustivel(novoDieselPosto)){
+        alert("O preço deve estar no formato R$ 0,00")
+      } else {
+        fetch(`http://localhost:3000/postos/${idPosto}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            dieselPosto: novoDieselPosto,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Posto atualizado com sucesso:", data);
+          })
+          .catch((error) => console.error("Erro ao atualizar o Posto:", error));
+      }
+    });
 }
 
 // ATUALIZAR ALCOOL (kitzin dos guri)
@@ -451,25 +592,39 @@ function fecharDialogAlcool() {
 }
 
 function atualizarAlcoolPosto() {
+  const antigoAlcoolPosto = document.getElementById("antigoAlcoolPosto").value;
   const novoAlcoolPosto = document.getElementById("novoAlcoolPosto").value;
   const idPosto = document.getElementById("userId").value;
 
-  if (novoAlcoolPosto === "") {
-    alert("Preencha o campo.");
-  } else {
-    fetch(`http://localhost:3000/postos/${idPosto}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        alcoolPosto: novoAlcoolPosto,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Posto atualizado com sucesso:", data);
-      })
-      .catch((error) => console.error("Erro ao atualizar o Posto:", error));
-  }
+  fetch(`http://localhost:3000/postos/alcoolPosto/${antigoAlcoolPosto}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  .then((response) => response.json())
+    .then((data) => {
+      if (antigoAlcoolPosto === "" || novoAlcoolPosto === "") {
+        alert("Preencha os campos.");
+      } else if (data.alcoolPosto !== antigoAlcoolPosto){
+        alert("Álcool não encontrado.")
+      } else if (!verificarPrecoCombustivel(novoAlcoolPosto)){
+        alert("O preço deve estar no formato R$ 0,00")
+      } else {
+        fetch(`http://localhost:3000/postos/${idPosto}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            alcoolPosto: novoAlcoolPosto,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Posto atualizado com sucesso:", data);
+          })
+          .catch((error) => console.error("Erro ao atualizar o Posto:", error));
+      }
+    });
 }

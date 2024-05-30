@@ -430,12 +430,6 @@ let locations = [
     icon: "../assets/ipiranga.svg",
     cnpj: "98.765.432/0019-00",
   },
-  {
-    position: { lat: -29.767342, lng: -51.148942 },
-    title: `Petrobras`,
-    icon: "../assets/petrobras.png",
-    cnpj: "98.765.432/0021-00",
-  },
 ];
 
 const styles = {
