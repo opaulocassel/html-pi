@@ -1286,37 +1286,107 @@ function closePerfilDialog() {
 
 
 
-let dados = JSON.parse(postos)
+
+// async function procurarPostos() {
+//   let input = document.getElementById('searchbar').value
+//   input = input.toLowerCase()
+//   let resultados = document.querySelector('.postList')
+//   resultados.innerHTML = ""
+
+//   fetch(`http://localhost:3000/postos`, {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   })
+//     .then((response) => response.json())
+//     .then((dados) => {
+//       for (i = 0; i < dados.length; i++) {
+//         let objeto = dados[i]
+
+//         if (objeto.nomePosto.toLowerCase().includes(input)) {
+//           const elemento = document.createElement("li")
+//           elemento.innerHTML = `
+//             ${objeto.nomePosto}
+//             ${objeto.enderecoPosto}, ${objeto.ruaPosto}
+//           `;
+//           resultados.appendChild(elemento)
+//         }
+//       }
+//     });
+// }
 
 async function procurarPostos() {
-  let input = document.getElementById('searchbar').value
-  input = input.toLowerCase()
-  let resultados = document.querySelector('#postList')
-  resultados.innerHTML = ""
+  let input = document.getElementById('searchbar').value.toLowerCase();
+  let resultados = document.querySelector('.postList');
+  resultados.innerHTML = "";
 
-  fetch(`http://localhost:3000/postos`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((dados) => {
-      for (i = 0; i < dados.length; i++) {
-        let objeto = dados[i]
+  try {
+      const response = await fetch('http://localhost:3000/postos', {
+          method: "GET",
+          headers: {
+              "Content-Type": "application/json",
+          },
+      });
 
-        if (objeto.nomePosto.toLowerCase().includes(input)) {
-          const elemento = document.createElement("div")
-          elemento.innerHTML = `
-          <div class="searchContainer">
-            <div class="resultado">
-              <div class="nomeResultado">${objeto.nomePosto}</div>
-              <div class="endereçoResultado">${objeto.enderecoPosto}, ${objeto.ruaPosto}</div>
-            </div>
-          </div>
-          `
-          resultados.appendChild(elemento)
-        }
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
       }
-    });
+
+      const dados = await response.json();
+      let emptyArray = [];
+      for (let i = 0; i < dados.length; i++) {
+          let objeto = dados[i];
+          if (objeto.nomePosto.toLowerCase().includes(input)) {
+              const elemento = document.createElement("li");
+              elemento.innerHTML = `
+              ${objeto.nomePosto}
+              ${objeto.enderecoPosto}, ${objeto.ruaPosto}
+          `;
+              resultados.appendChild(elemento);
+              emptyArray.push(elemento.innerHTML);
+          }
+      }
+      if (input) {
+          showSuggestions(emptyArray.map(data => `<li>${data}</li>`));
+      } else {
+          searchWrapper.classList.remove("active");
+      }
+  } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+  }
+}
+
+const searchWrapper = document.querySelector(".barra-pesquisa");
+const inputBox = searchWrapper.querySelector("input");
+const suggBox = searchWrapper.querySelector(".postList");
+const icon = searchWrapper.querySelector(".icon");
+let linkTag = searchWrapper.querySelector("a");
+let webLink;
+
+inputBox.onkeyup = (e) => {
+  procurarPostos();
+};
+
+function select(element) {
+  let selectData = element.textContent;
+  inputBox.value = selectData;
+  searchWrapper.classList.remove("active");
+  procurarPostos();
+}
+
+function showSuggestions(list) {
+  let listData;
+  if (!list.length) {
+      userValue = inputBox.value;
+      listData = `<li>${userValue}</li>`;
+  } else {
+      listData = list.join('');
+  }
+  suggBox.innerHTML = listData;
+
+  let allList = suggBox.querySelectorAll("li");
+  for (let i = 0; i < allList.length; i++) {
+      allList[i].setAttribute("onclick", "select(this)");
+  }
 }

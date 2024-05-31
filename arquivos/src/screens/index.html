@@ -37,10 +37,13 @@
     <nav id=testando>
       <div class="logo">
         <i class="bx bx-menu menu-icon"></i>
-        <span class="logo-nome">Sidebar</span>
       </div>
-      <input type="text" id="searchbar" placeholder="Pesquisar postos" onkeyup="procurarPostos()">
-      <div id="postList"></div>
+      <div class="wrapper">
+        <div class="barra-pesquisa">
+          <input type="text" id="searchbar" placeholder="Pesquisar postos" onkeyup="procurarPostos()">
+          <div class="postList"></div>
+        </div>
+      </div>
       <!-- <i onclick="" class="bx bx-cog icon botaoConfig" id="botaoConfig">
       </i> -->
       <button onclick="openDialog()" class="botaoHome" id="botaoHome">
@@ -49,7 +52,6 @@
       <div class="sidebar">
         <div class="logo">
           <i class="bx bx-menu menu-icon"></i>
-          <span class="logo-nome">Sidebar</span>
         </div>
 
         <div class="sidebar-conteudo">
@@ -323,7 +325,7 @@
 
   <section class="overlaySidebarBefore"></section> -->
 
-    
+
   </main>
 
   <footer>

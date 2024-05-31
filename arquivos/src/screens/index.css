@@ -704,7 +704,7 @@ nav .sidebar {
   position: fixed;
   top: 0;
   left: -100%;
-  height: 100%;
+  height: -100%;
   width: 260px;
   padding: 20px 0;
   background-color: #fff;
@@ -1016,4 +1016,34 @@ span {
 
 .card-open {
   display: block !important;
+}
+
+
+/* barra de pesquisa */
+.barra-pesquisa {
+  position: relative;
+  width: 300px;
+}
+
+#searchbar {
+  width: 300px;
+}
+
+.postList {
+  position: absolute;
+  background: #fff;
+  width: 100%;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.postList li {
+  list-style: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.postList li:hover {
+  background: #eee;
 }
