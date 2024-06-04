@@ -82,7 +82,7 @@ server.get("/postos/:id", (req, res) => {
   }
 });
 
-server.get("/postos/:nomePosto", (req, res) => {
+server.get("/postos/nomePosto/:nomePosto", (req, res) => {
   const nomePosto = req.params.nomePosto;
   const postoEncontrado = dadosPosto.postos.find(posto => posto.nomePosto === nomePosto);
   if (postoEncontrado) {
@@ -92,15 +92,75 @@ server.get("/postos/:nomePosto", (req, res) => {
   }
 });
 
-
-server.get("/postos/:nomePosto", (req, res) => {
-  const nomePosto = req.params.nomePosto;
-  const postoEncontrado = dadosPosto.postos.find(posto => posto.nomePosto === nomePosto);
-  if (postoEncontrado) {
-    return res.json(postoEncontrado);
+server.get("/postos/enderecoPosto/:enderecoPosto", (req, res) => {
+  const enderecoPosto = req.params.enderecoPosto;
+  const enderecoEncontrado = dadosPosto.postos.find(posto => posto.enderecoPosto === enderecoPosto);
+  if (enderecoEncontrado) {
+    return res.json(enderecoEncontrado);
   } else {
-    return res.status(404).json({ error: 'Posto não encontrado' });
-  };
+    return res.status(404).json({ error: 'Endereço não encontrado' });
+  }
+});
+
+server.get("/postos/ruaPosto/:ruaPosto", (req, res) => {
+  const ruaPosto = req.params.ruaPosto;
+  const ruaEncontrada = dadosPosto.postos.find(posto => posto.ruaPosto === ruaPosto);
+  if (ruaEncontrada) {
+    return res.json(ruaEncontrada);
+  } else {
+    return res.status(404).json({ error: 'Rua não encontrada' });
+  }
+});
+
+server.get("/postos/cnpjPosto/:cnpjPosto", (req, res) => {
+  const cnpjPosto = req.params.cnpjPosto;
+  console.log("CNPJ recebido:", cnpjPosto);
+  const cnpjEncontrado = dadosPosto.postos.find(posto => posto.cnpjPosto === cnpjPosto);
+  if (cnpjEncontrado) {
+    return res.json(cnpjEncontrado);
+  } else {
+    return res.status(404).json({ error: 'CNPJ não encontrado' });
+  }
+});
+
+server.get("/postos/comumPosto/:comumPosto", (req, res) => {
+  const comumPosto = req.params.comumPosto;
+  const comumEncontrada = dadosPosto.postos.find(posto => posto.comumPosto === comumPosto);
+  if (comumEncontrada) {
+    return res.json(comumEncontrada);
+  } else {
+    return res.status(404).json({ error: 'Comum não encontrado' });
+  }
+});
+
+server.get("/postos/aditivadaPosto/:aditivadaPosto", (req, res) => {
+  const aditivadaPosto = req.params.aditivadaPosto;
+  const aditivadaEncontrada = dadosPosto.postos.find(posto => posto.aditivadaPosto === aditivadaPosto);
+  if (aditivadaEncontrada) {
+    return res.json(aditivadaEncontrada);
+  } else {
+    return res.status(404).json({ error: 'Aditivada não encontrado' });
+  }
+});
+
+server.get("/postos/dieselPosto/:dieselPosto", (req, res) => {
+  const dieselPosto = req.params.dieselPosto;
+  const dieselEncontrada = dadosPosto.postos.find(posto => posto.dieselPosto === dieselPosto);
+  if (dieselEncontrada) {
+    return res.json(dieselEncontrada);
+  } else {
+    return res.status(404).json({ error: 'Diesel não encontrado' });
+  }
+});
+
+server.get("/postos/alcoolPosto/:alcoolPosto", (req, res) => {
+  const alcoolPosto = req.params.alcoolPosto;
+  const alcoolEncontrado = dadosPosto.postos.find(posto => posto.alcoolPosto === alcoolPosto);
+  if (alcoolEncontrado) {
+    return res.json(alcoolEncontrado);
+  } else {
+    return res.status(404).json({ error: 'Álcool não encontrado' });
+  }
 });
 
 server.delete("/postos/:id", (req, res) => {
