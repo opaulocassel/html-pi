@@ -98,7 +98,20 @@ async function initMap() {
   infowindows = [new google.maps.InfoWindow(), new google.maps.InfoWindow()];
   let pulaPula;
 
-  for (let item of myArray) {
+  // 
+  let postosData;
+  try {
+    const response = await fetch("http://localhost:3000/postos");
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    postosData = await response.json();
+  } catch (error) {
+    console.error("Erro ao carregar os dados do JSON:", error);
+    return;
+  }
+
+  for (let item of locations) {
     let marker = new google.maps.Marker({
       position: item.position,
       label: item.label,
@@ -126,6 +139,7 @@ async function initMap() {
 
             if (posto) {
               marker.postoData = posto;
+              marker.postoData.id = posto.id; // Certifique-se de que o ID está sendo atribuído
               const infoContent = generateInfoContent(posto);
               infowindows[0].setContent(infoContent);
               infowindows[0].open(map, marker);
@@ -135,6 +149,8 @@ async function initMap() {
               }
               marker.setAnimation(google.maps.Animation.BOUNCE);
               pulaPula = marker;
+
+              console.log("Posto encontrado e dados atribuídos:", posto); // Log de depuração
             }
           })
           .catch((error) => {
@@ -150,6 +166,8 @@ async function initMap() {
         }
         marker.setAnimation(google.maps.Animation.BOUNCE);
         pulaPula = marker;
+
+        console.log("Dados do posto já disponíveis:", marker.postoData); // Log de depuração
       }
     });
     google.maps.event.addListener(infowindows[0], "closeclick", function () {
@@ -160,6 +178,8 @@ async function initMap() {
   infowindows.forEach(infowindow => {
     google.maps.event.addListener(infowindow, 'closeclick', fecharComparacao);
   });
+
+  console.log("Marcadores:", markers); // Log de depuração
 }
 
 function fecharComparacao() {
@@ -239,7 +259,7 @@ function adicionarParaComparar(id) {
 }
 
 function atualizarComparacao() {
-  console.log('Atualizando comparação...');
+  console.log('Atualizando comparação');
   if (postosSelecionados.length === 2) {
     const [posto1, posto2] = postosSelecionados;
     console.log('Comparando postos:', posto1, posto2);
@@ -1316,6 +1336,8 @@ function closePerfilDialog() {
 //     });
 // }
 
+
+// barra de pesquisa
 async function procurarPostos() {
   let input = document.getElementById('searchbar').value.toLowerCase();
   let resultados = document.querySelector('.postList');
@@ -1338,17 +1360,17 @@ async function procurarPostos() {
       for (let i = 0; i < dados.length; i++) {
           let objeto = dados[i];
           if (objeto.nomePosto.toLowerCase().includes(input)) {
-              const elemento = document.createElement("li");
-              elemento.innerHTML = `
-              ${objeto.nomePosto}
-              ${objeto.enderecoPosto}, ${objeto.ruaPosto}
-          `;
-              resultados.appendChild(elemento);
-              emptyArray.push(elemento.innerHTML);
+              const postoData = {
+                  id: objeto.id,
+                  nomePosto: objeto.nomePosto,
+                  enderecoPosto: objeto.enderecoPosto,
+                  ruaPosto: objeto.ruaPosto,
+              };
+              emptyArray.push(postoData);
           }
       }
       if (input) {
-          showSuggestions(emptyArray.map(data => `<li>${data}</li>`));
+          showSuggestions(emptyArray);
       } else {
           searchWrapper.classList.remove("active");
       }
@@ -1361,32 +1383,85 @@ const searchWrapper = document.querySelector(".barra-pesquisa");
 const inputBox = searchWrapper.querySelector("input");
 const suggBox = searchWrapper.querySelector(".postList");
 const icon = searchWrapper.querySelector(".icon");
-let linkTag = searchWrapper.querySelector("a");
-let webLink;
 
 inputBox.onkeyup = (e) => {
   procurarPostos();
 };
 
-function select(element) {
-  let selectData = element.textContent;
-  inputBox.value = selectData;
-  searchWrapper.classList.remove("active");
-  procurarPostos();
+// function select(posto) {
+//   let selectData = posto.nomePosto;
+//   inputBox.value = selectData;
+//   searchWrapper.classList.remove("active");
+//   showPostCard(posto);
+// }
+
+function select(elemento) {
+  let postoId = elemento.getAttribute('data-id');
+  let postoNome = elemento.getAttribute('data-nome-posto');
+
+  console.log("Selecionado:", { postoId, postoNome }); // Log de depuração
+
+  if (!postoId) {
+    console.error("Posto não encontrado: ID não definido");
+    return;
+  }
+
+  let marker = markers.find(marker => marker.postoData && marker.postoData.id == postoId);
+
+  if (marker) {
+    const posto = marker.postoData;
+    const infoContent = generateInfoContent(posto);
+    infowindows[0].setContent(infoContent);
+    infowindows[0].open(map, marker);
+    map.setCenter(marker.getPosition());
+    if (marker.getAnimation() !== null) {
+      marker.setAnimation(null);
+    } else {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout(() => marker.setAnimation(null), 1400);
+    }
+
+    inputBox.value = postoNome;
+
+    searchWrapper.classList.remove("active");
+    console.log("Marcador encontrado e infowindow exibido:", marker); // Log de depuração
+  } else {
+    console.error("Posto não encontrado:", postoId);
+  } 
+}
+
+function showPostCard(posto) {
+  const cardContent = generateInfoContent(posto);
+  const containerCard = document.querySelector(".containerCard");
+
+  if (containerCard) {
+    containerCard.innerHTML = cardContent;
+  } else {
+    const newCardContainer = document.createElement("div");
+    newCardContainer.classList.add("containerCard");
+    newCardContainer.innerHTML = cardContent;
+    document.querySelector(".wrapper").appendChild(newCardContainer)
+  }
 }
 
 function showSuggestions(list) {
-  let listData;
-  if (!list.length) {
-      userValue = inputBox.value;
-      listData = `<li>${userValue}</li>`;
-  } else {
-      listData = list.join('');
-  }
-  suggBox.innerHTML = listData;
+  suggBox.innerHTML = "";
 
-  let allList = suggBox.querySelectorAll("li");
-  for (let i = 0; i < allList.length; i++) {
-      allList[i].setAttribute("onclick", "select(this)");
+  if (list.length === 0) {
+    const userValue = inputBox.value;
+    const li = document.createElement("li");
+    li.textContent = userValue;
+    suggBox.appendChild(li);
+  } else {
+    list.forEach(data => {
+      const li = document.createElement("li");
+      li.textContent = `${data.nomePosto}\n${data.enderecoPosto}, ${data.ruaPosto}`;
+      li.setAttribute('data-id', data.id);
+      li.setAttribute('data-nome-posto', data.nomePosto);
+      li.onclick = () => select(li);
+      suggBox.appendChild(li);
+
+      console.log("Sugestão adicionada:", li.outerHTML); // Log de depuração
+    });
   }
 }
