@@ -1382,18 +1382,11 @@ inputBox.onkeyup = (e) => {
   procurarPostos();
 };
 
-// function select(posto) {
-//   let selectData = posto.nomePosto;
-//   inputBox.value = selectData;
-//   searchWrapper.classList.remove("active");
-//   showPostCard(posto);
-// }
-
 function select(elemento) {
   let postoId = elemento.getAttribute('data-id');
   let postoNome = elemento.getAttribute('data-nome-posto');
 
-  console.log("Selecionado:", { postoId, postoNome }); // Log de depuração
+  console.log("Selecionado:", { postoId, postoNome }); // Ae João, log para verificar.
 
   if (!postoId) {
     console.error("Posto não encontrado: ID não definido");
@@ -1403,26 +1396,68 @@ function select(elemento) {
   let marker = markers.find(marker => marker.postoData && marker.postoData.id == postoId);
 
   if (marker) {
-    const posto = marker.postoData;
-    const infoContent = generateInfoContent(posto);
-    infowindows[0].setContent(infoContent);
-    infowindows[0].open(map, marker);
-    map.setCenter(marker.getPosition());
-    if (marker.getAnimation() !== null) {
-      marker.setAnimation(null);
-    } else {
-      marker.setAnimation(google.maps.Animation.BOUNCE);
-      setTimeout(() => marker.setAnimation(null), 1400);
+    // Se o marcador já tem dados, ele mostra o card.
+    displayPostoCard(marker);
+  } else {
+    // Se o marcador não tem dados, carrega os dados e depois exibe o card.
+    fetchPostoData(postoId);
+  }
+}
+
+function displayPostoCard(marker) {
+  const posto = marker.postoData;
+  const infoContent = generateInfoContent(posto);
+  infowindows[0].setContent(infoContent);
+  infowindows[0].open(map, marker);
+  map.setCenter(marker.getPosition());
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(() => marker.setAnimation(null), 1400);
+  }
+
+  inputBox.value = posto.nomePosto;
+
+  searchWrapper.classList.remove("active");
+}
+
+async function fetchPostoData(postoId) {
+  try {
+    const response = await fetch('http://localhost:3000/postos', {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
 
-    inputBox.value = postoNome;
+    const dados = await response.json();
+    const posto = dados.find(posto => posto.id == postoId);
 
-    searchWrapper.classList.remove("active");
-    console.log("Marcador encontrado e infowindow exibido:", marker); // Log de depuração
-  } else {
-    console.error("Posto não encontrado:", postoId);
-  } 
+    if (posto) {
+      let marker = markers.find(marker => marker.postoData && marker.postoData.id == postoId);
+      if (!marker) {
+        marker = markers.find(marker => marker.title === posto.nomePosto);
+      }
+      
+      if (marker) {
+        marker.postoData = posto;
+        displayPostoCard(marker);
+      } else {
+        console.error("Marcador do posto não encontrado:", postoId);
+      }
+    } else {
+      console.error("Dados do posto não encontrados:", postoId);
+    }
+  } catch (error) {
+    console.error('Erro ao carregar os dados do JSON:', error);
+  }
 }
+
 
 function showPostCard(posto) {
   const cardContent = generateInfoContent(posto);
@@ -1434,7 +1469,7 @@ function showPostCard(posto) {
     const newCardContainer = document.createElement("div");
     newCardContainer.classList.add("containerCard");
     newCardContainer.innerHTML = cardContent;
-    document.querySelector(".wrapper").appendChild(newCardContainer)
+    document.querySelector(".wrapper").appendChild(newCardContainer);
   }
 }
 
@@ -1455,7 +1490,6 @@ function showSuggestions(list) {
       li.onclick = () => select(li);
       suggBox.appendChild(li);
 
-      console.log("Sugestão adicionada:", li.outerHTML); // Log de depuração
     });
   }
 }
