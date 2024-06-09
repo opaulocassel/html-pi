@@ -1338,38 +1338,38 @@ async function procurarPostos() {
   resultados.innerHTML = "";
 
   try {
-      const response = await fetch('http://localhost:3000/postos', {
-          method: "GET",
-          headers: {
-              "Content-Type": "application/json",
-          },
-      });
+    const response = await fetch('http://localhost:3000/postos', {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-      if (!response.ok) {
-          throw new Error('Network response was not ok');
-      }
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
 
-      const dados = await response.json();
-      let emptyArray = [];
-      for (let i = 0; i < dados.length; i++) {
-          let objeto = dados[i];
-          if (objeto.nomePosto.toLowerCase().includes(input)) {
-              const postoData = {
-                  id: objeto.id,
-                  nomePosto: objeto.nomePosto,
-                  enderecoPosto: objeto.enderecoPosto,
-                  ruaPosto: objeto.ruaPosto,
-              };
-              emptyArray.push(postoData);
-          }
+    const dados = await response.json();
+    let emptyArray = [];
+    for (let i = 0; i < dados.length; i++) {
+      let objeto = dados[i];
+      if (objeto.nomePosto.toLowerCase().includes(input)) {
+        const postoData = {
+          id: objeto.id,
+          nomePosto: objeto.nomePosto,
+          enderecoPosto: objeto.enderecoPosto,
+          ruaPosto: objeto.ruaPosto,
+        };
+        emptyArray.push(postoData);
       }
-      if (input) {
-          showSuggestions(emptyArray);
-      } else {
-          searchWrapper.classList.remove("active");
-      }
+    }
+    if (input) {
+      showSuggestions(emptyArray);
+    } else {
+      searchWrapper.classList.remove("active");
+    }
   } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
+    console.error('There was a problem with the fetch operation:', error);
   }
 }
 
@@ -1443,7 +1443,7 @@ async function fetchPostoData(postoId) {
       if (!marker) {
         marker = markers.find(marker => marker.title === posto.nomePosto);
       }
-      
+
       if (marker) {
         marker.postoData = posto;
         displayPostoCard(marker);
@@ -1476,6 +1476,12 @@ function showPostCard(posto) {
 function showSuggestions(list) {
   suggBox.innerHTML = "";
 
+  const exibirBandeira = (nomePosto) => {
+    if (nomePosto == 'Shell') return '<img src="../assets/shell.png">';
+    if (nomePosto == 'Ipiranga') return '<img src="../assets/ipiranga.svg">';
+    if (nomePosto == 'Petrobras') return '<img src="../assets/petrobras.png">'
+  };
+
   if (list.length === 0) {
     const userValue = inputBox.value;
     const li = document.createElement("li");
@@ -1484,7 +1490,21 @@ function showSuggestions(list) {
   } else {
     list.forEach(data => {
       const li = document.createElement("li");
-      li.textContent = `${data.nomePosto}\n${data.enderecoPosto}, ${data.ruaPosto}`;
+      li.innerHTML = `
+      ${exibirBandeira(data.nomePosto)}
+      <div class="conteudoResultado">
+        <div class="conteudoNome">
+          ${data.nomePosto} 
+        </div>
+        <div class="conteudoHorario">
+          <p>Aberto: 08:00 até 22:00</p>
+        </div>
+        <div class="conteudoEndereco">
+          <i class="icon icon-location bi bi-geo-alt-fill"></i>
+          ${data.enderecoPosto}, ${data.ruaPosto}
+        </div>
+      </div>
+      `;
       li.setAttribute('data-id', data.id);
       li.setAttribute('data-nome-posto', data.nomePosto);
       li.onclick = () => select(li);

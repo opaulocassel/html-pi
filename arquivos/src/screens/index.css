@@ -790,7 +790,7 @@ nav.open~.overlay {
   border-radius: 10px;
 }
 
-.cardBody{
+.cardBody {
   width: 17vw;
   padding: 7px 0 0 7px;
 }
@@ -1026,24 +1026,56 @@ span {
 }
 
 #searchbar {
-  width: 300px;
+  width: 375px;
 }
 
 .postList {
   position: absolute;
   background: #fff;
-  width: 100%;
+  width: 125%;
   border: 1px solid #ccc;
-  max-height: 150px;
+  max-height: 400px;
   overflow-y: auto;
 }
 
 .postList li {
   list-style: none;
-  padding: 10px;
+  padding: 3.5%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.postList li img {
+  width: 14.5%;
+  height: auto;
+  margin-right: 4.5%;
 }
 
 .postList li:hover {
   background: #eee;
+}
+
+.conteudoResultado {
+  padding: 0%;
+}
+
+.conteudoResultado .conteudoEndereco {
+  display: flex;
+}
+
+.conteudoResultado .conteudoEndereco i {
+  padding-right: 0.225rem;
+}
+
+.conteudoResultado .conteudoNome {
+  font-weight: bold;
+}
+
+.conteudoResultado .conteudoHorario p {
+  color: #84898f;
+  direction: inherit;
+  font-size: 0.875rem;
+  margin-bottom: 0rem;
 }
