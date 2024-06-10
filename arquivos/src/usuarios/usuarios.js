@@ -204,7 +204,7 @@ function generateInfoContent(posto) {
                 <h3 class="property__title">${posto.nomePosto}</h3>
                 <div>
                   <span class="property__price">R$${posto.comumPosto}</span>
-                  <button class="buttonComparar" onclick="adicionarParaComparar(${posto.id})">Comparar preço</button>
+                  <a class="buttonComparar" onclick="adicionarParaComparar(${posto.id})">Comparar preço</a>
                 </div>
                 <span class="property__location">
                   <i class="icon icon-location bi bi-geo-alt-fill"></i>
