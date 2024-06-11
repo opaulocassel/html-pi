@@ -202,9 +202,9 @@ function generateInfoContent(posto) {
             <article class="property">
               <section class="property__main-info">
                 <h3 class="property__title">${posto.nomePosto}</h3>
-                <div>
+                <div class="property_options">
                   <span class="property__price">R$${posto.comumPosto}</span>
-                  <a class="buttonComparar" onclick="adicionarParaComparar(${posto.id})">Comparar preço</a>
+                  <button class="buttonComparar" onclick="adicionarParaComparar(${posto.id})">Comparar preço</button>
                 </div>
                 <span class="property__location">
                   <i class="icon icon-location bi bi-geo-alt-fill"></i>
@@ -265,8 +265,8 @@ function atualizarComparacao() {
     console.log('Comparando postos:', posto1, posto2);
 
     const compararPreco = (preco1, preco2) => {
-      if (preco1 > preco2) return 'price-higher class="bi bi-arrow-up-short';
-      if (preco1 < preco2) return 'price-lower class="bi bi-arrow-down-short';
+      if (preco1 > preco2) return 'price-higher bi bi-arrow-up-short';
+      if (preco1 < preco2) return 'price-lower bi bi-arrow-down-short';
       return 'price-equal';
     };
 

@@ -140,17 +140,29 @@
             <i class="bi bi-x-square-fill" onclick="closeDialog()" alt="Back"></i>
           </div>
           <h2>Entrar</h2>
-          <input onclick="adicionarPlaceholder('loginNome', 'Informe seu nome')" type="text" id="loginNome"
-            maxlength="30" name="login-username" placeholder="Informe seu nome" required />
-          <input onclick="adicionarPlaceholder('loginSenha', 'Digite sua senha')" type="password" id="loginSenha"
-            maxlength="15" name="login-password" placeholder="Digite sua senha" required />
+          <div class="login_interface">
+            <div class="requerimento_interface">
+              <div class="input_username">
+                <input onclick="adicionarPlaceholder('loginNome', 'Informe seu nome')" type="text" id="loginNome"
+                  maxlength="30" name="login-username" placeholder="Informe seu nome" required />
+              </div>
+              <div class="input_password">
+                <input onclick="adicionarPlaceholder('loginSenha', 'Digite sua senha')" type="password" id="loginSenha"
+                  maxlength="15" name="login-password" placeholder="Digite sua senha" required />
+              </div>
+            </div>
 
-          <button type="submit" class="botao">Login</button>
+            <div class="login_button">
+              <button type="submit" class="botao">Login</button>
+            </div>
 
-          <p class="message">
-            Não é registrado?
-            <a id="linkLogin" onclick="cadastrar()" href="#">Crie uma conta</a>
-          </p>
+            <div class="login_fotter">
+              <p class="message">
+                Não é registrado?
+                <a id="linkLogin" onclick="cadastrar()" href="#">Crie uma conta</a>
+              </p>
+            </div>
+          </div>
         </form>
 
         <form class="registerForm" id="registerForm">

@@ -81,7 +81,7 @@ header button:hover {
 
   to {
     background-color: var(--wz-button-background-color,
-        var(--primary, #0099ff));
+        var(--primary, #ffffff));
   }
 }
 
@@ -135,26 +135,102 @@ header button:hover {
   backface-visibility: hidden;
 }
 
-.form input {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 13px;
-  color: #f1f7f8;
-  margin-bottom: 30px;
-  border: none;
-  border-bottom: 1px solid #fff;
-  outline: none;
-  background: transparent;
-}
-
-input::placeholder {
-  color: white;
-}
-
 .loginForm h2 {
-  color: white;
-  margin-bottom: 4vh;
-  padding-top: 80px;
+  color: rgb(0, 0, 0);
+  margin: 0;
+  padding-top: 48px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.login_interface {
+  text-align: center;
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
+}
+
+.requerimento_interface {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.input_username {
+  height: 64px;
+  min-width: 280px;
+  position: relative;
+  background-color: rgba(186, 186, 186, 0.1);
+  border-style: solid;
+  border-width: 2px;
+  border-color: transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.input_username input {
+  background: transparent;
+  border: none;
+  padding: 31px 8px 15px;
+  box-sizing: border-box;
+  height: 60px;
+  display: block;
+  outline: none;
+  width: 100%;
+  color: rgb(31, 31, 31);
+  line-height: 18px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.input_password {
+  height: 64px;
+  min-width: 280px;
+  position: relative;
+  background-color: rgba(186, 186, 186, 0.1);
+  border-style: solid;
+  border-width: 2px;
+  border-color: transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.input_password input {
+  background: transparent;
+  border: none;
+  padding: 31px 8px 15px;
+  box-sizing: border-box;
+  height: 60px;
+  display: block;
+  outline: none;
+  width: 100%;
+  color: rgb(31, 31, 31);
+  line-height: 18px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.login_button {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  margin: 80px 0px 24px;
+}
+
+.login_fotter {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
+  -webkit-box-pack: end;
+  justify-content: end;
 }
 
 .registerForm h2 {
@@ -164,13 +240,14 @@ input::placeholder {
 
 .form .message {
   margin: 15px 0 0;
-  color: #f1e5e5;
-  font-size: 12px;
+  color: #000000;
+  font-size: 15px;
 }
 
 .form .message a {
-  color: #c4fa00;
+  color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
   text-decoration: none;
+  font-weight: bolder;
 }
 
 .loginForm {
@@ -199,26 +276,23 @@ input::placeholder {
 }
 
 .botao {
-  position: relative;
-  display: inline-block;
-  padding: 10px 20px;
-  color: #ffffff;
-  font-size: 16px;
-  text-decoration: none;
-  overflow: hidden;
-  transition: 0.5s;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  letter-spacing: 2px;
-  background-color: transparent;
-  border: none;
-  border-radius: 5px;
+  background: rgb(255, 255, 255);
+  display: block;
+  height: 60px;
+  border-radius: 10px;
+  padding: 0px;
+  color: rgb(10, 10, 10);
+  border: 2px solid rgba(173, 173, 173, 0.3);
+  font-size: 20px;
+  font-weight: 700;
+  cursor: not-allowed;
+  width: 100px;
 }
 
 .botao:hover {
-  background: #289bb8;
+  background: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
   color: #f4f0f0;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .botao span {
@@ -864,9 +938,13 @@ nav.open~.overlay {
 }
 
 .buttonComparar {
-  background-color: white;
+  color: #000;
+  position: absolute;
+  padding: 0.475rem;
+  margin-left: 31.9%;
+  border-radius: 10px;
+  border: 1px #000;
 }
-
 
 .postCard_content {
   width: 80%;
