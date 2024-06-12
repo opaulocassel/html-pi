@@ -68,7 +68,7 @@ header button:hover {
   background-color: transparent;
   box-sizing: border-box;
   box-shadow: 0 5px 10px rgba(110, 110, 110, 0.548);
-  border-radius: 10px;
+  border-radius: 5px;
   animation-name: cor;
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
@@ -140,7 +140,7 @@ header button:hover {
   margin: 0;
   padding-top: 48px;
   text-align: center;
-  font-weight: 500;
+  font-weight: 900;
 }
 
 .login_interface {
@@ -158,7 +158,7 @@ header button:hover {
 }
 
 .input_username {
-  height: 64px;
+  height: 45px;
   min-width: 280px;
   position: relative;
   background-color: rgba(186, 186, 186, 0.1);
@@ -189,7 +189,7 @@ header button:hover {
 }
 
 .input_password {
-  height: 64px;
+  height: 45px;
   min-width: 280px;
   position: relative;
   background-color: rgba(186, 186, 186, 0.1);
@@ -222,7 +222,7 @@ header button:hover {
   display: flex;
   -webkit-box-pack: center;
   justify-content: center;
-  margin: 80px 0px 24px;
+  margin: 100px 0px 24px;
 }
 
 .login_fotter {
@@ -752,7 +752,7 @@ nav {
   display: flex;
   align-items: center;
   background: #fff;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
 }
 
 nav .logo {
@@ -1103,17 +1103,42 @@ span {
   width: 300px;
 }
 
-#searchbar {
-  width: 375px;
+.teste_barra {
+  position: relative;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  padding: 9px;
+  border-radius: 18px;
+  background: #f2f2f2;
+  width: 400px;
 }
+
+#searchbar {
+  font-size: 16px;
+  font-family: 'Lexend', sans-serif;
+  color: #333333;
+  margin-left: 14px;
+  outline: none;
+  border: none;
+  background: transparent;
+  width: 300px;
+  flex: 1;
+}
+
+#searchbar::placeholder,
+.bi-search {
+  color: rgba(0, 0, 0, 0.5);
+}
+
 
 .postList {
   position: absolute;
   background: #fff;
-  width: 125%;
-  border: 1px solid #ccc;
-  max-height: 400px;
+  width: 128%;
+  max-height: 475px;
   overflow-y: auto;
+  margin-left: 15px;
 }
 
 .postList li {
