@@ -34,9 +34,8 @@ header .selecao {
 }
 
 .botaoHome {
-  position: absolute;
-  margin: 0vh 2vw 0 85vw;
   height: 40px;
+  width: 12vw;
   font-size: 16px;
   text-decoration: unset;
   overflow: hidden;
@@ -616,7 +615,7 @@ h6 {
 }
 
 .input-tema {
-  background-color: hsl(48, 90%, 85%);
+  background-color: hsl(48, 88%, 70%);
   border-radius: 25% / 50%;
   box-shadow: 0 0 0 0.125em var(--primaryT);
   padding: 0.25em;
@@ -631,7 +630,7 @@ h6 {
 }
 
 .input-tema:before {
-  background-color: hsl(48, 90%, 55%);
+  background-color: hsl(47, 100%, 50%);
   border-radius: 50%;
   content: "";
   width: 2.5em;
@@ -648,7 +647,7 @@ h6 {
 
 /* Checked */
 .input-tema:checked {
-  background-color: hsl(198, 90%, 15%);
+  background-color: hsl(198, 92%, 35%);
 }
 
 .input-tema:checked:before,
@@ -747,8 +746,9 @@ nav {
   width: 100%;
   display: flex;
   align-items: center;
-  background: #fff;
+  background: rgb(1, 1, 154);
   box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  z-index: 10; /* Para garantir que a nav fique sobre outros elementos */
 }
 
 nav .logo {
@@ -758,7 +758,7 @@ nav .logo {
 }
 
 .logo .menu-icon {
-  color: #333;
+  color: #ffb2b2;
   font-size: 24px;
   margin-right: 14px;
   cursor: pointer;
@@ -777,9 +777,10 @@ nav .sidebar {
   height: -100%;
   width: 260px;
   padding: 20px 0;
-  background-color: #fff;
+  background-color: transparent;
   box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
+  height: 100vh;
 }
 
 nav.open .sidebar {
@@ -798,6 +799,10 @@ nav.open .sidebar {
   list-style: none;
 }
 
+.bottom-content{
+margin-left: 30px;
+}
+
 .lista .nav-link {
   display: flex;
   align-items: center;
@@ -814,12 +819,12 @@ nav.open .sidebar {
 .nav-link .icon {
   margin-right: 14px;
   font-size: 20px;
-  color: #707070;
+  color: blue;
 }
 
 .nav-link .link {
   font-size: 16px;
-  color: #707070;
+  color: rgb(90, 90, 248);
   font-weight: 400;
 }
 
@@ -1109,6 +1114,16 @@ span {
   border-radius: 18px;
   background: #f2f2f2;
   width: 400px;
+}
+
+.wrapper{
+margin-left: 72vw;
+position: absolute;
+display: none;
+}
+
+#iconzinho{
+  color: transparent;
 }
 
 #searchbar {
