@@ -139,7 +139,7 @@ async function initMap() {
 
             if (posto) {
               marker.postoData = posto;
-              marker.postoData.id = posto.id; // Certifique-se de que o ID está sendo atribuído
+              marker.postoData.id = posto.id; 
               const infoContent = generateInfoContent(posto);
               infowindows[0].setContent(infoContent);
               infowindows[0].open(map, marker);
@@ -150,7 +150,7 @@ async function initMap() {
               marker.setAnimation(google.maps.Animation.BOUNCE);
               pulaPula = marker;
 
-              console.log("Posto encontrado e dados atribuídos:", posto); // Log de depuração
+              console.log("Posto encontrado e dados atribuídos:", posto); // Logzin de boas.
             }
           })
           .catch((error) => {
@@ -167,7 +167,7 @@ async function initMap() {
         marker.setAnimation(google.maps.Animation.BOUNCE);
         pulaPula = marker;
 
-        console.log("Dados do posto já disponíveis:", marker.postoData); // Log de depuração
+        console.log("Dados do posto já disponíveis:", marker.postoData); // Logzin de boas.
       }
     });
     google.maps.event.addListener(infowindows[0], "closeclick", function () {
@@ -179,7 +179,7 @@ async function initMap() {
     google.maps.event.addListener(infowindow, 'closeclick', fecharComparacao);
   });
 
-  console.log("Marcadores:", markers); // Log de depuração
+  console.log("Marcadores:", markers); // Logzin de boas.
 }
 
 function fecharComparacao() {
@@ -203,7 +203,7 @@ function generateInfoContent(posto) {
               <section class="property__main-info">
                 <h3 class="property__title">${posto.nomePosto}</h3>
                 <div class="property_options">
-                  <span class="property__price">R$${posto.comumPosto}</span>
+                  <span class="property__price">${posto.comumPosto}</span>
                   <button class="buttonComparar" onclick="adicionarParaComparar(${posto.id})">Comparar preço</button>
                 </div>
                 <span class="property__location">
@@ -216,9 +216,9 @@ function generateInfoContent(posto) {
               <div class="flex items-center pt-2">
                 <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3" style="background-image: url(https://seeklogo.com/images/P/Petrobras-logo-03DABEE0AC-seeklogo.com.png)"></div>
                 <div class="advants">
-                  <div><span class="font-bold text-gray-900">Aditivada</span><div><i class="bi bi-fuel-pump-fill"></i><span class="aditivada_price">R$${posto.aditivadaPosto}</span></div></div>
-                  <div><span class="font-bold text-gray-900">Diesel</span><div><i class="bi bi-fuel-pump-diesel-fill"></i><span class="diesel_price">R$${posto.dieselPosto}</span></div></div>
-                  <div><span class="font-bold text-gray-900">Álcool</span><div><i class="bi bi-fuel-pump-fill"></i><span class="alcool_price">R$${posto.alcoolPosto}</span></div></div>
+                  <div><span class="font-bold text-gray-900">Aditivada</span><div><i class="bi bi-fuel-pump-fill"></i><span class="aditivada_price">${posto.aditivadaPosto}</span></div></div>
+                  <div><span class="font-bold text-gray-900">Diesel</span><div><i class="bi bi-fuel-pump-diesel-fill"></i><span class="diesel_price">${posto.dieselPosto}</span></div></div>
+                  <div><span class="font-bold text-gray-900">Álcool</span><div><i class="bi bi-fuel-pump-fill"></i><span class="alcool_price">${posto.alcoolPosto}</span></div></div>
                 </div>
               </div>
             </div>
@@ -454,6 +454,100 @@ let locations = [
 
 const styles = {
   default: [
+    { elementType: "geometry", stylers: [{ color: "#f5f5f5" }] },
+  { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
+  { elementType: "labels.text.fill", stylers: [{ color: "#616161" }] },
+  { elementType: "labels.text.stroke", stylers: [{ color: "#f5f5f5" }] },
+  {
+    featureType: "administrative",
+    elementType: "geometry",
+    stylers: [{ color: "#fefefe" }],
+  },
+  {
+    featureType: "administrative.country",
+    elementType: "geometry.stroke",
+    stylers: [{ color: "#c9c9c9" }],
+  },
+  {
+    featureType: "administrative.land_parcel",
+    elementType: "geometry",
+    stylers: [{ color: "#dcdcdc" }],
+  },
+  {
+    featureType: "administrative.land_parcel",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#aeaeae" }],
+  },
+  {
+    featureType: "landscape",
+    elementType: "geometry",
+    stylers: [{ color: "#e5e5e5" }],
+  },
+  {
+    featureType: "poi",
+    elementType: "geometry",
+    stylers: [{ color: "#eeeeee" }],
+  },
+  {
+    featureType: "poi",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#757575" }],
+  },
+  {
+    featureType: "poi.park",
+    elementType: "geometry",
+    stylers: [{ color: "#e5e5e5" }],
+  },
+  {
+    featureType: "poi.park",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#9e9e9e" }],
+  },
+  {
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [{ color: "#ffffff" }],
+  },
+  {
+    featureType: "road.arterial",
+    elementType: "geometry",
+    stylers: [{ color: "#ffffff" }],
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry",
+    stylers: [{ color: "#dadada" }],
+  },
+  {
+    featureType: "road.highway",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#616161" }],
+  },
+  {
+    featureType: "road.local",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#9e9e9e" }],
+  },
+  {
+    featureType: "transit.line",
+    elementType: "geometry",
+    stylers: [{ color: "#e5e5e5" }],
+  },
+  {
+    featureType: "transit.station",
+    elementType: "geometry",
+    stylers: [{ color: "#eeeeee" }],
+  },
+  {
+    featureType: "water",
+    elementType: "geometry",
+    stylers: [{ color: "#c9c9c9" }],
+  },
+  {
+    featureType: "water",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#9e9e9e" }],
+  },
     {
       featureType: "poi.business",
       stylers: [{ visibility: "off" }],
@@ -624,12 +718,6 @@ function dialogPerfil() {
 
 }
 
-// Quando o evento "blur" é acionado (ou seja, quando o campo de entrada perde o foco),
-// a função de retorno de chamada do ouvinte de eventos é executada.
-// Essa função de retorno de chamada verifica se o valor do campo de entrada é vazio.
-// Se o valor do campo de entrada for vazio, o texto placeholder é adicionado de volta ao campo de
-// entrada.
-//=
 
 function adicionarPlaceholder(inputId, placeholderText) {
   let inputElement = document.getElementById(inputId);
