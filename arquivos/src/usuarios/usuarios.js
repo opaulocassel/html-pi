@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded', () => {
         // `;
         //   document.body.appendChild(sidebar);
 
-        toggleSidebar();
+        // toggleSidebar();
         closeDialog();
 
         carregarListaUsuarios();
@@ -64,6 +64,11 @@ async function initMap() {
 
   console.log("Inicio da função.");
 
+  // variaveis da rota do mapa
+  var origemMarker = null;
+  var destinoMarker = null;
+  // 
+
   map = new Map(document.getElementById("map"), {
     center: { lat: -29.754732, lng: -51.151758 },
     zoom: 16,
@@ -73,21 +78,88 @@ async function initMap() {
 
   console.log("Depois do map.");
 
-  const styleControl = document.getElementById("controleSelecao");
-  map.controls.push(styleControl);
-  const styleSelector = document.getElementById("theme");
+  // const styleControl = document.getElementById("controleSelecao");
+  // map.controls.push(styleControl);
+  // const styleSelector = document.getElementById("theme");
 
-  styleSelector.addEventListener("click", () => {
-    if (styleSelector.checked) {
-      styleSelector.value = "night";
-    } else {
-      styleSelector.value = "default";
+  // styleSelector.addEventListener("click", () => {
+  //   if (styleSelector.checked) {
+  //     styleSelector.value = "night";
+  //   } else {
+  //     styleSelector.value = "default";
+  //   }
+  // });
+
+  // map.setOptions({ styles: styles[styleSelector.value] });
+  // styleSelector.addEventListener("change", () => {
+  //   map.setOptions({ styles: styles[styleSelector.value] });
+  // });
+
+  const styleControl = document.getElementById("controleSelecao");
+  if (styleControl) {
+    map.controls.push(styleControl);
+    const styleSelector = document.getElementById("theme");
+    if (styleSelector) {
+      styleSelector.addEventListener("click", () => {
+        if (styleSelector.checked) {
+          styleSelector.value = "night";
+        } else {
+          styleSelector.value = "default";
+        }
+      });
+
+      map.setOptions({ styles: styles[styleSelector.value] });
+      styleSelector.addEventListener("change", () => {
+        map.setOptions({ styles: styles[styleSelector.value] });
+      });
     }
+  }
+
+  // calculo de rota
+  var directionsRenderer = new google.maps.DirectionsRenderer({
+    map: map,
   });
 
-  map.setOptions({ styles: styles[styleSelector.value] });
-  styleSelector.addEventListener("change", () => {
-    map.setOptions({ styles: styles[styleSelector.value] });
+  map.addListener("click", function (event) {
+    if (origemMarker == null) {
+      origemMarker = new google.maps.Marker({
+        position: event.latLng,
+        map: map,
+      });
+      document.getElementById("origem").value =
+        event.latLng.lat() + ", " + event.latLng.lng();
+    } else if (destinoMarker == null) {
+      destinoMarker = new google.maps.Marker({
+        position: event.latLng,
+        map: map,
+      });
+      document.getElementById("destino").value =
+        event.latLng.lat() + ", " + event.latLng.lng();
+      var directionsService = new google.maps.DirectionsService();
+      var request = {
+        origin: document.getElementById("origem").value,
+        destination: document.getElementById("destino").value,
+        travelMode: "DRIVING",
+      };
+
+      directionsService.route(request, function (result, status) {
+        if (status == "OK") {
+          directionsRenderer.setDirections(result);
+        }
+      });
+    } else {
+      origemMarker.setMap(null);
+      destinoMarker.setMap(null);
+      origemMarker = new google.maps.Marker({
+        position: event.latLng,
+        map: map,
+      });
+      destinoMarker = null;
+      document.getElementById("origem").value =
+        event.latLng.lat() + ", " + event.latLng.lng();
+      document.getElementById("destino").value = "";
+      directionsRenderer.set("directions", null);
+    }
   });
 
   console.log("Eu funciono, mas não apareço.");
@@ -139,7 +211,7 @@ async function initMap() {
 
             if (posto) {
               marker.postoData = posto;
-              marker.postoData.id = posto.id; // Certifique-se de que o ID está sendo atribuído
+              marker.postoData.id = posto.id; // certifique-se de que o ID está sendo atribuído
               const infoContent = generateInfoContent(posto);
               infowindows[0].setContent(infoContent);
               infowindows[0].open(map, marker);
@@ -150,7 +222,7 @@ async function initMap() {
               marker.setAnimation(google.maps.Animation.BOUNCE);
               pulaPula = marker;
 
-              console.log("Posto encontrado e dados atribuídos:", posto); // Log de depuração
+              console.log("Posto encontrado e dados atribuídos:", posto);
             }
           })
           .catch((error) => {
@@ -167,19 +239,82 @@ async function initMap() {
         marker.setAnimation(google.maps.Animation.BOUNCE);
         pulaPula = marker;
 
-        console.log("Dados do posto já disponíveis:", marker.postoData); // Log de depuração
+        console.log("Dados do posto já disponíveis:", marker.postoData);
       }
     });
     google.maps.event.addListener(infowindows[0], "closeclick", function () {
       marker.setAnimation(null);
     });
   }
-  // Adicionar eventos de fechamento para os infowindows
+  // adicionar eventos de fechamento para os infowindows
   infowindows.forEach(infowindow => {
     google.maps.event.addListener(infowindow, 'closeclick', fecharComparacao);
   });
 
-  console.log("Marcadores:", markers); // Log de depuração
+  console.log("Marcadores:", markers);
+}
+
+// calculo
+function calcular() {
+  var origem = document.getElementById('origem').value;
+  var destino = document.getElementById('destino').value;
+  var consumo = document.getElementById('consumo').value;
+  var preco = document.getElementById('preco').value;
+
+  if (origem === '' || destino === '' || consumo === '' || preco === '') {
+    alert('Por favor, preencha todos os campos.');
+    return;
+  }
+
+  var origemCoords = origem.split(',').map(Number);
+  var destinoCoords = destino.split(',').map(Number);
+
+  if (origemCoords.length !== 2 || destinoCoords.length !== 2) {
+    alert('Por favor, insira coordenadas válidas.');
+    return;
+  }
+
+  var lat1 = origemCoords[0] * Math.PI / 180;
+  var lon1 = origemCoords[1] * Math.PI / 180;
+  var lat2 = destinoCoords[0] * Math.PI / 180;
+  var lon2 = destinoCoords[1] * Math.PI / 180;
+
+  var dLat = lat2 - lat1;
+  var dLon = lon2 - lon1;
+
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1) * Math.cos(lat2) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+  var c = 2 * Math.asin(Math.sqrt(a));
+  var R = 6371;
+  var distancia = R * c;
+
+  var consumoCombustivel = distancia / parseFloat(consumo);
+  var valorCombustivel = consumoCombustivel * parseFloat(preco);
+
+  document.getElementById('distancia').innerText = 'Distância: ' + distancia.toFixed(2) + ' km';
+  document.getElementById('consumo').innerText = 'Consumo: ' + consumoCombustivel.toFixed(2) + ' litros';
+  document.getElementById('valor').innerText = 'Valor: R$ ' + valorCombustivel.toFixed(2);
+
+  var resultadoDiv = document.getElementById('resultado');
+  resultadoDiv.style.display = 'block';
+  document.querySelector('.layout').style.maxHeight = '1000px';
+
+  console.log("KM: " + distancia);
+  console.log("Combustível consumido durante o percurso: " + consumoCombustivel);
+  console.log("Valor do combustível consumido: " + valorCombustivel);
+}
+
+function abrirLauncher() {
+  const launcherMenu = document.getElementById('launcherMenu');
+  if (launcherMenu.style.display === 'none' || launcherMenu.style.display === '') {
+    launcherMenu.style.display = 'block';
+  } else {
+    launcherMenu.style.display = 'none';
+  }
+
+  document.querySelector('.nav_launcher').style.maxHeight = '1000px';
 }
 
 function fecharComparacao() {
@@ -454,6 +589,114 @@ let locations = [
 
 const styles = {
   default: [
+    { elementType: "geometry", stylers: [{ color: "#ebe3cd" }] },
+    { elementType: "labels.text.fill", stylers: [{ color: "#523735" }] },
+    { elementType: "labels.text.stroke", stylers: [{ color: "#f5f1e6" }] },
+    {
+      featureType: "administrative",
+      elementType: "geometry.stroke",
+      stylers: [{ color: "#c9b2a6" }],
+    },
+    {
+      featureType: "administrative.land_parcel",
+      elementType: "geometry.stroke",
+      stylers: [{ color: "#dcd2be" }],
+    },
+    {
+      featureType: "administrative.land_parcel",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#ae9e90" }],
+    },
+    {
+      featureType: "landscape.natural",
+      elementType: "geometry",
+      stylers: [{ color: "#dfd2ae" }],
+    },
+    {
+      featureType: "poi",
+      elementType: "geometry",
+      stylers: [{ color: "#dfd2ae" }],
+    },
+    {
+      featureType: "poi",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#93817c" }],
+    },
+    {
+      featureType: "poi.park",
+      elementType: "geometry.fill",
+      stylers: [{ color: "#a5b076" }],
+    },
+    {
+      featureType: "poi.park",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#447530" }],
+    },
+    {
+      featureType: "road",
+      elementType: "geometry",
+      stylers: [{ color: "#f5f1e6" }],
+    },
+    {
+      featureType: "road.arterial",
+      elementType: "geometry",
+      stylers: [{ color: "#fdfcf8" }],
+    },
+    {
+      featureType: "road.highway",
+      elementType: "geometry",
+      stylers: [{ color: "#f8c967" }],
+    },
+    {
+      featureType: "road.highway",
+      elementType: "geometry.stroke",
+      stylers: [{ color: "#e9bc62" }],
+    },
+    {
+      featureType: "road.highway.controlled_access",
+      elementType: "geometry",
+      stylers: [{ color: "#e98d58" }],
+    },
+    {
+      featureType: "road.highway.controlled_access",
+      elementType: "geometry.stroke",
+      stylers: [{ color: "#db8555" }],
+    },
+    {
+      featureType: "road.local",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#806b63" }],
+    },
+    {
+      featureType: "transit.line",
+      elementType: "geometry",
+      stylers: [{ color: "#dfd2ae" }],
+    },
+    {
+      featureType: "transit.line",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#8f7d77" }],
+    },
+    {
+      featureType: "transit.line",
+      elementType: "labels.text.stroke",
+      stylers: [{ color: "#ebe3cd" }],
+    },
+    {
+      featureType: "transit.station",
+      elementType: "geometry",
+      stylers: [{ color: "#dfd2ae" }],
+    },
+    {
+      featureType: "water",
+      elementType: "geometry.fill",
+      stylers: [{ color: "#b9d3c2" }],
+    },
+    {
+      featureType: "water",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#92998d" }],
+    },
     {
       featureType: "poi.business",
       stylers: [{ visibility: "off" }],
@@ -721,19 +964,19 @@ function adicionarUsuario() {
 
 /////////////////login things
 
-function toggleSidebar() {
-  const navBar = document.querySelector("nav"),
-    menuBtns = document.querySelectorAll(".menu-icon"),
-    overlay = document.querySelector(".overlaySidebar");
-  menuBtns.forEach((menuBtn) => {
-    menuBtn.addEventListener("click", () => {
-      navBar.classList.toggle("open");
-    });
-  });
-  overlay.addEventListener("click", () => {
-    navBar.classList.remove("open");
-  });
-}
+// function toggleSidebar() {
+//   const navBar = document.querySelector("nav"),
+//     menuBtns = document.querySelectorAll(".menu-icon"),
+//     overlay = document.querySelector(".overlaySidebar");
+//   menuBtns.forEach((menuBtn) => {
+//     menuBtn.addEventListener("click", () => {
+//       navBar.classList.toggle("open");
+//     });
+//   });
+//   overlay.addEventListener("click", () => {
+//     navBar.classList.remove("open");
+//   });
+// }
 
 function toggleSideLar() {
   const tristeza = document.getElementById("botaoHome")
@@ -807,6 +1050,7 @@ loginForm.addEventListener("submit", async (e) => {
         idUsuarioD = data.id;
         sessionStorage.setItem("idUsuarioDs", idUsuarioD);
 
+        
         const adminApenas = document.getElementById("adminApenas")
         const adminApenas2 = document.getElementById("adminApenas2")
         if (userName !== "Admin") {
@@ -814,27 +1058,11 @@ loginForm.addEventListener("submit", async (e) => {
           adminApenas2.style.display = "none";
         }
 
-        //   const sidebar = document.createElement("nav");
-        //   sidebar.id = "sidebar";
-        //   sidebar.classList.add("sidebar");
-        //   sidebar.innerHTML = `
-        //   <div>
-        //     <ul>
-        //       <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil();" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
-        //       <li><div class="intern-div-list"><i class="bi bi-fuel-pump-fill"><a href="postoteste.html">Postos</a></div></i></li>
-        //       <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
-        //       <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
-        //       <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
-        //     </ul>
-        //   </div>
-        // `;
-        // document.body.appendChild(sidebar);
-
-        toggleSidebar();
         closeDialog();
-
         carregarListaUsuarios();
 
+        const botaoLauncher = document.getElementById("botao_hidden")
+        botaoLauncher.style.display = 'block'
         const tristeza = document.getElementById("botaoHome")
         tristeza.style.display = "none"
       } else {

@@ -13,7 +13,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: sans-serif;
+  font-family: Rubik, sans-serif;
   flex-direction: column;
 }
 
@@ -34,8 +34,6 @@ header .selecao {
 }
 
 .botaoHome {
-  position: absolute;
-  margin: 0vh 2vw 0 85vw;
   height: 40px;
   font-size: 16px;
   text-decoration: unset;
@@ -43,10 +41,10 @@ header .selecao {
   transition: 0.5s;
   letter-spacing: 0.3px;
   padding: 0 20px;
+  border: none;
   border-radius: 100px;
   box-shadow: 1px 2px 2px rgba(110, 110, 110, 0.548);
   background-color: var(--wz-button-background-color, var(--primary, #0099ff));
-  border: var(--wz-button-border, 1px solid transparent);
   color: #ffffff;
 }
 
@@ -512,13 +510,6 @@ h6 {
 .theme {
   margin-bottom: 20px;
   display: flex;
-  align-items: center;
-  justify-content: left;
-  -webkit-tap-highlight-color: transparent;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
 }
 
 .theme__fill,
@@ -751,8 +742,6 @@ nav {
   width: 100%;
   display: flex;
   align-items: center;
-  background: #fff;
-  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
 }
 
 nav .logo {
@@ -774,11 +763,73 @@ nav .logo {
   font-weight: 500;
 }
 
+/* botões do header */
+.nav_buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav_buttons .nav_perfil,
+.nav_usuarios,
+.nav_postos,
+.nav_logout,
+.nav_login {
+  border-radius: 40%;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .3), 0 4px 8px rgba(60, 64, 67, .15);
+}
+
+.nav_buttons .nav_perfil div {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  outline-color: transparent;
+  width: 36px;
+}
+
+.nav_buttons .nav_usuarios div {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  outline-color: transparent;
+  width: 36px;
+}
+
+.nav_buttons .nav_postos div {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  outline-color: transparent;
+  width: 36px;
+}
+
+.nav_buttons .nav_logout div {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  outline-color: transparent;
+  width: 36px;
+}
+
+/* botão do launcher */
+
+
 nav .sidebar {
   position: fixed;
   top: 0;
-  left: -100%;
-  height: -100%;
   width: 260px;
   padding: 20px 0;
   background-color: #fff;
@@ -802,7 +853,8 @@ nav.open .sidebar {
   list-style: none;
 }
 
-.lista .nav-link {
+/* nav-link */
+/* .lista .nav-link {
   display: flex;
   align-items: center;
   margin: 8px 10px;
@@ -831,7 +883,7 @@ nav.open .sidebar {
   font-size: 16px;
   color: #707070;
   font-weight: 400;
-}
+} */
 
 .listas .nav-link:hover .icon,
 .listas .nav-link:hover .link {
@@ -1101,6 +1153,7 @@ span {
 .barra-pesquisa {
   position: relative;
   width: 300px;
+  margin-left: 1.5rem;
 }
 
 .teste_barra {
@@ -1111,7 +1164,8 @@ span {
   padding: 9px;
   border-radius: 18px;
   background: #f2f2f2;
-  width: 400px;
+  box-shadow: 0 3px 4px rgba(60, 64, 67, 0.3), 0 2px 9px 3px rgba(60, 64, 67, 0.15);
+  width: 445px;
 }
 
 #searchbar {
@@ -1135,7 +1189,7 @@ span {
 .postList {
   position: absolute;
   background: #fff;
-  width: 128%;
+  width: 139%;
   max-height: 475px;
   overflow-y: auto;
   margin-left: 15px;
@@ -1182,3 +1236,204 @@ span {
   font-size: 0.875rem;
   margin-bottom: 0rem;
 }
+
+/* layout provisorio */
+.layout {
+  padding: 60px;
+  border-radius: 10px;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, .3);
+  background-color: white;
+  margin-top: 22.2rem;
+  margin-left: 1.4rem;
+}
+
+.layout_topo {
+  display: flex;
+  position: relative;
+  top: 0;
+}
+
+.layout_topo h4 {
+  margin: 0;
+  padding: 18px 20px;
+  height: auto;
+  font: var(--title-font-boing-500);
+  font-size: 18px;
+  color: #202124;
+  letter-spacing: .3px;
+  line-height: 18px;
+  background: #fff;
+  border-radius: 10px 10px 0 0;
+}
+
+.input_layout input {
+  font-size: 14px;
+  font-family: 'Lexend', sans-serif;
+  color: #333333;
+  margin-left: 14px;
+  outline: none;
+  border: none;
+  background: transparent;
+  flex: 1;
+}
+
+.origem,
+.destino,
+.media,
+.preco {
+  display: flex;
+  align-items: center;
+  padding: 9px;
+  border-radius: 6px;
+  background: #f2f2f2;
+  width: 100%;
+  height: 35px;
+  margin-bottom: 0.875rem;
+}
+
+.resultado {
+  display: none;
+  margin-top: 20px;
+  background: #e9e9e9;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.resultado h4 {
+  margin: 0 0 10px 0;
+}
+
+.resultado p {
+  margin: 5px 0;
+}
+
+/* launcher */
+.nav_launcher {
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .3), 0 4px 8px rgba(60, 64, 67, .15);
+  width: 45px;
+  height: 45px;
+  display: none;
+}
+
+.launcher-menu {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 25px 90px 25px 90px;
+  z-index: 1000;
+  margin-top: 16.7rem;
+  margin-right: 5rem;
+}
+
+.launcher-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.launcher-menu ul li {
+  transition: color 0.3s ease;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, box-shadow 0.3;
+}
+
+.launcher-menu ul li i {
+  color: black;
+  display: inline-block;
+}
+
+.launcher-menu a {
+  position: absolute;
+  text-decoration: none;
+  font-size: 23px;
+  color: #717171;
+  display: inline-block;
+}
+
+.launcher-menu a::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: #21a6ff;
+  transition: .2s;
+}
+
+.launcher-menu a:hover::before {
+  width: 100%;
+}
+
+.launcher-menu span {
+  font-size: 16px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin-inline-start: 16px;
+}
+
+.layout_rotas button {
+  height: 40px;
+  font-size: 16px;
+  text-decoration: unset;
+  overflow: hidden;
+  transition: 0.5s;
+  letter-spacing: 0.3px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 100px;
+  box-shadow: 1px 2px 2px rgba(110, 110, 110, 0.548);
+  background-color: var(--wz-button-background-color, var(--primary, #0099ff));
+  color: #ffffff;
+}
+
+
+
+
+/* .barra-pesquisa {
+  position: relative;
+  width: 300px;
+  margin-left: 1.5rem;
+}
+
+.teste_barra {
+  position: relative;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  padding: 9px;
+  border-radius: 18px;
+  background: #f2f2f2;
+  box-shadow: 0 3px 4px rgba(60, 64, 67, 0.3), 0 2px 9px 3px rgba(60, 64, 67, 0.15);
+  width: 445px;
+}
+
+#searchbar {
+  font-size: 16px;
+  font-family: 'Lexend', sans-serif;
+  color: #333333;
+  margin-left: 14px;
+  outline: none;
+  border: none;
+  background: transparent;
+  width: 300px;
+  flex: 1;
+}
+
+#searchbar::placeholder,
+.bi-search {
+  color: rgba(0, 0, 0, 0.5);
+} */

@@ -1,302 +1,138 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - codingnepalweb.com -->
-<html lang="en">
+<html>
 
 <head>
+    <title>Gestão de transporte</title>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sidebar Menu | Side Navigation Bar</title>
+    <meta name="viewport" content="width=device-width, intial-scale=1.0" />
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Lato:300,400|Poppins:300,400,800&display=swap');
-        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
-
-        /* .containerCard {
-            width: 100%;
-            height: 100vh;
-            background-color: #232323;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        #map {
+            width: 60%;
+            height: 350px;
+            margin-bottom: 10px;
         }
 
-        .postCard {
-            width: 350px;
-            height: 450px;
-            display: flex;
-            overflow: hidden;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .header_postCard {
-            width: 100%;
-            height: 40%;
-            background: #ddd;
-            position: absolute;
-            top: 0;
-        }
-
-        .header_postCard img {
-            max-width: 100%;
-            height: auto;
-            transition: ease-in-out 600ms;
-        }
-
-
-        .body_postCard {
-            width: 100%;
-            height: 55%;
-            background: #fff;
-            position: absolute;
-            bottom: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        #form button {
+            background-color: blue;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
-        }
-
-
-        .postCard_content {
-            width: 80%;
-            height: 80%;
-            background: #fff;
-            position: relative;
-        }
-
-        .postCard_content h1 {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .postCard_content p {
-            font-size: 14px;
-            font-weight: normal;
-        }
-
-        .containerCard_infos {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            position: absolute;
-            bottom: 0;
-            border-top: 1px solid rgba(0, 0, 0, .2);
-        }
-
-        .postCardedBy {
-            display: flex;
-            flex-direction: column;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 12px;
-        }
-
-        span {
-            font-size: 12px;
-            text-transform: uppercase;
-            opacity: 0.5;
-            letter-spacing: 1px;
-            font-weight: bold;
-        }
-
-        .property {
-            display: flex;
-            flex-direction: column;
-            flex: 1 1 auto;
-            overflow: hidden;
-            position: relative;
-            z-index: 10;
-        }
-
-        .containerCard_tags {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .property__main-info {
-            padding: 0 0 calc(20/16 * 1rem) 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .property__title {
-            font-size: calc(20/16 * 1rem);
-            font-weight: normal;
-            line-height: 1.3;
-            margin: 0;
-            color: #242424;
-        }
-
-        .property__location {
-            font-size: calc(14/16 * 1rem);
-            color: gray;
-            display: flex;
-            align-items: center;
-        }
-
-        .property__price {
-            font-size: calc(23/16 * 1rem);
-            line-height: 1.1;
-            font-feature-settings: 'zero' 1, 'tnum' 1;
-            color: #FBC31D;
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .property__main-info>*+* {
-            margin-top: calc(8 / 16* 1rem);
-        } */
-
-        .barra-pesquisa {
-            position: relative;
-            width: 300px;
-        }
-
-        .postList {
-            position: absolute;
-            background: #fff;
-            width: 100%;
-            border: 1px solid #ccc;
-            max-height: 150px;
-            overflow-y: auto;
-        }
-
-        .postList li {
-            list-style: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        .postList li:hover {
-            background: #eee;
-        }
-
-        .postList {
-            margin-top: 1px;
         }
     </style>
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
-<body class="antialiased bg-gray-200 font-sans">
-    <!-- <div class="containerCard">
-        <div class="postCard">
-            <div class="header_postCard">
-                <img src="https://lh3.googleusercontent.com/p/AF1QipPDFKOVHu7EAl20edZ_mhsrGPBKdLnJt6PAn938=s680-w680-h510"
-                    alt="">
-            </div>
+<body>
+    <h1>Gestão de transporte</h1>
+    <div id="map"></div>
+    <form id="form">
+        <label for="origem">Origem:</label>
+        <input type="text" id="origem" name="origem" /> <br /><br />
+        <label for="destino">Destino:</label>
+        <input type="text" id="destino" name="destino" /><br /><br />
 
-            <div class="body_postCard">
-                <div class="postCard_content">
+        <label for="consumo">Média de consumo de combustível (km/l):</label>
+        <input type="number" id="consumo" name="consumo" step="any" min="0" /><br /><br />
 
-                    <article class="property">
-                        <section class="property__main-info">
-                            <h3 class="property__title">${posto.nomePosto}</h3>
-                            <span class="property__price">${posto.comumPosto}</span>
-                            <span class="property__location">
-                                <i class="icon icon-location bi bi-geo-alt-fill">
-                                </i>
-                                ${posto.enderecoPosto}, ${posto.ruaPosto}
-                            </span>
-                        </section>
-                    </article>
+        <label for="preco">Preço do combustível (R$/l):</label>
+        <input type="number" id="preco" name="preco" step="any" min="0" /><br /><br />
+        <button type="button" onclick="calcular()">Calcular</button>
+    </form>
+    <div id="resultado"></div>
 
-                    <div class="containerCard_infos">
-                        <div class="flex items-center pt-2">
-                            <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3"
-                                style="background-image: url(https://seeklogo.com/images/P/Petrobras-logo-03DABEE0AC-seeklogo.com.png)">
-                            </div>
-                            <div>
-                                <p class="font-bold text-gray-900">${posto.enderecoPosto}</p>
-                                <p class="text-sm text-gray-700">${posto.ruaPosto}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <div class="wrapper">
-        <div class="barra-pesquisa">
-            <input type="text" id="searchbar" placeholder="Search for posts" onkeyup="procurarPostos()">
-            <div class="postList"></div>
-        </div>
-    </div>
-
+    <script src="../usuarios/usuarios.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgM5XD8EVOemyCBN-UWFvQ90XoUf5k-aY&callback=initMap"
+        async defer></script>
     <script>
-        async function procurarPostos() {
-            let input = document.getElementById('searchbar').value.toLowerCase();
-            let resultados = document.querySelector('.postList');
-            resultados.innerHTML = "";
+        var origemMarker = null;
+        var destinoMarker = null;
+        var map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: -23.5505, lng: -46.6333 },
+            zoom: 12,
+        });
 
-            try {
-                const response = await fetch('http://localhost:3000/postos', {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
+        var directionsRenderer = new google.maps.DirectionsRenderer({
+            map: map,
+        });
+
+        map.addListener("click", function (event) {
+            if (origemMarker == null) {
+                origemMarker = new google.maps.Marker({
+                    position: event.latLng,
+                    map: map,
                 });
+                document.getElementById("origem").value =
+                    event.latLng.lat() + ", " + event.latLng.lng();
+            } else if (destinoMarker == null) {
+                destinoMarker = new google.maps.Marker({
+                    position: event.latLng,
+                    map: map,
+                });
+                document.getElementById("destino").value =
+                    event.latLng.lat() + ", " + event.latLng.lng();
+                var directionsService = new google.maps.DirectionsService();
+                var request = {
+                    origin: document.getElementById("origem").value,
+                    destination: document.getElementById("destino").value,
+                    travelMode: "DRIVING",
+                };
 
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const dados = await response.json();
-                let emptyArray = [];
-                for (let i = 0; i < dados.length; i++) {
-                    let objeto = dados[i];
-                    if (objeto.nomePosto.toLowerCase().includes(input)) {
-                        const elemento = document.createElement("li");
-                        elemento.innerHTML = `
-                        ${objeto.nomePosto}
-                        ${objeto.enderecoPosto}, ${objeto.ruaPosto}
-                    `;
-                        resultados.appendChild(elemento);
-                        emptyArray.push(elemento.innerHTML);
+                directionsService.route(request, function (result, status) {
+                    if (status == "OK") {
+                        directionsRenderer.setDirections(result);
+                    } else {
+                        alert("Não foi possível calcular a rota.");
                     }
-                }
-                if (input) {
-                    showSuggestions(emptyArray.map(data => `<li>${data}</li>`));
-                } else {
-                    searchWrapper.classList.remove("active");
-                }
-            } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
-            }
-        }
-
-        const searchWrapper = document.querySelector(".barra-pesquisa");
-        const inputBox = searchWrapper.querySelector("input");
-        const suggBox = searchWrapper.querySelector(".postList");
-        const icon = searchWrapper.querySelector(".icon");
-        let linkTag = searchWrapper.querySelector("a");
-        let webLink;
-
-        inputBox.onkeyup = (e) => {
-            procurarPostos();
-        };
-
-        function select(element) {
-            let selectData = element.textContent;
-            inputBox.value = selectData;
-            searchWrapper.classList.remove("active");
-            procurarPostos();
-        }
-
-        function showSuggestions(list) {
-            let listData;
-            if (!list.length) {
-                userValue = inputBox.value;
-                listData = `<li>${userValue}</li>`;
+                });
             } else {
-                listData = list.join('');
+                origemMarker.setMap(null);
+                destinoMarker.setMap(null);
+                origemMarker = new google.maps.Marker({
+                    position: event.latLng,
+                    map: map,
+                });
+                destinoMarker = null;
+                document.getElementById("origem").value =
+                    event.latLng.lat() + ", " + event.latLng.lng();
+                document.getElementById("destino").value = "";
+                directionsRenderer.set("directions", null);
             }
-            suggBox.innerHTML = listData;
+        });
+        function calcular() {
+            var origem = document.getElementById("origem").value;
+            var destino = document.getElementById("destino").value;
+            var consumo = document.getElementById("consumo").value;
+            var preco = document.getElementById("preco").value;
 
-            let allList = suggBox.querySelectorAll("li");
-            for (let i = 0; i < allList.length; i++) {
-                allList[i].setAttribute("onclick", "select(this)");
+            if (origem == "" || destino == "" || consumo == "" || preco == "") {
+                alert("Por favor, preencha todos os campos.");
+            } else {
+                var directionsService = new google.maps.DirectionsService();
+                var request = {
+                    origin: origem,
+                    destination: destino,
+                    travelMode: "DRIVING",
+                };
+
+                directionsService.route(request, function (result, status) {
+                    if (status == "OK") {
+                        directionsRenderer.setDirections(result);
+
+                        var distancia = result.routes[0].legs[0].distance.value / 1000;
+                        var consumoCombustivel = distancia / consumo;
+                        var valorCombustivel = consumoCombustivel * preco;
+
+                        // Abrir nova janela com os resultados
+                        var url = "resultado.html";
+                        url += "?distancia=" + distancia.toFixed(2);
+                        url += "&consumo=" + consumoCombustivel.toFixed(2);
+                        url += "&valor=" + valorCombustivel.toFixed(2);
+                        window.open(url, "_blank");
+                    } else {
+                        alert("Não foi possível calcular a rota.");
+                    }
+                });
             }
         }
     </script>
