@@ -871,6 +871,48 @@ function dialogPerfil() {
 
 }
 
+function dialogAjuda(){
+  let form = document.getElementById("formAjuda");
+  form.style.display = "block";
+  form.style.zIndex = "2000";
+
+  let overlay = document.getElementById("overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.id = "overlay";
+    document.body.appendChild(overlay);
+  }
+}
+
+function perguntas(id){
+  const pergunta1 = document.getElementById("pergunta1");
+  const pergunta2 = document.getElementById("pergunta2");
+  const pergunta3 = document.getElementById("pergunta3");
+  const pergunta4 = document.getElementById("pergunta4");
+
+
+  if(pergunta1 === id){
+  resposta1.style.display = "block";
+  resposta1.style.zIndex = "2000";
+  } else if (pergunta2 === id){
+    resposta2.style.display = "block";
+    resposta2.style.zIndex = "2000"
+    } else if (pergunta3 === id){
+      resposta3.style.display = "block";
+      resposta3.style.zIndex = "2000";
+    } else if (pergunta4 === id){
+      resposta4.style.display = "block";
+      resposta4.style.zIndex = "2000";
+    }
+  
+  let overlay = document.getElementById("overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.id = "overlay";
+    document.body.appendChild(overlay);
+  }
+}
+
 // Quando o evento "blur" é acionado (ou seja, quando o campo de entrada perde o foco),
 // a função de retorno de chamada do ouvinte de eventos é executada.
 // Essa função de retorno de chamada verifica se o valor do campo de entrada é vazio.
@@ -1503,13 +1545,67 @@ function closePerfilDialog() {
   let form = document.getElementById("formPerfil");
   form.style.display = "none";
 
+
   let overlay = document.getElementById("overlay");
   if (overlay) {
     overlay.parentNode.removeChild(overlay);
   }
 }
 
+function closeAjudaDialog(){
+  let form = document.getElementById("formAjuda");
+  const resposta1 = document.getElementById("resposta1");
+  const resposta2 = document.getElementById("resposta2");
+  const resposta3 = document.getElementById("resposta3");
+  const resposta4 = document.getElementById("resposta4");
+  resposta1.style.display = "none";
+  resposta2.style.display = "none";
+  resposta3.style.display = "none";
+  resposta4.style.display = "none";
+  form.style.display = "none";
 
+
+  let overlay = document.getElementById("overlay");
+  if (overlay) {
+    overlay.parentNode.removeChild(overlay);
+  }
+}
+
+function closePergunta1(){
+  let resposta1 = document.getElementById("resposta1");
+  resposta1.style.display = "none";
+}
+
+function closePergunta2(){
+  let resposta2 = document.getElementById("resposta2");
+  resposta2.style.display = "none";
+}
+
+function closePergunta3(){
+  let resposta3 = document.getElementById("resposta3");
+  resposta3.style.display = "none";
+}
+
+function closePergunta4(){
+  let resposta4 = document.getElementById("resposta4");
+  resposta4.style.display = "none";
+}
+
+function enviarMensagem() {
+  const nome = document.getElementById("ajudaNome").value;
+  const email = document.getElementById("ajudaEmail").value;
+  const texto = document.getElementById("mensagem").value;
+
+  if (nome !== "" && email !== "" && texto !== "") {
+    alert("Mensagem enviada.");
+    
+  } else {
+    alert("Por favor, preencha todos os campos.");
+  }
+  nome = "";
+    email = "";
+    texto = "";
+}
 
 //   <div class="card">
 //   <div class="cardBody">

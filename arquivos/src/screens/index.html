@@ -127,7 +127,7 @@
               </a>
             </li>
             <li class="lista">
-              <a href="ajuda.html" class="nav-link">
+              <a onclick="dialogAjuda();" class="nav-link">
                 <i class="bi bi-question-circle"></i>
                 <span class="link">Ajuda</span>
               </a>
@@ -283,7 +283,78 @@
     <section class="formPerfil" id="formPerfil">
       <div class="icone">
         <i class="bi bi-arrow-left-square-fill" onclick="closePerfilDialog()" alt="Back"></i>
+      </div>
     </section>
+
+    <section class="formAjuda" id="formAjuda">
+      <div class="icone">
+        <i class="bi bi-arrow-left-square-fill" onclick="closeAjudaDialog()" alt="Back"></i>
+      </div>
+
+      <div class="titleAjuda">
+        <h2>Ajuda</h2>
+      </div>
+
+      <section class="area">
+      <div class="inputsAjuda">
+        <label for="nome">Nome</label>
+        <input onclick="adicionarPlaceholder('ajudaNome', 'Informe seu nome')" placeholder="Informe seu nome" type="text" name="nome" id="ajudaNome">
+        <label for="email">Email</label>
+        <input onclick="adicionarPlaceholder('ajudaEmail', 'Informe seu email')" placeholder="Informe seu email" type="email" name="email" id="ajudaEmail">
+        <label for="mensagem">Mensagem</label>
+        <textarea onclick="adicionarPlaceholder('mensagem', 'Em que podemos ajudar?')" placeholder="Em que podemos ajudar?" name="mensagem" id="mensagem" rows="4" cols="50" maxlength="180"></textarea>
+        <button onclick="enviarMensagem()" class="ajudaEnviar">Enviar</button>
+      </div>
+
+      <div class="perguntas">
+        <label>Perguntas</label>
+        <p onclick="perguntas(pergunta1)" id="pergunta1">Como funciona o cálculo pela média?</p>
+        <p onclick="perguntas(pergunta2)" id="pergunta2">Como faço para adicionar um novo usuário?</p>
+        <p onclick="perguntas(pergunta3)" id="pergunta3">Com que frequência os dados são atualizados?</p>
+        <p onclick="perguntas(pergunta4)" id="pergunta4">O que é preciso para comparar os postos?</p>
+      </div>
+    </section>
+  </section>
+
+<section id="secaoResposta">
+  <div class="resposta1" id="resposta1">
+    <div class="icone">
+      <i class="bi bi-arrow-left-square-fill" onclick="closePergunta1()" alt="Back"></i>
+    </div>
+    <p>Funciona da seguinte forma: Você clica na tela para colocar o seu ponto de origem, e depois clica na tela novamente
+       para selecionar o destino. Feito isso, você coloca a média de consumo do seu carro, e por último, o preço do combustível.
+       Após isso, basta clicar em calcular que o sistema fornecerá uma estimativa do custo deste deslocamento.
+    </p>
+  </div>
+
+  <div class="resposta2" id="resposta2">
+    <div class="icone">
+      <i class="bi bi-arrow-left-square-fill" onclick="closePergunta2()" alt="Back"></i>
+    </div>
+    <p>Clique em "iniciar sessão", feito isso, clique em "crie uma conta", preencha os dados conforme esperado e clique 
+       no campo "criar usuário", realize o login e aproveite o site.
+    </p>
+  </div>
+
+  <div class="resposta3" id="resposta3">
+    <div class="icone">
+      <i class="bi bi-arrow-left-square-fill" onclick="closePergunta3()" alt="Back"></i>
+    </div>
+    <p>As informações do site são atualizadas manualmente pelos administradores sempre que ocorrem alterações nas 
+       informações fornecidas pelos postos de combustível.
+    </p>
+  </div>
+
+  <div class="resposta4" id="resposta4">
+    <div class="icone">
+      <i class="bi bi-arrow-left-square-fill" onclick="closePergunta4()" alt="Back"></i>
+    </div>
+    <p>Primeiro, clique em um dos ícones, na janela, clique na opção "comparar preço", feito isso
+      escolha outro posto de combustível, clique na opção "comparar preço", a comparação entre os postos será feita
+      imediatamente.
+    </p>
+  </div>
+</section>
 
 
     <!------------------------------------------------------>
