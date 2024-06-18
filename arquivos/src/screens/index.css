@@ -15,6 +15,7 @@ body {
   justify-content: center;
   font-family: Rubik, sans-serif;
   flex-direction: column;
+  overflow: hidden;
 }
 
 header {
@@ -27,9 +28,11 @@ header {
   transform: translate(-50%, -50%);
 }
 
-header .selecao {
+main .dark_mode {
   position: absolute;
-  margin: 2.3vh 0 0 2vw;
+  top: 90%;
+  left: 1.5%;
+  transform: translate(-50%, -50%);
 
 }
 
@@ -547,7 +550,7 @@ h6 {
 
 .theme__icon-part {
   border-radius: 50%;
-  box-shadow: 0.4em -0.4em 0 0.5em hsl(0, 0%, 100%) inset;
+  box-shadow: 0.4em -0.4em 0 0.5em hsl(0, 0%, 0%) inset;
   top: calc(50% - 0.5em);
   left: calc(50% - 0.5em);
   width: 1em;
@@ -560,7 +563,7 @@ h6 {
 }
 
 .theme__icon-part~.theme__icon-part {
-  background-color: hsl(0, 0%, 100%);
+  background-color: hsl(0, 0%, 0%);
   border-radius: 0.05em;
   box-shadow: none;
   top: 50%;
@@ -611,7 +614,7 @@ h6 {
 }
 
 .theme__toggle {
-  background-color: hsl(48, 90%, 85%);
+  background-color: hsl(60, 100%, 50%);
   border-radius: 25% / 50%;
   box-shadow: 0 0 0 0.125em var(--primaryT);
   padding: 0.25em;
@@ -626,7 +629,7 @@ h6 {
 }
 
 .theme__toggle:before {
-  background-color: hsl(48, 90%, 55%);
+  background-color: hsl(0, 0%, 100%);
   border-radius: 50%;
   content: "";
   width: 2.5em;
@@ -643,7 +646,7 @@ h6 {
 
 /* Checked */
 .theme__toggle:checked {
-  background-color: hsl(198, 90%, 15%);
+  background-color: hsl(198, 100%, 29%);
 }
 
 .theme__toggle:checked:before,
