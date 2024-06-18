@@ -9,6 +9,8 @@ window.addEventListener('DOMContentLoaded', () => {
   if (teste === true) {
     const tristeza = document.getElementById("botaoHome")
     tristeza.style.display = "none"
+    const botaoLauncher = document.getElementById("botao_hidden")
+    botaoLauncher.style.display = 'block'
     console.log("tqa entrando")
     fetch(`http://localhost:3000/usuarios/nomeUsuario/${nomeUsuario}`, {
       method: "GET",
@@ -57,6 +59,8 @@ window.addEventListener('DOMContentLoaded', () => {
         carregarListaUsuarios();
       });
   }
+
+
 });
 
 async function initMap() {
