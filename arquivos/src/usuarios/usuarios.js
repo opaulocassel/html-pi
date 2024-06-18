@@ -884,6 +884,19 @@ function dialogAjuda(){
   }
 }
 
+function dialogSobre(){
+  let form = document.getElementById("formSobre");
+  form.style.display = "block";
+  form.style.zIndex = "2000";
+
+  let overlay = document.getElementById("overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.id = "overlay";
+    document.body.appendChild(overlay);
+  }
+}
+
 function perguntas(id){
   const pergunta1 = document.getElementById("pergunta1");
   const pergunta2 = document.getElementById("pergunta2");
@@ -1543,6 +1556,17 @@ async function atualizarSenhaUsuario() {
 
 function closePerfilDialog() {
   let form = document.getElementById("formPerfil");
+  form.style.display = "none";
+
+
+  let overlay = document.getElementById("overlay");
+  if (overlay) {
+    overlay.parentNode.removeChild(overlay);
+  }
+}
+
+function closeSobreDialog() {
+  let form = document.getElementById("formSobre");
   form.style.display = "none";
 
 
