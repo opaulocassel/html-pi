@@ -130,6 +130,210 @@ main .dark_mode {
   display: none;
 }
 
+.formAjuda{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  position: absolute;
+  width: 850px;
+  height: 525px;
+  padding: 40px;
+  background-color: transparent;
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px rgba(110, 110, 110, 0.548);
+  border-radius: 10px;
+  animation-name: cor-fundo;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.formAjuda{
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.formAjuda{
+  display: none;
+}
+
+.formAjuda .titleAjuda{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.formAjuda .inputsAjuda{
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.formAjuda .perguntas{
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.formAjuda .inputsAjuda label{
+  margin-bottom: 5px;
+  display: flex;
+  color: black;
+  font-weight: bold;
+}
+
+.formAjuda .inputsAjuda button{
+  width: 20%;
+}
+
+.formAjuda .perguntas label{
+  margin-bottom: 20px;
+  color: black;
+  display: flex;
+  font-weight: bold;
+}
+
+.formAjuda .perguntas p{
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+  display: flex;
+}
+
+.formAjuda .inputsAjuda input{
+  margin-bottom: 15px;
+  width: 80%;
+}
+.formAjuda .inputsAjuda textarea{
+  margin-bottom: 15px;
+  width: 80%;
+  resize: none;
+}
+
+.area{
+  display: flex;
+}
+
+.resposta1{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  position: absolute;
+  width: 400px;
+  height: 280px;
+  padding: 40px;
+  background-color: transparent;
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px rgba(110, 110, 110, 0.548);
+  border-radius: 10px;
+  animation-name: cor-fundo;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+
+}
+
+.resposta1{
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.resposta1{
+  display: none;
+}
+
+.resposta2{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  position: absolute;
+  width: 400px;
+  height: 170px;
+  padding: 40px;
+  background-color: transparent;
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px rgba(110, 110, 110, 0.548);
+  border-radius: 10px;
+  animation-name: cor-fundo;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+
+}
+
+.resposta2{
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.resposta2{
+  display: none;
+}
+
+.resposta3{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  position: absolute;
+  width: 400px;
+  height: 190px;
+  padding: 40px;
+  background-color: transparent;
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px rgba(110, 110, 110, 0.548);
+  border-radius: 10px;
+  animation-name: cor-fundo;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+
+}
+
+.resposta3{
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.resposta3{
+  display: none;
+}
+
+.resposta4{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  position: absolute;
+  width: 400px;
+  height: 220px;
+  padding: 40px;
+  background-color: transparent;
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px rgba(110, 110, 110, 0.548);
+  border-radius: 10px;
+  animation-name: cor-fundo;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+
+}
+
+.resposta4{
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.resposta4{
+  display: none;
+}
+
+.perguntas p:hover{
+cursor: pointer;
+}
+
 .registerForm .form.openRegister {
   display: block;
 }
@@ -1477,8 +1681,41 @@ span {
 }
 
 
+.formSobre{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  position: absolute;
+  width: 850px;
+  height: 525px;
+  padding: 40px;
+  background-color: transparent;
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px rgba(110, 110, 110, 0.548);
+  border-radius: 10px;
+  animation-name: cor-fundo;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
 
+.formSobre{
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
 
+.formSobre{
+  display: none;
+}
+
+#sucumba {
+  margin-top: 25px;
+}
+
+#sucumba2 {
+  margin-top: 10px;
+}
 /* .barra-pesquisa {
   position: relative;
   width: 300px;
