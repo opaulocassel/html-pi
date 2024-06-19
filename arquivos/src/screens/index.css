@@ -1456,6 +1456,7 @@ span {
   width: 100%;
   margin-left: 12px;
   margin-top: 17%;
+  display: none;
 }
 
 .layout_rotas {

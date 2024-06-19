@@ -9,6 +9,8 @@ window.addEventListener('DOMContentLoaded', () => {
   if (teste === true) {
     const tristeza = document.getElementById("botaoHome")
     tristeza.style.display = "none"
+    const layout = document.getElementById("layout")
+    layout.style.display = "block"
     const botaoLauncher = document.getElementById("botao_hidden")
     botaoLauncher.style.display = 'block'
     console.log("tqa entrando")
@@ -1026,6 +1028,8 @@ loginForm.addEventListener("submit", async (e) => {
         botaoLauncher.style.display = 'block'
         const tristeza = document.getElementById("botaoHome")
         tristeza.style.display = "none"
+        const layout = document.getElementById("layout")
+        layout.style.display = "block"
       } else {
         console.error("Usuario não encontrado");
       }
