@@ -40,26 +40,6 @@ window.addEventListener('DOMContentLoaded', () => {
           usuarioApenas1.style.display = "none";
           usuarioApenas2.style.display = "none";
         }
-
-        //   const sidebar = document.createElement("div");
-        //   sidebar.id = "sidebar";
-        //   sidebar.classList.add("sidebar");
-        //   sidebar.innerHTML = `
-        //   <div class="logo">
-        //     <i class="bx bx-menu menu-icon"></i>
-        //     <span class="logo-name">CodingLab</span>
-        //   </div>
-        //   <ul>
-        //   <li><div class="intern-div-list"><i class="bi bi-person"><a onclick="dialogPerfil()" class="botaoPerfil" id="botaoPerfil"">Perfil</div></i></li>
-        //   <li><div class="intern-div-list"><i class="bi bi-fuel-pump"><a href="postoteste.html">Postos</a></div></i></li>
-        //     <li id="listaUsuarios"><div class="intern-div-list"><i class="bi bi-people"><a href="usuarios.html">Usuários</a></div></i></li>
-        //     <li><div class="intern-div-list"><a href="#">Item 4</a></div></li>
-        //     <li><div class="intern-div-list"><a href="#">Item 5</a></div></li>
-        //   </ul>
-        // `;
-        //   document.body.appendChild(sidebar);
-
-        // toggleSidebar();
         closeDialog();
 
         carregarListaUsuarios();
@@ -87,23 +67,6 @@ async function initMap() {
   });
 
   console.log("Depois do map.");
-
-  // const styleControl = document.getElementById("controleSelecao");
-  // map.controls.push(styleControl);
-  // const styleSelector = document.getElementById("theme");
-
-  // styleSelector.addEventListener("click", () => {
-  //   if (styleSelector.checked) {
-  //     styleSelector.value = "night";
-  //   } else {
-  //     styleSelector.value = "default";
-  //   }
-  // });
-
-  // map.setOptions({ styles: styles[styleSelector.value] });
-  // styleSelector.addEventListener("change", () => {
-  //   map.setOptions({ styles: styles[styleSelector.value] });
-  // });
 
   const styleControl = document.getElementById("controleSelecao");
   if (styleControl) {
@@ -464,145 +427,79 @@ function atualizarComparacao() {
   }
 }
 
-
-// // Adicionar HTML para a interface de comparação no documento
-// document.addEventListener('DOMContentLoaded', () => {
-//   const comparacaoDiv = document.createElement('div');
-//   comparacaoDiv.id = 'comparacao';
-//   comparacaoDiv.innerHTML = `
-//     <h2>Comparação de Preços</h2>
-//     <div id="postos-comparacao"></div>
-//   `;
-//   document.body.appendChild(comparacaoDiv);
-// });
-
 let locations = [
   {
-    position: { lat: -29.754732, lng: -51.151758 },
+    position: { lat: -29.76571766080124, lng: -51.1536088575591 },
     title: `Shell`,
     icon: "../assets/shell.png",
     cnpj: "98.765.432/0001-00",
   },
   {
-    position: { lat: -29.755732, lng: -51.151758 },
+    position: { lat: -29.77165322548305, lng: -51.15246713209309 },
     title: `Petrobras`,
     icon: "../assets/petrobras.png",
     cnpj: "98.765.432/0002-00",
   },
   {
-    position: { lat: -29.753685, lng: -51.158149 },
+    position: { lat: -29.768822109525967, lng: -51.1486047510307 },
     title: `Ipiranga`,
     icon: "../assets/ipiranga.svg",
     cnpj: "98.765.432/0003-00",
   },
   {
-    position: { lat: -29.766428, lng: -51.147854 },
+    position: { lat: -29.770163477086143, lng: -51.13481461727824 },
     title: `Shell`,
     icon: "../assets/shell.png",
     cnpj: "98.765.432/0004-00",
   },
   {
-    position: { lat: -29.759836, lng: -51.16273 },
-    title: `Shell`,
-    icon: "../assets/shell.png",
-    cnpj: "98.765.432/0010-00",
-  },
-  {
-    position: { lat: -29.760916, lng: -51.148297 },
-    title: `Shell`,
-    icon: "../assets/shell.png",
-    cnpj: "98.765.432/0006-00",
-  },
-  {
-    position: { lat: -29.752073, lng: -51.154189 },
+    position: { lat: -29.771516625470833, lng: -51.1487813444181 },
     title: `Shell`,
     icon: "../assets/shell.png",
     cnpj: "98.765.432/0007-00",
   },
   {
-    position: { lat: -29.757141, lng: -51.159584 },
-    title: `Petrobras`,
-    icon: "../assets/petrobras.png",
-    cnpj: "98.765.432/0005-00",
-  },
-  {
-    position: { lat: -29.763635, lng: -51.150783 },
-    title: `Petrobras`,
-    icon: "../assets/petrobras.png",
-    cnpj: "98.765.432/0008-00",
-  },
-  {
-    position: { lat: -29.756921, lng: -51.162999 },
+    position: { lat: -29.773937914474764, lng: -51.14560560919936 },
     title: `Petrobras`,
     icon: "../assets/petrobras.png",
     cnpj: "98.765.432/0011-00",
   },
   {
-    position: { lat: -29.768202, lng: -51.153444 },
+    position: { lat: -29.768039813358275, lng: -51.14345490992033 },
     title: `Ipiranga`,
     icon: "../assets/ipiranga.svg",
     cnpj: "98.765.432/0006-00",
   },
   {
-    position: { lat: -29.755404, lng: -51.160889 },
+    position: { lat: -29.760924363061367, lng: -51.12440049777646 },
     title: `Ipiranga`,
     icon: "../assets/ipiranga.svg",
     cnpj: "98.765.432/0009-00",
   },
   {
-    position: { lat: -29.758839, lng: -51.15581 },
-    title: `Ipiranga`,
-    icon: "../assets/ipiranga.svg",
-    cnpj: "98.765.432/0012-00",
-  },
-  {
-    position: { lat: -29.761726, lng: -51.157442 },
-    title: `Ipiranga`,
-    icon: "../assets/ipiranga.svg",
-    cnpj: "98.765.432/0015-00",
-  },
-  {
-    position: { lat: -29.758324, lng: -51.158045 },
+    position: { lat: -29.77806252063475, lng: -51.15547047700039 },
     title: `Ipiranga`,
     icon: "../assets/ipiranga.svg",
     cnpj: "98.765.432/0018-00",
   },
   {
-    position: { lat: -29.754737, lng: -51.15524 },
+    position: { lat: -29.780955363913904, lng: -51.14261783930873 },
     title: `Petrobras`,
     icon: "../assets/petrobras.png",
     cnpj: "98.765.432/0014-00",
   },
   {
-    position: { lat: -29.757909, lng: -51.153172 },
+    position: { lat: -29.782334617364427, lng: -51.12167393295767 },
     title: `Petrobras`,
     icon: "../assets/petrobras.png",
     cnpj: "98.765.432/0017-00",
   },
   {
-    position: { lat: -29.761582, lng: -51.152891 },
+    position: { lat: -29.778662245071185, lng: -51.1473298685254 },
     title: `Petrobras`,
     icon: "../assets/petrobras.png",
     cnpj: "98.765.432/0020-00",
   },
-  {
-    position: { lat: -29.762942, lng: -51.150462 },
-    title: `Shell`,
-    icon: "../assets/shell.png",
-    cnpj: "98.765.432/0008-00",
-  },
-  {
-    position: { lat: -29.764342, lng: -51.148842 },
-    title: `Ipiranga`,
-    icon: "../assets/ipiranga.svg",
-    cnpj: "98.765.432/0019-00",
-  },
-  // {
-  //   position: { lat: -29.764342, lng: -51.157292 },
-  //   title: `Shell`,
-  //   icon: "../assets/shell.png",
-  //   cnpj: "12.456.768/0021-00"
-  // }
 ];
 
 const styles = {
@@ -1034,22 +931,6 @@ function adicionarUsuario() {
       .catch((error) => console.error("Erro:", error));
   }
 }
-
-/////////////////login things
-
-// function toggleSidebar() {
-//   const navBar = document.querySelector("nav"),
-//     menuBtns = document.querySelectorAll(".menu-icon"),
-//     overlay = document.querySelector(".overlaySidebar");
-//   menuBtns.forEach((menuBtn) => {
-//     menuBtn.addEventListener("click", () => {
-//       navBar.classList.toggle("open");
-//     });
-//   });
-//   overlay.addEventListener("click", () => {
-//     navBar.classList.remove("open");
-//   });
-// }
 
 function toggleSideLar() {
   const tristeza = document.getElementById("botaoHome")
@@ -1651,58 +1532,6 @@ function enviarMensagem() {
     email = "";
     texto = "";
 }
-
-//   <div class="card">
-//   <div class="cardBody">
-//     <h5 class="cardTitulo">${posto.nomePosto}</h5>
-//     <h6 class="cardSubtitulo mb-2 text-muted">Endereço</h6>
-//     <p class="cardTexto">Cidade: ${posto.enderecoPosto}</p>
-//     <p class="cardTexto">Cidade: ${posto.ruaPosto}</p>
-//   </div>
-// </div>
-// <div class="card">
-//   <div class="cardBody">
-//     <h6 class="cardSubtitulo mb-2 text-muted">Preços</h6>
-//     <p class="cardTexto">Comum: ${posto.comumPosto}</p>
-//     <p class="cardTexto">Aditivado: ${posto.aditivadaPosto}</p>
-//     <p class="cardTexto">Diesel: ${posto.dieselPosto}</p>
-//     <p class="cardTexto">Álcool: ${posto.alcoolPosto}</p>
-//     <p class="cardTexto">Última atualização: ${posto.data}</p>
-//   </div>
-// </div>
-
-
-
-
-// async function procurarPostos() {
-//   let input = document.getElementById('searchbar').value
-//   input = input.toLowerCase()
-//   let resultados = document.querySelector('.postList')
-//   resultados.innerHTML = ""
-
-//   fetch(`http://localhost:3000/postos`, {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   })
-//     .then((response) => response.json())
-//     .then((dados) => {
-//       for (i = 0; i < dados.length; i++) {
-//         let objeto = dados[i]
-
-//         if (objeto.nomePosto.toLowerCase().includes(input)) {
-//           const elemento = document.createElement("li")
-//           elemento.innerHTML = `
-//             ${objeto.nomePosto}
-//             ${objeto.enderecoPosto}, ${objeto.ruaPosto}
-//           `;
-//           resultados.appendChild(elemento)
-//         }
-//       }
-//     });
-// }
-
 
 // barra de pesquisa
 async function procurarPostos() {

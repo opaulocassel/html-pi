@@ -975,36 +975,6 @@ h6 {
   margin: 0 0.75em;
 }
 
-
-/* .teste {
-  background-color: #fff;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, .3);
-  border-radius: 10px;
-  pointer-events: all;
-  margin-bottom: 15px;
-  display: flex;
-}
-
-
-.teste .teste-segunda .section1 {
-  margin: 0;
-  padding: 18px 20px;
-  height: auto;
-  font: var(--title-font-boing-500);
-  font-size: 18px;
-  color: #202124;
-  letter-spacing: .3px;
-  line-height: 18px;
-  background: #fff;
-  border-radius: 10px 10px 0 0;
-} */
-
-
-
-
-
-
-
 nav {
   position: fixed;
   top: 0;
@@ -1124,38 +1094,6 @@ nav.open .sidebar {
 .sidebar-conteudo .lista {
   list-style: none;
 }
-
-/* nav-link */
-/* .lista .nav-link {
-  display: flex;
-  align-items: center;
-  margin: 8px 10px;
-  padding: 14px 1px;
-  border-radius: 8px;
-  text-decoration: none;
-}
-
-.listas .nav-link:hover {
-  background-color: #4070f4;
-}
-
-.nav-link .icon {
-  margin-right: 14px;
-  font-size: 20px;
-  color: #707070;
-}
-
-.nav-link .link {
-  font-size: 16px;
-  color: #707070;
-  font-weight: 400;
-}
-
-.nav-link .link a {
-  font-size: 16px;
-  color: #707070;
-  font-weight: 400;
-} */
 
 .listas .nav-link:hover .icon,
 .listas .nav-link:hover .link {
@@ -1435,7 +1373,7 @@ span {
   align-items: center;
   padding: 9px;
   border-radius: 8px;
-  background: #f2f2f2;
+  background: #ffffff;
   box-shadow: 0 3px 4px rgba(60, 64, 67, 0.3), 0 2px 9px 3px rgba(60, 64, 67, 0.15);
   width: 445px;
 }
