@@ -41,43 +41,30 @@
       </div> -->
 
       <div class="layout">
-        <div class="layout_topo">
-          <h4>CALCULO</h4>
-        </div>
         <div class="layout_rotas">
           <div class="input_layout">
             <div class="origem">
-              <span class="material-symbols-outlined">
-                near_me
-              </span>
-              <input type="text" id="origem" name="origem" placeholder="Origem" /> <br /><br />
+              <span class="material-symbols-outlined"> near_me </span>
+              <input type="text" id="origem" name="origem" placeholder="Origem" /><br /><br />
             </div>
-
+      
             <div class="destino">
-              <span class="material-symbols-outlined">
-                navigation
-              </span>
+              <span class="material-symbols-outlined"> navigation </span>
               <input type="text" id="destino" name="destino" placeholder="Destino" /><br /><br />
             </div>
-
+      
             <div class="media">
-              <span class="material-symbols-outlined">
-                swap_driving_apps_wheel
-              </span>
-              <input type="number" id="consumo" name="consumo" step="any" min="0"
-                placeholder="Média de consumo de combustível (km/l)" /><br /><br />
+              <span class="material-symbols-outlined"> swap_driving_apps_wheel </span>
+              <input type="number" id="consumo" name="consumo" step="any" min="0" placeholder="Média de consumo de combustível (km/l)" /><br /><br />
             </div>
-
+      
             <div class="preco">
-              <span class="material-symbols-outlined">
-                payments
-              </span>
-              <input type="number" id="preco" name="preco" step="any" min="0"
-                placeholder="Preço do combustível (R$/l)" /><br /><br />
+              <span class="material-symbols-outlined"> payments </span>
+              <input type="number" id="preco" name="preco" step="any" min="0" placeholder="Preço do combustível (R$/l)" /><br /><br />
             </div>
           </div>
-
-          <button type="button" onclick="calcular()">Calcular</button>
+      
+          <button type="button" onclick="calcular()"><p class="textCalcular">Calcular</p></button>
         </div>
         <div class="resultado" id="resultado">
           <h4>Resultados</h4>
@@ -103,7 +90,9 @@
       <div class="nav_buttons">
         <button class="nav_launcher" id="botao_hidden">
           <div onclick="abrirLauncher()" class="nav-link" id="div_launcher">
-            <i class="bx bx-cog icon"></i>
+            <span class="material-symbols-outlined">
+              menu
+              </span>
           </div>
         </button>
         <div id="launcherMenu" class="launcher-menu" style="display: none;">
@@ -147,7 +136,7 @@
           </ul>
         </div>
         <button onclick="openDialog()" class="botaoHome" id="botaoHome">
-          Iniciar sessão
+          <p class="textoLogin">Iniciar sessão</p>
         </button>
       </div>
 

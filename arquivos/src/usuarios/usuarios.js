@@ -303,7 +303,7 @@ function calcular() {
 
   var resultadoDiv = document.getElementById('resultado');
   resultadoDiv.style.display = 'block';
-  document.querySelector('.layout').style.maxHeight = '1000px';
+  document.querySelector('.layout').style.maxHeight = '3000px';
 
   console.log("KM: " + distancia);
   console.log("Combustível consumido durante o percurso: " + consumoCombustivel);
@@ -1585,7 +1585,7 @@ async function procurarPostos() {
     let emptyArray = [];
     for (let i = 0; i < dados.length; i++) {
       let objeto = dados[i];
-      if (objeto.nomePosto.toLowerCase().includes(input)) {
+      if (objeto.nomePosto.toLowerCase().includes(input) || objeto.enderecoPosto.toLowerCase().includes(input) || objeto.ruaPosto.toLowerCase().includes(input) ) {
         const postoData = {
           id: objeto.id,
           nomePosto: objeto.nomePosto,
