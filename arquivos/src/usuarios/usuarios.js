@@ -363,9 +363,9 @@ function generateInfoContent(posto) {
               <div class="flex items-center pt-2">
                 <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3" style="background-image: url(https://seeklogo.com/images/P/Petrobras-logo-03DABEE0AC-seeklogo.com.png)"></div>
                 <div class="advants">
-                  <div><span class="font-bold text-gray-900">Aditivada</span><div><i class="bi bi-fuel-pump-fill"></i><span class="aditivada_price">R$${posto.aditivadaPosto}</span></div></div>
-                  <div><span class="font-bold text-gray-900">Diesel</span><div><i class="bi bi-fuel-pump-diesel-fill"></i><span class="diesel_price">R$${posto.dieselPosto}</span></div></div>
-                  <div><span class="font-bold text-gray-900">Álcool</span><div><i class="bi bi-fuel-pump-fill"></i><span class="alcool_price">R$${posto.alcoolPosto}</span></div></div>
+                  <div><span class="font-bold text-gray-900">Aditivada</span><div><i class="bi bi-fuel-pump-fill"></i><span class="aditivada_price">${posto.aditivadaPosto}</span></div></div>
+                  <div><span class="font-bold text-gray-900">Diesel</span><div><i class="bi bi-fuel-pump-diesel-fill"></i><span class="diesel_price">${posto.dieselPosto}</span></div></div>
+                  <div><span class="font-bold text-gray-900">Álcool</span><div><i class="bi bi-fuel-pump-fill"></i><span class="alcool_price">${posto.alcoolPosto}</span></div></div>
                 </div>
               </div>
             </div>
@@ -597,6 +597,12 @@ let locations = [
     icon: "../assets/ipiranga.svg",
     cnpj: "98.765.432/0019-00",
   },
+  // {
+  //   position: { lat: -29.764342, lng: -51.157292 },
+  //   title: `Shell`,
+  //   icon: "../assets/shell.png",
+  //   cnpj: "12.456.768/0021-00"
+  // }
 ];
 
 const styles = {

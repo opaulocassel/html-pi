@@ -86,10 +86,6 @@ function carregarListaPostos() {
           <div>Diesel: ${posto.dieselPosto}</div>
           <div>Alcool: ${posto.alcoolPosto}</div>
           <div class="botoes">
-            <button class="dialogButton" onClick="abrirDialogNome()" data-id="${posto.id}">Atualizar Nome</button>
-            <button class="dialogButton" onClick="abrirDialogEndereco()" data-id="${posto.id}">Atualizar Endereço</button>
-            <button class="dialogButton" onClick="abrirDialogRuaPosto()" data-id="${posto.id}">Atualizar Rua</button>
-            <button class="dialogButton" onClick="abrirDialogCNPJ()" data-id="${posto.id}">Atualizar CNPJ</button>
             <button class="dialogButton" onClick="abrirDialogComum()" data-id="${posto.id}">Atualizar Gasolina Comum</button>
             <button class="dialogButton" onClick="abrirDialogAditivada()" data-id="${posto.id}">Atualizar Gasolina Aditivada</button>
             <button class="dialogButton" onClick="abrirDialogDiesel()" data-id="${posto.id}">Atualizar Diesel</button>
@@ -104,6 +100,11 @@ function carregarListaPostos() {
       console.error("Ocorreu um erro ao carregar o arquivo JSON:", error)
     );
 }
+
+/* <button class="dialogButton" onClick="abrirDialogNome()" data-id="${posto.id}">Atualizar Nome</button>                
+ <button class="dialogButton" onClick="abrirDialogEndereco()" data-id="${posto.id}">Atualizar Endereço</button>
+ <button class="dialogButton" onClick="abrirDialogRuaPosto()" data-id="${posto.id}">Atualizar Rua</button>
+ <button class="dialogButton" onClick="abrirDialogCNPJ()" data-id="${posto.id}">Atualizar CNPJ</button> */
 
 // COLOCAR INTRODUZIR ENFIAR 
 
