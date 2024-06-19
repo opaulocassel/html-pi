@@ -29,10 +29,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
         const adminApenas = document.getElementById("adminApenas")
         const adminApenas2 = document.getElementById("adminApenas2")
+        const usuarioApenas1 = document.getElementById("usuarioApenas1")
+        const usuarioApenas2 = document.getElementById("usuarioApenas2")
+
         if (guardarNome !== "Admin") {
           console.log(guardarNome)
           adminApenas.style.display = "none";
           adminApenas2.style.display = "none";
+        } else if (guardarNome === "Admin"){
+          usuarioApenas1.style.display = "none";
+          usuarioApenas2.style.display = "none";
         }
 
         //   const sidebar = document.createElement("div");
@@ -1112,9 +1118,16 @@ loginForm.addEventListener("submit", async (e) => {
         
         const adminApenas = document.getElementById("adminApenas")
         const adminApenas2 = document.getElementById("adminApenas2")
-        if (userName !== "Admin") {
+        const usuarioApenas1 = document.getElementById("usuarioApenas1")
+        const usuarioApenas2 = document.getElementById("usuarioApenas2")
+
+        if (guardarNome !== "Admin") {
+          console.log(guardarNome)
           adminApenas.style.display = "none";
           adminApenas2.style.display = "none";
+        } else if (guardarNome === "Admin"){
+          usuarioApenas1.style.display = "none";
+          usuarioApenas2.style.display = "none";
         }
 
         closeDialog();

@@ -1625,7 +1625,7 @@ span {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 25px 95px 25px 90px;
   z-index: 1000;
-  margin-top: 580%;
+  margin-top: 49vh;
 }
 
 .launcher-menu ul {
