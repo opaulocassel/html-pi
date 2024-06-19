@@ -54,17 +54,17 @@ header button:hover {
 }
 
 .primeiro{
-  margin: 40px 0 0 3px;
+  margin: 13vh 2vw 0 0;
 }
 
 .segundo{
-  margin: 14.1vh 0 0 0;
+  margin: 13vh 0 0 0;
 }
 
 .botao{
   position: absolute;
   height: 6.5vh;
-  margin: 64.4vh 0 0 15.3vw;
+  margin: 64.4vh 0 0 12.6vw;
 }
 
 #adiciona label {
