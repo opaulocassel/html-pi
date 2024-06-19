@@ -243,28 +243,44 @@
             <i class="bi bi-x-square-fill" onclick="closeDialog()" alt="Back"></i>
           </div>
           <h2>Registrar</h2>
+          <div class="register_interface">
+          <div class="requerimento_interface">
+            <div class="input_usuario">
+              <input onclick="adicionarPlaceholder('nomeUsuario', 'Insira seu nome')" type="text" id="nomeUsuario"
+                maxlength="30" name="nomeUsuario" placeholder="Insira seu nome" required />
+            </div>
+            <div class="input_telefone">
+              <input onclick="adicionarPlaceholder('telefone', 'Telefone')" type="text" id="telefone" maxlength="11"
+                name="telefone" placeholder="Telefone" required />
+            </div>
+            <div class="input_email">
+              <input onclick="adicionarPlaceholder('email', 'Insira seu email')" type="email" id="email" maxlength="50"
+                name="email" placeholder="Insira seu email" required />
+            </div>
+            <div class="input_senha">
+              <input onclick="adicionarPlaceholder('senha', 'Escolha uma senha')" type="password" id="senha" maxlength="15"
+                name="senha" placeholder="Escolha uma senha" required />
+            </div>
+            <div class="input_confirma">
+              <input onclick="adicionarPlaceholder('confirmarSenha', 'Confirme a senha')" type="password"
+               id="confirmarSenha" maxlength="15" name="confirmarSenha" placeholder="Confirme a senha" required />
+            </div>
+          </div>
 
-          <input onclick="adicionarPlaceholder('nomeUsuario', 'Insira seu nome')" type="text" id="nomeUsuario"
-            maxlength="30" name="nomeUsuario" placeholder="Insira seu nome" required />
-          <input onclick="adicionarPlaceholder('telefone', 'Telefone')" type="text" id="telefone" maxlength="11"
-            name="telefone" placeholder="Telefone" required />
-          <input onclick="adicionarPlaceholder('email', 'Insira seu email')" type="email" id="email" maxlength="50"
-            name="email" placeholder="Insira seu email" required />
-          <input onclick="adicionarPlaceholder('senha', 'Escolha uma senha')" type="password" id="senha" maxlength="15"
-            name="senha" placeholder="Escolha uma senha" required />
+          <div class="register_button">
+            <button type="button" class="botao" onclick="adicionarUsuario()">
+              Criar Usuário
+            </button>
+          </div>
 
-          <input onclick="adicionarPlaceholder('confirmarSenha', 'Confirme a senha')" type="password"
-            id="confirmarSenha" maxlength="15" name="confirmarSenha" placeholder="Confirme a senha" required />
-
-          <button type="button" class="botao" onclick="adicionarUsuario()">
-            Criar Usuário
-          </button>
-
-          <p class="message">
-            Já é registrado?
-            <a class="linkRegistrar" onclick="openDialog()" href="#">
-              Entrar</a>
-          </p>
+          <div class="register_footer">
+            <p class="message">
+              Já é registrado?
+              <a class="linkRegistrar" onclick="openDialog()" href="#">
+                Entrar</a>
+            </p>
+          </div>
+          </div>
         </form>
       </div>
     </section>

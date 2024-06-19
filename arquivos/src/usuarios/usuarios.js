@@ -270,6 +270,7 @@ function calcular() {
   var destino = document.getElementById('destino').value;
   var consumo = document.getElementById('consumo').value;
   var preco = document.getElementById('preco').value;
+  const layout = document.getElementById("layout");
 
   if (origem === '' || destino === '' || consumo === '' || preco === '') {
     alert('Por favor, preencha todos os campos.');
@@ -309,7 +310,9 @@ function calcular() {
 
   var resultadoDiv = document.getElementById('resultado');
   resultadoDiv.style.display = 'block';
+  resultadoDiv.style.position = 'absolute';
   document.querySelector('.layout').style.maxHeight = '3000px';
+  layout.style.margin = "20vh 0 0 0";
 
   console.log("KM: " + distancia);
   console.log("Combustível consumido durante o percurso: " + consumoCombustivel);
