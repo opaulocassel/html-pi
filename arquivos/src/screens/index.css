@@ -37,6 +37,7 @@ main .dark_mode {
 .botaoHome {
   padding: 10px 15px;
   background-color: #007ACC;
+  box-shadow: 0 3px 4px rgba(60, 64, 67, 0.3), 0 2px 9px 3px rgba(60, 64, 67, 0.15);
   outline: 3px #007ACC solid;
   outline-offset: -3px;
   border-radius: 12px;
@@ -700,7 +701,7 @@ div.gmnoprint.gm-style-mtc-bbw {
 .card-body {
   flex: 1 1 auto;
   min-height: 1px;
-  padding: 4.3rem;
+  padding: 4.3rem 3.3rem 4.3rem 4.3rem;
 }
 
 .gutters-sm {
@@ -1511,12 +1512,12 @@ span {
 .layout {
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 3px 4px rgba(60, 64, 67, 0.3), 0 2px 9px 3px rgba(60, 64, 67, 0.15);
   background-color: #ffffff;
   max-width: 420px;
   width: 100%;
   margin-left: 12px;
-  margin-top: 23%;
+  margin-top: 17%;
 }
 
 .layout_rotas {
@@ -1583,30 +1584,13 @@ span {
   color: #007ACC;
 }
 
-/* .botao {
-  background: rgb(255, 255, 255);
-  display: block;
-  height: 60px;
-  border-radius: 10px;
-  padding: 0px;
-  color: rgb(10, 10, 10);
-  border: 2px solid rgba(173, 173, 173, 0.3);
-  font-size: 20px;
-  font-weight: 700;
-  cursor: not-allowed;
-  width: 100px;
-}
-
-.botao:hover {
-  background: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
-  color: #f4f0f0;
-  border-radius: 10px;
-} */
-
+/* div resultado */
 .resultado {
-  display: none; /* Oculta a div por padrão */
-  width: 22vw;
-  margin-top: 20px;
+  display: none;
+  max-width: 420px;
+  width: 100%;
+  margin-top: 50.5%;
+  margin-left: 12px;
   padding: 20px;
   border-radius: 10px;
   background: #ffffff;
@@ -1685,7 +1669,7 @@ span {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 25px 95px 25px 90px;
   z-index: 1000;
-  margin-top: 49vh;
+  margin-top: 34vh;
 }
 
 .launcher-menu ul {
@@ -1740,7 +1724,6 @@ span {
   margin-inline-start: 16px;
 }
 
-
 .formSobre{
   top: 50%;
   left: 50%;
@@ -1776,37 +1759,3 @@ span {
 #sucumba2 {
   margin-top: 10px;
 }
-/* .barra-pesquisa {
-  position: relative;
-  width: 300px;
-  margin-left: 1.5rem;
-}
-
-.teste_barra {
-  position: relative;
-  width: max-content;
-  display: flex;
-  align-items: center;
-  padding: 9px;
-  border-radius: 18px;
-  background: #f2f2f2;
-  box-shadow: 0 3px 4px rgba(60, 64, 67, 0.3), 0 2px 9px 3px rgba(60, 64, 67, 0.15);
-  width: 445px;
-}
-
-#searchbar {
-  font-size: 16px;
-  font-family: 'Lexend', sans-serif;
-  color: #333333;
-  margin-left: 14px;
-  outline: none;
-  border: none;
-  background: transparent;
-  width: 300px;
-  flex: 1;
-}
-
-#searchbar::placeholder,
-.bi-search {
-  color: rgba(0, 0, 0, 0.5);
-} */

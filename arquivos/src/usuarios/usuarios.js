@@ -304,19 +304,18 @@ function calcular() {
   var consumoCombustivel = distancia / parseFloat(consumo);
   var valorCombustivel = consumoCombustivel * parseFloat(preco);
 
-  document.getElementById('distancia').innerText = 'Distância: ' + distancia.toFixed(2) + ' km';
-  document.getElementById('consumo').innerText = 'Consumo: ' + consumoCombustivel.toFixed(2) + ' litros';
-  document.getElementById('valor').innerText = 'Valor: R$ ' + valorCombustivel.toFixed(2);
+  console.log("KM: " + distancia);
+  console.log("Combustível consumido durante o percurso: " + consumoCombustivel);
+  console.log("Valor do combustível consumido: " + valorCombustivel);
+
+  document.getElementById('distanciaKM').innerText = 'Distância: ' + distancia.toFixed(2) + ' km';
+  document.getElementById('consumoCombustivel').innerText = 'Consumo: ' + consumoCombustivel.toFixed(2) + 'litros';
+  document.getElementById('valorCombustivel').innerText = 'Valor: R$ ' + valorCombustivel.toFixed(2);
 
   var resultadoDiv = document.getElementById('resultado');
   resultadoDiv.style.display = 'block';
   resultadoDiv.style.position = 'absolute';
   document.querySelector('.layout').style.maxHeight = '3000px';
-  layout.style.margin = "20vh 0 0 0";
-
-  console.log("KM: " + distancia);
-  console.log("Combustível consumido durante o percurso: " + consumoCombustivel);
-  console.log("Valor do combustível consumido: " + valorCombustivel);
 }
 
 function abrirLauncher() {
@@ -1171,7 +1170,7 @@ function carregarListaUsuarios() {
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                            <img src="https://d1w2poirtb3as9.cloudfront.net/default.jpeg?Expires=1718870015&Signature=j2Yv4m7jTQ8ZPp38buEiGuzlI5iJ223qzgkNlmayUmWKhcKQ1dt0vIjSmTuHGIQvN4dxxaRA7AyV2N7gw7FvTxSAarKpNjPWY~Bik7EfDlJq5gbuPOTz1UT8DIi0Vf2wnNTTBueu2BFmfFdVrd4H5Cv2aOiYHuMgaFh0eiz4qkEHsOGAr4h~pZ-Px~vx50ZWMay5q1wZ4whbFiKwaL1TCrsMLKdMNUZJzQJc07kEnWTttDYmvGgZSgDq22~KSg5I~kfD3cDbstBUIZzUrs4M5TyOkZYiPFGo~DCimgTzhlhEJ0saHoxb9WFFt~ScBXBC3H0SMWJxXDa6LbOdIhA~0A__&Key-Pair-Id=K36LFL06Z5BT10" alt="Admin"
                                     class="rounded-circle" width="150">                    
                                 <div class="mt-3">
                                     <h4>${usuario.nomeUsuario}</h4>

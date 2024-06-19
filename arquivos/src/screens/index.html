@@ -47,31 +47,36 @@
               <span class="material-symbols-outlined"> near_me </span>
               <input type="text" id="origem" name="origem" placeholder="Origem" /><br /><br />
             </div>
-      
+
             <div class="destino">
               <span class="material-symbols-outlined"> navigation </span>
               <input type="text" id="destino" name="destino" placeholder="Destino" /><br /><br />
             </div>
-      
+
             <div class="media">
               <span class="material-symbols-outlined"> swap_driving_apps_wheel </span>
-              <input type="number" id="consumo" name="consumo" step="any" min="0" placeholder="Média de consumo de combustível (km/l)" /><br /><br />
+              <input type="number" id="consumo" name="consumo" step="any" min="0"
+                placeholder="Consumo médio do veículo (km/l)" /><br /><br />
             </div>
-      
+
             <div class="preco">
               <span class="material-symbols-outlined"> payments </span>
-              <input type="number" id="preco" name="preco" step="any" min="0" placeholder="Preço do combustível (R$/l)" /><br /><br />
+              <input type="number" id="preco" name="preco" step="any" min="0"
+                placeholder="Preço do combustível (R$/l)" /><br /><br />
             </div>
           </div>
-      
-          <button type="button" onclick="calcular()"><p class="textCalcular">Calcular</p></button>
+
+          <button type="button" onclick="calcular()">
+            <p class="textCalcular">Calcular</p>
+          </button>
         </div>
-        <div class="resultado" id="resultado">
-          <h4>Resultados</h4>
-          <p id="distancia"></p>
-          <p id="consumo"></p>
-          <p id="valor"></p>
-        </div>
+      </div>
+
+      <div class="resultado" id="resultado">
+        <h4>Resultados</h4>
+        <p id="distanciaKM"></p>
+        <p id="consumoCombustivel"></p>
+        <p id="valorCombustivel"></p>
       </div>
 
       <div class="wrapper">
@@ -92,7 +97,7 @@
           <div onclick="abrirLauncher()" class="nav-link" id="div_launcher">
             <span class="material-symbols-outlined">
               menu
-              </span>
+            </span>
           </div>
         </button>
         <div id="launcherMenu" class="launcher-menu" style="display: none;">
@@ -244,42 +249,42 @@
           </div>
           <h2>Registrar</h2>
           <div class="register_interface">
-          <div class="requerimento_interface">
-            <div class="input_usuario">
-              <input onclick="adicionarPlaceholder('nomeUsuario', 'Insira seu nome')" type="text" id="nomeUsuario"
-                maxlength="30" name="nomeUsuario" placeholder="Insira seu nome" required />
+            <div class="requerimento_interface">
+              <div class="input_usuario">
+                <input onclick="adicionarPlaceholder('nomeUsuario', 'Insira seu nome')" type="text" id="nomeUsuario"
+                  maxlength="30" name="nomeUsuario" placeholder="Insira seu nome" required />
+              </div>
+              <div class="input_telefone">
+                <input onclick="adicionarPlaceholder('telefone', 'Telefone')" type="text" id="telefone" maxlength="11"
+                  name="telefone" placeholder="Telefone" required />
+              </div>
+              <div class="input_email">
+                <input onclick="adicionarPlaceholder('email', 'Insira seu email')" type="email" id="email"
+                  maxlength="50" name="email" placeholder="Insira seu email" required />
+              </div>
+              <div class="input_senha">
+                <input onclick="adicionarPlaceholder('senha', 'Escolha uma senha')" type="password" id="senha"
+                  maxlength="15" name="senha" placeholder="Escolha uma senha" required />
+              </div>
+              <div class="input_confirma">
+                <input onclick="adicionarPlaceholder('confirmarSenha', 'Confirme a senha')" type="password"
+                  id="confirmarSenha" maxlength="15" name="confirmarSenha" placeholder="Confirme a senha" required />
+              </div>
             </div>
-            <div class="input_telefone">
-              <input onclick="adicionarPlaceholder('telefone', 'Telefone')" type="text" id="telefone" maxlength="11"
-                name="telefone" placeholder="Telefone" required />
-            </div>
-            <div class="input_email">
-              <input onclick="adicionarPlaceholder('email', 'Insira seu email')" type="email" id="email" maxlength="50"
-                name="email" placeholder="Insira seu email" required />
-            </div>
-            <div class="input_senha">
-              <input onclick="adicionarPlaceholder('senha', 'Escolha uma senha')" type="password" id="senha" maxlength="15"
-                name="senha" placeholder="Escolha uma senha" required />
-            </div>
-            <div class="input_confirma">
-              <input onclick="adicionarPlaceholder('confirmarSenha', 'Confirme a senha')" type="password"
-               id="confirmarSenha" maxlength="15" name="confirmarSenha" placeholder="Confirme a senha" required />
-            </div>
-          </div>
 
-          <div class="register_button">
-            <button type="button" class="botao" onclick="adicionarUsuario()">
-              Criar Usuário
-            </button>
-          </div>
+            <div class="register_button">
+              <button type="button" class="botao" onclick="adicionarUsuario()">
+                Criar Usuário
+              </button>
+            </div>
 
-          <div class="register_footer">
-            <p class="message">
-              Já é registrado?
-              <a class="linkRegistrar" onclick="openDialog()" href="#">
-                Entrar</a>
-            </p>
-          </div>
+            <div class="register_footer">
+              <p class="message">
+                Já é registrado?
+                <a class="linkRegistrar" onclick="openDialog()" href="#">
+                  Entrar</a>
+              </p>
+            </div>
           </div>
         </form>
       </div>
@@ -290,60 +295,64 @@
         <i class="bi bi-arrow-left-square-fill" onclick="closePerfilDialog()" alt="Back"></i>
       </div>
     </section>
-<section class="formSobre" id="formSobre">
-  <div class="icone">
-    <i class="bi bi-arrow-left-square-fill" onclick="closeSobreDialog()" alt="Back"></i>
-  </div>
+    <section class="formSobre" id="formSobre">
+      <div class="icone">
+        <i class="bi bi-arrow-left-square-fill" onclick="closeSobreDialog()" alt="Back"></i>
+      </div>
 
-  <div class="titleAjuda">
-    <h2>Sobre</h2>
-  </div>
+      <div class="titleAjuda">
+        <h2>Sobre</h2>
+      </div>
 
-  <section class="areaSobre">
-    <p>Nosso projeto tem o objetivo de abordar as preocupações globais sobre os altos preços dos combustíveis através de
-      um aplicativo inovador. Utilizando localização em tempo real e tecnologia de GPS, auxiliamos os usuários a
-      encontrar opções de abastecimento mais acessíveis. </p>
-    <p>Com funcionalidades criação de conta pessoal, adição de rotas favoritas, alertas de descontos e notificações de
-      postos mais baratos ao longo da rota designada, o aplicativo oferece uma experiência personalizada.</p>
-    <p>Destacamos, também, a conveniência ao permitir o pagamento diretamente pela plataforma, eliminando a necessidade
-      de transações físicas no posto de gasolina. Em síntese, nosso aplicativo não só informa, mas proporciona soluções
-      eficientes e práticas para otimizar a experiência dos usuários.</p>
-  </section>
-  <div class="titleAjuda" id="sucumba">
-    <h2>Contato</h2>
-  </div>
-  <section class="areaSobre" id="sucumba2">
-    <div class="redes">
-      <a target="_blank" href="https://www.facebook.com/"><svg xmlns="http://www.w3.org/2000/svg" x="0px"
-              y="0px" width="50" height="50" viewBox="0 0 24 24" >
-              <path
-                  d="M 5 3 C 3.897 3 3 3.897 3 5 L 3 19 C 3 20.103 3.897 21 5 21 L 11.621094 21 L 14.414062 21 L 19 21 C 20.103 21 21 20.103 21 19 L 21 5 C 21 3.897 20.103 3 19 3 L 5 3 z M 5 5 L 19 5 L 19.001953 19 L 14.414062 19 L 14.414062 15.035156 L 16.779297 15.035156 L 17.130859 12.310547 L 14.429688 12.310547 L 14.429688 10.574219 C 14.429687 9.7862188 14.649297 9.2539062 15.779297 9.2539062 L 17.207031 9.2539062 L 17.207031 6.8222656 C 16.512031 6.7512656 15.814234 6.71675 15.115234 6.71875 C 13.041234 6.71875 11.621094 7.9845938 11.621094 10.308594 L 11.621094 12.314453 L 9.2773438 12.314453 L 9.2773438 15.039062 L 11.621094 15.039062 L 11.621094 19 L 5 19 L 5 5 z">
-              </path>
-          </svg></a>
-
-      <a target="_blank" href="https://www.instagram.com/"><svg xmlns="http://www.w3.org/2000/svg" x="0px"
-              y="0px" width="50" height="50" viewBox="0 0 24 24">
-              <path
-                  d="M 8 3 C 5.243 3 3 5.243 3 8 L 3 16 C 3 18.757 5.243 21 8 21 L 16 21 C 18.757 21 21 18.757 21 16 L 21 8 C 21 5.243 18.757 3 16 3 L 8 3 z M 8 5 L 16 5 C 17.654 5 19 6.346 19 8 L 19 16 C 19 17.654 17.654 19 16 19 L 8 19 C 6.346 19 5 17.654 5 16 L 5 8 C 5 6.346 6.346 5 8 5 z M 17 6 A 1 1 0 0 0 16 7 A 1 1 0 0 0 17 8 A 1 1 0 0 0 18 7 A 1 1 0 0 0 17 6 z M 12 7 C 9.243 7 7 9.243 7 12 C 7 14.757 9.243 17 12 17 C 14.757 17 17 14.757 17 12 C 17 9.243 14.757 7 12 7 z M 12 9 C 13.654 9 15 10.346 15 12 C 15 13.654 13.654 15 12 15 C 10.346 15 9 13.654 9 12 C 9 10.346 10.346 9 12 9 z">
-              </path>
-          </svg></a>
-
-      <a target="_blank" href="https://twitter.com/"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      <section class="areaSobre">
+        <p>Nosso projeto tem o objetivo de abordar as preocupações globais sobre os altos preços dos combustíveis
+          através de
+          um aplicativo inovador. Utilizando localização em tempo real e tecnologia de GPS, auxiliamos os usuários a
+          encontrar opções de abastecimento mais acessíveis. </p>
+        <p>Com funcionalidades criação de conta pessoal, adição de rotas favoritas, alertas de descontos e notificações
+          de
+          postos mais baratos ao longo da rota designada, o aplicativo oferece uma experiência personalizada.</p>
+        <p>Destacamos, também, a conveniência ao permitir o pagamento diretamente pela plataforma, eliminando a
+          necessidade
+          de transações físicas no posto de gasolina. Em síntese, nosso aplicativo não só informa, mas proporciona
+          soluções
+          eficientes e práticas para otimizar a experiência dos usuários.</p>
+      </section>
+      <div class="titleAjuda" id="sucumba">
+        <h2>Contato</h2>
+      </div>
+      <section class="areaSobre" id="sucumba2">
+        <div class="redes">
+          <a target="_blank" href="https://www.facebook.com/"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
               width="50" height="50" viewBox="0 0 24 24">
               <path
-                  d="M 6 3 C 4.3550302 3 3 4.3550302 3 6 L 3 18 C 3 19.64497 4.3550302 21 6 21 L 18 21 C 19.64497 21 21 19.64497 21 18 L 21 6 C 21 4.3550302 19.64497 3 18 3 L 6 3 z M 6 5 L 18 5 C 18.56503 5 19 5.4349698 19 6 L 19 18 C 19 18.56503 18.56503 19 18 19 L 6 19 C 5.4349698 19 5 18.56503 5 18 L 5 6 C 5 5.4349698 5.4349698 5 6 5 z M 6.7011719 7 L 10.642578 12.632812 L 6.90625 17 L 8.2382812 17 L 11.240234 13.484375 L 13.697266 17 L 17.537109 17 L 13.351562 11.009766 L 16.773438 7 L 15.462891 7 L 12.759766 10.160156 L 10.552734 7 L 6.7011719 7 z M 8.5664062 7.9882812 L 10.052734 7.9882812 L 15.683594 16.011719 L 14.1875 16.011719 L 8.5664062 7.9882812 z">
+                d="M 5 3 C 3.897 3 3 3.897 3 5 L 3 19 C 3 20.103 3.897 21 5 21 L 11.621094 21 L 14.414062 21 L 19 21 C 20.103 21 21 20.103 21 19 L 21 5 C 21 3.897 20.103 3 19 3 L 5 3 z M 5 5 L 19 5 L 19.001953 19 L 14.414062 19 L 14.414062 15.035156 L 16.779297 15.035156 L 17.130859 12.310547 L 14.429688 12.310547 L 14.429688 10.574219 C 14.429687 9.7862188 14.649297 9.2539062 15.779297 9.2539062 L 17.207031 9.2539062 L 17.207031 6.8222656 C 16.512031 6.7512656 15.814234 6.71675 15.115234 6.71875 C 13.041234 6.71875 11.621094 7.9845938 11.621094 10.308594 L 11.621094 12.314453 L 9.2773438 12.314453 L 9.2773438 15.039062 L 11.621094 15.039062 L 11.621094 19 L 5 19 L 5 5 z">
               </path>
-          </svg></a>
+            </svg></a>
 
-      <a target="_blank" href="https://www.linkedin.com/"><svg xmlns="http://www.w3.org/2000/svg" x="0px"
-              y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <a target="_blank" href="https://www.instagram.com/"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="50" height="50" viewBox="0 0 24 24">
               <path
-                  d="M 5 3 C 3.895 3 3 3.895 3 5 L 3 19 C 3 20.105 3.895 21 5 21 L 19 21 C 20.105 21 21 20.105 21 19 L 21 5 C 21 3.895 20.105 3 19 3 L 5 3 z M 5 5 L 19 5 L 19 19 L 5 19 L 5 5 z M 7.7792969 6.3164062 C 6.9222969 6.3164062 6.4082031 6.8315781 6.4082031 7.5175781 C 6.4082031 8.2035781 6.9223594 8.7167969 7.6933594 8.7167969 C 8.5503594 8.7167969 9.0644531 8.2035781 9.0644531 7.5175781 C 9.0644531 6.8315781 8.5502969 6.3164062 7.7792969 6.3164062 z M 6.4765625 10 L 6.4765625 17 L 9 17 L 9 10 L 6.4765625 10 z M 11.082031 10 L 11.082031 17 L 13.605469 17 L 13.605469 13.173828 C 13.605469 12.034828 14.418109 11.871094 14.662109 11.871094 C 14.906109 11.871094 15.558594 12.115828 15.558594 13.173828 L 15.558594 17 L 18 17 L 18 13.173828 C 18 10.976828 17.023734 10 15.802734 10 C 14.581734 10 13.930469 10.406562 13.605469 10.976562 L 13.605469 10 L 11.082031 10 z">
+                d="M 8 3 C 5.243 3 3 5.243 3 8 L 3 16 C 3 18.757 5.243 21 8 21 L 16 21 C 18.757 21 21 18.757 21 16 L 21 8 C 21 5.243 18.757 3 16 3 L 8 3 z M 8 5 L 16 5 C 17.654 5 19 6.346 19 8 L 19 16 C 19 17.654 17.654 19 16 19 L 8 19 C 6.346 19 5 17.654 5 16 L 5 8 C 5 6.346 6.346 5 8 5 z M 17 6 A 1 1 0 0 0 16 7 A 1 1 0 0 0 17 8 A 1 1 0 0 0 18 7 A 1 1 0 0 0 17 6 z M 12 7 C 9.243 7 7 9.243 7 12 C 7 14.757 9.243 17 12 17 C 14.757 17 17 14.757 17 12 C 17 9.243 14.757 7 12 7 z M 12 9 C 13.654 9 15 10.346 15 12 C 15 13.654 13.654 15 12 15 C 10.346 15 9 13.654 9 12 C 9 10.346 10.346 9 12 9 z">
               </path>
-          </svg></a>
-  </div>
-  </section>
-</section>
+            </svg></a>
+
+          <a target="_blank" href="https://twitter.com/"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="50" height="50" viewBox="0 0 24 24">
+              <path
+                d="M 6 3 C 4.3550302 3 3 4.3550302 3 6 L 3 18 C 3 19.64497 4.3550302 21 6 21 L 18 21 C 19.64497 21 21 19.64497 21 18 L 21 6 C 21 4.3550302 19.64497 3 18 3 L 6 3 z M 6 5 L 18 5 C 18.56503 5 19 5.4349698 19 6 L 19 18 C 19 18.56503 18.56503 19 18 19 L 6 19 C 5.4349698 19 5 18.56503 5 18 L 5 6 C 5 5.4349698 5.4349698 5 6 5 z M 6.7011719 7 L 10.642578 12.632812 L 6.90625 17 L 8.2382812 17 L 11.240234 13.484375 L 13.697266 17 L 17.537109 17 L 13.351562 11.009766 L 16.773438 7 L 15.462891 7 L 12.759766 10.160156 L 10.552734 7 L 6.7011719 7 z M 8.5664062 7.9882812 L 10.052734 7.9882812 L 15.683594 16.011719 L 14.1875 16.011719 L 8.5664062 7.9882812 z">
+              </path>
+            </svg></a>
+
+          <a target="_blank" href="https://www.linkedin.com/"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="50" height="50" viewBox="0 0 24 24">
+              <path
+                d="M 5 3 C 3.895 3 3 3.895 3 5 L 3 19 C 3 20.105 3.895 21 5 21 L 19 21 C 20.105 21 21 20.105 21 19 L 21 5 C 21 3.895 20.105 3 19 3 L 5 3 z M 5 5 L 19 5 L 19 19 L 5 19 L 5 5 z M 7.7792969 6.3164062 C 6.9222969 6.3164062 6.4082031 6.8315781 6.4082031 7.5175781 C 6.4082031 8.2035781 6.9223594 8.7167969 7.6933594 8.7167969 C 8.5503594 8.7167969 9.0644531 8.2035781 9.0644531 7.5175781 C 9.0644531 6.8315781 8.5502969 6.3164062 7.7792969 6.3164062 z M 6.4765625 10 L 6.4765625 17 L 9 17 L 9 10 L 6.4765625 10 z M 11.082031 10 L 11.082031 17 L 13.605469 17 L 13.605469 13.173828 C 13.605469 12.034828 14.418109 11.871094 14.662109 11.871094 C 14.906109 11.871094 15.558594 12.115828 15.558594 13.173828 L 15.558594 17 L 18 17 L 18 13.173828 C 18 10.976828 17.023734 10 15.802734 10 C 14.581734 10 13.930469 10.406562 13.605469 10.976562 L 13.605469 10 L 11.082031 10 z">
+              </path>
+            </svg></a>
+        </div>
+      </section>
+    </section>
 
     <section class="formAjuda" id="formAjuda">
       <div class="icone">
@@ -355,65 +364,72 @@
       </div>
 
       <section class="area">
-      <div class="inputsAjuda">
-        <label for="nome">Nome</label>
-        <input onclick="adicionarPlaceholder('ajudaNome', 'Informe seu nome')" placeholder="Informe seu nome" type="text" name="nome" id="ajudaNome">
-        <label for="email">Email</label>
-        <input onclick="adicionarPlaceholder('ajudaEmail', 'Informe seu email')" placeholder="Informe seu email" type="email" name="email" id="ajudaEmail">
-        <label for="mensagem">Mensagem</label>
-        <textarea onclick="adicionarPlaceholder('mensagem', 'Em que podemos ajudar?')" placeholder="Em que podemos ajudar?" name="mensagem" id="mensagem" rows="4" cols="50" maxlength="180"></textarea>
-        <button onclick="enviarMensagem()" class="ajudaEnviar">Enviar</button>
+        <div class="inputsAjuda">
+          <label for="nome">Nome</label>
+          <input onclick="adicionarPlaceholder('ajudaNome', 'Informe seu nome')" placeholder="Informe seu nome"
+            type="text" name="nome" id="ajudaNome">
+          <label for="email">Email</label>
+          <input onclick="adicionarPlaceholder('ajudaEmail', 'Informe seu email')" placeholder="Informe seu email"
+            type="email" name="email" id="ajudaEmail">
+          <label for="mensagem">Mensagem</label>
+          <textarea onclick="adicionarPlaceholder('mensagem', 'Em que podemos ajudar?')"
+            placeholder="Em que podemos ajudar?" name="mensagem" id="mensagem" rows="4" cols="50"
+            maxlength="180"></textarea>
+          <button onclick="enviarMensagem()" class="ajudaEnviar">Enviar</button>
+        </div>
+
+        <div class="perguntas">
+          <label>Perguntas</label>
+          <p onclick="perguntas(pergunta1)" id="pergunta1">Como funciona o cálculo pela média?</p>
+          <p onclick="perguntas(pergunta2)" id="pergunta2">Como faço para adicionar um novo usuário?</p>
+          <p onclick="perguntas(pergunta3)" id="pergunta3">Com que frequência os dados são atualizados?</p>
+          <p onclick="perguntas(pergunta4)" id="pergunta4">O que é preciso para comparar os postos?</p>
+        </div>
+      </section>
+    </section>
+
+    <section id="secaoResposta">
+      <div class="resposta1" id="resposta1">
+        <div class="icone">
+          <i class="bi bi-arrow-left-square-fill" onclick="closePergunta1()" alt="Back"></i>
+        </div>
+        <p>Funciona da seguinte forma: Você clica na tela para colocar o seu ponto de origem, e depois clica na tela
+          novamente
+          para selecionar o destino. Feito isso, você coloca a média de consumo do seu carro, e por último, o preço do
+          combustível.
+          Após isso, basta clicar em calcular que o sistema fornecerá uma estimativa do custo deste deslocamento.
+        </p>
       </div>
 
-      <div class="perguntas">
-        <label>Perguntas</label>
-        <p onclick="perguntas(pergunta1)" id="pergunta1">Como funciona o cálculo pela média?</p>
-        <p onclick="perguntas(pergunta2)" id="pergunta2">Como faço para adicionar um novo usuário?</p>
-        <p onclick="perguntas(pergunta3)" id="pergunta3">Com que frequência os dados são atualizados?</p>
-        <p onclick="perguntas(pergunta4)" id="pergunta4">O que é preciso para comparar os postos?</p>
+      <div class="resposta2" id="resposta2">
+        <div class="icone">
+          <i class="bi bi-arrow-left-square-fill" onclick="closePergunta2()" alt="Back"></i>
+        </div>
+        <p>Clique em "iniciar sessão", feito isso, clique em "crie uma conta", preencha os dados conforme esperado e
+          clique
+          no campo "criar usuário", realize o login e aproveite o site.
+        </p>
+      </div>
+
+      <div class="resposta3" id="resposta3">
+        <div class="icone">
+          <i class="bi bi-arrow-left-square-fill" onclick="closePergunta3()" alt="Back"></i>
+        </div>
+        <p>As informações do site são atualizadas manualmente pelos administradores sempre que ocorrem alterações nas
+          informações fornecidas pelos postos de combustível.
+        </p>
+      </div>
+
+      <div class="resposta4" id="resposta4">
+        <div class="icone">
+          <i class="bi bi-arrow-left-square-fill" onclick="closePergunta4()" alt="Back"></i>
+        </div>
+        <p>Primeiro, clique em um dos ícones, na janela, clique na opção "comparar preço", feito isso
+          escolha outro posto de combustível, clique na opção "comparar preço", a comparação entre os postos será feita
+          imediatamente.
+        </p>
       </div>
     </section>
-  </section>
-
-<section id="secaoResposta">
-  <div class="resposta1" id="resposta1">
-    <div class="icone">
-      <i class="bi bi-arrow-left-square-fill" onclick="closePergunta1()" alt="Back"></i>
-    </div>
-    <p>Funciona da seguinte forma: Você clica na tela para colocar o seu ponto de origem, e depois clica na tela novamente
-       para selecionar o destino. Feito isso, você coloca a média de consumo do seu carro, e por último, o preço do combustível.
-       Após isso, basta clicar em calcular que o sistema fornecerá uma estimativa do custo deste deslocamento.
-    </p>
-  </div>
-
-  <div class="resposta2" id="resposta2">
-    <div class="icone">
-      <i class="bi bi-arrow-left-square-fill" onclick="closePergunta2()" alt="Back"></i>
-    </div>
-    <p>Clique em "iniciar sessão", feito isso, clique em "crie uma conta", preencha os dados conforme esperado e clique 
-       no campo "criar usuário", realize o login e aproveite o site.
-    </p>
-  </div>
-
-  <div class="resposta3" id="resposta3">
-    <div class="icone">
-      <i class="bi bi-arrow-left-square-fill" onclick="closePergunta3()" alt="Back"></i>
-    </div>
-    <p>As informações do site são atualizadas manualmente pelos administradores sempre que ocorrem alterações nas 
-       informações fornecidas pelos postos de combustível.
-    </p>
-  </div>
-
-  <div class="resposta4" id="resposta4">
-    <div class="icone">
-      <i class="bi bi-arrow-left-square-fill" onclick="closePergunta4()" alt="Back"></i>
-    </div>
-    <p>Primeiro, clique em um dos ícones, na janela, clique na opção "comparar preço", feito isso
-      escolha outro posto de combustível, clique na opção "comparar preço", a comparação entre os postos será feita
-      imediatamente.
-    </p>
-  </div>
-</section>
 
 
     <!------------------------------------------------------>
@@ -551,29 +567,31 @@
   </nav>
 
   <section class="overlaySidebarBefore"></section> -->
-  <button>
-    <div class="dark_mode">
-      <div id="controleSelecao" class="controleSelecao">
-        <label for="theme" class="theme" id="themeLabel">
-          <span class="theme__toggle-wrap" id="theme__toggle-wrap">
-            <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="default">
-            <span class="theme__fill"></span>
-            <span class="theme__icon">
-              <span class="theme__icon-part"></span>
-              <span class="theme__icon-part"></span>
-              <span class="theme__icon-part"></span>
-              <span class="theme__icon-part"></span>
-              <span class="theme__icon-part"></span>
-              <span class="theme__icon-part"></span>
-              <span class="theme__icon-part"></span>
-              <span class="theme__icon-part"></span>
-              <span class="theme__icon-part"></span>
-            </span>
-          </span>
-        </label>
+    <button>
+      <div class="fundo">
+        <div class="dark_mode">
+          <div id="controleSelecao" class="controleSelecao">
+            <label for="theme" class="theme" id="themeLabel">
+              <span class="theme__toggle-wrap" id="theme__toggle-wrap">
+                <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="default">
+                <span class="theme__fill"></span>
+                <span class="theme__icon">
+                  <span class="theme__icon-part"></span>
+                  <span class="theme__icon-part"></span>
+                  <span class="theme__icon-part"></span>
+                  <span class="theme__icon-part"></span>
+                  <span class="theme__icon-part"></span>
+                  <span class="theme__icon-part"></span>
+                  <span class="theme__icon-part"></span>
+                  <span class="theme__icon-part"></span>
+                  <span class="theme__icon-part"></span>
+                </span>
+              </span>
+            </label>
+          </div>
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
 
 
   </main>
